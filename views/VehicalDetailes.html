@@ -1,0 +1,115 @@
+<style>
+    .required {
+        color: red;
+    }
+</style>
+<div class="container" style="padding-left: 15px;">
+<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				 <li><a href="#TruckTypes" style="z-index:9;">Trucks</a></li>
+				<li class="active">Truck Details</li>
+              </ul>
+            </div>
+    <h2>Truck Details</h2>
+	 <hr style="border:1px solid #FF3300">
+	<div class="well col-md-10 col-md-offset-1">
+    <form action="/VehicleTypeDetails" class="form-horizontal" id="form1" method="post" role="form" novalidate="novalidate">
+        <input name="__RequestVerificationToken" type="hidden" value="LpIkJrlhNe5LyFMkrBGpbL52Jp65XxGHfMp9tws8mRh9SMSVINS3QdAdtem8lYaTVyMRTrshRK1zoGkhVfCI9wGTdf0gQw_jhuKEItP4d5_1ozo0XefiH-eTb0nvfaoUYdK228tjVW6FsmWsGGQ7Pg2">
+        <div id="error-note"></div>
+        <input data-val="true" data-val-number="The field VehicleTypeID must be a number." data-val-required="The VehicleTypeID field is required." id="VehicleType_VehicleTypeID" name="VehicleType.VehicleTypeID" type="hidden" value="0">
+        <div class="form-group">
+		<div class="col-md-12">
+		<div class="col-lg-2 col-lg-offset-9"><a href="#Trucks"><button class="btn"><i class="fa fa-plus" aria-hidden="true"></i>
+		    <span class="fs-it-btn-vertical-line"></span>View Trucks</button></a></div>
+			<br>
+		</div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Registration Number</label>
+            <div class="col-md-4">
+                <input class="form-control" id="VehicleType_Type" maxlength="50" name="VehicleType.Type" type="text" value="">
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck type</label>
+            <div class="col-md-4">
+                <select class="form-control">
+						<option value="8">6 Tyre Truck</option>
+						<option value="3">10 Tyre Truck</option>
+						<option value="2">12 Tyre Truck</option>
+						<option value="4">14 Tyre Truck</option>
+						<option value="1">18 Tyre truck</option>
+						<option value="6">22 Tyre Truck</option>
+						<option value="12">3 Tyre Auto Truck</option>
+						<option value="20">4 Tyre Tata Ace Zip</option>
+						<option value="9">4 Tyre Tata Ace</option>
+						<option value="19">4 Tyre Tata Super Ace</option>
+						<option value="10">4 Tyre Tata 407</option>
+						<option value="18">4 Tyre Tata Yodha</option>
+						<option value="17">4 Tyre Bolero Truck</option>
+						<option value="11">4 Tyre Ashok leyland Dost</option>
+						<option value="13">14 Tyre Trailer</option>
+						<option value="14">18 Tyre Trailer</option>
+						<option value="15">22 Tyre Trailer</option>
+					</select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Capacity" style="color:black"><span class="required">*</span>&nbsp;Capacity (in Tons)</label>
+            <div class="col-md-4">
+                <input class="form-control" data-val="true" data-val-number="The field Capacity must be a number." data-val-required="The Capacity field is required." id="VehicleType_Capacity" maxlength="3" name="VehicleType.Capacity" onkeypress="return jsFns.IsNumberKey(event)" style="width:100px" type="text" value="0">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Status" style="color:black">Status</label>
+            <div class="col-md-4">
+                <input checked="checked" data-val="true" data-val-required="The Status field is required." id="Status" name="Status" type="checkbox" value="true">
+                <input name="Status" type="hidden" value="false">
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Rc</label>
+            <div class="col-md-4">
+                <input type="file">
+				<img src="http://placehold.it/230x240" alt="">
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Insurence</label>
+            <div class="col-md-4">
+                <input type="file">
+				<img src="http://placehold.it/230x240" alt="">
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black">Truck Pollution Check</label>
+            <div class="col-md-4">
+                <input type="file">
+				<img src="http://placehold.it/230x240" alt="">
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Main Image</label>
+            <div class="col-md-4">
+                <input type="file">
+				<img src="http://placehold.it/230x240" alt="">
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black">Truck Images (Use ctrl to select multiple)</label>
+            <div class="col-md-4">
+                <input type="file">
+				<img src="http://placehold.it/230x240" alt="">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-10">
+                <input type="submit" name="submitbutton" id="btnSubmit" value="Submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-danger cancel" href="/VehicleTypeDetails">Cancel</a>
+            </div>
+        </div>
+    </form>
+	</div>
+
+</div>

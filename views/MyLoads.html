@@ -1,0 +1,196 @@
+<style>
+
+body{
+background-color:white;
+
+}
+.well{
+background-color:#F7F7F7;
+}
+#cboxStatus {
+    height: 20px;
+    width: 20px;
+    vertical-align: text-bottom;
+}
+</style>
+<div class="container" ng-init="displayPosts();">
+   <div class="row">
+   <div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				<li class="active">My Loads</li>
+              </ul>
+            </div>
+      <h1>My Loads</h1>
+	  
+      <hr style="border:1px solid #FF3300">
+	  <div class="well col-lg-8 col-lg-offset-2">
+      <br>
+      <br>
+      <div class="col-lg-12">
+	  <div class="col-lg-2 col-lg-offset-9">
+      <a class="btn icon-btn btn-success" href="#PostingLoads">
+        <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+        Add New Post
+      </a>
+      <!--<a href="#PostingLoads"><button class="btn"><i class="fa fa-plus" aria-hidden="true"></i>
+		    <span class="fs-it-btn-vertical-line"></span>Add New Post</button></a>--></div>
+			<br>
+		</div>
+		
+    <div class="col-lg-12">
+         <label for="typeofload" class="col-lg-3">Type Of Load
+         </label>
+         <div class="input-group col-lg-6">
+            <span class="input-group-addon">
+          <i class="fa fa-cubes"></i></span>
+            <select class="form-control" ng-model="searchParam.load_type">
+      				<option value="">Select Load Type</option>
+              <option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>
+      			</select>
+		 </div>
+		 <br>
+			
+			</div>
+		<div class="col-lg-12">
+            <label for="auditReport" class="col-lg-3">Between Dates
+         </label>
+            <div class="form-group col-lg-4">
+         <div class="input-group">
+          
+            <input type="text" class="form-control" placeholder="From Date" id="fromdate" ng-model="auditreport.fromdate"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+    </div>
+</div>
+<div class="col-lg-1"></div>
+    <div class="form-group col-lg-4">
+    <div class="input-group">
+            <input type="text" class="form-control" placeholder="To Date" id="todate" ng-model="auditreport.todate"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+         </div>
+     </div>
+            </div>
+            <div class="col-lg-12">
+			<div class="col-lg-4 col-lg-offset-4">
+
+            <button class="btn btn-success" ng-click="searchPosts();"><i class="fa fa-search"></i> &nbsp;Search</button>
+            <button class="btn btn-danger" ng-click="resetSearch();"  type="reset"><i class="fa fa-rotate-left"></i> &nbsp;Reset</button>
+			</div>
+         </div>
+      </div>
+	  </div>
+   </div>
+   <!--<div class="container">
+ 
+        <div class="col-lg-12">
+                <table class="table table-striped table-bordered table-list col-lg-12">
+                  <thead>
+                    <tr>
+                        <th style="width:150px">Solutions</th>
+                        <th><a>Type Of Loading</a></th>
+                        <th><a>From City</a></th>
+                        <th><a>To City</a></th>
+                        <th>Kms</th>
+                        <th>Load Cost</th>
+                        <th>Advance</th>
+                        <th>Available Ton</th>
+						<th><a>Need Of Vehicle</a></th>
+						<th>Available Dates</th>
+						<th>Transporter Address</th>
+						<th>Posted On</th>
+                    </tr> 
+                  </thead>
+                  <tbody id="myTable">
+                
+                          <tr ng-repeat="myload in myloads">
+                            <td>
+							<a class="btn btn-danger" ng-click="deletePost(myload.id)" data-toggle="tooltip"  title="Delete Post"><em class="fa fa-trash"></em></a>
+              <a href="#PostingLoads/{{myload.id}}" class="btn btn-success" data-toggle="tooltip" title="Edit Post"><em class="fa fa-pencil"></em></a>
+							<input type="checkbox" id="cboxStatus" ng-change="updatePostStatus(myload);" ng-model="myload.active">
+							<a ng-click="updatePostStatus(myload);">{{myload.active?'Active':'Inactive'}}</a>
+                            </td>
+                            <td>{{myload.typeOfLoad}}</td>
+                            <td>{{myload.from_city}}({{myload.from_location}})</td>
+                            <td>{{myload.to_city}}({{myload.to_location}})</td>
+                            <td>{{myload.distance_km}}</td>
+                            <td>{{myload.load_cost}}/- {{myload.load_cost_type}}</td>
+                            <td>{{myload.advance_percent}}</td>
+                            <td>{{myload.tonns_available}}</td>
+							<td>{{myload.vehicle_type}}</td>
+							<td>{{myload.available_date}}</td>
+							<td>{{myload.address}}</td>
+							<td>{{myload.created_date}}</td>
+                          </tr>
+                          
+                        </tbody>
+                </table>
+            
+              </div>
+</div>-->
+<div class="container well"style="background-color: white">
+<div class="row">
+
+            <div class="col-md-12 table-responsive">
+
+         
+                        <table class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                  <th style="width:150px">Actions</th>
+                        <th><a>Type Of Loading</a></th>
+                        <th><a>From City</a></th>
+                        <th><a>To City</a></th>
+                        <th>Kms</th>
+                        <th>Load Cost</th>
+                        <th>Advance</th>
+                        <th>Available Ton</th>
+            <th><a>Need Of Vehicle</a></th>
+            <th>Available Dates</th>
+            <th>Transporter Address</th>
+            <th>Posted On</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+<tr ng-repeat="myload in myloads">
+                            <td>
+              <a class="btn btn-danger" ng-click="deletePost(myload.id)" data-toggle="tooltip"  title="Delete Post"><em class="fa fa-trash"></em></a>
+              <a href="#PostingLoads/{{myload.id}}" class="btn btn-success" data-toggle="tooltip" title="Edit Post"><em class="fa fa-pencil"></em></a>
+              <input type="checkbox" id="cboxStatus" ng-change="updatePostStatus(myload);" ng-model="myload.active">
+              <a ng-click="updatePostStatus(myload);">{{myload.active?'Active':'Inactive'}}</a>
+                            </td>
+                            <td>{{myload.typeOfLoad}}</td>
+                            <td>{{myload.from_city}}({{myload.from_location}})</td>
+                            <td>{{myload.to_city}}({{myload.to_location}})</td>
+                            <td>{{myload.distance_km}}</td>
+                            <td>{{myload.load_cost}}/- {{myload.load_cost_type}}</td>
+                            <td>{{myload.advance_percent}}</td>
+                            <td>{{myload.tonns_available}}</td>
+              <td>{{myload.vehicle_type}}</td>
+              <td>{{myload.available_date}}</td>
+              <td>{{myload.address}}</td>
+              <td>{{myload.created_date}}</td>
+                          </tr>
+                            </tbody>
+                        </table>
+
+                    
+
+            </div>
+        </div>
+      </div>
+ <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                // $('[data-toggle="tooltip"]').tooltip(); 
+                  
+                $('#fromdate').datepicker({
+                     autoclose: true,  
+                    format: "dd/mm/yyyy"
+                });
+                $('#todate').datepicker({
+                     autoclose: true,  
+                    format: "dd/mm/yyyy"
+                });   
+            
+            });
+        </script>

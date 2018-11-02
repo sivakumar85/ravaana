@@ -1,0 +1,168 @@
+<style>
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu .menu2 li{
+    display:none;
+}
+.dropdown-submenu:hover>.menu2 li{
+    display:block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.navbar-inverse ul.navbar-nav li a i span {
+    position: absolute;
+    width: auto;
+    margin-top: 0;
+    padding: 3px 5px;
+    background: cyan;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: black;
+    font-weight: 300;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 10px;
+}
+
+</style>
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-xl navbar-dark">
+<div class="navbar-header d-flex col" ng-init="getProfile();">
+						<a class="navbar-brand" href="#Home"><i class="fa fa-truck"></i><b>Ravaana.in</b></a>
+						<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+							<span class="navbar-toggler-icon"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<!-- Collection of nav links, forms, and other content for toggling -->
+					<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">		
+						
+						<ul class="nav navbar-nav ml-auto">
+							<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-gears"></i><span>Services
+								  <b class="caret"></b>
+								 </a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#RoadRavaana"><i class="fa fa-truck"></i>Road Ravaana</a></li>
+									<li><a class="dropdown-item" href="#TrainRavaana"><i class="fa fa-train"></i>Train Ravaana </a></li>
+									<li><a class="dropdown-item" href="#AirRavaana"><i class="fa fa-plane"></i>Air Ravaana</a></li>
+									<li><a class="dropdown-item" href="#SeaRavaana"><i class="fa fa-ship"></i>Sea Ravaana</a></li>
+									<li><a class="dropdown-item" href="#warehousing"><i class="fa fa-building-o"></i>Warehousing</a></li>
+									<li><a class="dropdown-item" href="#ticketbooking"><i class="fa fa-ticket"></i>Ticket Bookings</a></li>
+								</ul>
+							</li>
+							<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-info-circle"></i><span>More
+								  <b class="caret"></b>
+								 </a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#"><i class="fa fa-user"></i>Membership</a></li>
+									<li><a class="dropdown-item" href="#ContactUs"><i class="fa fa-mobile"></i>ContactUs</a></li>
+									<li><a class="dropdown-item" href="#AboutUs"><i class="fa fa-users"></i>AboutUs</a></li>
+								</ul>
+							</li>
+							<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-hourglass-2"></i><span>Control Panel
+								  <b class="caret"></b>
+								 </a>
+								<ul class="dropdown-menu">
+										<li><a href="#UpdateLoginDetails" class="dropdown-item"><i class="fa fa-gears"></i>Update Login Details</a></li>
+										<li class="dropdown-submenu">
+											<a href="" class="dropdown-item"><i class="fa fa-phone"></i>My Bookings</a>
+												<ul class="dropdown-menu menu2">
+												  <li><a  href="#MyLoadBooking" class="dropdown-item"><i class="fa fa-road"></i>Loads</a></li>
+												  <li><a  href="#TruckBooking" class="dropdown-item"><i class="fa fa-flag-checkered"></i>Trucks</a></li>
+												</ul>
+										</li>  
+										<li><a href="#AuditReport" class="dropdown-item"><i class="fa fa-line-chart"></i>AuditReport</a></li>
+										<li><a href="#PostingLoads" class="dropdown-item"><i class="fa fa-handshake-o"></i>Post Loads</a></li>
+										<li><a href="#MyLoads" class="dropdown-item"><i class="fa fa-rocket"></i>My Loads</a></li>                        
+										<li><a href="#PastLoads" class="dropdown-item"><i class="fa fa-history"></i>Expired Loads</a></li>                        
+										<li><a href="#Trucks" class="dropdown-item"><i class="fa fa-truck"></i>My Trucks</a></li>                        
+										<li><a href="#Drivers" class="dropdown-item"><i class="fa fa-user-circle-o"></i>Drivers List</a></li> 
+										<li><a href="#Branches" class="dropdown-item"><i class="fa fa-university"></i>Branches List</a></li>
+								</ul>
+							</li>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-truck" title="Truck Request"> <span>1</span></i>
+								   Truck Request
+								 </a>
+							</li>
+							<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-cubes" title="Load Request"><span style="position: ">1</span></i>
+								  Load Request
+							</li>
+							<!--<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								 <img src="images/if_wallet_62281.png" class="avatar"  width="40px" height="40px" alt="wallet">Wallet
+								  
+								 </a>
+							</li>-->
+							<li class="nav-item dropdown">
+								<a href="" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><!--<img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> -->
+								<img src="{{profile_pic}}" width="40px" height="40px" class="avatar" alt="Avatar">	{{login_username}} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#TransportCompanyProfile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+									<li><a href="#ChangePassword" class="dropdown-item"><i class="fa fa-key"></i>Change Password</a></li> 
+									<li class="divider dropdown-divider"></li>
+									<li><a href="javascript:void(0);" ng-click="logout();" class="dropdown-item"><i class="fa fa-sign-out"></i> Logout</a></li>
+								</ul>
+						</li>
+						</ul>
+						</ul>
+					</div>
+</nav>
+<script>
+		$(document).ready(function () {
+		    $("nav").find("li").on("click", "a", function () {
+		        $('.navbar-collapse.in').collapse('hide');
+		    });
+		});
+	</script>

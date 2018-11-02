@@ -1,0 +1,344 @@
+<style>
+   body{
+      background-color: white;
+   }
+   .well{
+      background-color: #F7F7F7;
+   }
+</style>
+<form class="form-horizontal" id="auditreport_form" method="post" role="form" novalidate="novalidate">
+<div class="container">
+   <div class="row">
+   <div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				<li class="active">AuditReport</li>
+              </ul>
+            </div>
+			
+      <h2>Audit Report</h2>
+	   <hr style="border:1px solid #FF3300">
+      <div class="well col-lg-12">
+	  <div class="well col-lg-10 col-lg-offset-1 well1"style="background-color:white">
+      <form class="form-horizontal">
+         <div class="alert alert-danger text-center" ng-show="errorPost">
+                            <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div> 
+         <div class="form-group">
+            <label class="col-md-2 control-label" for="SearchParams" style="color:black">Category</label>
+            <div class="col-md-5">
+                <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-cube"></i></span>
+               <select class="form-control" name="select_category" id="select_category" model="auditreport.select_category">
+                  <option value="">Select Category</option>
+                  <option value="1">ActiveLoads</option>
+                  <option value="2">ActiveVehiclesAvailability</option>
+               </select>
+            </div>
+         </div>
+      </div>
+         <div class="col-lg-12">
+            <label for="auditReport" class="col-lg-2">Between Dates
+         </label>
+            <div class="form-group col-lg-4">
+         <div class="input-group">
+          
+            <input type="text" class="form-control" placeholder="From Date" id="fromdate" ng-model="auditreport.fromdate"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+    </div>
+</div>
+<div class="col-lg-1"></div>
+    <div class="form-group col-lg-4">
+    <div class="input-group">
+            <input type="text" class="form-control" placeholder="To Date" id="todate" ng-model="auditreport.todate"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+         </div>
+     </div>
+            </div>
+         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+            
+               <button id="btnSearch"class="btn btn-success"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
+               <a class="btn btn-danger cancel" href="/AuditLog?Reset=1"><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
+            </div>
+         </div>
+</div>
+</div>
+</div>
+</form>
+         <!--<div class="col-lg-12">
+            <div class="panel panel-default panel-table">
+               <div class="panel-body table-responsive">
+                  <table class="table table-striped table-bordered table-list">
+                     <thead>
+                        <tr>
+                           <th><a>Category</a></th>
+                           <th><a>Ref ID</a></th>
+                           <th><a>Field Name</a></th>
+                           <th><a>Old Value</a></th>
+                           <th><a>New Value</a></th>
+                           <th><a>Changed Date</a></th>
+                           <th><a>Changed By</a></th>
+                           <th><a>Email</a></th>
+                           <th><a>Mobile</a></th>
+                        </tr>
+                     </thead>
+                     <tbody id="myTable">
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <td>ActiveLoads</td>
+                        <td>24</td>
+                        <td>Status</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>25 Aug 2018,05:10 PM</td>
+                        <td>Dasari Pratap</td>
+                        <td>kpkaruna1116@gmail.com</td>
+                        <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+	  </div>-->
+     <div class="container well"style="background-color: white">
+     <div class="row">
+
+            <div class="col-md-12 table-responsive">
+
+         
+                        <table class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                  <th><a>Category</a></th>
+                           <th><a>Ref ID</a></th>
+                           <th><a>Field Name</a></th>
+                           <th><a>Old Value</a></th>
+                           <th><a>New Value</a></th>
+                           <th><a>Changed Date</a></th>
+                           <th><a>Changed By</a></th>
+                           <th><a>Email</a></th>
+                           <th><a>Mobile</a></th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+<tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <td>ActiveLoads</td>
+                        <td>24</td>
+                        <td>Status</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>25 Aug 2018,05:10 PM</td>
+                        <td>Dasari Pratap</td>
+                        <td>kpkaruna1116@gmail.com</td>
+                        <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                        <tr>
+                           <td>ActiveLoads</td>
+                           <td>24</td>
+                           <td>Status</td>
+                           <td>0</td>
+                           <td>1</td>
+                           <td>25 Aug 2018,05:10 PM</td>
+                           <td>Dasari Pratap</td>
+                           <td>kpkaruna1116@gmail.com</td>
+                           <td>9666569885</td>
+                        </tr>
+                            </tbody>
+                        </table>
+
+                    
+
+            </div>
+        </div>
+     </div>
+
+   

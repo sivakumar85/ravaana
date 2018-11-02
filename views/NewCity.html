@@ -1,0 +1,91 @@
+<style>
+    .required {
+        color: red;
+    }
+</style>
+<div class="container" style="padding-left: 15px;">
+<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				 <li><a href="#CitiesList" style="z-index:9;">CitiesList</a></li>
+				<li class="active">NewCity</li>
+              </ul>
+            </div>
+    <h2>City Details</h2>
+	
+    <form action="/CityDetails" class="form-horizontal" id="form1" method="post" role="form" novalidate="novalidate">
+        <input name="__RequestVerificationToken" type="hidden" value="gDySNJYP50x4InLNBVlxQpq0_pWuY0nPKu9CiucEcl4gyfDXx0GBxXWlL7ItrxQ9wi4y7vl0QRZonyVN01sBrsYGF9oZF_zZK3-5fD50l45_UwPerU28y7SPOP0CQC-da_e0bHoWT0WAmUqQgW0JBw2">
+         <hr style="border:1px solid #FF3300">
+        <div id="error-note"></div>
+        <input data-val="true" data-val-number="The field CityID must be a number." data-val-required="The CityID field is required." id="City_CityID" name="City.CityID" type="hidden" value="0">
+        <div class="well col-md-10 col-lg-offset-1" style="background-color:white">
+		<div class="col-md-12">
+		<div class="col-lg-2 col-lg-offset-10"><a href="#CitiesList"><button class="btn"><i class="fa fa-plus" aria-hidden="true"></i>
+		    <span class="fs-it-btn-vertical-line"></span>View Cities</button></a></div>
+			<br>
+		</div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="City.State.StateID" style="color:black"><span class="required">*</span>&nbsp;State</label>
+            <div class="col-md-4">
+                <select class="form-control" data-val="true" data-val-number="The field StateID must be a number." data-val-required="The StateID field is required." id="City_State_StateID" name="City.State.StateID">
+                    <option value="">Select State</option>
+                    <option value="1">Maharashtra</option>
+                    <option value="2">Delhi</option>
+                    <option value="3">Karnataka</option>
+                    <option value="4">Gujarat</option>
+                    <option value="5">Telangana</option>
+                    <option value="6">Tamil Nadu</option>
+                    <option value="7">West Bengal</option>
+                    <option value="8">Rajasthan</option>
+                    <option value="9">Uttar Pradesh</option>
+                    <option value="10">Bihar</option>
+                    <option value="11">Madhya Pradesh</option>
+                    <option value="12">Andhra Pradesh</option>
+                    <option value="13">Punjab</option>
+                    <option value="14">Haryana</option>
+                    <option value="15">Jammu and Kashmir</option>
+                    <option value="16">Jharkhand</option>
+                    <option value="17">Chhattisgarh</option>
+                    <option value="18">Assam</option>
+                    <option value="19">Chandigarh</option>
+                    <option value="20">Odisha</option>
+                    <option value="21">Kerala</option>
+                    <option value="22">Uttarakhand</option>
+                    <option value="23">Puducherry</option>
+                    <option value="24">Tripura</option>
+                    <option value="25">Karnatka</option>
+                    <option value="26">Mizoram</option>
+                    <option value="27">Meghalaya</option>
+                    <option value="28">Manipur</option>
+                    <option value="29">Himachal Pradesh</option>
+                    <option value="30">Nagaland</option>
+                    <option value="31">Goa</option>
+                    <option value="32">Andaman and Nicobar Islands</option>
+                    <option value="33">Arunachal Pradesh</option>
+                    <option value="34">Dadra and Nagar Haveli</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="City.CityName" style="color:black"><span class="required">*</span>&nbsp;City Name</label>
+            <div class="col-md-4">
+                <input class="form-control" id="City_CityName" maxlength="50" name="City.CityName" type="text" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Status" style="color:black">Status</label>
+            <div class="col-md-4">
+                <input checked="checked" data-val="true" data-val-required="The Status field is required." id="Status" name="Status" type="checkbox" value="true">
+                <input name="Status" type="hidden" value="false">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="submitbutton" id="btnSubmit" value="Submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-default cancel" href="/CityDetails">Cancel</a>
+            </div>
+        </div>
+		</form>
+		</div>
+		</div>
+		

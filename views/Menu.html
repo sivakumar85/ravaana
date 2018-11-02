@@ -1,0 +1,46 @@
+<nav class="navbar navbar-inverse navbar-fixed-top  navbar-expand-xl navbar-dark">
+<div class="navbar-header">
+						<a class="navbar-brand" href="#Home"><i class="fa fa-truck"></i><b>Ravaana.in</b></a>
+						<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+							<span class="navbar-toggler-icon"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<!-- Collection of nav links, forms, and other content for toggling -->
+					<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">		
+						
+						<ul class="nav navbar-nav ml-auto">
+							<li class="nav-item active"><a href="#Home" class="nav-link"><i class="fa fa-home"></i><span>Home</span></a></li>
+							<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-gears"></i><span>Services
+								  <b class="caret"></b>
+								 </a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#RoadRavaana"><i class="fa fa-truck"></i>Road Ravaana</a></li>
+									<li><a class="dropdown-item" href="#TrainRavaana"><i class="fa fa-train"></i>Train Ravaana </a></li>
+									<li><a class="dropdown-item" href="#AirRavaana"><i class="fa fa-plane"></i>Air Ravaana</a></li>
+									<li><a class="dropdown-item" href="#SeaRavaana"><i class="fa fa-ship"></i>Sea Ravaana</a></li>
+									<li><a class="dropdown-item" href="#warehousing"><i class="fa fa-building-o"></i>Warehousing</a></li>
+									<li><a class="dropdown-item" href="#ticketbooking"><i class="fa fa-ticket"></i>Ticket Bookings</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#ContactUs"> <i class="fa fa-paper-plane"></i><span>Contact Us </a></li>
+							<li class="nav-item"><a class="nav-link" href="#AboutUs"> <i class="fa fa-user"></i><span>About Us</a></li>
+						
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+								<li  class="nav-item"><a class="nav-link" href="#SignUp" id="registerLink"><i class="fa fa-user-plus"></i>Sign Up</a></li>
+								<li class="nav-item"><a class="nav-link" href="#SignIn" id="loginLink"><i class="fa fa-sign-in"></i>Sign In</a></li>
+						</ul>
+					</div>
+</nav>
+<script>
+		$(document).ready(function () {
+		    $("nav").find("li").on("click", "a", function () {
+		        $('.navbar-collapse.in').collapse('hide');
+		    });
+		});
+	</script>

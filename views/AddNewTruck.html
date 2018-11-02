@@ -1,0 +1,259 @@
+<style>
+    .required {
+        color: red;
+    }
+</style>
+<form class="form-horizontal" id="truck_form" method="post" role="form" novalidate="novalidate">
+<div class="container" style="padding-left: 15px;">
+<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				 <li><a href="#TruckTypes" style="z-index:9;">Trucks</a></li>
+				<li class="active">AddTruck</li>
+              </ul>
+            </div>
+    <h2>Add Truck</h2>
+	 <hr style="border:1px solid #FF3300">
+	<div class="well col-md-10 col-md-offset-1">
+    
+       
+        <div id="error-note"></div>
+        
+        <div class="form-group">
+            <div class="alert alert-danger text-center" ng-show="errorPost">
+                            <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div> 
+                        <div class="col-lg-12">
+                  <div class="col-lg-2 col-lg-offset-10">
+                    <a class="btn icon-btn btn-info" href="#Trucks">
+                    <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-info"></span>
+                    View Trucks
+                  </a>
+              </div>
+            <br>
+        </div>
+		</div>
+        <!--<div class="form-group has-feedback">
+                                <label class="col-lg-3 control-label">Email</label>
+                                <div class="col-lg-5">
+                                <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input type="email" class="form-control" name="emailId" id="emailId" placeholder="Enter Email" ng-model="user.email" ng-required="true">
+                                </div>
+                                </div>
+                        </div>-->
+        
+                        
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Registration Number</label>
+            <div class="col-md-4">
+                <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
+                <input class="form-control" id="vehicle_registration_no" maxlength="50" name="vehicle_registration_no" ng-model="truck.vehicle_registration_no"  ng-required="true" placeholder="Enter Registration Number"  type="text" ></div>
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck type</label>
+            <div class="col-md-4">
+                 <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                <select class="form-control" name="vehicle_type" id="vehicle_type" ng-model="truck.vehicle_type" ng-required="true">
+                    <option value="">Select</option>
+						<option value="8">6 Tyre Truck</option>
+						<option value="3">10 Tyre Truck</option>
+						<option value="2">12 Tyre Truck</option>
+						<option value="4">14 Tyre Truck</option>
+						<option value="1">18 Tyre truck</option>
+						<option value="6">22 Tyre Truck</option>
+						<option value="12">3 Tyre Auto Truck</option>
+						<option value="20">4 Tyre Tata Ace Zip</option>
+						<option value="9">4 Tyre Tata Ace</option>
+						<option value="19">4 Tyre Tata Super Ace</option>
+						<option value="10">4 Tyre Tata 407</option>
+						<option value="18">4 Tyre Tata Yodha</option>
+						<option value="17">4 Tyre Bolero Truck</option>
+						<option value="11">4 Tyre Ashok leyland Dost</option>
+						<option value="13">14 Tyre Trailer</option>
+						<option value="14">18 Tyre Trailer</option>
+						<option value="15">22 Tyre Trailer</option>
+					</select>
+            </div>
+        </div>
+    </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Capacity" style="color:black"><span class="required">*</span>&nbsp;Capacity (in Tons)</label>
+            <div class="col-md-4">
+                <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
+                <input class="form-control" id="truck_capacity" maxlength="3" name="truck_capacity" ng-model="truck.truck_capacity" type="text" placeholder="Enter Truck Capacity">
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Status" style="color:black">Status</label>
+            <div class="col-md-4">
+                <input checked="checked" data-val="true" data-val-required="The Status field is required." id="Status" name="Status" type="checkbox" value="true">
+                <input name="Status" type="hidden" value="false">
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Rc</label>
+            <div class="col-md-4">
+                <div class="input-group">
+              <input type="file" class="form-control" name="truck_rc" accept="image/*" id="truck_rc" ng-model="truck.truck_rc">
+            </div>
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Insurence</label>
+            <div class="col-md-4">
+                 <div class="input-group">
+              <input type="file" class="form-control" accept="image/*" name="truck_insurence" id="truck_insurence" ng-model="truck.truck_insurence">
+            </div>
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black">Truck Pollution Check</label>
+            <div class="col-md-4">
+                 <div class="input-group">
+              <input type="file" class="form-control" accept="image/*" name="truck_pollution" id="truck_pollution" ng-model="truck.truck_pollution">
+            </div>
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Main Image</label>
+            <div class="col-md-4">
+                 <div class="input-group">
+              <input type="file" class="form-control" name="truck_image" accept="image/*" id="truck_image" ng-model="truck.truck_image">
+            </div>
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black">Truck Fitness Certificate</label>
+            <div class="col-md-4">
+                 <div class="input-group">
+              <input type="file" class="form-control" name="truck_fitness_certificate" accept="image/*" id="truck_fitness_certificate" ng-model="truck.truck_fitness_certificate">
+            </div>
+            </div>
+        </div>
+         <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+            
+               <button class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;&nbsp;Submit</button>
+               <a class="btn btn-danger" href=""><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Cancel</a>
+            </div>
+         </div>
+    
+	</div>
+
+</div>
+</form>
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+               
+            
+            
+           
+            $('#truck_form').bootstrapValidator({
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'truck_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                vehicle_registration_no: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Registration number required'
+                        }
+                    }
+                },
+                vehicle_type: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Select a Truck Type'
+                        }
+                    }
+                },
+                truck_capacity: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Truck Capacity'
+                        }
+                    }
+                },
+                
+                truck_rc : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Truck RC'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+                truck_insurence : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Truck Insurence'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+                truck_pollution : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Pollution Documents'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+                truck_fitness_certificate : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Fitness Certificate'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+            truck_image: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Truck Image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+        }
+    });
+});
+        </script>

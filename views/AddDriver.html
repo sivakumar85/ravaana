@@ -1,0 +1,216 @@
+<style>
+    .required {
+        color: red;
+    }
+    body{
+        background-color: white;
+    }
+    .well{
+
+        background-color: #F7F7F7;
+    }
+</style>
+<form class="form-horizontal" id="driver_form" method="post" role="form" novalidate="novalidate">
+
+<div class="container" style="padding-left: 15px;">
+<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+                 <li><a href="#Drivers" style="z-index:9;">Drivers</a></li>
+                <li class="active">AddDrivers</li>
+              </ul>
+            </div>
+    <h2>Add Drivers</h2>
+     <hr style="border:1px solid #FF3300">
+    <div class="well col-md-10 col-md-offset-1">
+        <div class="form-group">
+        <div class="col-lg-12">
+      <div class="col-lg-2 col-lg-offset-8">
+        <a class="btn icon-btn btn-info" href="#Drivers">
+        <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-info"></span>
+        View Drivers List
+      </a>
+  </div>
+            <br>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Name" style="color:black"><span class="required">*</span>&nbsp;Driver Name</label>
+            <div class="col-md-4">
+            <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" name="driver_name" placeholder="Enter Name" ng-model="driver.driver_name" id="driver_name" ng-required="true">
+                                </div>
+                                </div>
+            </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Age" style="color:black"><span class="required">*</span>&nbsp;Age(yrs)</label>
+            <div class="col-md-4">
+                 <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
+                <input class="form-control" maxlength="3" name="driver_age" id="driver_age" placeholder="Age" ng-model="driver.driver_age" style="width:100px" type="text">
+            </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="licence" style="color:black"><span class="required">*</span>&nbsp;License</label>
+            <div class="col-md-4">
+                 <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <input class="form-control" id="driver_license_number" placeholder="Enter License Number" maxlength="50" name="driver_license_number" ng-model="driver.driver_license_number" type="text" value="">
+            </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Mobile</label>
+            <div class="col-md-4">
+                <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                <input class="form-control" id="driver_mobile" maxlength="50" name="driver_mobile" ng-model="driver.driver_mobile" type="text" placeholder="Enter Mobile Number">
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Address</label>
+            <div class="col-md-4">
+                <textarea class="form-control" cols="20" height="100px" id="Driver_Address" maxlength="100" name="driver_address" id="driver_address" ng-model="driver.driver_address" placeholder="Driver address" rows="6" style="height: 100px"></textarea>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Status" style="color:black">Status</label>
+            <div class="col-md-4">
+                <input checked="checked" data-val="true" data-val-required="The Status field is required." id="Status" name="Status" type="checkbox" value="true">
+                <input name="Status" type="hidden" value="false">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="dphoto" style="color:black"><span class="required">*</span>&nbsp;Driver Photo</label>
+            <div class="col-md-4">
+                <div class="input-group">
+              <input type="file" class="form-control" accept="image/*" name="driver_photo" id="driver_photo" ng-model="driver.driver_photo">
+            </div>
+            </div>
+            </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="license" style="color:black"><span class="required">*</span>&nbsp;Driver License</label>
+            <div class="col-md-4">
+                 <div class="input-group">
+              <input type="file" class="form-control" accept="image/*" name="driver_license" id="driver_license" ng-model="driver.driver_license">
+            </div>
+            </div>
+        </div>
+           <div class="form-group">
+            <div class="col-md-offset-3 col-md-10">
+            
+               <button class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;&nbsp;Submit</button>
+               <a class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Cancel</a>
+            </div>
+         </div>
+    </div>
+
+</div>
+</form>
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+               
+            
+            
+           
+            $('#driver_form').bootstrapValidator({
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'driver_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                driver_name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Name'
+                        }
+                    }
+                },
+                driver_license_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter License Number'
+                        }
+                    }
+                },
+                driver_mobile: {
+                    validators: {
+                        regexp: {
+                            regexp: /^[6-9]\d{9}$/,
+                            message: 'Please Enter valid Mobile Number'
+                        },
+                        notEmpty: {
+                            message: 'Mobile Number is required and can\'t be empty'
+                        },
+                        digits: {
+                            message: 'Mobile Number can contain only digits'
+                        },
+                        remote: {
+                            url: 'php/remote.php',
+                            message: 'Mobile Number already Exists!'
+                        },
+                    }
+            },
+            driver_age: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Age'
+                        },
+                        digits: {
+                            message: 'Age can contain only digits'
+                        },
+                    }
+                },
+                driver_address: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Address'
+                        },
+
+                    }
+                },
+                  driver_license : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+                driver_photo : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+
+            
+        }
+    });
+});
+        </script>

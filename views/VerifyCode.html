@@ -1,0 +1,97 @@
+<style>
+body{
+	background-color:white;
+}
+.well{
+	background-color:#F7F7F7;
+}
+.required{
+color:red;
+}
+</style>
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				<li><a href="#SignUp" style="z-index:9;">Register</a></li>
+                <li class="active">Verification</li>
+              </ul>
+     </div>
+<div class="col-lg-12">
+<h1 style="text-align:center">Verify your Account</h1>
+<div class="alert alert-danger text-center" ng-show="errorVerification">
+	<button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+	{{ errorMsg }}
+</div>
+<div class="col-lg-3">
+</div>
+<div class="well col-lg-6">
+<form role="form" name="verifyform" id="verifyform" ng-submit="verifyform.$valid && verifyUser($event)" novalidate="true" autocomplete="off">
+	<div class="form-group has-feedback col-lg-12">
+		<input class="form-control" id="VerificationCode" maxlength="6" name="verification_code" style="text-align:center" placeholder="Enter verification code"  type="text" ng-model="user.verification_code" ng-required="true">
+	</div>
+	<div class="form-group has-feedback col-lg-12">
+		<input class="form-control" name="company_name" style="text-align:center" placeholder="Company Registration Name" type="text" ng-model="user.company_name" ng-required="true">
+	</div>
+	<div class="form-group has-feedback col-lg-12">
+			<textarea cols="10" rows="5" name="company_address" class="form-control" ng-model="user.company_address" ng-required="true">
+			</textarea>
+	</div>
+	<div class="form-group has-feedback col-lg-12">
+	<input type="checkbox" checked ng-required="true" name="accept"> <span style="color:red">Accept terms of conditions</span>
+	</div>
+<div class="col-lg-4 col-lg-offset-5">
+<button class="btn btn-success btn-sm" type="submit" name="send" >Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+ 
+   $(document).ready(function() {
+    $('#verifyform').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+        live: 'enabled',
+			message: 'This value is not valid',
+			submitButton: 'verifyform button[type="submit"]',
+			submitHandler: function(validator, form, submitButton) {
+			  return false;
+			},
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            verification_code: {
+                validators: {
+                    notEmpty: {
+                        message: 'Verification Code is required and can\'t be empty'
+                    }
+                }
+            },
+			company_name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Company Name is required and can\'t be empty'
+                    }
+                }
+            },
+			company_address: {
+                validators: {
+                    notEmpty: {
+                        message: 'company Address is required and can\'t be empty'
+                    }
+                }
+            },
+			
+            
+            }
+        })
+		
+ 	
+        
+});

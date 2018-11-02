@@ -1,0 +1,321 @@
+
+<style>
+.fs-it-btn-vertical-line {
+  text-align:center;
+  padding: 4px 0 5px 10px;
+  margin-left: 10px;
+  border-left: 1px solid #FF3300;
+}
+body{
+background-color:white;
+}
+.well{
+background-color:#F7F7F7;
+}
+.required{
+	color:red;
+}
+</style>
+<form name="load_form" id="load_form" ng-submit="load_form.$valid && postLoad($event)" novalidate="true" autocomplete="off" >
+<div class="container" ng-init="editPost();">
+   <div class="row">
+   <div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				<li class="active">Post Loads</li>
+              </ul>
+            </div>
+      <h1>Post Loads</h1>
+	  
+      <hr style="border:1px solid #FF3300">
+	  <div class="well col-lg-12">
+      <br>
+      <br>
+      <div class="col-lg-12">
+	  <div class="col-lg-2 col-lg-offset-10">
+	  	<a class="btn icon-btn btn-info" href="#MyLoads">
+        <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-info"></span>
+        View Load List
+      </a>
+  </div>
+			<br>
+		</div>
+		<div class="col-lg-12">
+			<div class="alert alert-danger text-center" ng-show="errorPost">
+                            <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div>  
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Type Of Load</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-cubes"></i></span>
+				<select class="form-control" ng-model="load.load_type" name="load_type" ng-required="true" id="load_type">
+					<option value="">Select Load Type</option>
+					<option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>				
+				</select>
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Need Of Truck</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-truck"></i></span>
+				 <select class="form-control" name="truck_type" ng-model="load.truck_type" ng-required="true" id="truck_type">
+            	<option value="">Select Truck Type</option>
+            	<option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>
+            </select>
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;From City</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				<input type="text" class="form-control" placeholder="Enter City" ng-model="load.from_city" ng-required="true" name="from_city" id="from_city">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;From Location</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				<input type="text" class="form-control" placeholder="Select From Location" ng-model="load.from_location" name="from_location" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;To city</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				<input type="text" class="form-control" placeholder="Enter City" ng-model="load.to_city" name="to_city" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;To Location</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				 <input type="text" class="form-control" placeholder="Select To City" ng-model="load.to_location" name="to_location" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Kilometers</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				<input type="text" class="form-control" placeholder="Enter distance in Kilometers" name="distance_km" ng-model="load.distance_km" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Cost per Ton/Full Load</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-inr"></i></span>
+				 <input type="text" class="form-control" placeholder="Enter expected Price" name="load_cost" ng-model="load.load_cost" ng-required="true">
+			
+				<span class="input-group-addon">
+				<i class="fa fa-cube"></i></span>
+				  <select class="form-control" name="load_cost_type" ng-model="load.load_cost_type" ng-required="true"><option value="">Select Cost Type </option><option value="per Ton">Ton</option><option value="Full Load">Full Load</option></select>
+			</div>
+			<!--<div class="col-lg-3">
+             <input type="text" class="form-control" placeholder="" name="load_cost" ng-model="load.load_cost" ng-required="true">
+			 </div>
+			 <div class="col-lg-3">
+			 <select class="form-control" name="load_cost_type" ng-model="load.load_cost_type" ng-required="true"><option value="">Select Cost Type </option><option value="per Ton">Ton</option><option value="Full Load">Full Load</option></select>
+			 
+			 </div>-->
+
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Advance %</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-inr"></i></span>
+				<input type="text" class="form-control" placeholder="Enter Payment %" ng-model="load.advance_percent" name="advance_percent" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Available Tons</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-cubes"></i></span>
+				<input type="text" class="form-control" placeholder="Enter Available Tons" name="tonns_available" ng-model="load.tonns_available" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Available Date</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-calendar"></i></span>
+				<input type="text" class="form-control" placeholder="Type Or Select" id="datePicker" name="available_date" ng-model="load.available_date" ng-required="true" autocomplete="off"/>
+			</div>
+		</div>
+		
+			<div class="panel panel-default col-lg-8 col-lg-offset-2">
+				<div style="text-align:center"><h3><span class="required">*</span>&nbsp;Transpot Address</h3></div>
+				<div class="panel-body">
+					<!--<div class="col-md-3" ng-repeat="branch in branches">
+						<div class="col-md-12 adds" style="height:180px; background-color:lightgray; margin: 5px; overflow: auto;">
+							<input id="ActiveLoad_LoadingPoint" name="tadd" ng-model="load.tid" type="radio" value="{{branch.id}}">
+							<p style="cursor: pointer;">{{branch.address}}</p>
+						</div>
+					</div>-->
+					<div class="well col-lg-4" style="height:180px;margin: 5px;" ng-repeat="branch in branches">
+					<input type="radio" name="tadd" value="{{branch.id}}" ng-model="load.tid" ng-required="true">
+					<p>{{branch.address}}</p>
+					<div class="help-block with-errors"></div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-lg-2">
+			</div>
+            <div class="col-lg-12">
+			<div class="col-lg-4 col-lg-offset-5">
+            <button class="btn btn-success " type="submit"><i class="fa fa-save"></i> &nbsp;Submit</button>
+            <button class="btn btn-danger"  type="reset" ng-click="cancelPost();"><i class="fa fa-times"></i> &nbsp;Cancel</button>
+			</div>
+			</div>
+         </div>
+    
+      </div>
+	  </div>
+	   </form>
+ <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#datePicker').datepicker({
+			            format: 'dd/mm/yyyy',
+						autoclose: true, 
+			        })
+			        .on('changeDate', function(e) {
+			            // Revalidate the date field
+			            $('#load_form').bootstrapValidator('revalidateField', 'available_date');
+						$(this).datepicker('hide');
+			        });
+            
+            
+           
+            $('#load_form').bootstrapValidator({
+	        live: 'enabled',
+			message: 'This value is not valid',
+			submitButton: 'load_form button[type="submit"]',
+			submitHandler: function(validator, form, submitButton) {
+			  return false;
+			},
+	        feedbackIcons: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+            
+	            truck_type: {
+	                message: 'The contact person name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Select a Load Type'
+	                    }
+	                }
+	            },
+	            
+	            load_type: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Select a Vehicle'
+	                    }
+	                }
+	            },
+	            from_city: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Select From City'
+	                    }
+	                }
+	            },
+	            from_location: {
+	                message: 'The contact person name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'From Location required'
+	                    }
+	                }
+	            },
+	            
+	            to_city: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Select To City'
+	                    }
+	                }
+	            },
+	            to_location: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'To Location required'
+	                    }
+	                }
+	            },
+	            distance_km: {
+	                message: 'The contact person name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Distance required'
+	                    }
+	                }
+	            },
+	            
+	            load_cost: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Cost per Ton required'
+	                    }
+	                }
+	            },
+	            load_cost_type: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Cost type required'
+	                    }
+	                }
+	            },
+	            advance_percent: {
+	                message: 'The contact person name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Advance Payment required'
+	                    }
+	                }
+	            },
+	            
+	            tonns_available: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Quantity required'
+	                    }
+	                }
+	            },
+	            available_date: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Availability required'
+	                    }
+	                }
+	            },
+	                     
+
+            
+        }
+    });
+});
+        </script>

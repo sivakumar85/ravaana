@@ -1,0 +1,61 @@
+<div class="container"> 
+<div class="col-md-12"> 
+<ul class="breadcrumb" >
+<li><a href="#Home">Home</a></li>
+<li class="active">SMSLogReport</li>
+</ul>
+</div>         
+    <h2>SMS Log Report</h2>
+	<hr style="border:1px solid #FF3300">
+	<div class="well col-lg-10 col-lg-offset-1">
+	<div class="col-lg-12">
+		<label class="col-lg-2" for="date">Between Dates</label>
+		<div class="col-lg-2">
+		<input type="text" class="form-control" maxlength="10" placeholder="From Date..">
+		</div>
+		<div class="col-lg-2">
+		<input type="text" class="form-control" maxlength="10" placeholder="To Date..">
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="col-lg-12 input-group">
+		<div class="col-lg-3">
+		</div>
+		<div class="col-lg-4">
+			<button class="btn btn-primary">Search</button>
+			<button class="btn btn-default">Reset</button>
+		</div>
+	</div>
+	</div>
+    <br><br>
+        <div class="col-md-12">
+
+            <div class="panel panel-default panel-table">
+              <div class="panel-body table-responsive">
+                <table class="table table-striped table-bordered table-list">
+                  <thead>
+                    <tr>
+                        <th>Mobile</th>
+						<th>Message</th>
+                        <th>Date</th>
+						<th>IP Adress</th>
+                    </tr> 
+                  </thead>
+                  <tbody id="myTable">
+                
+                          <tr>
+                            <td>9948543321</td>
+							<td>Dear Customer, thankyou for registering on RAVAANA. 120169 is your OTP to complete registration. Please do not share this with anyone. Regards, Ravaana Team.</td>
+							<td>26 Jul 2018, 10:45 PM</td>
+							<td>183.82.208.208</td>
+                          </tr>
+                        </tbody>
+                </table>
+            
+              </div>
+            </div>
+
+</div>
+</div>

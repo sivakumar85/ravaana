@@ -1,0 +1,602 @@
+<style>
+    .required {
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="row">
+	<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				<li class="active">SuspendPost</li>
+              </ul>
+            </div>
+        <h2 style="text-align:center">Suspend Post</h2>
+		<div class="col-lg-4 col-lg-offset-4" style="height:2px; background:#FF3300;">
+	  </div>
+	  <br>
+        <div class="panel panel-default">
+            <div class="panel panel-heading" style="font-size:14px">Load</div>
+            <div class="panel-body">
+                <div class="form-group col-lg-12">
+                    <div class="collg-4">
+                        <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control hasDatePicker">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
+                        <div class="col-lg-4">
+                            <select class="form-control">
+                                <option value="">Hrs</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4">
+                            <select class="form-control">
+                                <option value="">Mins</option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="collg-4">
+                        <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control hasDatePicker">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
+                        <div class="col-lg-4">
+                            <select class="form-control">
+                                <option value="">Hrs</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4">
+                            <select class="form-control">
+                                <option value="">Mins</option>
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <label class="col-lg-1" for="status">Status</label><span><input type="checkbox"></span>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-5">
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="btn btn-default">Submit</button>
+                        <button class="btn btn-default">Clear</button>
+                    </div>
+                    <div class="col-lg-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel panel-heading" style="font-size:14px">Vehical</div>
+                <div class="panel-body">
+                    <div class="form-group col-lg-12">
+                        <div class="collg-4">
+                            <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control hasDatePicker">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
+                            <div class="col-lg-4">
+                                <select class="form-control">
+                                    <option value="">Hrs</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <select class="form-control">
+                                    <option value="">Mins</option>
+                                    <option value="00">00</option>
+                                    <option value="15">15</option>
+                                    <option value="30">30</option>
+                                    <option value="45">45</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="collg-4">
+                            <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control hasDatePicker">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
+                            <div class="col-lg-4">
+                                <select class="form-control">
+                                    <option value="">Hrs</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <select class="form-control">
+                                    <option value="">Mins</option>
+                                    <option value="00">00</option>
+                                    <option value="15">15</option>
+                                    <option value="30">30</option>
+                                    <option value="45">45</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-lg-1" for="status">Status</label><span><input type="checkbox"></span>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-5">
+                        </div>
+                        <div class="col-lg-4">
+                            <button class="btn btn-default">Submit</button>
+                            <button class="btn btn-default">Clear</button>
+                        </div>
+                        <div class="col-lg-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading" style="font-size:14px">Bus</div>
+                    <div class="panel-body">
+                        <div class="form-group col-lg-12">
+                            <div class="collg-4">
+                                <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
+                                <div class="col-lg-3">
+                                    <input type="text" class="form-control hasDatePicker">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
+                                <div class="col-lg-4">
+                                    <select class="form-control">
+                                        <option value="">Hrs</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <select class="form-control">
+                                        <option value="">Mins</option>
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <div class="collg-4">
+                                <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
+                                <div class="col-lg-3">
+                                    <input type="text" class="form-control hasDatePicker">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
+                                <div class="col-lg-4">
+                                    <select class="form-control">
+                                        <option value="">Hrs</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <select class="form-control">
+                                        <option value="">Mins</option>
+                                        <option value="00">00</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <label class="col-lg-1" for="status">Status</label><span><input type="checkbox"></span>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="col-lg-5">
+                            </div>
+                            <div class="col-lg-4">
+                                <button class="btn btn-default">Submit</button>
+                                <button class="btn btn-default">Clear</button>
+                            </div>
+                            <div class="col-lg-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel panel-heading" style="font-size:14px">Flight</div>
+                        <div class="panel-body">
+                            <div class="form-group col-lg-12">
+                                <div class="collg-4">
+                                    <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
+                                    <div class="col-lg-3">
+                                        <input type="text" class="form-control hasDatePicker">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
+                                    <div class="col-lg-4">
+                                        <select class="form-control">
+                                            <option value="">Hrs</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <select class="form-control">
+                                            <option value="">Mins</option>
+                                            <option value="00">00</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="45">45</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <div class="collg-4">
+                                    <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
+                                    <div class="col-lg-3">
+                                        <input type="text" class="form-control hasDatePicker">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
+                                    <div class="col-lg-4">
+                                        <select class="form-control">
+                                            <option value="">Hrs</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <select class="form-control">
+                                            <option value="">Mins</option>
+                                            <option value="00">00</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="45">45</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="col-lg-1" for="status">Status</label><span><input type="checkbox"></span>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="col-lg-5">
+                                </div>
+                                <div class="col-lg-4">
+                                    <button class="btn btn-default">Submit</button>
+                                    <button class="btn btn-default">Clear</button>
+                                </div>
+                                <div class="col-lg-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel panel-heading" style="font-size:14px">Ship</div>
+                            <div class="panel-body">
+                                <div class="form-group col-lg-12">
+                                    <div class="collg-4">
+                                        <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
+                                        <div class="col-lg-3">
+                                            <input type="text" class="form-control hasDatePicker">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
+                                        <div class="col-lg-4">
+                                            <select class="form-control">
+                                                <option value="">Hrs</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <select class="form-control">
+                                                <option value="">Mins</option>
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="collg-4">
+                                        <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
+                                        <div class="col-lg-3">
+                                            <input type="text" class="form-control hasDatePicker">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
+                                        <div class="col-lg-4">
+                                            <select class="form-control">
+                                                <option value="">Hrs</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <select class="form-control">
+                                                <option value="">Mins</option>
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label class="col-lg-1" for="status">Status</label><span><input type="checkbox"></span>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-5">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <button class="btn btn-default">Submit</button>
+                                        <button class="btn btn-default">Clear</button>
+                                    </div>
+                                    <div class="col-lg-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
