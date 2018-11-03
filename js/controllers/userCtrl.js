@@ -101,6 +101,7 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 	    }).then(function successCallback(response) {
 	      //$scope.users.push(response.data);
 	      alert(response.data.message);
+	      
 	      /*$('.modal-body').load("Post  created Successfully",function(){
             $('#myModal').modal({show:true});
           });*/
