@@ -34,12 +34,11 @@
     margin-right: -10px;
 }
 
-.dropdown-submenu:hover>a:after {
-    border-left-color: #fff;
+.dropdown-submenu .dropdown-menu{
+    display:none !important;
 }
-
-.dropdown-submenu.pull-left {
-    float: none;
+.dropdown-submenu:hover>.dropdown-menu{
+    display:block !important;
 }
 
 .dropdown-submenu.pull-left>.dropdown-menu {
@@ -48,6 +47,21 @@
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
+}
+ @media only screen and (max-width: 780px) {
+ 		ul .navbar-right{
+ 			margin-left: 0px !important;
+ 		}
+ 		.navbar .nav .user-action {
+    padding: 6px 15px;
+} 
+li .nav-items{
+	text-align:center;
+ 	}
+ 	.dropdown-submenu .dropdown-menu{
+	position: static;
+	margin-left: 3px;
+}
 }
 </style>
 <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-xl navbar-dark">
