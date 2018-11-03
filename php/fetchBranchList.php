@@ -140,7 +140,7 @@
 			} else {
 			 $query = "INSERT INTO branches_list (name, address, type,active,created_by) VALUES ('$name', '$address', 'Branch',1, '$uid') ";
 			}
-			//echo $query;
+			///echo $query;
 			 if ($conn->query($query) === TRUE) {
 			    $message = isset($form_data->id)?"record updated successfully":"New record created successfully";
 				

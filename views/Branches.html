@@ -76,7 +76,7 @@
                             <tbody id="myTable">
                             <tr ng-repeat="branch in branchList">
                                 <td align="center" data-name="BranchID">
-                                        <a  class="btn btn-success" href="#addBranch/{{branch.id}}"><em class="fa fa-pencil"></em></a>
+                                        <a class="btn btn-success" href="#addBranch/{{branch.id}}"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger" ng-click="deleteBranch(branch.id)"><em class="fa fa-trash"></em></a>
                                         <input type="checkbox" id="cboxStatus" ng-change="updateBranchStatus(branch);" ng-model="branch.active">
                                         <a>{{branch.active?'Active':'Inactive'}}</a>
