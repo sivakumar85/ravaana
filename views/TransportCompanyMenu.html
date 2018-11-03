@@ -63,7 +63,11 @@
     -webkit-border-radius: 4px;
     border-radius: 10px;
 }
-
+ @media only screen and (max-width: 700px) {
+ 		ul .navbar-right{
+ 			margin-left: 12px !important;
+ 		}
+ 	}
 </style>
 <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-xl navbar-dark">
 <div class="navbar-header d-flex col" ng-init="getProfile();">
@@ -145,7 +149,7 @@
 								  
 								 </a>
 							</li>-->
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown" style="padding-top: 10px">
 								<a href="" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><!--<img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> -->
 								<img src="{{profile_pic}}" width="40px" height="40px" class="avatar" alt="Avatar">	{{login_username}} <b class="caret"></b></a>
 								<ul class="dropdown-menu">
