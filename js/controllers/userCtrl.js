@@ -101,7 +101,7 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 	    }).then(function successCallback(response) {
 	      //$scope.users.push(response.data);
 	      alert(response.data.message);
-	      
+
 	      /*$('.modal-body').load("Post  created Successfully",function(){
             $('#myModal').modal({show:true});
           });*/
@@ -110,6 +110,147 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 	      alert("Error. while created Post Try Again!");
 	    });
 	  };
+	  
+
+}]);
+
+app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','loginService', function($scope,$routeParams, $http,$location,loginService){
+	$scope.form=[];
+    $scope.files=[];
+	$scope.displayDriversList = function(){
+	var driversList_request = $http.get('php/driversCtrl.php?action=getDriversList');
+	driversList_request.then(function(response){
+		$scope.driversList = response.data;
+	});
+	}
+
+	$scope.searchDrivers = function() {
+	    //$http POST function
+	    $http({
+	      method: 'POST',
+	      url: 'php/driversCtrl.php?action=getDriversList',
+	      data: $scope.searchParam
+	    }).then(function successCallback(response) {
+	      $scope.driversList = response.data;
+	      
+	    }, function errorCallback(response) {
+	      alert("Error. fetch Try Again!");
+	    });
+	  };
+	$scope.resetSearch = function() {
+		//$location.path( '/MyLoads' );
+		$scope.searchParam = {};
+		$scope.searchDrivers();
+	};
+	
+	$scope.deleteDriver = function(id){  
+           if(confirm("Are you sure you want to delete the driver?"))  
+           {  
+                $http.post("php/driversCtrl.php?action=deleteDriver", {'id':id})  
+                .success(function(response){  
+                	 alert(response.message);
+                     $scope.displayDriversList();
+                });  
+           }  
+           else  
+           {  
+                return false;  
+           }  
+     }
+      $scope.updateDriverStatus = function(branch){  
+      	$http.post("php/driversCtrl.php?action=updateDriverStatus", {'id':driver.id,'active':driver.active})  
+                .success(function(response){  
+                	 alert(response.message);
+                     $scope.displayDriversList();
+                }); 
+      }
+
+      $scope.editDriver = function() {
+		if(!angular.isUndefined($routeParams.id)){
+			var driver_request = $http({
+			    url: 'php/driversCtrl.php?action=getDriversList', 
+			    method: "GET",
+			    params: {id: $routeParams.id}
+			 });
+		    driver_request.then(function(response){
+			$scope.driver = response.data[0];
+		});
+			
+		}
+	}
+
+	$scope.cancelDriver = function() {
+		$location.path( '/Drivers' );
+		
+	};
+	 
+
+	$scope.updateDriver=function($event){
+		$event.preventDefault();
+			$scope.image1=$scope.files[0];
+			$scope.image2=$scope.files2[0];
+			
+			
+			
+			$http({
+				method:'POST',
+				url:"php/driversCtrl.php?action=updateDriver",
+				processData:false,
+				transformRequest:function(data){
+					var formData=new FormData();
+					formData.append("model", angular.toJson($scope.driver));
+					formData.append("image1", $scope.image1);
+					formData.append("image2", $scope.image2);
+					
+
+
+			      return formData;
+			      
+			  },  
+			  data: $scope.form,
+			  headers: {
+			         'Content-Type': undefined
+			  }
+		   }).success(function(data){
+		        alert(data);
+		        
+		   });
+		   
+			};
+
+		$scope.uploadedFile=function(element)
+			{
+				$scope.currentFile = element.files[0];
+		    var reader = new FileReader();
+
+		    reader.onload = function(event) {
+		    	var output = document.getElementById('output');
+    			output.src = URL.createObjectURL(element.files[0]);
+	
+		      $scope.image_source = event.target.result
+		      $scope.$apply(function($scope) {
+		        $scope.files = element.files;
+		      });
+		    }
+                    reader.readAsDataURL(element.files[0]);
+		  }
+
+
+		  $scope.uploadedFile2=function(element)
+			{
+				$scope.currentFile2 = element.files[0];
+		    var reader = new FileReader();
+
+		    reader.onload = function(event) {
+		    	var output1 = document.getElementById('output1');
+    			output1.src = URL.createObjectURL(element.files[0]);
+		      $scope.image_source = event.target.result
+		      $scope.$apply(function($scope) {
+		        $scope.files2 = element.files;
+		      });
+		    }
+                    reader.readAsDataURL(element.files[0]);
+		  }
 	  
 
 }]);

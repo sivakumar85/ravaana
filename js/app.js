@@ -164,12 +164,15 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/TruckOwnerProfile.html',
 	}).when('/PastLoads', {
 		templateUrl: 'views/PastLoads.html',
+		controller: 'MyLoadsCtrl'
 	}).when('/Trucks', {
 		templateUrl: 'views/Trucks.html',
 	}).when('/Drivers', {
 		templateUrl: 'views/Drivers.html',
-	}).when('/AddDriver', {
+		controller: 'driversCtrl'
+	}).when('/AddDriver/:id?', {
 		templateUrl: 'views/AddDriver.html',
+		controller: 'driversCtrl'
 	}).when('/Branches', {
 		templateUrl: 'views/Branches.html',
 		controller: 'branchListCtrl'
