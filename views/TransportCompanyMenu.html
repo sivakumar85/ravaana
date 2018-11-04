@@ -3,7 +3,7 @@
     position: relative;
 }
 ul.nav.navbar-nav {
-    margin-left: 80px;
+    margin-left: 44px;
 }
 .dropdown-submenu>.dropdown-menu {
     top: 0;
@@ -95,7 +95,7 @@ li .nav-items{
 								  <b class="caret"></b>
 								 </a>
 								<ul class="dropdown-menu">
-										<li><a href="#UpdateLoginDetails" class="dropdown-item"><i class="fa fa-gears"></i>Update Login Details</a></li>
+										
 										<li class="dropdown-submenu">
 											<a href="" class="dropdown-item"><i class="fa fa-phone"></i>My Bookings</a>
 												<ul class="dropdown-menu menu2">
@@ -114,30 +114,39 @@ li .nav-items{
 							</li>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown nav-item">
-								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								<a href="#UserTruckRequest" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
 								  <i class="fa fa-truck" title="Truck Request"> <span>1</span></i>
 								   Truck Request
 								 </a>
 							</li>
 							<li class="dropdown nav-item">
-								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								<a href="#UserLoadRequest" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
 								  <i class="fa fa-cubes" title="Load Request"> <span>1</span></i>
 								  Load Request
 							</li>
-							<li class="nav-item dropdown">
-								<a href="" data-toggle="dropdown" class="nav-link dropdown-toggle user-action "><!--<img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> -->
-								<img src="{{profile_pic}}" width="40px" height="40px" class="avatar imgp" alt="Avatar">	{{login_username}} <b class="caret"></b></a>
+							<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown" style="margin-top: -24px">
+								  <img src="{{profile_pic}}" width="40px" height="39px" class="avatar imgp" alt="Avatar" style="border-radius: 40px">
+								  <br>{{login_username}}
+								  <b class="caret"></b>
+								 </a>
 								<ul class="dropdown-menu">
 									<li><a href="#TransportCompanyProfile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+									<li><a href="#UpdateLoginDetails" class="dropdown-item"><i class="fa fa-gears"></i>Update Login Details</a></li>
 									<li><a href="#ChangePassword" class="dropdown-item"><i class="fa fa-key"></i>Change Password</a></li> 
 									<li class="divider dropdown-divider"></li>
 									<li><a href="javascript:void(0);" ng-click="logout();" class="dropdown-item"><i class="fa fa-sign-out"></i> Logout</a></li>
 								</ul>
 						</li>
 						<li class="dropdown nav-item">
-								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown" style="margin-top: 12px">
-								  <img src="images/wallet.png" width="40px" height="40px" ><span>Wallet</span></i>
-								 
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-money" title="Truck Request"> <span>1</span></i>
+								   Wallet<b class="caret"></b>
+								 </a>
+								<ul class="dropdown-menu">
+									<li><a href="#AddBankAccount" class="dropdown-item"><i class="fa fa-bank"></i> Add Bank Account</a></li>
+									<li><a href="#RavaanaWallet" class="dropdown-item"><i class="fa fa-inr"></i>Ravaana Wallet Money</a></li>
+								</ul>
 							</li>
 						</ul>
 						</ul>
