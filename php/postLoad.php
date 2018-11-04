@@ -13,7 +13,7 @@ $error = '';
 
 if(empty($form_data->load_type))
 {
- $error+= 'load_type is Required'."<br>";
+ $error.= 'load_type is Required'."<br>";
 }
 else
 {
@@ -21,7 +21,7 @@ else
 }
 if(empty($form_data->truck_type))
 {
- $error+= 'truck_type is Required'."<br>";
+ $error.= 'truck_type is Required'."<br>";
 }
 else
 {
@@ -29,7 +29,7 @@ else
 }
 if(empty($form_data->from_city))
 {
- $error+= 'from_city is Required'."<br>";
+ $error.= 'from_city is Required'."<br>";
 }
 else
 {
@@ -37,7 +37,7 @@ else
 }
 if(empty($form_data->from_location))
 {
- $error+= 'from_location is Required'."<br>";
+ $error.= 'from_location is Required'."<br>";
 }
 else
 {
@@ -45,7 +45,7 @@ else
 }
 if(empty($form_data->to_city))
 {
- $error+= 'to_city is Required'."<br>";
+ $error.= 'to_city is Required'."<br>";
 }
 else
 {
@@ -53,7 +53,7 @@ else
 }
 if(empty($form_data->to_location))
 {
- $error+= 'to_location is Required'."<br>";
+ $error.= 'to_location is Required'."<br>";
 }
 else
 {
@@ -61,7 +61,7 @@ else
 }
 if(empty($form_data->distance_km))
 {
- $error+= 'distance_km is Required'."<br>";
+ $error.= 'distance_km is Required'."<br>";
 }
 else
 {
@@ -69,7 +69,7 @@ else
 }
 if(empty($form_data->load_cost))
 {
- $error+= 'load_cost is Required'."<br>";
+ $error.= 'load_cost is Required'."<br>";
 }
 else
 {
@@ -77,7 +77,7 @@ else
 }
 if(empty($form_data->load_cost_type))
 {
- $error+= 'load_cost_type is Required'."<br>";
+ $error.= 'load_cost_type is Required'."<br>";
 }
 else
 {
@@ -85,7 +85,7 @@ else
 }
 if(empty($form_data->advance_percent))
 {
- $error+= 'advance_percent is Required'."<br>";
+ $error.= 'advance_percent is Required'."<br>";
 }
 else
 {
@@ -93,7 +93,7 @@ else
 }
 if(empty($form_data->tonns_available))
 {
- $error+= 'tonns_available is Required'."<br>";
+ $error.= 'tonns_available is Required'."<br>";
 }
 else
 {
@@ -101,7 +101,7 @@ else
 }
 if(empty($form_data->available_date))
 {
- $error+= 'available_date is Required'."<br>";
+ $error.= 'available_date is Required'."<br>";
 }
 else
 {
@@ -109,7 +109,7 @@ else
 }
 if(empty($form_data->tid))
 {
- $error+= 'tid is Required'."<br>";
+ $error.= 'tid is Required'."<br>";
 }
 else
 {
@@ -137,7 +137,7 @@ if(isset($form_data->id)){
     $message = isset($form_data->id)?"record updated successfully":"New record created successfully";
 	
 } else {
-    $error+= "Error: " . $conn->error."<br>";
+    $error.= "Error: " . $conn->error."<br>";
 }
 }
 

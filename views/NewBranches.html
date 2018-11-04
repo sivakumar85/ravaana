@@ -10,8 +10,8 @@
         background-color: #F7F7F7;
     }
 </style>
-<form class="form-horizontal" id="branch_form" method="post" role="form" novalidate="novalidate">
-<div class="container" style="padding-left: 15px;">
+<form class="form-horizontal" id="branch_form" name="branch_form" ng-submit="branch_form.$valid && updateBranch($event)" novalidate="true" autocomplete="off">
+<div class="container" ng-init="editBranch();" style="padding-left: 15px;">
 <div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
@@ -44,28 +44,28 @@
                 <div class="input-group">
                 <span class="input-group-addon">
                 <i class="fa fa-university"></i></span>
-                <input class="form-control" id="branch_name" maxlength="50" name="branch_name" type="text" ng-model="newbranch.branch_name">
+                <input class="form-control" id="branch_name" maxlength="50" name="name" type="text" ng-model="branch.name" ng-required="true">
             </div>
         </div>
         </div>
 		<div class="form-group">
             <label class="col-lg-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Address</label>
             <div class="col-lg-4">
-                <textarea class="form-control" cols="20" height="100px" id="branch_address" maxlength="100" name="branch_address" ng-model="newbranch.branch_address" placeholder="Branch address" rows="6" style="height: 100px"></textarea>
+                <textarea class="form-control" cols="20" height="100px" id="address" maxlength="100" name="address" ng-model="branch.address" ng-required="true" placeholder="Branch address" rows="6" style="height:100px"></textarea>
             </div>
         </div>
         
-        <div class="form-group">
+        <!--<div class="form-group">
             <label class="col-lg-3 control-label" for="Status" style="color:black">Status</label>
             <div class="col-lg-4">
-                <input checked="checked" name="Status" type="checkbox">
+                <input checked="checked"  name="Status" type="checkbox">
             </div>
-        </div>
+        </div>-->
 		 <div class="form-group">
             <div class="col-md-offset-3 col-md-9">
             
                <button id="btnSearch"class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;&nbsp;Submit</button>
-               <a class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Cancel</a>
+               <a class="btn btn-danger" ng-click="cancelBranch()"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Cancel</a>
             </div>
          </div>
 	</div>
@@ -95,14 +95,14 @@
             },
             fields: {
             
-                branch_name: {
+                name: {
                     validators: {
                         notEmpty: {
                             message: 'Enter Branch Name'
                         }
                     }
                 },
-                branch_address: {
+                address: {
                     validators: {
                         notEmpty: {
                             message: 'Enter Branch Address'

@@ -18,7 +18,7 @@ app.directive('loading',   ['$http' ,function ($http)
  {
      return {
          restrict: 'A',
-         template: '<div id="divProcessing"><span class="std_loadingBackground"></span><div style="top: 30%; left: 40%;" class="std_modalContainer"><div class="std_tcenter"><img id="myAnimatedImage" alt="Processing... Please wait!" src="http://www.nasa.gov/multimedia/videogallery/ajax-loader.gif"><em class="std_processing">Processing... Please wait!</em></div></div></div>',
+         template: '<div id="divProcessing"><span class="std_loadingBackground"></span><div style="top: 30%; left: 40%;" class="std_modalContainer"><div class="std_tcenter"><img id="myAnimatedImage" alt="Processing.... Please wait!" src="images/ajax-loader.gif"><span class="std_processing">Processing... Please wait!</span></div></div></div>',
          link: function (scope, elm, attrs)
          {
              scope.isLoading = function () {
@@ -164,16 +164,31 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/TruckOwnerProfile.html',
 	}).when('/PastLoads', {
 		templateUrl: 'views/PastLoads.html',
+		controller: 'MyLoadsCtrl'
 	}).when('/Trucks', {
 		templateUrl: 'views/Trucks.html',
+	}).when('/UserTruckRequest', {
+		templateUrl: 'views/UserTruckRequest.html',
+	}).when('/OwnerSelectTruck', {
+		templateUrl: 'views/OwnerSelectTruck.html',
+	}).when('/AddBankAccount', {
+		templateUrl: 'views/AddBankAccount.html',
+	}).when('/RavaanaWallet', {
+		templateUrl: 'views/RavaanaWallet.html',
+	}).when('/UserLoadRequest', {
+		templateUrl: 'views/UserLoadRequest.html',
 	}).when('/Drivers', {
 		templateUrl: 'views/Drivers.html',
-	}).when('/AddDriver', {
+		controller: 'driversCtrl'
+	}).when('/AddDriver/:id?', {
 		templateUrl: 'views/AddDriver.html',
+		controller: 'driversCtrl'
 	}).when('/Branches', {
 		templateUrl: 'views/Branches.html',
-	}).when('/NewBranches', {
+		controller: 'branchListCtrl'
+	}).when('/addBranch/:id?', {
 		templateUrl: 'views/NewBranches.html',
+		controller: 'branchListCtrl'
 	}).when('/MyLoadBooking', {
 		templateUrl: 'views/MyLoadBooking.html',
 	}).when('/AddNewTruck', {

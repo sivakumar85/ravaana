@@ -1,0 +1,60 @@
+<style>
+body{
+	background-color:white;
+
+}
+#cboxStatus {
+    height: 20px;
+    width: 20px;
+    vertical-align: text-bottom;
+}
+</style>
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+				<li class="active">Select Trucks</li>
+              </ul>
+            </div>
+</div>
+<h2>SELECT TRUCKS</h2>
+	<hr style="border:1px solid #FF3300">
+<div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="panel panel-default panel-table search1">
+                    <div class="panel-body table-responsive">
+                        <table class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                     <th>SELECT TRUCK NUMBER</th>
+				<th>TYPE OF TRUCK</th>									
+				<th>TRUCK CAPACITY</th>
+				<th>SELECT DRIVER NAME</th>
+                  </tr>
+                         </thead>
+                            <tbody id="myTable">
+
+                                <tr>
+                                   <td><input type="checkbox"  id="cboxStatus" checked="">AP 26 TL 6655</td>
+                                    <td>12 TYRE TRUCK</td>
+                                    <td>21 TONS</td>              
+                                     <td><select class="form-control" >
+                                    <option value="All">Select Driver Name</option>
+                                    <option value="Coal">NARAYANA</option>
+                                    <option value="Ironvore">RAMESH NAIDU</option>
+                                    <option value="Wood">KONDALRAO</option>              
+                                     </select> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>
+    
