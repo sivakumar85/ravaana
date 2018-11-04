@@ -62,6 +62,15 @@
             </div>
             </div>
         </div>
+         <div class="form-group">
+            <label class="col-md-3 control-label" for="Aadhar" style="color:black"><span class="required">*</span>&nbsp;Aadhar Number</label>
+            <div class="col-md-4">
+                 <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <input class="form-control" id="driver_aadhar_number" placeholder="Enter License Number" maxlength="50" name="driver_aadhar_number" ng-model="driver.driver_aadhar_number" type="text" value="">
+            </div>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Mobile</label>
             <div class="col-md-4">
@@ -93,6 +102,15 @@
               <img id="output"  style="width:200px; height:150px;{{editPhoto?'display:block':'display:none'}}" src="php/upload/{{driver.driver_photo}}" class="img-responsive" /><a ng-click="editPhoto=false" ng-show="editPhoto">Change</a>
             </div>
             
+            </div>
+
+            </div>
+             <div class="form-group">
+            <label class="col-md-3 control-label" for="dphoto" style="color:black"><span class="required">*</span>&nbsp;Aadhar Copy</label>
+            <div class="col-md-4">
+                <div class="input-group">
+              <input type="file" class="form-control" accept="image/*" name="driver_aadhar_copy" id="driver_aadhar_copy" ng-model="driver.driver_aadhar_copy">
+            </div>
             </div>
             </div>
         <div class="form-group">

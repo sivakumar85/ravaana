@@ -167,7 +167,16 @@ app.config(function($routeProvider) {
 		controller: 'MyLoadsCtrl'
 	}).when('/Trucks', {
 		templateUrl: 'views/Trucks.html',
-		controller: 'trucksCtrl'
+	}).when('/UserTruckRequest', {
+		templateUrl: 'views/UserTruckRequest.html',
+	}).when('/OwnerSelectTruck', {
+		templateUrl: 'views/OwnerSelectTruck.html',
+	}).when('/AddBankAccount', {
+		templateUrl: 'views/AddBankAccount.html',
+	}).when('/RavaanaWallet', {
+		templateUrl: 'views/RavaanaWallet.html',
+	}).when('/UserLoadRequest', {
+		templateUrl: 'views/UserLoadRequest.html',
 	}).when('/Drivers', {
 		templateUrl: 'views/Drivers.html',
 		controller: 'driversCtrl'

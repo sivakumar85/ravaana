@@ -63,6 +63,7 @@
                                     <th>Profile</th>
                                     <th><a>Name</a></th>
                                     <th><a>Age</a></th>
+                                    <th>Aadhar Number</th>
                                     <th>License</th>
 									<th>Mobile</th>
 									<th>Address</th>
@@ -77,12 +78,22 @@
                                         <input type="checkbox" id="cboxStatus" ng-change="updateDriverStatus(driver);" ng-model="driver.active">
                                         <a>{{driver.active?'Active':'Inactive'}}</a>
                                     </td>
+<<<<<<< HEAD
+                                    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" width="150px"></td>
+                                    <td>Ch Prabakar</td>
+                                    <td>35</td>
+                                    <td>12345678909</td>
+									<td>ind8578587</td>
+									<td>9666569885</td>
+									<td>raj street (nellore)</td>
+=======
                                     <td><img src="php/upload/{{driver.driver_photo}}" alt="" width="100" height="100"></td>
                                     <td>{{driver.driver_name}}</td>
                                     <td>{{driver.driver_age}}</td>
 									<td>{{driver.driver_license_number}}</td>
 									<td>{{driver.driver_mobile}}</td>
 									<td>{{driver.driver_address}}</td>
+>>>>>>> 116e2a9f283e203a87572ac505748412298878b2
                                 </tr>
                             </tbody>
                         </table>
