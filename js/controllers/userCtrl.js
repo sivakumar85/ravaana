@@ -117,6 +117,8 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','loginService', function($scope,$routeParams, $http,$location,loginService){
 	$scope.form=[];
     $scope.files=[];
+    $scope.editLicence = false;
+    $scope.editPhoto = false;
 	$scope.displayDriversList = function(){
 	var driversList_request = $http.get('php/driversCtrl.php?action=getDriversList');
 	driversList_request.then(function(response){
@@ -144,20 +146,20 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 	};
 	
 	$scope.deleteDriver = function(id){  
-           if(confirm("Are you sure you want to delete the driver?"))  
-           {  
-                $http.post("php/driversCtrl.php?action=deleteDriver", {'id':id})  
-                .success(function(response){  
-                	 alert(response.message);
-                     $scope.displayDriversList();
-                });  
-           }  
-           else  
-           {  
-                return false;  
-           }  
+       if(confirm("Are you sure you want to delete the driver?"))  
+       {  
+            $http.post("php/driversCtrl.php?action=deleteDriver", {'id':id})  
+            .success(function(response){  
+            	 alert(response.message);
+                 $scope.displayDriversList();
+            });  
+       }  
+       else  
+       {  
+            return false;  
+       }  
      }
-      $scope.updateDriverStatus = function(branch){  
+      $scope.updateDriverStatus = function(driver){  
       	$http.post("php/driversCtrl.php?action=updateDriverStatus", {'id':driver.id,'active':driver.active})  
                 .success(function(response){  
                 	 alert(response.message);
@@ -167,6 +169,7 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 
       $scope.editDriver = function() {
 		if(!angular.isUndefined($routeParams.id)){
+
 			var driver_request = $http({
 			    url: 'php/driversCtrl.php?action=getDriversList', 
 			    method: "GET",
@@ -174,6 +177,8 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 			 });
 		    driver_request.then(function(response){
 			$scope.driver = response.data[0];
+			$scope.editLicence = true;
+    		$scope.editPhoto = true;
 		});
 			
 		}
@@ -187,8 +192,14 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 
 	$scope.updateDriver=function($event){
 		$event.preventDefault();
+		if(!angular.isUndefined($scope.files[0])){
 			$scope.image1=$scope.files[0];
+		}
+		if(!angular.isUndefined($scope.files2[0])){
 			$scope.image2=$scope.files2[0];
+		}
+			
+			
 			
 			
 			
@@ -199,8 +210,14 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 				transformRequest:function(data){
 					var formData=new FormData();
 					formData.append("model", angular.toJson($scope.driver));
-					formData.append("image1", $scope.image1);
-					formData.append("image2", $scope.image2);
+					if(!angular.isUndefined($scope.image1)){
+						formData.append("image1", $scope.image1);
+					}
+					if(!angular.isUndefined($scope.image2)){
+						formData.append("image2", $scope.image2);
+					}
+					
+					
 					
 
 
@@ -212,7 +229,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 			         'Content-Type': undefined
 			  }
 		   }).success(function(data){
-		        alert(data);
+		        alert(data.message);
+		        $location.path( '/Drivers' );
+
 		        
 		   });
 		   
@@ -226,7 +245,7 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		    reader.onload = function(event) {
 		    	var output = document.getElementById('output');
     			output.src = URL.createObjectURL(element.files[0]);
-	
+				output.style.display = 'block';
 		      $scope.image_source = event.target.result
 		      $scope.$apply(function($scope) {
 		        $scope.files = element.files;
@@ -244,6 +263,7 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		    reader.onload = function(event) {
 		    	var output1 = document.getElementById('output1');
     			output1.src = URL.createObjectURL(element.files[0]);
+    			output1.style.display = 'block';
 		      $scope.image_source = event.target.result
 		      $scope.$apply(function($scope) {
 		        $scope.files2 = element.files;
