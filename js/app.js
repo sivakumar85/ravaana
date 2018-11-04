@@ -167,6 +167,7 @@ app.config(function($routeProvider) {
 		controller: 'MyLoadsCtrl'
 	}).when('/Trucks', {
 		templateUrl: 'views/Trucks.html',
+		controller: 'trucksCtrl'
 	}).when('/UserTruckRequest', {
 		templateUrl: 'views/UserTruckRequest.html',
 	}).when('/OwnerSelectTruck', {
