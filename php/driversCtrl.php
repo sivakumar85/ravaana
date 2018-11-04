@@ -202,7 +202,7 @@
 		{
 		    
 		    $uid = $_SESSION['uid'];
-		    if(file_exists($_FILES['image2']['tmp_name']) || is_uploaded_file($_FILES['image1']['tmp_name'])) {
+		    if(file_exists($_FILES['image1']['tmp_name']) || is_uploaded_file($_FILES['image1']['tmp_name'])) {
 		    	$ext = pathinfo($_FILES['image1']['name'],PATHINFO_EXTENSION);
 		    	$image = time().date("dmY").'1'.'.'.$ext;
 			}
@@ -214,6 +214,16 @@
 			
 			if(!empty($form_data->id)){
 				$id = $form_data->id;
+				$sel_query = "SELECT id,driver_photo, driver_license FROM drivers_list WHERE id='$id'";
+				$q=$conn->query($sel_query);
+				while($row=$q->fetch_array()){
+					if(isset($row['driver_photo'])){
+						$driver_photo = $row['driver_photo'];
+					}
+					if(isset($row['driver_license'])){
+						$driver_license = $row['driver_license'];
+					}
+				}
 				$query = "UPDATE drivers_list 
 						  SET driver_name='$driver_name',driver_age='$driver_age',driver_license_number='$driver_license_number',driver_mobile='$driver_mobile',driver_address='$driver_address',  modified_by='$uid',modified_date=CURRENT_TIMESTAMP";
 				if(isset($image)){
@@ -248,6 +258,12 @@
 			}
 			//echo $query;
 			 if ($conn->query($query) === TRUE) {
+			 	if (file_exists('upload/'.$driver_photo) && isset($image)) {
+    				unlink('upload/'.$driver_photo);
+    			}
+    			if (file_exists('upload/'.$driver_license) && isset($image2)) {
+    				unlink('upload/'.$driver_license);
+    			}
 			 	if(isset($image)){
 			 		move_uploaded_file($_FILES["image1"]["tmp_name"], 'upload/'.$image);
 			 	}
