@@ -43,7 +43,7 @@
             <div class="col-md-offset-2 col-md-10">
             
                <button id="btnSearch"class="btn btn-success" ng-click="searchDrivers();""><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
-               <a class="btn btn-danger" ng-click="resetSearch();""><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
+               <a class="btn btn-danger" ng-click="resetSearch();"><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
             </div>
          </div>
         </div>
@@ -73,7 +73,7 @@
 
                                 <tr ng-repeat="driver in driversList">
                                     <td align="center">
-                                        <a href="#AddDriver/{{driver.id}}"" class="btn btn-success"><em class="fa fa-pencil"></em></a>
+                                        <a href="#AddDriver/{{driver.id}}" class="btn btn-success"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger" ng-click="deleteDriver(driver.id)"><em class="fa fa-trash"></em></a>
                                         <input type="checkbox" id="cboxStatus" ng-change="updateDriverStatus(driver);" ng-model="driver.active">
                                         <a>{{driver.active?'Active':'Inactive'}}</a>

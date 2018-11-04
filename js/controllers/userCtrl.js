@@ -119,6 +119,7 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
     $scope.files=[];
     $scope.editLicence = false;
     $scope.editPhoto = false;
+    $scope.edit = false;
 	$scope.displayDriversList = function(){
 	var driversList_request = $http.get('php/driversCtrl.php?action=getDriversList');
 	driversList_request.then(function(response){
@@ -179,6 +180,7 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 			$scope.driver = response.data[0];
 			$scope.editLicence = true;
     		$scope.editPhoto = true;
+    		 $scope.edit = true;
 		});
 			
 		}
@@ -192,10 +194,10 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 
 	$scope.updateDriver=function($event){
 		$event.preventDefault();
-		if(!angular.isUndefined($scope.files[0])){
+		if(!angular.isUndefined($scope.files)){
 			$scope.image1=$scope.files[0];
 		}
-		if(!angular.isUndefined($scope.files2[0])){
+		if(!angular.isUndefined($scope.files2)){
 			$scope.image2=$scope.files2[0];
 		}
 			
@@ -243,9 +245,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		    var reader = new FileReader();
 
 		    reader.onload = function(event) {
-		    	var output = document.getElementById('output');
-    			output.src = URL.createObjectURL(element.files[0]);
-				output.style.display = 'block';
+		    	//var output = document.getElementById('output');
+    			//output.src = URL.createObjectURL(element.files[0]);
+				//output.style.display = 'block';
 		      $scope.image_source = event.target.result
 		      $scope.$apply(function($scope) {
 		        $scope.files = element.files;
@@ -261,9 +263,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		    var reader = new FileReader();
 
 		    reader.onload = function(event) {
-		    	var output1 = document.getElementById('output1');
-    			output1.src = URL.createObjectURL(element.files[0]);
-    			output1.style.display = 'block';
+		    	//var output1 = document.getElementById('output1');
+    			//output1.src = URL.createObjectURL(element.files[0]);
+    			//output1.style.display = 'block';
 		      $scope.image_source = event.target.result
 		      $scope.$apply(function($scope) {
 		        $scope.files2 = element.files;

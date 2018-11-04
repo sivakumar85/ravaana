@@ -3,8 +3,8 @@
         color: red;
     }
 </style>
-<form class="form-horizontal" id="truck_form" method="post" role="form" novalidate="novalidate">
-<div class="container" style="padding-left: 15px;">
+<form class="form-horizontal" id="truck_form" name="truck_form"  ng-submit="truck_form.$valid && updateTruck($event)" novalidate="true" autocomplete="off" >
+<div class="container" style="padding-left: 15px;" ng-init="editTruck();">
 <div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
@@ -58,26 +58,10 @@
             <div class="col-md-4">
                  <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                <select class="form-control" name="vehicle_type" id="vehicle_type" ng-model="truck.vehicle_type" ng-required="true">
-                    <option value="">Select</option>
-						<option value="8">6 Tyre Truck</option>
-						<option value="3">10 Tyre Truck</option>
-						<option value="2">12 Tyre Truck</option>
-						<option value="4">14 Tyre Truck</option>
-						<option value="1">18 Tyre truck</option>
-						<option value="6">22 Tyre Truck</option>
-						<option value="12">3 Tyre Auto Truck</option>
-						<option value="20">4 Tyre Tata Ace Zip</option>
-						<option value="9">4 Tyre Tata Ace</option>
-						<option value="19">4 Tyre Tata Super Ace</option>
-						<option value="10">4 Tyre Tata 407</option>
-						<option value="18">4 Tyre Tata Yodha</option>
-						<option value="17">4 Tyre Bolero Truck</option>
-						<option value="11">4 Tyre Ashok leyland Dost</option>
-						<option value="13">14 Tyre Trailer</option>
-						<option value="14">18 Tyre Trailer</option>
-						<option value="15">22 Tyre Trailer</option>
-					</select>
+                <select class="form-control" name="vehicle_type" id="vehicle_type" ng-model="truck.vehicle_type" ng-required="true" ng-change="getCapacity()">
+                    <option value="">Select Truck Type</option>
+                    <option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>
+				</select>
             </div>
         </div>
     </div>
@@ -86,30 +70,34 @@
             <div class="col-md-4">
                 <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
-                <input class="form-control" id="truck_capacity" maxlength="3" name="truck_capacity" ng-model="truck.truck_capacity" type="text" placeholder="Enter Truck Capacity">
+                <input class="form-control" id="truck_capacity" maxlength="3" name="truck_capacity" ng-model="truck.truck_capacity" type="text" placeholder="Enter Truck Capacity" readonly="readonly">
             </div>
         </div>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label class="col-md-3 control-label" for="Status" style="color:black">Status</label>
             <div class="col-md-4">
                 <input checked="checked" data-val="true" data-val-required="The Status field is required." id="Status" name="Status" type="checkbox" value="true">
                 <input name="Status" type="hidden" value="false">
             </div>
-        </div>
+        </div>-->
 		<div class="form-group">
             <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Rc</label>
             <div class="col-md-4">
                 <div class="input-group">
-              <input type="file" class="form-control" name="truck_rc" accept="image/*" id="truck_rc" ng-model="truck.truck_rc">
+              <!--<input type="file" class="form-control" name="truck_rc" accept="image/*" id="truck_rc" ng-model="truck.truck_rc">-->
+              <input type="file" class="form-control" accept="image/*" name="truck_rc" id="truck_rc" ng-model="truck_rc" onchange="angular.element(this).scope().uploadedFile(this)" ng-show="!editRC"><a ng-click="editRC=true" ng-show="!editRC&&edit">Cancel</a>
+              <img id="output"  style="width:200px; height:150px;{{editRC?'display:block':'display:none'}}" src="php/upload/{{truck.truck_rc}}" class="img-responsive" /><a ng-click="editRC=false" ng-show="editRC">Change</a>
             </div>
             </div>
         </div>
 		<div class="form-group">
-            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Insurence</label>
+            <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Insurance</label>
             <div class="col-md-4">
                  <div class="input-group">
-              <input type="file" class="form-control" accept="image/*" name="truck_insurence" id="truck_insurence" ng-model="truck.truck_insurence">
+              <!--<input type="file" class="form-control" accept="image/*" name="truck_insurence" id="truck_insurence" ng-model="truck.truck_insurence">-->
+              <input type="file" class="form-control" accept="image/*" name="truck_insurence" id="truck_insurence" ng-model="truck_insurence" onchange="angular.element(this).scope().uploadedFile2(this)" ng-show="!editInsurance"><a ng-click="editInsurance=true" ng-show="!editInsurance&&edit">Cancel</a>
+              <img id="output2"  style="width:200px; height:150px;{{editInsurance?'display:block':'display:none'}}" src="php/upload/{{truck.truck_insurence}}" class="img-responsive" /><a ng-click="editInsurance=false" ng-show="editInsurance">Change</a>
             </div>
             </div>
         </div>
@@ -117,7 +105,9 @@
             <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black">Truck Pollution Check</label>
             <div class="col-md-4">
                  <div class="input-group">
-              <input type="file" class="form-control" accept="image/*" name="truck_pollution" id="truck_pollution" ng-model="truck.truck_pollution">
+              <!--<input type="file" class="form-control" accept="image/*" name="truck_pollution" id="truck_pollution" ng-model="truck.truck_pollution">-->
+              <input type="file" class="form-control" accept="image/*" name="truck_pollution" id="truck_pollution" ng-model="truck_pollution" onchange="angular.element(this).scope().uploadedFile3(this)" ng-show="!editPollution"><a ng-click="editPollution=true" ng-show="!editPollution&&edit">Cancel</a>
+              <img id="output3"  style="width:200px; height:150px;{{editPollution?'display:block':'display:none'}}" src="php/upload/{{truck.truck_pollution}}" class="img-responsive" /><a ng-click="editPollution=false" ng-show="editPollution">Change</a>
             </div>
             </div>
         </div>
@@ -125,7 +115,9 @@
             <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black"><span class="required">*</span>&nbsp;Truck Main Image</label>
             <div class="col-md-4">
                  <div class="input-group">
-              <input type="file" class="form-control" name="truck_image" accept="image/*" id="truck_image" ng-model="truck.truck_image">
+              <!--<input type="file" class="form-control" name="truck_image" accept="image/*" id="truck_image" ng-model="truck.truck_image">-->
+               <input type="file" class="form-control" accept="image/*" name="truck_image" id="truck_image" ng-model="truck_image" onchange="angular.element(this).scope().uploadedFile4(this)" ng-show="!editImage"><a ng-click="editImage=true" ng-show="!editImage&&edit">Cancel</a>
+              <img id="output4"  style="width:200px; height:150px;{{editImage?'display:block':'display:none'}}" src="php/upload/{{truck.truck_image}}" class="img-responsive" /><a ng-click="editImage=false" ng-show="editImage">Change</a>
             </div>
             </div>
         </div>
@@ -133,7 +125,9 @@
             <label class="col-md-3 control-label" for="VehicleType.Type" style="color:black">Truck Fitness Certificate</label>
             <div class="col-md-4">
                  <div class="input-group">
-              <input type="file" class="form-control" name="truck_fitness_certificate" accept="image/*" id="truck_fitness_certificate" ng-model="truck.truck_fitness_certificate">
+              <!--<input type="file" class="form-control" name="truck_fitness_certificate" accept="image/*" id="truck_fitness_certificate" ng-model="truck.truck_fitness_certificate">-->
+              <input type="file" class="form-control" accept="image/*" name="truck_fitness_certificate" id="truck_fitness_certificate" ng-model="truck_fitness_certificate" onchange="angular.element(this).scope().uploadedFile5(this)" ng-show="!editFC"><a ng-click="editFC=true" ng-show="!editFC&&edit">Cancel</a>
+              <img id="output5"  style="width:200px; height:150px;{{editFC?'display:block':'display:none'}}" src="php/upload/{{truck.truck_fitness_certificate}}" class="img-responsive" /><a ng-click="editFC=false" ng-show="editFC">Change</a>
             </div>
             </div>
         </div>
@@ -151,12 +145,7 @@
 </form>
 <script type="text/javascript">
             // When the document is ready
-            $(document).ready(function () {
-                
-               
-            
-            
-           
+            $(document).ready(function () {  
             $('#truck_form').bootstrapValidator({
             live: 'enabled',
             message: 'This value is not valid',
@@ -193,7 +182,7 @@
                     }
                 },
                 
-                truck_rc : {
+               /* truck_rc : {
                     validators: {
                         notEmpty: {
                             message: 'Please Upload Truck RC'
@@ -252,7 +241,7 @@
                             message: 'The selected file is not valid'
                         },
                     }
-                }, 
+                }, */
         }
     });
 });
