@@ -88,9 +88,28 @@
 		 {    
 		      //print_r($data);
 		      $id = $data->id;  
+		      $driver_photo = '';
+		      $driver_license = '';
+		      $sel_query = "SELECT id,driver_photo, driver_license FROM drivers_list WHERE id='$id'";
+		      $q=$conn->query($sel_query);
+			  while($row=$q->fetch_array()){
+			  	if(isset($row['driver_photo'])){
+			  		$driver_photo = $row['driver_photo'];
+			  	}
+			  	if(isset($row['driver_license'])){
+			  		$driver_license = $row['driver_license'];
+			  	}
+			  }
 		      $query = "DELETE FROM drivers_list WHERE id='$id'"; 
 		      //echo $query; 
 		      if ($conn->query($query) === TRUE) {
+		      	if (file_exists('upload/'.$driver_photo)) {
+    				unlink('upload/'.$driver_photo);
+    			}
+    			if (file_exists('upload/'.$driver_license)) {
+    				unlink('upload/'.$driver_license);
+    			}
+
 		          $message =  "Driver deleted successfully..";
 		      } else {
 		          $error.= "Error: " . $conn->error."<br>";
@@ -108,7 +127,7 @@
 	function updateDriver($form_data){
 		include('database_connection.php'); 
 		$form_data = json_decode($_POST['model']);
-		echo $form_data->driver_name;
+		//echo $form_data->driver_name;
 		//print_r($form_data);
 	    $output = array();  
 		$message = '';
@@ -153,7 +172,8 @@
 		{
 		 $driver_address = $form_data->driver_address;
 		}
-		if(!empty($_FILES['image1'])&&!empty($_FILES['image2']))
+		
+		/*if(!empty($_FILES['image1'])&&!empty($_FILES['image2']))
 		{
 			if (($_FILES["image1"]["error"] > 0)&&($_FILES["image2"]["error"] > 0))
 				{
@@ -171,36 +191,69 @@
 			else
 			{
 				$error.= "file must be in jpeg, jpg, png, gif<br>";
-			}*/
+			}
 		}
 		else
 		{
 			$error.= "Image Is Empty";
-		}
+		}*/
 
 		if(empty($error))
 		{
 		    
 		    $uid = $_SESSION['uid'];
-			/*if(!empty($form_data->id)){
+		    if(file_exists($_FILES['image2']['tmp_name']) || is_uploaded_file($_FILES['image1']['tmp_name'])) {
+		    	$ext = pathinfo($_FILES['image1']['name'],PATHINFO_EXTENSION);
+		    	$image = time().date("dmY").'1'.'.'.$ext;
+			}
+			 if(file_exists($_FILES['image2']['tmp_name']) || is_uploaded_file($_FILES['image2']['tmp_name'])) {
+		    	$ext2= pathinfo($_FILES['image2']['name'],PATHINFO_EXTENSION);			
+				$image2 = time().date("dmY").'2'.'.'.$ext2;
+			}
+		    
+			
+			if(!empty($form_data->id)){
 				$id = $form_data->id;
 				$query = "UPDATE drivers_list 
-						  SET driver_name='$driver_name',driver_age='$driver_age',driver_license_number='$driver_license_number',driver_mobile='$driver_mobile',driver_address='$driver_address',driver_photo='$image', driver_license='$image2',  modified_by='$uid',modified_date=CURRENT_TIMESTAMP
-						  WHERE id='$id'";
-			} else {*/
-				$ext = pathinfo($_FILES['image1']['name'],PATHINFO_EXTENSION);
-				$ext2= pathinfo($_FILES['image2']['name'],PATHINFO_EXTENSION);
-				$image = time().date("dmY").'1'.'.'.$ext;
-				$image2 = time().date("dmY").'2'.'.'.$ext2;
-				
-			   
-                	
-			 $query = "INSERT INTO drivers_list (uid, driver_name, driver_age, driver_license_number, driver_mobile, driver_address, driver_photo, driver_license, active, created_by) VALUES ('$uid', '$driver_name', '$driver_age', '$driver_license_number', '$driver_mobile', '$driver_address', '$image', '$image2',1, '$uid') ";
-			//}
-			echo $query;
+						  SET driver_name='$driver_name',driver_age='$driver_age',driver_license_number='$driver_license_number',driver_mobile='$driver_mobile',driver_address='$driver_address',  modified_by='$uid',modified_date=CURRENT_TIMESTAMP";
+				if(isset($image)){
+					$query.=  " ,driver_photo='$image'";
+				}
+				if(isset($image2)){
+					$query.=  " ,driver_license='$image2'";
+				}
+				$query.=  " WHERE id='$id'";
+			} else {
+				$data = [];
+				$data["uid"] = $uid;
+				$data["driver_name"] = $driver_name;
+				$data["driver_age"] = $driver_age;
+				$data["driver_license_number"] = $driver_license_number;
+				$data["driver_mobile"] = $driver_mobile;
+				$data["driver_address"] = $driver_address;
+				$data["active"] = 1;
+				$data["created_by"] = $uid;
+				if(isset($image)){
+					$data["driver_photo"] = $image;
+				}
+				if(isset($image2)){
+					$data["driver_license"] = $image2;
+				}
+				$table = 'drivers_list';
+				$key = array_keys($data);
+			    $val = array_values($data);
+			    $query = "INSERT INTO $table (" . implode(', ', $key) . ") "
+			         . "VALUES ('" . implode("', '", $val) . "')";	
+				/*$query = "INSERT INTO drivers_list (uid, driver_name, driver_age, driver_license_number, driver_mobile, driver_address, driver_photo, driver_license, active, created_by) VALUES ('$uid', '$driver_name', '$driver_age', '$driver_license_number', '$driver_mobile', '$driver_address', '$image', '$image2',1, '$uid') ";*/
+			}
+			//echo $query;
 			 if ($conn->query($query) === TRUE) {
-			 	move_uploaded_file($_FILES["image1"]["tmp_name"], 'upload/'.$image);
-                move_uploaded_file($_FILES["image2"]["tmp_name"], 'upload/'.$image2);
+			 	if(isset($image)){
+			 		move_uploaded_file($_FILES["image1"]["tmp_name"], 'upload/'.$image);
+			 	}
+			 	if(isset($image2)){
+                	move_uploaded_file($_FILES["image2"]["tmp_name"], 'upload/'.$image2);
+                }
 			 	 $message = $form_data->id!=null?"record updated successfully":"New record created successfully";
 				
 			} else {

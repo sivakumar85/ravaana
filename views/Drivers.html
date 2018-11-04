@@ -36,13 +36,13 @@
             <label class="col-lg-4" for="driver">Driver Name</label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="searchparams_name" maxlength="50"name="searchparams_name" placeholder="Search Driver Name" type="text" ng-model="searchParam.driver_name" >
+                <input class="form-control" id="searchparams_name" maxlength="50"name="searchparams_name" placeholder="Search Driver Name" type="text" ng-model="searchParam.driver_name" autocomplete="off">
             </div>
         </div>
        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
             
-               <button id="btnSearch"class="btn btn-success" ng-click="searchDriver();""><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
+               <button id="btnSearch"class="btn btn-success" ng-click="searchDrivers();""><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
                <a class="btn btn-danger" ng-click="resetSearch();""><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
             </div>
          </div>
@@ -72,12 +72,12 @@
 
                                 <tr ng-repeat="driver in driversList">
                                     <td align="center">
-                                        <a href="#addDriver/{{driver.id}}"" class="btn btn-success"><em class="fa fa-pencil"></em></a>
-                                        <a class="btn btn-danger" g-click="deleteDriver(driver.id)"><em class="fa fa-trash"></em></a>
-                                        <input type="checkbox" id="cboxStatus" ng-change="updateDriverStatus(branch);" ng-model="driver.active">
+                                        <a href="#AddDriver/{{driver.id}}"" class="btn btn-success"><em class="fa fa-pencil"></em></a>
+                                        <a class="btn btn-danger" ng-click="deleteDriver(driver.id)"><em class="fa fa-trash"></em></a>
+                                        <input type="checkbox" id="cboxStatus" ng-change="updateDriverStatus(driver);" ng-model="driver.active">
                                         <a>{{driver.active?'Active':'Inactive'}}</a>
                                     </td>
-                                    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" width="150px"></td>
+                                    <td><img src="php/upload/{{driver.driver_photo}}" alt="" width="100" height="100"></td>
                                     <td>{{driver.driver_name}}</td>
                                     <td>{{driver.driver_age}}</td>
 									<td>{{driver.driver_license_number}}</td>

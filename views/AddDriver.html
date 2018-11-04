@@ -12,7 +12,7 @@
 </style>
 <form class="form-horizontal" id="driver_form" name="driver_form" ng-submit="driver_form.$valid && updateDriver($event)" novalidate="novalidate" autocomplete="off">
 
-<div class="container" style="padding-left: 15px;">
+<div class="container" style="padding-left: 15px;" ng-init="editDriver();">
 <div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
@@ -89,17 +89,19 @@
             <label class="col-md-3 control-label" for="dphoto" style="color:black"><span class="required">*</span>&nbsp;Driver Photo</label>
             <div class="col-md-4">
                 <div class="input-group">
-              <input type="file" class="form-control" accept="image/*" name="driver_photo" id="driver_photo" ng-model="image1" onchange="angular.element(this).scope().uploadedFile(this)">
+              <input type="file" class="form-control" accept="image/*" name="driver_photo" id="driver_photo" ng-model="image1" onchange="angular.element(this).scope().uploadedFile(this)" ng-show="!editPhoto">
+              <img id="output"  style="width:200px; height:150px;{{editPhoto?'display:block':'display:none'}}" src="php/upload/{{driver.driver_photo}}" class="img-responsive" />
             </div>
-            <div class="col-lg-4"><img id="output"  style="width:200px; height:150px" class="img-responsive"/></div>
+            
             </div>
             </div>
         <div class="form-group">
             <label class="col-md-3 control-label" for="license" style="color:black"><span class="required">*</span>&nbsp;Driver License</label>
             <div class="col-md-4">
                  <div class="input-group">
-              <input type="file" class="form-control" accept="image/*" name="driver_license" id="driver_license" ng-model="image2" onchange="angular.element(this).scope().uploadedFile2(this)">
-              <div class="col-lg-4"><img id="output1"  style="width:200px; height:150px" class="img-responsive"/></div>
+              <input type="file" class="form-control" accept="image/*" name="driver_license" id="driver_license" ng-model="image2" onchange="angular.element(this).scope().uploadedFile2(this)" ng-show="!editLicence">
+              <img id="output1" src="php/upload/{{driver.driver_license}}" style="width:200px; height:150px;{{editLicence?'display:block':'display:none'}}" class="img-responsive" />
+              
             </div>
             </div>
         </div>
@@ -116,9 +118,7 @@
 </form>
 <script type="text/javascript">
             // When the document is ready
-            $(document).ready(function () {
-                
-               
+            $(document).ready(function () {        
             
             
            
