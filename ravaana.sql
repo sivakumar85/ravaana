@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2018 at 08:12 PM
+-- Generation Time: Nov 05, 2018 at 02:22 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -57,9 +57,7 @@ INSERT INTO `branches_list` (`id`, `uid`, `name`, `type`, `address`, `active`, `
 (10, 0, 'xcvccxvcxv', 'Company', 'cxvcxvcv', 1, 13, '2018-10-28 12:11:10', NULL, NULL),
 (11, 0, 'xcvccxvcxv', 'Company', 'cxvcxvcv', 1, 13, '2018-10-28 12:11:10', NULL, NULL),
 (12, 0, 'transport29', 'Company', 'No.100,Jaibheemanagar,\nBTM 1st stage,\nBangalore-560068', 1, 14, '2018-10-29 10:54:06', NULL, NULL),
-(13, 0, 'Teja', 'Company', 'Btm,Bangalore', 1, 15, '2018-10-30 05:59:39', NULL, NULL),
-(15, 0, 'dsjfkdsh', 'Branch', 'dfdsfds', 1, 2, '2018-11-03 09:10:37', 2, '2018-11-03 09:25:25'),
-(16, 0, 'dfdsf', 'Branch', 'sdgdsg dgd', 1, 2, '2018-11-03 09:21:16', 2, '2018-11-03 09:23:27');
+(13, 0, 'Teja', 'Company', 'Btm,Bangalore', 1, 15, '2018-10-30 05:59:39', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -103,10 +101,13 @@ CREATE TABLE `load_postings` (
   `load_cost_type` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `advance_percent` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `tonns_available` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-  `available_date` date DEFAULT NULL,
+  `available_date_from` date DEFAULT NULL,
+  `available_date_to` date DEFAULT NULL,
+  `available_daily` int(1) DEFAULT NULL,
   `uid` int(11) DEFAULT NULL,
   `tid` int(11) DEFAULT NULL,
   `active` int(1) NOT NULL DEFAULT '1',
+  `is_deleted` int(1) NOT NULL DEFAULT '0',
   `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` int(11) DEFAULT NULL,
   `modified_date` date DEFAULT NULL,
@@ -373,7 +374,7 @@ ALTER TABLE `drivers_list`
 -- AUTO_INCREMENT for table `load_postings`
 --
 ALTER TABLE `load_postings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `load_type`
@@ -385,7 +386,7 @@ ALTER TABLE `load_type`
 -- AUTO_INCREMENT for table `trucks_list`
 --
 ALTER TABLE `trucks_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
