@@ -1,5 +1,6 @@
 <?php  
  //delete.php  
+session_start();
  include('database_connection.php'); 
  $message = '';
  $error = '';
@@ -9,7 +10,8 @@
       //print_r($data);
       $id = $data->id;  
       $status = $data->active;
-      $query = "UPDATE load_postings set active='$status' WHERE id='$id'"; 
+      $uid = $_SESSION['uid'];
+      $query = "UPDATE load_postings set active='$status' modified_by='$uid',modified_date=CURRENT_TIMESTAMP" WHERE id='$id'"; 
       //echo $query; 
       if ($conn->query($query) === TRUE) {
           $message =  "Post updated successfully..";
