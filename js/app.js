@@ -199,6 +199,10 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/TransporterDocuments.html',
 		controller: 'TransportCompanyProfileCtrl'
 		
+	}).when('/TruckOwnerDocuments', {
+		templateUrl: 'views/TruckOwnerDocuments.html',
+		
+		
 	}).otherwise({
         templateUrl: 'views/404.html',
     })
