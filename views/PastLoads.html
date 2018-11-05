@@ -13,7 +13,7 @@ background-color:#F7F7F7;
     vertical-align: text-bottom;
 }
 </style>
-<div class="container" ng-init="displayPosts();">
+<div class="container" ng-init="displayPosts('past');">
    <div class="row">
    <div class="col-lg-12">
               <ul class="breadcrumb">
@@ -62,8 +62,8 @@ background-color:#F7F7F7;
             <div class="col-lg-12">
 			<div class="col-lg-4 col-lg-offset-4">
 
-            <button class="btn btn-success" ng-click="searchPosts();"><i class="fa fa-search"></i> &nbsp;Search</button>
-            <button class="btn btn-danger" ng-click="resetSearch();"  type="reset"><i class="fa fa-rotate-left"></i> &nbsp;Reset</button>
+            <button class="btn btn-success" ng-click="searchPosts('past');"><i class="fa fa-search"></i> &nbsp;Search</button>
+            <button class="btn btn-danger" ng-click="resetSearch('past');"  type="reset"><i class="fa fa-rotate-left"></i> &nbsp;Reset</button>
 			</div>
          </div>
       </div>
@@ -102,10 +102,10 @@ background-color:#F7F7F7;
                             <td>{{myload.load_cost}}/- {{myload.load_cost_type}}</td>
                             <td>{{myload.advance_percent}}</td>
                             <td>{{myload.tonns_available}}</td>
-              <td>{{myload.vehicle_type}}</td>
-              <td>{{myload.available_date}}</td>
-              <td>{{myload.address}}</td>
-              <td>{{myload.created_date}}</td>
+                            <td>{{myload.vehicle_type}}</td>
+                            <td>{{myload.available_daily=='1'?'Daily':myload.available_date_from+' to '+myload.available_date_to}}</td>
+                            <td>{{myload.address}}</td>
+                            <td>{{myload.created_date}}</td>
                           </tr>
                             </tbody>
                         </table>

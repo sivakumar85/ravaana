@@ -141,6 +141,7 @@
             
            
             $('#driver_form').bootstrapValidator({
+            excluded: [':disabled', ':hidden', ':not(:visible)'],
             live: 'enabled',
             message: 'This value is not valid',
             submitButton: 'driver_form button[type="submit"]',
@@ -201,7 +202,7 @@
 
                     }
                 },
-                /*  driver_license : {
+                  driver_license : {
                     validators: {
                         notEmpty: {
                             message: 'Please select an image'
@@ -224,7 +225,7 @@
                             message: 'The selected file is not valid'
                         },
                     }
-                },*/
+                },
 
             
         }

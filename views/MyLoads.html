@@ -166,7 +166,7 @@ background-color:#F7F7F7;
                             <td>{{myload.advance_percent}}</td>
                             <td>{{myload.tonns_available}}</td>
               <td>{{myload.vehicle_type}}</td>
-              <td>{{myload.available_date}}</td>
+              <td>{{myload.available_daily=='1'?'Daily':myload.available_date_from+' to '+myload.available_date_to}}</td>
               <td>{{myload.address}}</td>
               <td>{{myload.created_date}}</td>
                           </tr>
