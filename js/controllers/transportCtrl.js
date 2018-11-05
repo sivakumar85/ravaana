@@ -53,18 +53,26 @@ app.controller('PostingLoadsCtrl', ['$scope','$routeParams','$http','$location',
 
 app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $http,$location){
 	
-	$scope.displayPosts = function(){
-	var my_load_request = $http.get('php/fetchMyLoads.php');
+	$scope.displayPosts = function(type){
+		var url = 'php/fetchMyLoads.php';
+		if(!angular.isUndefined(type)){
+			url += '?type=past'
+		}
+	var my_load_request = $http.get(url);
 	my_load_request.then(function(response){
 		$scope.myloads = response.data;
 	});
 	}
 
-	$scope.searchPosts = function() {
+	$scope.searchPosts = function(type) {
 	    //$http POST function
+	    var surl = 'php/fetchMyLoads.php';
+		if(!angular.isUndefined(type)){
+			surl += '?type=past'
+		}
 	    $http({
 	      method: 'POST',
-	      url: 'php/fetchMyLoads.php',
+	      url: surl,
 	      data: $scope.searchParam
 	    }).then(function successCallback(response) {
 	      $scope.myloads = response.data;
@@ -73,10 +81,10 @@ app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $h
 	      alert("Error. while created Post Try Again!");
 	    });
 	  };
-	$scope.resetSearch = function() {
+	$scope.resetSearch = function(type) {
 		//$location.path( '/MyLoads' );
 		$scope.searchParam = {};
-		$scope.searchPosts();
+		$scope.searchPosts(type);
 	};
 	var load_type_request = $http.get('php/loadTypes.php');;
 	load_type_request.then(function(response){

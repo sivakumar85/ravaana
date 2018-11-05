@@ -16,6 +16,7 @@ background-color:#F7F7F7;
 	color:red;
 }
 </style>
+
 <form name="load_form" id="load_form" ng-submit="load_form.$valid && postLoad($event)" novalidate="true" autocomplete="off" >
 <div class="container" ng-init="editPost();">
    <div class="row">
@@ -28,6 +29,7 @@ background-color:#F7F7F7;
       <h1>Post Loads</h1>
 	  
       <hr style="border:1px solid #FF3300">
+      
 	  <div class="well col-lg-12">
       <br>
       <br>
@@ -144,12 +146,17 @@ background-color:#F7F7F7;
 			</div>
 		</div>
 		<div class="col-lg-6 form-group has-feedback">
-			<label for="typeofload"><span class="required">*</span>&nbsp;Available Date</label>
-			<div class="input-group">
-				<span class="input-group-addon">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Available Dates</label>
+			<div class="input-group" ng-show="!load.available_daily">
+				
+				
+				<input type="text" class="form-control" placeholder="From Date" id="datePicker" name="available_date_from" ng-model="load.available_date_from" autocomplete="off" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				
+				<input type="text" class="form-control" placeholder="To Date" id="datePicker1" name="available_date_to" ng-model="load.available_date_to" autocomplete="off" /><span class="input-group-addon">
 				<i class="fa fa-calendar"></i></span>
-				<input type="text" class="form-control" placeholder="Type Or Select" id="datePicker" name="available_date" ng-model="load.available_date" ng-required="true" autocomplete="off"/>
+
 			</div>
+			<br/><input type="checkbox" id="available_daily" name="available_daily" ng-model="load.available_daily"/>Daily Available
 		</div>
 		
 			<div class="panel panel-default col-lg-8 col-lg-offset-2">
@@ -185,20 +192,37 @@ background-color:#F7F7F7;
  <script type="text/javascript">
             // When the document is ready
             $(document).ready(function () {
-                
+                $(document).on("change", "#available_daily", function () {
+			      if($(this).is(":checked")) {
+			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_from', false);
+			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_to', false);
+			      } else {
+			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_from', true);
+			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_to', true);
+			      }
+			    });
                 $('#datePicker').datepicker({
 			            format: 'dd/mm/yyyy',
 						autoclose: true, 
 			        })
 			        .on('changeDate', function(e) {
 			            // Revalidate the date field
-			            $('#load_form').bootstrapValidator('revalidateField', 'available_date');
+			            $('#load_form').bootstrapValidator('revalidateField', 'available_date_from');
 						$(this).datepicker('hide');
 			        });
             
-            
+            $('#datePicker1').datepicker({
+			            format: 'dd/mm/yyyy',
+						autoclose: true, 
+			        })
+			        .on('changeDate', function(e) {
+			            // Revalidate the date field
+			            $('#load_form').bootstrapValidator('revalidateField', 'available_date_to');
+						$(this).datepicker('hide');
+			        });
            
             $('#load_form').bootstrapValidator({
+            excluded: [':disabled', ':hidden', ':not(:visible)'],
 	        live: 'enabled',
 			message: 'This value is not valid',
 			submitButton: 'load_form button[type="submit"]',
@@ -304,15 +328,22 @@ background-color:#F7F7F7;
 	                    }
 	                }
 	            },
-	            available_date: {
+	            available_date_from: {
 	                message: 'The company name is not valid',
 	                validators: {
 	                    notEmpty: {
-	                        message: 'Availability required'
+	                        message: 'Availability From required'
 	                    }
 	                }
 	            },
-	                     
+	            available_date_to: {
+	                message: 'The company name is not valid',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'Availability To required'
+	                    }
+	                }
+	            },         
 
             
         }

@@ -99,7 +99,7 @@ else
 {
  $tonns_available = $form_data->tonns_available;
 }
-if(empty($form_data->available_date))
+/*if(empty($form_data->available_date))
 {
  $error.= 'available_date is Required'."<br>";
 }
@@ -107,6 +107,17 @@ else
 {
  $available_date = $form_data->available_date;
 }
+if(empty($form_data->available_date))
+{
+ $error.= 'available_date is Required'."<br>";
+}
+else
+{
+ $available_date = $form_data->available_date;
+}*/
+$available_date_to = $form_data->available_date_to;
+$available_date_from = $form_data->available_date_from;
+$available_daily = $form_data->available_daily;
 if(empty($form_data->tid))
 {
  $error.= 'tid is Required'."<br>";
@@ -121,16 +132,27 @@ if(empty($error))
     //echo $business_type;  echo $name;   echo $email;  echo $mobile;  echo $password;
  $uid = $_SESSION['uid'];
  $format = 'd/m/Y';
-$date = $available_date; 
-$date = DateTime::createFromFormat($format , $date);
-$available_date = $date->format('Y-m-d');
+if(isset($available_date_from) && $available_date_from!=null){
+	$date_from = $available_date_from; 
+	$date_from = DateTime::createFromFormat($format , $date_from);
+	$available_date_from = $date_from->format('Y-m-d');
+ } else {
+ 	$available_date_from = null;
+ }
+ if(isset($available_date_to) && $available_date_to!=null){
+	$date_to = $available_date_to; 
+	$date_to = DateTime::createFromFormat($format , $date_to);
+	$available_date_to = $date_to->format('Y-m-d');
+ } else{
+ 	$available_date_to = null;
+ }
 if(isset($form_data->id)){
 	$id = $form_data->id;
 	$query = "UPDATE load_postings 
-			  SET load_type='$load_type',truck_type='$truck_type', from_city='$from_city', from_location='$from_location', to_city='$to_city', to_location='$to_location', distance_km='$distance_km', load_cost='$load_cost',load_cost_type='$load_cost_type',advance_percent='$advance_percent',tonns_available='$tonns_available',available_date='$available_date',tid='$tid',modified_by='$uid',modified_date=CURRENT_TIMESTAMP
+			  SET load_type='$load_type',truck_type='$truck_type', from_city='$from_city', from_location='$from_location', to_city='$to_city', to_location='$to_location', distance_km='$distance_km', load_cost='$load_cost',load_cost_type='$load_cost_type',advance_percent='$advance_percent',tonns_available='$tonns_available',available_date_to='$available_date_to',available_date_from='$available_date_from',available_daily='$available_daily',tid='$tid',modified_by='$uid',modified_date=CURRENT_TIMESTAMP
 			  WHERE id='$id'";
 } else {
- $query = "INSERT INTO load_postings (load_type, truck_type, from_city, from_location, to_city, to_location, distance_km, load_cost,load_cost_type,advance_percent,tonns_available,available_date,uid,tid,active,created_by) VALUES ('$load_type', '$truck_type', '$from_city', '$from_location', '$to_city', '$to_location', '$distance_km', '$load_cost','$load_cost_type','$advance_percent','$tonns_available','$available_date','$uid','$tid',1,'$uid') ";
+ $query = "INSERT INTO load_postings (load_type, truck_type, from_city, from_location, to_city, to_location, distance_km, load_cost,load_cost_type,advance_percent,tonns_available,available_date_from,available_date_to,available_daily,uid,tid,active,created_by) VALUES ('$load_type', '$truck_type', '$from_city', '$from_location', '$to_city', '$to_location', '$distance_km', '$load_cost','$load_cost_type','$advance_percent','$tonns_available','$available_date_from','$available_date_to','$available_daily','$uid','$tid',1,'$uid') ";
 }
 //echo $query;
  if ($conn->query($query) === TRUE) {

@@ -8,7 +8,7 @@
  {    
       //print_r($data);
       $id = $data->id;  
-      $query = "DELETE FROM load_postings WHERE id='$id'"; 
+      $query = "UPDATE load_postings set is_deleted=1 WHERE id='$id'"; 
       //echo $query; 
       if ($conn->query($query) === TRUE) {
           $message =  "Post closed successfully..";
