@@ -12,6 +12,7 @@ app.controller('PostingLoadsCtrl', ['$scope','$routeParams','$http','$location',
 		$scope.branches = response.data;
 	});
 	$scope.editPost = function() {
+		$scope.load = {available_date_from:'',available_date_to:''};
 		if(!angular.isUndefined($routeParams.id)){
 			var my_load_request = $http({
 			    url: 'php/fetchMyLoads.php', 

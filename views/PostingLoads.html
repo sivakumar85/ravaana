@@ -205,21 +205,12 @@ background-color:#F7F7F7;
 			            format: 'dd/mm/yyyy',
 						autoclose: true, 
 			        })
-			        .on('changeDate', function(e) {
-			            // Revalidate the date field
-			            $('#load_form').bootstrapValidator('revalidateField', 'available_date_from');
-						$(this).datepicker('hide');
-			        });
-            
+			       
             $('#datePicker1').datepicker({
 			            format: 'dd/mm/yyyy',
 						autoclose: true, 
 			        })
-			        .on('changeDate', function(e) {
-			            // Revalidate the date field
-			            $('#load_form').bootstrapValidator('revalidateField', 'available_date_to');
-						$(this).datepicker('hide');
-			        });
+			        
            
             $('#load_form').bootstrapValidator({
             excluded: [':disabled', ':hidden', ':not(:visible)'],
