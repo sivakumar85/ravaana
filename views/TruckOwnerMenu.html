@@ -2,7 +2,9 @@
 .dropdown-submenu {
     position: relative;
 }
-
+ul.nav.navbar-nav {
+    margin-left: 44px;
+}
 .dropdown-submenu>.dropdown-menu {
     top: 0;
     left: 100%;
@@ -12,41 +14,25 @@
     -moz-border-radius: 0 6px 6px;
     border-radius: 0 6px 6px 6px;
 }
-
-.dropdown-submenu .menu2 li{
-    display:none;
-}
-.dropdown-submenu:hover>.menu2 li{
-    display:block;
-}
-
-.dropdown-submenu>a:after {
-    display: block;
-    content: " ";
-    float: right;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 5px 0 5px 5px;
-    border-left-color: #ccc;
-    margin-top: 5px;
-    margin-right: -10px;
-}
-
 .dropdown-submenu .dropdown-menu{
     display:none !important;
 }
 .dropdown-submenu:hover>.dropdown-menu{
     display:block !important;
 }
-
-.dropdown-submenu.pull-left>.dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
-    -webkit-border-radius: 6px 0 6px 6px;
-    -moz-border-radius: 6px 0 6px 6px;
-    border-radius: 6px 0 6px 6px;
+.navbar-inverse ul.navbar-nav li a i span {
+    position: absolute;
+    width: auto;
+    margin-top: 0;
+    padding: 3px 5px;
+    background: cyan;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: black;
+    font-weight: 300;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 10px;
 }
  @media only screen and (max-width: 780px) {
  		ul .navbar-right{
@@ -61,7 +47,6 @@ li .nav-items{
  	.dropdown-submenu .dropdown-menu{
 	position: static;
 	margin-left: 3px;
-}
 }
 </style>
 <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-xl navbar-dark">
@@ -108,7 +93,7 @@ li .nav-items{
 								  <b class="caret"></b>
 								 </a>
 								<ul class="dropdown-menu">
-										<li><a href="#UpdateLoginDetails" class="dropdown-item"><i class="fa fa-gears"></i>Update Login Details</a></li>
+										
 										<li><a href="#TruckOwnerAuditReport" class="dropdown-item"><i class="fa fa-line-chart"></i>AuditReport</a></li>                  
 										<li><a href="#Trucks" class="dropdown-item"><i class="fa fa-truck"></i>Trucks</a></li>
 										<li class="dropdown-submenu">
@@ -120,7 +105,7 @@ li .nav-items{
 										</li> 
 								</ul>
 							</li>
-							<ul class="nav navbar-nav navbar-right">
+							<!--<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item dropdown">
 								<a href="" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> Antonio Moreno <b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -130,7 +115,48 @@ li .nav-items{
 									<li><a href="javascript:void(0);" ng-click="logout();" class="dropdown-item"><i class="fa fa-sign-out"></i> Logout</a></li>
 								</ul>
 						</li>
+						</ul>-->
+
+						<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown nav-item">
+								<a href="#UserTruckRequest" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-truck" title="Truck Request"> <span>1</span></i>
+								   Truck Request
+								 </a>
+							</li>
+							<li class="dropdown nav-item">
+								<a href="#UserLoadRequest" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <i class="fa fa-cubes" title="Load Request"> <span>1</span></i>
+								  Load Request
+							</li>
+							<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown" style="margin-top: -24px">
+								  <img src="{{profile_pic}}" width="40px" height="39px" class="avatar imgp" alt="Avatar" style="border-radius: 40px">
+								  <br>{{login_username}}
+								  <b class="caret"></b>
+								 </a>
+								<ul class="dropdown-menu">
+									<li><a href="#TruckOwnerProfile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+									<li><a href="#UpdateLoginDetails" class="dropdown-item"><i class="fa fa-gears"></i>Update Login Details</a></li>
+									<li><a href="#ChangePassword" class="dropdown-item"><i class="fa fa-key"></i>Change Password</a></li> 
+									<li class="divider dropdown-divider"></li>
+									<li><a href="javascript:void(0);" ng-click="logout();" class="dropdown-item"><i class="fa fa-sign-out"></i> Logout</a></li>
+								</ul>
+						</li>
+						<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+									<!--<img src="images/walletCard.png" style="width:20;height:20" />-->
+								  <i class="fa fa-inr" title="Truck Request"><span>1</span></i>
+								   Wallet<b class="caret"></b>
+								 </a>
+								<ul class="dropdown-menu">
+									<li><a href="#AddBankAccount" class="dropdown-item"><i class="fa fa-bank"></i> Add Bank Account</a></li>
+									<li><a href="#RavaanaWallet" class="dropdown-item"><i class="fa fa-money"></i>Ravaana Wallet Money</a></li>
+								</ul>
+							</li>
 						</ul>
+
+
 						</ul>
 					</div>
 </nav>

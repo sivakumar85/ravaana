@@ -21,7 +21,11 @@ app.factory('loginService', function($http, $q, $location, sessionService){
 							window.location.href = 'userHome.php#/TransporterDocuments';
 						}
 					} else if (business_type == 'TruckOwner') {
-						window.location.href = 'userHome.php#/UsersList';
+						if(profile_complete == 1) { 
+							window.location.href = 'userHome.php#/Trucks';
+						} else {
+							window.location.href = 'userHome.php#/TruckOwnerDocuments';
+						}
 					}
 					
 				}
