@@ -9,7 +9,7 @@ background-color:white;
     transform: scale(1.5); 
 }
 </style>
- <form name="updateform" ng-submit="insert()" ng-init="fetchProfile();">
+ <form name="updateform" id="updateform" ng-submit="update()" ng-init="fetchProfile();" novalidate="true" autocomplete="off" >
 
 <div class="container">
     <div class="row">
@@ -61,7 +61,7 @@ background-color:white;
                               <div class="input-group">
                 <span class="input-group-addon">
                 <i class="fa fa-user"></i></span>
-                              <input type="text" class="form-control" ng-model="user.name" ng-required="true">
+                              <input type="text" class="form-control" name="name" id="name" ng-model="user.name" ng-required="true">
                           </div>
                         </div>
                       </div>
@@ -72,7 +72,7 @@ background-color:white;
                             <div class="input-group">
                 <span class="input-group-addon">
                 <i class="fa fa-envelope-o"></i></span>
-                              <input type="text" class="form-control"  ng-model="user.email" readonly="true">
+                              <input type="text" class="form-control" name="email" id="email"  ng-model="user.email" readonly="true">
                           </div>
                         </div>
                       </div>
@@ -83,7 +83,7 @@ background-color:white;
                              <div class="input-group">
                 <span class="input-group-addon">
                 <i class="fa fa-mobile"></i></span>
-                              <input type="text" class="form-control"  ng-model="user.mobile" readonly="true">
+                              <input type="text" class="form-control" name="email" id="email"  ng-model="user.mobile" readonly="true">
                           </div>
                         </div>
                       </div>
@@ -97,7 +97,7 @@ background-color:white;
                                <div class="input-group">
                 <span class="input-group-addon">
                 <i class="fa fa-id-card"></i></span>
-                              <input type="text" class="form-control"  ng-model="user.aadhar_number" ng-required="true">
+                              <input type="text" class="form-control"  ng-model="user.aadhar_number" ng-required="true" name="aadhar_number" id="aadhar_number" >
                           </div>
                         </div>
                       </div>
@@ -108,7 +108,7 @@ background-color:white;
                              <div class="input-group">
                 <span class="input-group-addon">
                 <i class="fa fa-building-o"></i></span>
-                              <input type="text" class="form-control"  ng-model="user.company_name" ng-required="true">
+                              <input type="text" class="form-control"  ng-model="user.company_name" ng-required="true" name="company_name" id="company_name" >
                           </div>
                         </div>
                       </div>
@@ -119,7 +119,7 @@ background-color:white;
                              <div class="input-group">
                 <span class="input-group-addon">
                 <i class="fa fa-id-card-o"></i></span>
-                              <input type="text" class="form-control"  ng-model="user.panCard_number" ng-required="true">
+                              <input type="text" class="form-control"  ng-model="user.panCard_number" ng-required="true" name="panCard_number" id="panCard_number" >
                           </div>
                       </div>
                     </div>
@@ -182,3 +182,113 @@ background-color:white;
 		  </div>
 		  </div>
       </form>                                                
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {  
+            $('#updateform').bootstrapValidator({
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'updateform button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                panCard_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'PanCard number is required'
+                        }
+                    }
+                },
+                company_name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'company name is required'
+                        }
+                    }
+                },
+                aadhar_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'aadhar number is required'
+                        }
+                    }
+                },
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Name is required'
+                        }
+                    }
+                },
+                
+               /* truck_rc : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Truck RC'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+                truck_insurence : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Truck Insurence'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+                truck_pollution : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Pollution Documents'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+                truck_fitness_certificate : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Fitness Certificate'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, 
+            truck_image: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Upload Truck Image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                }, */
+        }
+    });
+});
+        </script>
