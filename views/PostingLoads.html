@@ -156,9 +156,9 @@ background-color:#F7F7F7;
 				<i class="fa fa-calendar"></i></span>
 
 			</div>
-			<br/>Daily Available?{{load.available_daily==1?'checked':''}}
+			<br/>Daily Available?
 			<label class="switch">
-			 <input type="checkbox" id="available_daily" name="available_daily" ng-model="load.available_daily" {{load.available_daily==1?'checked':''}} />
+			 <input type="checkbox" id="available_daily" name="available_daily" ng-model="load.available_daily" ng-checked="load.available_daily" />
 			  <span class="slider round"></span>
 			</label>
 
@@ -209,11 +209,13 @@ background-color:#F7F7F7;
                 $('#datePicker').datepicker({
 			            format: 'dd/mm/yyyy',
 						autoclose: true, 
+						startDate:new Date()
 			        })
 			       
             $('#datePicker1').datepicker({
 			            format: 'dd/mm/yyyy',
-						autoclose: true, 
+						autoclose: true,
+						startDate:new Date()
 			        })
 			        
            

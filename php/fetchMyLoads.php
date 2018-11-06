@@ -54,8 +54,17 @@
 	//echo $sql;
 	$query=$conn->query($sql);
 	while($row=$query->fetch_array()){
-		$row["available_date_to"] =  date_format(date_create($row["available_date_to"]),"d/m/Y");
-		$row["available_date_from"] =  date_format(date_create($row["available_date_from"]),"d/m/Y");
+		if(($row['available_date_to'])!='0000-00-00'){
+			$row["available_date_to"] =  date_format(date_create($row["available_date_to"]),"d/m/Y");
+		} else {
+			$row["available_date_to"] = '';
+		}
+		if(($row['available_date_from'])!='0000-00-00'){
+			$row["available_date_from"] =  date_format(date_create($row["available_date_from"]),"d/m/Y");
+		} else {
+			$row["available_date_from"] = '';
+		}
+		$row["available_daily"] = ($row["available_daily"] == 1) ? true: false;
 		$new_datetime = DateTime::createFromFormat ( "Y-m-d H:i:s", $row["created_date"] );
 		$row["created_date"] =  $new_datetime->format('d F Y, h:i:s A');
 		$row["active"] = ($row["active"] == 1) ? true: false;
