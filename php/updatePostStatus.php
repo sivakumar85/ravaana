@@ -11,7 +11,7 @@ session_start();
       $id = $data->id;  
       $status = $data->active;
       $uid = $_SESSION['uid'];
-      $query = "UPDATE load_postings set active='$status' modified_by='$uid',modified_date=CURRENT_TIMESTAMP" WHERE id='$id'"; 
+      $query = "UPDATE load_postings set active='$status', modified_by='$uid',modified_date=CURRENT_TIMESTAMP WHERE id='$id'"; 
       //echo $query; 
       if ($conn->query($query) === TRUE) {
           $message =  "Post updated successfully..";

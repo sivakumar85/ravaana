@@ -40,13 +40,17 @@ app.controller('PostingLoadsCtrl', ['$scope','$routeParams','$http','$location',
 	      data: $scope.load
 	    }).then(function successCallback(response) {
 	      //$scope.users.push(response.data);
-	      alert(response.data.message);
+	      //alert(response.data.message);
 	      /*$('.modal-body').load("Post  created Successfully",function(){
             $('#myModal').modal({show:true});
           });*/
+	          $("#getCode").html(response.data.message);
+			  $("#getCodeModal").modal('show');
 	      $location.path( '/MyLoads' );
 	    }, function errorCallback(response) {
-	      alert("Error. while created Post Try Again!");
+	    	$("#getCode").html("Error. while created Post Try Again!");
+			 	 	$("#getCodeModal").modal('show');
+	      //alert("Error. while created Post Try Again!");
 	    });
 	  };
 
@@ -79,7 +83,9 @@ app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $h
 	      $scope.myloads = response.data;
 	      
 	    }, function errorCallback(response) {
-	      alert("Error. while created Post Try Again!");
+	    	$("#getCode").html("Error. while created Post Try Again!");
+			 	 	$("#getCodeModal").modal('show');
+	      //alert("Error. while created Post Try Again!");
 	    });
 	  };
 	$scope.resetSearch = function(type) {
@@ -97,7 +103,9 @@ app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $h
            {  
                 $http.post("php/deletePost.php", {'id':id})  
                 .success(function(response){  
-                	 alert(response.message);
+                	 //alert(response.message);
+                	$("#getCode").html(response.message);
+			 	 	$("#getCodeModal").modal('show');
                      $scope.displayPosts();
                 });  
            }  
@@ -109,7 +117,9 @@ app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $h
       $scope.updatePostStatus = function(myload){  
       	$http.post("php/updatePostStatus.php", {'id':myload.id,'active':myload.active})  
                 .success(function(response){  
-                	 alert(response.message);
+                	// alert(response.message);
+                	$("#getCode").html(response.message);
+			 	 	$("#getCodeModal").modal('show');
                      $scope.displayPosts();
                 }); 
       }

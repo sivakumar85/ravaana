@@ -136,7 +136,7 @@ background-color:#F7F7F7;
                         <table class="table table-striped table-bordered table-list">
                             <thead>
                                 <tr>
-                                  <th style="width:150px">Actions</th>
+                                  <th style="width:15%">Actions</th>
                         <th><a>Type Of Loading</a></th>
                         <th><a>From City</a></th>
                         <th><a>To City</a></th>
@@ -144,10 +144,10 @@ background-color:#F7F7F7;
                         <th>Load Cost</th>
                         <th>Advance</th>
                         <th>Available Ton</th>
-            <th><a>Need Of Vehicle</a></th>
-            <th>Available Dates</th>
-            <th>Transporter Address</th>
-            <th>Posted On</th>
+                        <th><a>Need Of Vehicle</a></th>
+                        <th>Available Dates</th>
+                        <th>Transporter Address</th>
+                        <th>Posted On</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -155,7 +155,11 @@ background-color:#F7F7F7;
                             <td>
               <a class="btn btn-danger" ng-click="deletePost(myload.id)" data-toggle="tooltip"  title="Delete Post"><em class="fa fa-trash"></em></a>
               <a href="#PostingLoads/{{myload.id}}" class="btn btn-success" data-toggle="tooltip" title="Edit Post"><em class="fa fa-pencil"></em></a>
-              <input type="checkbox" id="cboxStatus" ng-change="updatePostStatus(myload);" ng-model="myload.active">
+              <label class="switch">
+                 <input type="checkbox" id="cboxStatus" ng-change="updatePostStatus(myload);" ng-model="myload.active">
+                  <span class="slider round"></span>
+              </label>
+              
               <a ng-click="updatePostStatus(myload);">{{myload.active?'Active':'Inactive'}}</a>
                             </td>
                             <td>{{myload.typeOfLoad}}</td>
@@ -165,10 +169,10 @@ background-color:#F7F7F7;
                             <td>{{myload.load_cost}}/- {{myload.load_cost_type}}</td>
                             <td>{{myload.advance_percent}}</td>
                             <td>{{myload.tonns_available}}</td>
-              <td>{{myload.vehicle_type}}</td>
-              <td>{{myload.available_daily=='1'?'Daily':myload.available_date_from+' to '+myload.available_date_to}}</td>
-              <td>{{myload.address}}</td>
-              <td>{{myload.created_date}}</td>
+                            <td>{{myload.vehicle_type}}</td>
+                            <td>{{myload.available_daily=='1'?'Daily':myload.available_date_from+' to '+myload.available_date_to}}</td>
+                            <td>{{myload.address}}</td>
+                            <td>{{myload.created_date}}</td>
                           </tr>
                             </tbody>
                         </table>

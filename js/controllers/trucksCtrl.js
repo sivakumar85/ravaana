@@ -29,7 +29,9 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
 	      $scope.trucksList = response.data;
 	      
 	    }, function errorCallback(response) {
-	      alert("Error. fetch Try Again!");
+	      //alert("Error. fetch Try Again!");
+	      $("#getCode").html("Error. fetch Try Again!");
+		  $("#getCodeModal").modal('show');
 	    });
 	  };
 	$scope.resetSearch = function() {
@@ -43,7 +45,9 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
        {  
             $http.post("php/trucksCtrl.php?action=deleteTruck", {'id':id})  
             .success(function(response){  
-            	 alert(response.message);
+            	// alert(response.message);
+            	 $("#getCode").html(response.message);
+		  		 $("#getCodeModal").modal('show');
                  $scope.displayTrucksList();
             });  
        }  
@@ -55,7 +59,9 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
       $scope.updateTruckStatus = function(Truck){  
       	$http.post("php/trucksCtrl.php?action=updateTruckStatus", {'id':Truck.id,'active':Truck.active})  
                 .success(function(response){  
-                	 alert(response.message);
+                	 //alert(response.message);
+                	 $("#getCode").html(response.message);
+		  			 $("#getCodeModal").modal('show');
                      $scope.displayTrucksList();
                 }); 
       }
@@ -155,7 +161,9 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
 			         'Content-Type': undefined
 			  }
 		   }).success(function(data){
-		        alert(data.message);
+		        //alert(data.message);
+		        $("#getCode").html(data.message);
+		        $("#getCodeModal").modal('show');
 		        $location.path( '/Trucks' );
 
 		        

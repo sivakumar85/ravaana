@@ -41,7 +41,9 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 	      $scope.branchList = response.data;
 	      
 	    }, function errorCallback(response) {
-	      alert("Error. fetch Try Again!");
+	      //alert("Error. fetch Try Again!");
+	      $("#getCode").html("Error. fetch Try Again!");
+		  $("#getCodeModal").modal('show');
 	    });
 	  };
 	$scope.resetSearch = function() {
@@ -55,7 +57,9 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
            {  
                 $http.post("php/fetchBranchList.php?action=deleteBranch", {'id':id})  
                 .success(function(response){  
-                	 alert(response.message);
+                	// alert(response.message);
+                	 $("#getCode").html(response.message);
+		  		 	 $("#getCodeModal").modal('show');
                      $scope.displayBranchList();
                 });  
            }  
@@ -67,7 +71,9 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
       $scope.updateBranchStatus = function(branch){  
       	$http.post("php/fetchBranchList.php?action=updateBranchStatus", {'id':branch.id,'active':branch.active})  
                 .success(function(response){  
-                	 alert(response.message);
+                	 //alert(response.message);
+                	 $("#getCode").html(response.message);
+		  		 	 $("#getCodeModal").modal('show');
                      $scope.displayBranchList();
                 }); 
       }
@@ -100,14 +106,17 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 	      data: $scope.branch
 	    }).then(function successCallback(response) {
 	      //$scope.users.push(response.data);
-	      alert(response.data.message);
-
+	      //alert(response.data.message);
+	      $("#getCode").html(response.data.message);
+		  $("#getCodeModal").modal('show');
 	      /*$('.modal-body').load("Post  created Successfully",function(){
             $('#myModal').modal({show:true});
           });*/
 	      $location.path( '/Branches' );
 	    }, function errorCallback(response) {
-	      alert("Error. while created Post Try Again!");
+	      //alert("Error. while created Post Try Again!");
+	      $("#getCode").html("Error. while created Post Try Again!");
+		  $("#getCodeModal").modal('show');
 	    });
 	  };
 	  
@@ -137,7 +146,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 	      $scope.driversList = response.data;
 	      
 	    }, function errorCallback(response) {
-	      alert("Error. fetch Try Again!");
+	      //alert("Error. fetch Try Again!");
+	      $("#getCode").html("Error. fetch Try Again!");
+		  $("#getCodeModal").modal('show');
 	    });
 	  };
 	$scope.resetSearch = function() {
@@ -151,7 +162,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
        {  
             $http.post("php/driversCtrl.php?action=deleteDriver", {'id':id})  
             .success(function(response){  
-            	 alert(response.message);
+            	 //alert(response.message);
+            	 $("#getCode").html(response.message);
+		  		 $("#getCodeModal").modal('show');
                  $scope.displayDriversList();
             });  
        }  
@@ -163,7 +176,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
       $scope.updateDriverStatus = function(driver){  
       	$http.post("php/driversCtrl.php?action=updateDriverStatus", {'id':driver.id,'active':driver.active})  
                 .success(function(response){  
-                	 alert(response.message);
+                	 //alert(response.message);
+                	 $("#getCode").html(response.message);
+		  		 	 $("#getCodeModal").modal('show');
                      $scope.displayDriversList();
                 }); 
       }
@@ -231,7 +246,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 			         'Content-Type': undefined
 			  }
 		   }).success(function(data){
-		        alert(data.message);
+		        //alert(data.message);
+		        $("#getCode").html(data.message);
+		  		 $("#getCodeModal").modal('show');
 		        $location.path( '/Drivers' );
 
 		        
