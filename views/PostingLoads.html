@@ -156,7 +156,12 @@ background-color:#F7F7F7;
 				<i class="fa fa-calendar"></i></span>
 
 			</div>
-			<br/><input type="checkbox" id="available_daily" name="available_daily" ng-model="load.available_daily"/>Daily Available
+			<br/>Daily Available?{{load.available_daily==1?'checked':''}}
+			<label class="switch">
+			 <input type="checkbox" id="available_daily" name="available_daily" ng-model="load.available_daily" {{load.available_daily==1?'checked':''}} />
+			  <span class="slider round"></span>
+			</label>
+
 		</div>
 		
 			<div class="panel panel-default col-lg-8 col-lg-offset-2">
