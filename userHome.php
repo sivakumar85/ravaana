@@ -27,7 +27,12 @@ session_start();
 		    width: 100%;
 		    height: 100%;
 		}
-
+		.modal-body {
+		    padding: 0px!important;
+		}
+		.modal-content {
+		    background-color: #dff0d8!important;
+		 }
 		</style>
 		</head>
 	<body ng-app="myApp" ng-controller="userCtrl">
@@ -60,7 +65,7 @@ session_start();
                    <div class="modal-body" >
                          <div class="alert alert-success">
 			               <span class="glyphicon glyphicon-ok"></span>
-			               <button type="button" class="close" data-dismiss="modal">×</button> 
+			               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button> 
 			                <span id="getCode">
 			                    You successfully read this important alert message.</span>
 			            </div>
