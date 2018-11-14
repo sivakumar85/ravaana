@@ -92,7 +92,7 @@ app.factory('loginService', function($http, $q, $location, sessionService){
 				//$scope.prograssing = false;
 				//console.log(respond);
 				if(message!==''){
-					window.location.href = 'index.php#/SignIn';
+					window.location.href = 'index.php#/SignIn/regMsg';
 				} else {
 					$scope.errorVerification = true;
 					$scope.errorMsg = respond.data.error;

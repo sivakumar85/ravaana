@@ -7,6 +7,33 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
     $scope.editImage = false;
     $scope.editFC = false;
     $scope.edit = false;
+
+    $scope.errorProfile = false;
+	//fetch login user Profile
+	if(!angular.isUndefined($routeParams.pSucess)){
+		$rootScope.$emit("CalluserCtrlMethod", {});
+	}
+	$scope.fetch = function(){
+		var userrequest = $http.get('php/fetch.php');
+		userrequest.then(function(response){
+			$scope.user = response.data[0];
+		});
+	}
+
+	$scope.fetchProfile = function(){
+		var userrequest = $http.get('php/fetchUserProfile.php');
+		userrequest.then(function(response){
+			$scope.user = response.data[0];
+		});
+		
+	}
+
+	$scope.cancelUpdate = function() {
+		window.location.reload();
+	};
+	$scope.clearMsg = function(){
+		$scope.errorProfile = false;
+	}
     
     var vehicle_type_request = $http.get('php/vehicleTypes.php');
 	vehicle_type_request.then(function(response){
@@ -124,13 +151,9 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
 		}
 		if(!angular.isUndefined($scope.files5)){
 			$scope.truck_fitness_certificate=$scope.files5[0];
-		}
+		}		
 			
-			
-			
-			
-			
-			$http({
+		$http({
 				method:'POST',
 				url:"php/trucksCtrl.php?action=updateTruck",
 				processData:false,
@@ -256,6 +279,108 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
 		    }
                     reader.readAsDataURL(element.files[0]);
 		  }
+
+
+		  $scope.upload_aadhar_copy=function(element)
+			{
+				$scope.currentFile2 = element.files[0];
+		    var reader = new FileReader();
+
+		    reader.onload = function(event) {
+		    	var output1 = document.getElementById('aadhar_output');
+    			output1.src = URL.createObjectURL(element.files[0]);
+    			output1.style.display = 'block';
+		      $scope.image_source = event.target.result
+		      $scope.$apply(function($scope) {
+		        $scope.aadhar_copy = element.files;
+		      });
+		    }
+                    reader.readAsDataURL(element.files[0]);
+		  }
+
+		  $scope.upload_license_copy=function(element)
+			{
+				$scope.currentFile2 = element.files[0];
+		    var reader = new FileReader();
+
+		    reader.onload = function(event) {
+		    	var output1 = document.getElementById('license_output');
+    			output1.src = URL.createObjectURL(element.files[0]);
+    			output1.style.display = 'block';
+		      $scope.image_source = event.target.result
+		      $scope.$apply(function($scope) {
+		        $scope.driving_license_copy = element.files;
+		      });
+		    }
+                    reader.readAsDataURL(element.files[0]);
+		  }
+
+		  $scope.upload_profile_pic=function(element)
+			{
+				$scope.currentFile2 = element.files[0];
+		    var reader = new FileReader();
+
+		    reader.onload = function(event) {
+		    	var output1 = document.getElementById('profile_output');
+    			output1.src = URL.createObjectURL(element.files[0]);
+    			output1.style.display = 'block';
+		      $scope.image_source = event.target.result
+		      $scope.$apply(function($scope) {
+		        $scope.profile_pic = element.files;
+		      });
+		    }
+                    reader.readAsDataURL(element.files[0]);
+		  }
+
+		  $scope.updateProfile=function($event){
+		$event.preventDefault();
+		if(!angular.isUndefined($scope.profile_pic)){
+			$scope.profile_pic=$scope.profile_pic[0];
+		}
+		if(!angular.isUndefined($scope.driving_license_copy)){
+			$scope.driving_license_copy=$scope.driving_license_copy[0];
+		}
+		if(!angular.isUndefined($scope.aadhar_copy)){
+			$scope.aadhar_copy=$scope.aadhar_copy[0];
+		}
+				
+			
+		$http({
+				method:'POST',
+				url:"php/trucksCtrl.php?action=updateProfile",
+				processData:false,
+				transformRequest:function(data){
+					var formData=new FormData();
+					formData.append("model", angular.toJson($scope.user));
+					if(!angular.isUndefined($scope.aadhar_copy)){
+						formData.append("aadhar_copy", $scope.aadhar_copy);
+					}
+					if(!angular.isUndefined($scope.driving_license_copy)){
+						formData.append("driving_license_copy", $scope.driving_license_copy);
+					}
+					if(!angular.isUndefined($scope.profile_pic)){
+						formData.append("profile_pic", $scope.profile_pic);
+					}
+					
+
+			      return formData;
+			      
+			  },  
+			  data: $scope.form,
+			  headers: {
+			         'Content-Type': undefined
+			  }
+		   }).success(function(data){
+		        //alert(data.message);
+		        $("#getCode").html(data.message);
+		        $("#getCodeModal").modal('show');
+		        $location.path( '/Trucks' );
+
+		        
+		   });
+		   
+			};
+
 	  
 
 }]);

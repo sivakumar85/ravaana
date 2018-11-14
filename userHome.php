@@ -27,11 +27,13 @@ session_start();
 		    width: 100%;
 		    height: 100%;
 		}
-		.modal-body {
-		    padding: 0px!important;
-		}
 		.modal-content {
-		    background-color: #dff0d8!important;
+		    background-color: #ffe57e!important;
+		 }
+		 .alert-success{
+		 	/*color: #000;*/
+   			 background-color: #ebf8a4;
+   			border-color: #a2d246;
 		 }
 		</style>
 		</head>

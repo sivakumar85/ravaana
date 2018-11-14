@@ -127,9 +127,12 @@ app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $h
 
 }]);
 
-app.controller('TransportCompanyProfileCtrl', ['$scope','$http','$location', function($scope, $http,$location){
+app.controller('TransportCompanyProfileCtrl', ['$scope','$rootScope','$routeParams','$http','$location', function($scope,$rootScope,$routeParams, $http,$location){
 	$scope.errorProfile = false;
 	//fetch login user Profile
+	if(!angular.isUndefined($routeParams.pSucess)){
+		$rootScope.$emit("CalluserCtrlMethod", {});
+	}
 	$scope.fetch = function(){
 		var userrequest = $http.get('php/fetch.php');
 		userrequest.then(function(response){
@@ -225,8 +228,9 @@ app.controller('TransportCompanyProfileCtrl', ['$scope','$http','$location', fun
 		   }).success(function(data){
 
 		   		if(data.message!==''){
-		   			window.location.href="userHome.php#/TransportCompanyProfile";
-					    //$location.path( '/TransportCompanyProfile' );
+		   			// $rootScope.$emit("CalluserCtrlMethod", {});
+		   			//window.location.href="userHome.php#/TransportCompanyProfile";
+					    $location.path( '/TransportCompanyProfile/pSucess' );
     				} else {
     					$scope.errorProfile = true;
     					$scope.errorMsg = data.error;

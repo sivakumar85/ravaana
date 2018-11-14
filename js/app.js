@@ -62,7 +62,7 @@ app.config(function($routeProvider) {
 	}).when('/SignUp', {
 		templateUrl: 'views/SignUp.html',
 		controller: 'loginCtrl'
-	}).when('/SignIn', {
+	}).when('/SignIn/:regMsg?', {
 		templateUrl: 'views/SignIn.html',
 		controller: 'loginCtrl'
 	}).when('/ForgotPassword', {
@@ -149,7 +149,7 @@ app.config(function($routeProvider) {
 	}).when('/VerifyCode', {
 		templateUrl: 'views/VerifyCode.html',
 		controller: 'loginCtrl'
-	}).when('/TransportCompanyProfile', {
+	}).when('/TransportCompanyProfile/:pSucess?', {
 		templateUrl: 'views/TransportCompanyProfile.html',
 		controller: 'TransportCompanyProfileCtrl'
 	}).when('/TransporterDocument', {
@@ -162,6 +162,7 @@ app.config(function($routeProvider) {
 		controller: 'PostingLoadsCtrl'
 	}).when('/TruckOwnerProfile', {
 		templateUrl: 'views/TruckOwnerProfile.html',
+		controller: 'trucksCtrl'
 	}).when('/PastLoads', {
 		templateUrl: 'views/PastLoads.html',
 		controller: 'MyLoadsCtrl'
@@ -201,7 +202,7 @@ app.config(function($routeProvider) {
 		
 	}).when('/TruckOwnerDocuments', {
 		templateUrl: 'views/TruckOwnerDocuments.html',
-		
+		controller: 'trucksCtrl'
 		
 	}).otherwise({
         templateUrl: 'views/404.html',

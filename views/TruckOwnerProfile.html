@@ -8,115 +8,224 @@ background-color:white;
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.5); 
 }
+.required{
+color:red;
+}
 </style>
+ <form name="profile_form" id="profile_form" ng-submit="profile_form.$valid && updateProfile($event)" novalidate="novalidate" autocomplete="off" ng-init="fetchProfile()">
 <div class="container">
     <div class="row">
-	<div class="col-lg-12">
+  <div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
-				<li class="active">My Profile</li>
+                <li class="active">My Profile</li>
               </ul>
             </div>
-  		<div class="col-lg-4">
-         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="">
-        <h6>Upload a different photo...</h6>
-        <div class="input-group">
-        <input type="file" class="form-control">
-      </div>
-		</hr><br>
+            <div class="alert alert-danger text-center" ng-show="errorProfile">
+                            <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div>  
+           
 
-               
-          <div class="panel panel-default">
-            <div class="panel-heading">Head Office Address</div>
-            <div class="panel-body"><h4>Ravaana India Pvt Ltd</h4>
-			<p>#201, 2nd floor, Survey No. 429, NH-65, Hyderabad, India-502032 Phone:91+9666569885</p>
-			</div>
-          </div>
-        </div>
-    	<div class="col-lg-8">
-                <hr>
+       
+                      <div class="col-lg-4">
+                <div class="thumbnail">
+                   <img src="php/upload/{{user.profile_pic}}" alt="" id="profile_output" >
+                </div>
+                <div class="form-group">
+            
+                 <div class="input-group">
+               <input type="file" name="profile_pic" id="profile_pic" class="form-control form-input form-style-base1" ng-model="profile_pic" accept="image/*">
+                  </div>
+                </div>
+    
+        </div>    
+         <br>
+      <div class="well col-lg-8" style="background-color:#F7F7F7">
+    
+            <div class="col-lg-12">
+            <p style="color:red">Note : For any corrections in Aadhar details, please contact Administrator.</p>
+            </div>
+            
+           
                       <div class="form-group">
                           
                           <div class="col-lg-4">
                               <label for="name"><h4>Name</h4></label>
-                              <div class="input-group">
-                                <span class="input-group-addon">
-                                <i class="fa fa-user"></i></span>
-                              <input type="text" class="form-control">
-                             </div>
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                              <input type="text" class="form-control" ng-model="user.name" ng-required="true" name="name" id="name">
+                          </div>
                         </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-lg-4">
                             <label for="email"><h4>Email</h4></label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                <i class="fa fa-envelope"></i></span>
-                              <input type="text" class="form-control">
+                             <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                              <input type="text" class="form-control" ng-model="user.email" readonly="true">
                           </div>
                         </div>
                       </div>
-					  <div class="form-group">
+            
+            <div class="form-group">
                           
                           <div class="col-lg-4">
                             <label for="mobile"><h4>Mobile</h4></label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                <i class="fa fa-mobile"></i></span>
-                              <input type="text" class="form-control">
+                             <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                              <input type="text" class="form-control" ng-model="user.mobile" readonly="true">
                           </div>
-                        </div>
                       </div>
+                    </div>
+            
                        <div class="form-group">
                           
-                          <div class="col-lg-4">
-                              <label for="aadhar"><h4>Aadhar Number</h4></label>
-                              <div class="input-group">
-                                <span class="input-group-addon">
-                                <i class="fa fa-id-card"></i></span>
-                              <input type="text" class="form-control">
-                          </div>
-                        </div>
-						   <div class="col-lg-4">
-                            <label for="aadharcopy"><h4>Aadhar Copy</h4></label>
-							<br>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" width="200px" alt="" class="zoom">
+                          <div class="col-lg-5">
+                              <label for="aadhar"><h4>Aadhar Number</h4></label><span class="required">&nbsp;*</span>
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                              <input type="text" class="form-control" placeholder="Enter Aadhar Number" ng-required="true" ng-model="user.aadhar_number" name="aadhar_number" id="aadhar_number" readonly="true">
                           </div>
                       </div>
-					 <div class="col-lg-12">
-					   <div class="form-group">
-                          
-                          <div class="col-lg-4">
-                              <label for="aadhar"><h4>License Number</h4></label>
-                              <div class="input-group">
-                                <span class="input-group-addon">
-                                <i class="fa fa-drivers-license"></i></span>
-                              <input type="text" class="form-control">
-                            </div>
-                          </div>
-						   <div class="col-lg-4">
-                            <label for="aadharcopy"><h4>License Copy</h4></label>
-							<br>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" width="200px" alt="" class="zoom">
+                    </div>
+            
+                      <div class="col-sm-3">
+
+             <label for="aadharcopy"><h4>Aadhar Copy</h4></label></label><span class="required">&nbsp;*</span>
+              <br>
+                <div class="thumbnail">
+                   <img src="php/upload/{{user.aadhar_copy}}" alt="" id="aadhar_output" >
+                </div>
+              <!--  <div class="form-group">
+                <div class="input-group">
+               <input type="file" name="aadhar_copy" id="aadhar_copy" class="form-control form-input form-style-base" accept="image/*"  ng-model="aadhar_copy" onchange="angular.element(this).scope().upload_aadhar_copy(this)" ng-required="true">
+                </div></div>-->
+    
+        </div>
+               
+                     
+    <div class="form-group">
+    <div class="col-lg-5">
+                              <label for="PAN"><h4>Driving License Number</h4></label><span class="required">&nbsp;*</span>
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                              <input type="text" class="form-control" placeholder="Enter License Number" ng-required="true" ng-model="user.driving_license_number" name="driving_license_number" id="driving_license_number">
                           </div>
                       </div>
-					  </div>
-					  <div class="col-lg-12">
-					  <p style="margin-top:80px;color:red">Note : For any corrections in Aadhar details, please contact Administrator.</p>
-					  </div>
-						
+                    </div>
+            
+                      <div class="col-sm-3">
+<label for="aadharcopy"><h4>Licence Copy</h4></label></label><span class="required">&nbsp;*</span>
+              <br>
+            
+            <div class="thumbnail">
+                   <img src="php/upload/{{user.driving_license_copy}}" alt="" id="license_output" >
+                </div>
+            <div class="form-group">
+            <div class="input-group">
+               <input type="file" name="driving_license_copy" id="driving_license_copy" class="form-control form-input form-style-base" accept="image/*"  ng-model="driving_license_copy" >
+            </div>
+            </div>
+        </div>
+        </div>
                       <div class="form-group">
                            <div class="col-lg-12 col-lg-offset-4">
                                 <br>
-                              	<button class="btn  btn-info" type="update"><i class="fa fa-plus-square"></i>&nbsp;Update Email/Mobile</button>
-                               	<button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Submit</button>
+                <br>
+                <br>
+                                <button class="btn  btn-info"><i class="fa fa-plus-square-o"></i>&nbsp;Update Email/Mobile</button>
+                                <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Submit</button>
                             </div>
-							</div>
-          </div>
-		  </div>
-		  </div>
-		  
-		  
-                                                      
+              </div>
+      </div>
+      </div>
+</form>                                                      
+<script type="text/javascript">
+            // When the document is ready
+           /* $(document).ready(function () {        
+            
+            
+           
+            $('#profile_form').bootstrapValidator({
+            excluded: [':disabled', ':hidden', ':not(:visible)'],
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'profile_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Name'
+                        }
+                    }
+                },
+                profile_pic: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+               
+            driving_license_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter License Number'
+                        },
+                        
+                    }
+                },
+                aadhar_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Aadhar Number'
+                        },
 
+                    }
+                },
+                  aadhar_copy : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+                driving_license_copy : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+
+            
+        }
+    });
+});*/
+        </script>

@@ -8,125 +8,220 @@ background-color:white;
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.5); 
 }
-.form-style-base {
-    position: absolute;
-    top: 222px;
-    z-index: 999;
-	opacity:0;
-	width: 150px;
-	
-}
-.form-style-base1 {
-    position: absolute;
-    top: 270px;
-    z-index: 999;
-	opacity:0;
-	width: 350px;
-	
-}
 .required{
 color:red;
 }
 </style>
+ <form name="profile_form" id="profile_form" ng-submit="profile_form.$valid && updateProfile($event)" novalidate="novalidate" autocomplete="off" ng-init="fetch()">
 <div class="container">
     <div class="row">
-	<div class="col-lg-12">
+  <div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
-				<li class="active">Upload Documents</li>
+                <li class="active">My Profile</li>
               </ul>
             </div>
-  		 
+            <div class="alert alert-danger text-center" ng-show="errorProfile">
+                            <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div>  
+           
+
+       
                       <div class="col-lg-4">
                 <div class="thumbnail">
-                   <img src="http://placehold.it/230x240" alt="">
+                   <img src="images/profile_img.jpg" alt="" id="profile_output" >
                 </div>
-
-               <input type="file" id="main-input" class="form-control form-input form-style-base1">
-                     <button class="btn btn-primary col-sm-12">Upload Your Photo</button>
+                <div class="form-group">
+            
+                 <div class="input-group">
+               <input type="file" name="profile_pic" id="profile_pic" class="form-control form-input form-style-base1" ng-model="profile_pic" accept="image/*" onchange="angular.element(this).scope().upload_profile_pic(this)" ng-required="true">
+                  </div>
+                </div>
     
         </div>    
          <br>
-    	<div class="well col-lg-8" style="background-color:#F7F7F7">
-		<hr>
+      <div class="well col-lg-8" style="background-color:#F7F7F7">
+    <hr>
                
                       <div class="form-group">
                           
                           <div class="col-lg-4">
                               <label for="name"><h4>Name</h4></label>
-                              <input type="text" class="form-control">
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                              <input type="text" class="form-control" ng-model="user.name" ng-required="true" name="name" id="name">
                           </div>
+                        </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-lg-4">
                             <label for="email"><h4>Email</h4></label>
-                              <input type="text" class="form-control">
+                             <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                              <input type="text" class="form-control" ng-model="user.email" readonly="true">
                           </div>
+                        </div>
                       </div>
-					  
-					  <div class="form-group">
+            
+            <div class="form-group">
                           
                           <div class="col-lg-4">
                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control">
+                             <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                              <input type="text" class="form-control" ng-model="user.mobile" readonly="true">
                           </div>
                       </div>
-
-						
+                    </div>
+            
                        <div class="form-group">
                           
                           <div class="col-lg-5">
                               <label for="aadhar"><h4>Aadhar Number</h4></label><span class="required">&nbsp;*</span>
-                              <input type="text" class="form-control" placeholder="Enter Aadhar Number">
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                              <input type="text" class="form-control" placeholder="Enter Aadhar Number" ng-required="true" ng-model="user.aadhar_number" name="aadhar_number" id="aadhar_number">
                           </div>
                       </div>
-					  
-                      <div class="col-sm-3">
-<br>
-					  <br>
+                    </div>
             
-                <div class="thumbnail">
-                   <img src="http://placehold.it/230x240" alt="">
-                </div>
+                      <div class="col-sm-3">
 
-               <input type="file" id="main-input" class="form-control form-input form-style-base">
-                     <button class="btn btn-primary">Upload Aadhar Card</button>
+             <label for="aadharcopy"><h4>Aadhar Copy</h4></label></label><span class="required">&nbsp;*</span>
+              <br>
+                <div class="thumbnail">
+                   <img src="images/id_image.png" alt="" id="aadhar_output" >
+                </div>
+                <div class="form-group">
+                <div class="input-group">
+               <input type="file" name="aadhar_copy" id="aadhar_copy" class="form-control form-input form-style-base" accept="image/*"  ng-model="aadhar_copy" onchange="angular.element(this).scope().upload_aadhar_copy(this)" ng-required="true">
+                </div></div>
     
         </div>
-						   <div class="form-group">
-                          
-                          <div class="col-lg-5">
-                              <label for="License"><h4>Driving License Number</h4></label><span class="required">&nbsp;*</span>
-                              <input type="text" class="form-control" placeholder="Enter License Number">
+               
+                     
+    <div class="form-group">
+    <div class="col-lg-5">
+                              <label for="PAN"><h4>Driving License Number</h4></label><span class="required">&nbsp;*</span>
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                              <input type="text" class="form-control" placeholder="Enter License Number" ng-required="true" ng-model="user.driving_license_number" name="driving_license_number" id="driving_license_number">
                           </div>
                       </div>
-					  
-                      <div class="col-sm-3">
-<br>
-					  <br>
+                    </div>
             
-                <div class="thumbnail">
-                   <img src="http://placehold.it/230x240" alt="">
+                      <div class="col-sm-3">
+<label for="aadharcopy"><h4>Licence Copy</h4></label></label><span class="required">&nbsp;*</span>
+              <br>
+            
+            <div class="thumbnail">
+                   <img src="images/id_image.png" alt="" id="license_output" >
                 </div>
-
-               <input type="file" id="main-input" class="form-cotrol form-input form-style-base">
-                     <button class="btn btn-primary">Upload License Copy</button>
-    
-        </div> 
-		
-		</div>
+            <div class="form-group">
+            <div class="input-group">
+               <input type="file" name="driving_license_copy" id="driving_license_copy" class="form-control form-input form-style-base" accept="image/*"  ng-model="driving_license_copy" onchange="angular.element(this).scope().upload_license_copy(this)" ng-required="true">
+            </div>
+            </div>
+        </div>
+        </div>
                       <div class="form-group">
                            <div class="col-lg-12 col-lg-offset-4">
                                 <br>
-								<br>
-								<br>
-                              	<button class="btn  btn-success" type="update">Update Email/Mobile</button>
-                               	<button class="btn btn-info" type="submit">Submit</button>
+                <br>
+                <br>
+                                <button class="btn  btn-info"><i class="fa fa-plus-square-o"></i>&nbsp;Update Email/Mobile</button>
+                                <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Submit</button>
                             </div>
-							</div>
-         
-		  </div>
-		  </div>
-                                                      
+              </div>
+      </div>
+      </div>
+</form>                                                      
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {        
+            
+            
+           
+            $('#profile_form').bootstrapValidator({
+            excluded: [':disabled', ':hidden', ':not(:visible)'],
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'profile_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Name'
+                        }
+                    }
+                },
+                profile_pic: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+               
+            driving_license_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter License Number'
+                        },
+                        
+                    }
+                },
+                aadhar_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Aadhar Number'
+                        },
 
+                    }
+                },
+                  aadhar_copy : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+                driving_license_copy : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
+                    }
+                },
+
+            
+        }
+    });
+});
+        </script>
