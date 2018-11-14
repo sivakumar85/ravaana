@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2018 at 02:22 PM
+-- Generation Time: Nov 14, 2018 at 02:39 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -40,24 +40,6 @@ CREATE TABLE `branches_list` (
   `modified_by` int(11) DEFAULT NULL,
   `modified_date` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `branches_list`
---
-
-INSERT INTO `branches_list` (`id`, `uid`, `name`, `type`, `address`, `active`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
-(1, 0, 'Ravaana India Pvt Ltd.', 'Company', '#201, 2nd floor, Survey No. 429, NH-65, Hyderabad, India-502032 \r\nPhone:91+9666569885', 1, 2, '2018-10-24 11:28:45', 2, '2018-11-03 10:35:12'),
-(2, 0, 'KAKINADA PORT', 'Branch', 'Office no:12 TTT plaza 2 nd floor kakinada port east godavari (dt) (ap) india', 1, 2, '2018-10-24 11:29:15', 2, '2018-11-03 09:24:13'),
-(4, 0, 't26 Limited', 'Company', 'Btm, Bangalore', 1, NULL, '2018-10-26 13:33:18', NULL, NULL),
-(5, 0, 't26_1 limited', 'Company', 'KR Puram,\nBangalore.', 1, NULL, '2018-10-26 13:40:24', NULL, NULL),
-(6, 0, 'xvxvcxvcxvc', 'Company', 'xvcxvcxvcx', 1, 10, '2018-10-28 11:34:00', NULL, NULL),
-(7, 0, 'xvxvcxvcxvc', 'Company', 'xvcxvcxvcx', 1, 10, '2018-10-28 11:34:00', NULL, NULL),
-(8, 0, 'dsfdsf', 'Company', 'fdsfds', 1, 12, '2018-10-28 11:57:46', NULL, NULL),
-(9, 0, 'dsfdsf', 'Company', 'fdsfds', 1, 12, '2018-10-28 11:57:46', NULL, NULL),
-(10, 0, 'xcvccxvcxv', 'Company', 'cxvcxvcv', 1, 13, '2018-10-28 12:11:10', NULL, NULL),
-(11, 0, 'xcvccxvcxv', 'Company', 'cxvcxvcv', 1, 13, '2018-10-28 12:11:10', NULL, NULL),
-(12, 0, 'transport29', 'Company', 'No.100,Jaibheemanagar,\nBTM 1st stage,\nBangalore-560068', 1, 14, '2018-10-29 10:54:06', NULL, NULL),
-(13, 0, 'Teja', 'Company', 'Btm,Bangalore', 1, 15, '2018-10-30 05:59:39', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -221,7 +203,11 @@ INSERT INTO `user` (`uid`, `business_type`, `name`, `email`, `mobile`, `password
 (12, 'TransportCompany', 'csdcd', 'csac@emaik.com', '8907654321', '123456', 1234, 1, 0, 1, 'dsfdsf', NULL, '2018-10-28 11:57:46', NULL, NULL, NULL),
 (13, 'TransportCompany', 'dsfdsf', 'dsfd@sf.in', '7689012345', '123456', 1234, 1, 0, 1, 'xcvccxvcxv', NULL, '2018-10-28 12:11:10', NULL, NULL, NULL),
 (14, 'TransportCompany', 'transport29', 'transport29@ravaana.in', '9874561231', '123456', 1234, 1, 1, 1, 'transport29', NULL, '2018-10-29 12:07:35', NULL, NULL, NULL),
-(15, 'TransportCompany', 'Teja', 'teja@gmail.com', '9876543210', '123456', 1234, 1, 1, 1, 'Teja', NULL, '2018-10-30 06:01:16', NULL, NULL, NULL);
+(15, 'TransportCompany', 'Teja', 'teja@gmail.com', '9876543210', '123456', 1234, 1, 1, 1, 'Teja', NULL, '2018-10-30 06:01:16', NULL, NULL, NULL),
+(16, 'TransportCompany', 't7Nov', 't7nov@r.in', '9087654321', '123456', 1234, 1, 1, 1, 't7nov', NULL, '2018-11-07 15:18:01', NULL, NULL, NULL),
+(17, 'TransportCompany', 't7nov1', 't7nov1@r.in', '9807654322', '123456', 1234, 1, 1, 1, 'tnov71', NULL, '2018-11-07 14:59:26', NULL, NULL, NULL),
+(18, 'TransportCompany', 'tnov8', 'tnov8@r.in', '8907654231', '123456', 1234, 1, 1, 1, 'tnov8', NULL, '2018-11-08 10:43:57', NULL, NULL, NULL),
+(19, 'TransportCompany', 'tnov8', 't8nov@r.in', '8765432190', '123456', 1234, 1, 1, 1, 't8nov', NULL, '2018-11-08 11:11:33', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -232,7 +218,7 @@ INSERT INTO `user` (`uid`, `business_type`, `name`, `email`, `mobile`, `password
 CREATE TABLE `user_profile` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `aadhar_number` int(20) DEFAULT NULL,
+  `aadhar_number` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `panCard_number` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `company_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `aadhar_copy` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -240,6 +226,8 @@ CREATE TABLE `user_profile` (
   `company_panCard` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `company_address` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `profile_pic` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `driving_license_number` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `driving_license_copy` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_date` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
@@ -250,12 +238,16 @@ CREATE TABLE `user_profile` (
 -- Dumping data for table `user_profile`
 --
 
-INSERT INTO `user_profile` (`id`, `uid`, `aadhar_number`, `panCard_number`, `company_name`, `aadhar_copy`, `company_certificate`, `company_panCard`, `company_address`, `profile_pic`, `created_date`, `modified_date`, `created_by`, `modified_by`) VALUES
-(4, 2, 353252, 'sfsaf', 'safsaf', '1540140614211020182.JPG', '1540140614211020183.JPG', '1540140614211020184.JPG', NULL, '1540140614211020181.jpg', '2018-10-21 16:50:14', NULL, NULL, NULL),
-(5, 6, 789456123, '454', '484', '1540561561261020182.JPG', '1540561561261020183.JPG', '1540561561261020184.JPG', NULL, '1540561561261020181.jpg', '2018-10-26 13:46:01', NULL, NULL, NULL),
-(6, 2, 0, 'safsaf', 'sadsad', '1540783857291020182.jpg', '1540783857291020183.JPG', '1540783857291020184.JPG', NULL, '1540783857291020181.JPG', '2018-10-29 03:30:57', NULL, NULL, NULL),
-(7, 14, 46554654, '55754', 'gfgfd', '1540814855291020182.jpeg', '1540814855291020183.jpeg', '1540814855291020184.JPG', NULL, '1540814855291020181.JPG', '2018-10-29 12:07:35', NULL, NULL, NULL),
-(8, 15, 2147483647, '4534563463', 'sdfdsgfds', '1540879276301020182.jpg', '1540879276301020183.jpg', '1540879276301020184.jpg', NULL, '1540879276301020181.jpg', '2018-10-30 06:01:16', NULL, NULL, NULL);
+INSERT INTO `user_profile` (`id`, `uid`, `aadhar_number`, `panCard_number`, `company_name`, `aadhar_copy`, `company_certificate`, `company_panCard`, `company_address`, `profile_pic`, `driving_license_number`, `driving_license_copy`, `created_date`, `modified_date`, `created_by`, `modified_by`) VALUES
+(4, 2, '353252', 'sfsaf', 'safsaf', '1540140614211020182.JPG', '1540140614211020183.JPG', '1540140614211020184.JPG', NULL, '1540140614211020181.jpg', NULL, NULL, '2018-10-21 16:50:14', NULL, NULL, NULL),
+(5, 6, '789456123', '454', '484', '1540561561261020182.JPG', '1540561561261020183.JPG', '1540561561261020184.JPG', NULL, '1540561561261020181.jpg', NULL, NULL, '2018-10-26 13:46:01', NULL, NULL, NULL),
+(6, 2, '0', 'safsaf', 'sadsad', '1540783857291020182.jpg', '1540783857291020183.JPG', '1540783857291020184.JPG', NULL, '1540783857291020181.JPG', NULL, NULL, '2018-10-29 03:30:57', NULL, NULL, NULL),
+(7, 14, '46554654', '55754', 'gfgfd', '1540814855291020182.jpeg', '1540814855291020183.jpeg', '1540814855291020184.JPG', NULL, '1540814855291020181.JPG', NULL, NULL, '2018-10-29 12:07:35', NULL, NULL, NULL),
+(8, 15, '2147483647', '4534563463', 'sdfdsgfds', '1540879276301020182.jpg', '1540879276301020183.jpg', '1540879276301020184.jpg', NULL, '1540879276301020181.jpg', NULL, NULL, '2018-10-30 06:01:16', NULL, NULL, NULL),
+(9, 17, '436436', '4364', 'dsfds', '1541602766071120182.jpg', '1541602766071120183.jpg', '1541602766071120184.jpg', NULL, '1541602766071120181.jpg', NULL, NULL, '2018-11-07 14:59:26', NULL, NULL, NULL),
+(11, 16, '436543643', 'dsfdsf', 'dsfds', '1541603881071120182.jpg', '1541603881071120183.jpg', '1541603881071120184.jpg', NULL, '1541603881071120181.jpg', NULL, NULL, '2018-11-07 15:18:01', NULL, NULL, NULL),
+(13, 18, '556', '456456456', 'dgfdsg', '1541673837081120182.jpg', '1541673837081120183.jpg', '1541673837081120184.jpg', NULL, '1541673837081120181.jpg', NULL, NULL, '2018-11-08 10:43:57', NULL, NULL, NULL),
+(14, 3, 'gfdg', NULL, NULL, '1542196689141120183.dib', NULL, NULL, NULL, '1542196689141120181.jpg', 'dgsdfg', '1542196689141120182.png', '2018-11-14 11:58:09', NULL, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,8 +336,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_profile`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `aadhar_number` (`aadhar_number`),
-  ADD UNIQUE KEY `panCard_number` (`panCard_number`),
   ADD KEY `uid` (`uid`);
 
 --
@@ -362,7 +352,7 @@ ALTER TABLE `vehicle_type`
 -- AUTO_INCREMENT for table `branches_list`
 --
 ALTER TABLE `branches_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `drivers_list`
@@ -374,7 +364,7 @@ ALTER TABLE `drivers_list`
 -- AUTO_INCREMENT for table `load_postings`
 --
 ALTER TABLE `load_postings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `load_type`
@@ -386,19 +376,19 @@ ALTER TABLE `load_type`
 -- AUTO_INCREMENT for table `trucks_list`
 --
 ALTER TABLE `trucks_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `vehicle_type`
