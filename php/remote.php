@@ -6,14 +6,17 @@ if(isset($_POST['emailId'])){
 if(isset($_POST['mobile'])){
 	$query = "SELECT uid FROM user  WHERE mobile = '".$_POST['mobile']."' ";
 }
+if(isset($_POST['user_current_password'])){
+	$query = "SELECT uid FROM user  WHERE password = '".$_POST['user_current_password']."' ";
+}
  $sResult = $conn->query($query);
 
 	if ($sResult->num_rows == 0) {
-		$json['valid'] = true;
+		$json['valid'] = isset($_POST['user_current_password']) ? false : true;
 	}
 	else
 	{
-	    $json['valid'] = false;
+	    $json['valid'] = isset($_POST['user_current_password']) ? true : false;
 	}
 
 echo json_encode($json);

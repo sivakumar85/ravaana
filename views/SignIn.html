@@ -34,6 +34,11 @@ font-size:14px;
                             <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
                             {{ errorMsg }}
                         </div>
+                        <div class="alert alert-success"  ng-show="regMsg">
+                           <span class="glyphicon glyphicon-ok"></span>                          
+                            <span id="getCode" style="font-weight: bold">
+                                Sucessfully registered Please Continue Login..</span>
+                        </div>
                             </div>
                              <div class="panel-body" style="margin:10px">
                               <form role="form" name="logform" id="logform" ng-submit="logform.$valid && login($event)" novalidate="true" autocomplete="off">

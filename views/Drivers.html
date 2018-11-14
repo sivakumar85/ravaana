@@ -59,7 +59,7 @@
                             <thead>
                                 <tr>
                                    
-                                    <th style="width:150px">Actions</th>
+                                    <th style="width:15%">Actions</th>
                                     <th>Profile</th>
                                     <th><a>Name</a></th>
                                     <th><a>Age</a></th>
@@ -75,7 +75,11 @@
                                     <td align="center">
                                         <a href="#AddDriver/{{driver.id}}" class="btn btn-success"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger" ng-click="deleteDriver(driver.id)"><em class="fa fa-trash"></em></a>
-                                        <input type="checkbox" id="cboxStatus" ng-change="updateDriverStatus(driver);" ng-model="driver.active">
+                                        
+                                         <label class="switch">
+                                         <input type="checkbox" id="cboxStatus" ng-change="updateDriverStatus(driver);" ng-model="driver.active">
+                                        <span class="slider round"></span>
+                                      </label>
                                         <a>{{driver.active?'Active':'Inactive'}}</a>
                                     </td>
 

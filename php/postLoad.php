@@ -146,6 +146,10 @@ if(isset($available_date_from) && $available_date_from!=null){
  } else{
  	$available_date_to = null;
  }
+ if($available_daily) {
+ 	$available_date_from = null;
+ 	$available_date_to = null;
+ }
 if(isset($form_data->id)){
 	$id = $form_data->id;
 	$query = "UPDATE load_postings 
