@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2018 at 02:39 PM
+-- Generation Time: Nov 16, 2018 at 02:45 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -187,28 +187,6 @@ CREATE TABLE `user` (
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`uid`, `business_type`, `name`, `email`, `mobile`, `password`, `verification_code`, `active`, `profile_complete`, `verified`, `company_name`, `company_address`, `created_date`, `modified_date`, `created_by`, `modified_by`) VALUES
-(1, 'Admin', 'Siva', 'sivame85@gmail.com', '8147595223', '123456', 1234, 1, 1, 1, NULL, NULL, '2018-10-11 10:08:19', NULL, NULL, NULL),
-(2, 'TransportCompany', 'Siva Transport', 'transport@ravaana.in', '9874561230', '123456', 1, 1, 1, 1, NULL, NULL, '2018-10-21 16:50:14', NULL, NULL, NULL),
-(3, 'TruckOwner', 'Truck Owner', 'truck@ravaana.in', '7894561230', '123456', 1, 1, 0, 1, NULL, NULL, '2018-10-17 09:43:52', NULL, NULL, NULL),
-(5, 'TransportCompany', 'transport26', 't26@ravaana.in', '9874561230', '123456', 1234, 1, 0, 1, 't26 Limited', NULL, '2018-10-26 13:33:18', NULL, NULL, NULL),
-(6, 'TransportCompany', 'transport26_1', 't26_1@ravaana.in', '9865471230', '123456', 1234, 1, 1, 1, 't26_1 limited', NULL, '2018-10-26 13:46:01', NULL, NULL, NULL),
-(9, 'TransportCompany', 'safsa', 'safsa@in.in', '9786543210', '123456', 1234, 1, 0, 0, NULL, NULL, '2018-10-28 11:25:25', NULL, NULL, NULL),
-(10, 'TransportCompany', 'fkjsa', 'jkhkj@kjk.in', '9231456780', '123456', 1234, 1, 0, 1, 'xvxvcxvcxvc', NULL, '2018-10-28 11:34:00', NULL, NULL, NULL),
-(11, 'TransportCompany', 'sdfdsfdsfd', 'dfd@aa.com', '9807654321', '123456', 1234, 1, 0, 0, NULL, NULL, '2018-10-28 11:39:24', NULL, NULL, NULL),
-(12, 'TransportCompany', 'csdcd', 'csac@emaik.com', '8907654321', '123456', 1234, 1, 0, 1, 'dsfdsf', NULL, '2018-10-28 11:57:46', NULL, NULL, NULL),
-(13, 'TransportCompany', 'dsfdsf', 'dsfd@sf.in', '7689012345', '123456', 1234, 1, 0, 1, 'xcvccxvcxv', NULL, '2018-10-28 12:11:10', NULL, NULL, NULL),
-(14, 'TransportCompany', 'transport29', 'transport29@ravaana.in', '9874561231', '123456', 1234, 1, 1, 1, 'transport29', NULL, '2018-10-29 12:07:35', NULL, NULL, NULL),
-(15, 'TransportCompany', 'Teja', 'teja@gmail.com', '9876543210', '123456', 1234, 1, 1, 1, 'Teja', NULL, '2018-10-30 06:01:16', NULL, NULL, NULL),
-(16, 'TransportCompany', 't7Nov', 't7nov@r.in', '9087654321', '123456', 1234, 1, 1, 1, 't7nov', NULL, '2018-11-07 15:18:01', NULL, NULL, NULL),
-(17, 'TransportCompany', 't7nov1', 't7nov1@r.in', '9807654322', '123456', 1234, 1, 1, 1, 'tnov71', NULL, '2018-11-07 14:59:26', NULL, NULL, NULL),
-(18, 'TransportCompany', 'tnov8', 'tnov8@r.in', '8907654231', '123456', 1234, 1, 1, 1, 'tnov8', NULL, '2018-11-08 10:43:57', NULL, NULL, NULL),
-(19, 'TransportCompany', 'tnov8', 't8nov@r.in', '8765432190', '123456', 1234, 1, 1, 1, 't8nov', NULL, '2018-11-08 11:11:33', NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -233,21 +211,6 @@ CREATE TABLE `user_profile` (
   `created_by` int(11) DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `user_profile`
---
-
-INSERT INTO `user_profile` (`id`, `uid`, `aadhar_number`, `panCard_number`, `company_name`, `aadhar_copy`, `company_certificate`, `company_panCard`, `company_address`, `profile_pic`, `driving_license_number`, `driving_license_copy`, `created_date`, `modified_date`, `created_by`, `modified_by`) VALUES
-(4, 2, '353252', 'sfsaf', 'safsaf', '1540140614211020182.JPG', '1540140614211020183.JPG', '1540140614211020184.JPG', NULL, '1540140614211020181.jpg', NULL, NULL, '2018-10-21 16:50:14', NULL, NULL, NULL),
-(5, 6, '789456123', '454', '484', '1540561561261020182.JPG', '1540561561261020183.JPG', '1540561561261020184.JPG', NULL, '1540561561261020181.jpg', NULL, NULL, '2018-10-26 13:46:01', NULL, NULL, NULL),
-(6, 2, '0', 'safsaf', 'sadsad', '1540783857291020182.jpg', '1540783857291020183.JPG', '1540783857291020184.JPG', NULL, '1540783857291020181.JPG', NULL, NULL, '2018-10-29 03:30:57', NULL, NULL, NULL),
-(7, 14, '46554654', '55754', 'gfgfd', '1540814855291020182.jpeg', '1540814855291020183.jpeg', '1540814855291020184.JPG', NULL, '1540814855291020181.JPG', NULL, NULL, '2018-10-29 12:07:35', NULL, NULL, NULL),
-(8, 15, '2147483647', '4534563463', 'sdfdsgfds', '1540879276301020182.jpg', '1540879276301020183.jpg', '1540879276301020184.jpg', NULL, '1540879276301020181.jpg', NULL, NULL, '2018-10-30 06:01:16', NULL, NULL, NULL),
-(9, 17, '436436', '4364', 'dsfds', '1541602766071120182.jpg', '1541602766071120183.jpg', '1541602766071120184.jpg', NULL, '1541602766071120181.jpg', NULL, NULL, '2018-11-07 14:59:26', NULL, NULL, NULL),
-(11, 16, '436543643', 'dsfdsf', 'dsfds', '1541603881071120182.jpg', '1541603881071120183.jpg', '1541603881071120184.jpg', NULL, '1541603881071120181.jpg', NULL, NULL, '2018-11-07 15:18:01', NULL, NULL, NULL),
-(13, 18, '556', '456456456', 'dgfdsg', '1541673837081120182.jpg', '1541673837081120183.jpg', '1541673837081120184.jpg', NULL, '1541673837081120181.jpg', NULL, NULL, '2018-11-08 10:43:57', NULL, NULL, NULL),
-(14, 3, 'gfdg', NULL, NULL, '1542196689141120183.dib', NULL, NULL, NULL, '1542196689141120181.jpg', 'dgsdfg', '1542196689141120182.png', '2018-11-14 11:58:09', NULL, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -352,7 +315,7 @@ ALTER TABLE `vehicle_type`
 -- AUTO_INCREMENT for table `branches_list`
 --
 ALTER TABLE `branches_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `drivers_list`
@@ -376,19 +339,19 @@ ALTER TABLE `load_type`
 -- AUTO_INCREMENT for table `trucks_list`
 --
 ALTER TABLE `trucks_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `vehicle_type`
