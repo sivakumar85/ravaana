@@ -11,7 +11,7 @@ app.controller('userCtrl', ['$scope','$rootScope','$http', 'loginService', funct
         });
 
         $scope.userProfileMethod = function() {
-            var userrequest = $http.get('php/fetchUserProfile.php');
+            var userrequest = $http.get('php/profileCtrl.php?action=fetchProfile');
 			userrequest.then(function(response){
 			$scope.userProfile = response.data[0];
 			if(!angular.isUndefined($scope.userProfile.profile_pic)){

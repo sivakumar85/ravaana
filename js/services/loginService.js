@@ -22,7 +22,7 @@ app.factory('loginService', function($http, $q, $location, sessionService){
 						}
 					} else if (business_type == 'TruckOwner') {
 						if(profile_complete == 1) { 
-							window.location.href = 'userHome.php#/Trucks';
+							window.location.href = 'userHome.php#/TruckBooking';
 						} else {
 							window.location.href = 'userHome.php#/TruckOwnerDocuments';
 						}
