@@ -9,7 +9,8 @@ body{
 	background-color:white; 
 }
 </style>
-<form class="form-horizontal" id="update_form" method="post" role="form" novalidate="novalidate">
+
+<form class="form-horizontal" id="update_form" name="update_form" ng-submit="update_form.$valid && updateLoginDetails($event)" novalidate="novalidate" autocomplete="off">
 <div class="container">
 	<div class="row">
 	<div class="col-lg-12">
@@ -30,7 +31,7 @@ body{
             <div class="col-md-4">
                 <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input class="form-control" id="update_email" maxlength="50" name="update_email" ng-model="update.update_email"  ng-required="true"  type="email" placeholder="Enter Email" ></div>
+                <input class="form-control" id="update_email" maxlength="50" name="update_email" ng-model="user.update_email"  ng-required="true"  type="email" placeholder="Enter Email" ></div>
             </div>
         </div>
         <div class="form-group">
@@ -38,7 +39,7 @@ body{
             <div class="col-md-4">
                 <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-                <input class="form-control" id="update_mobile" maxlength="50" name="update_mobile" ng-model="update.update_mobile"  ng-required="true"  type="text" placeholder="Enter Mobile Number" ></div>
+                <input class="form-control" id="update_mobile" maxlength="50" name="update_mobile" ng-model="user.update_mobile"  ng-required="true"  type="text" placeholder="Enter Mobile Number" ></div>
             </div>
         </div>
 			<div class="form-group">
@@ -46,10 +47,10 @@ body{
 				<div class="col-lg-3">
 				</div>
 				<div class="col-lg-2">
-				<button class="btn btn-info form-control">Send OTP</button>
+				<button class="btn btn-info" type="submit">Send OTP</button>
 				</div>
 				<div class="col-lg-2">
-				<input type="text" class="form-control" placeholder="Enter OTP" name="update_otp" ng-model="update.update_otp" id="update_otp">
+				<input type="text" class="form-control" placeholder="Enter OTP" name="update_otp" ng-model="user.update_otp" id="update_otp" ng-required="!sendOTP">
 				</div>
 				<br>
 				<br>
@@ -58,12 +59,11 @@ body{
 			<div class="col-lg-10">
 				<div class="col-lg-4">
 				</div>
-				<div class="col-lg-2">
-				<button class="btn btn-success form-control"><i class="fa fa-floppy-o"></i> &nbsp;Submit</button>
+				<div class="col-lg-4">
+				<button class="btn btn-success" ng-show="!sendOTP" type="submit"><i class="fa fa-floppy-o"></i> &nbsp;Submit</button>
+				<button class="btn btn-danger" ng-show="!sendOTP"><i class="fa fa-times"></i> &nbsp;Cancel</button>
 				</div>
-				<div class="col-lg-2">
-				<button class="btn btn-danger form-control"><i class="fa fa-times"></i> &nbsp;Cancel</button>
-				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -100,13 +100,13 @@ body{
                         }
                     }
                 },
-                update_otp: {
+               /* update_otp: {
                     validators: {
                         notEmpty: {
                             message: 'Enter OTP'
                         }
                     }
-                },
+                },*/
 				update_mobile: {
 		            validators: {
 						regexp: {
@@ -119,10 +119,10 @@ body{
 		                digits: {
 		                    message: 'Mobile Number can contain only digits'
 		                },
-						remote: {
+						/*remote: {
 		                    url: 'php/remote.php',
 		                    message: 'Mobile Number already Exists!'
-		                },
+		                },*/
 		            }
             },
             

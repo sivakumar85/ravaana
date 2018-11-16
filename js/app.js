@@ -73,9 +73,12 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/Transporters.html',
 	}).when('/UpdateLoginDetails', {
 		templateUrl: 'views/UpdateLoginDetails.html',
+		controller: 'profileCtrl'
 	})
 	.when('/ChangePassword', {
 		templateUrl: 'views/ChangePassword.html',
+		controller: 'profileCtrl'
+
 	}).when('/RolesList', {
 		templateUrl: 'views/RolesList.html',
 	}).when('/NewRole', {
@@ -160,9 +163,9 @@ app.config(function($routeProvider) {
 	}).when('/PostingLoads/:id?', {
 		templateUrl: 'views/PostingLoads.html',
 		controller: 'PostingLoadsCtrl'
-	}).when('/TruckOwnerProfile', {
+	}).when('/TruckOwnerProfile/:pSucess?', {
 		templateUrl: 'views/TruckOwnerProfile.html',
-		controller: 'trucksCtrl'
+		controller: 'profileCtrl'
 	}).when('/PastLoads', {
 		templateUrl: 'views/PastLoads.html',
 		controller: 'MyLoadsCtrl'
@@ -198,11 +201,11 @@ app.config(function($routeProvider) {
 		controller: 'trucksCtrl'
 	}).when('/TransporterDocuments', {
 		templateUrl: 'views/TransporterDocuments.html',
-		controller: 'TransportCompanyProfileCtrl'
+		controller: 'profileCtrl'
 		
 	}).when('/TruckOwnerDocuments', {
 		templateUrl: 'views/TruckOwnerDocuments.html',
-		controller: 'trucksCtrl'
+		controller: 'profileCtrl'
 		
 	}).otherwise({
         templateUrl: 'views/404.html',
