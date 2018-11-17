@@ -23,7 +23,10 @@ app.controller('profileCtrl', ['$scope','$rootScope','$routeParams','$http','$lo
 		userrequest.then(function(response){
 			$scope.user = response.data[0];
 		});
-		
+		var branch_request = $http.get('php/branchList.php');;
+		branch_request.then(function(response){
+			$scope.branches = response.data;
+		});
 	}
 	$scope.changePassword = function($event) {
 	  	$event.preventDefault();
@@ -206,7 +209,7 @@ app.controller('profileCtrl', ['$scope','$rootScope','$routeParams','$http','$lo
 						formData.append("company_certificate", $scope.company_certificate);
 					}
 					
-
+				 console.log(formData);
 			      return formData;
 			      
 			  },  
