@@ -154,7 +154,7 @@ app.config(function($routeProvider) {
 		controller: 'loginCtrl'
 	}).when('/TransportCompanyProfile/:pSucess?', {
 		templateUrl: 'views/TransportCompanyProfile.html',
-		controller: 'TransportCompanyProfileCtrl'
+		controller: 'profileCtrl'
 	}).when('/TransporterDocument', {
 		templateUrl: 'views/TransporterDocument.html',
 	}).when('/MyLoads', {
