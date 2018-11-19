@@ -43,10 +43,10 @@ app.directive('loading',   ['$http' ,function ($http)
 app.config(function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'views/Home.html',
-		controller: 'homectrl'
+		controller: 'searchCtrl'
 	}).when('/Home', {
 		templateUrl: 'views/Home.html',
-		controller: 'homectrl'
+		controller: 'searchCtrl'
 	}).when('/RoadRavaana', {
 		templateUrl: 'views/RoadRavaana.html',
 	}).when('/TrainRavaana', {

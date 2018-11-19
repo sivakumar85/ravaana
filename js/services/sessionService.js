@@ -9,7 +9,7 @@ app.factory('sessionService', ['$http', function($http){
 			return sessionStorage.getItem(key);
 		},
 		destroy: function(key){
-			$http.post('php/logout.php');
+			//$http.post('php/logout.php');
 			return sessionStorage.removeItem(key);
 		}
 	};

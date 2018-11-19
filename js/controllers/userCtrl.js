@@ -25,7 +25,6 @@ app.controller('userCtrl', ['$scope','$rootScope','$http', 'loginService', funct
 	$scope.userProfileMethod();
 	
 	
-	
 
 }]);
 
