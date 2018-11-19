@@ -136,6 +136,7 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
     $scope.files=[];
     $scope.editLicence = false;
     $scope.editPhoto = false;
+    $scope.editAadhar = false;
     $scope.edit = false;
 	$scope.displayDriversList = function(){
 	var driversList_request = $http.get('php/driversCtrl.php?action=getDriversList');
@@ -203,6 +204,7 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 			$scope.driver = response.data[0];
 			$scope.editLicence = true;
     		$scope.editPhoto = true;
+    		$scope.editAadhar = true;
     		 $scope.edit = true;
 		});
 			
@@ -223,6 +225,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		if(!angular.isUndefined($scope.files2)){
 			$scope.image2=$scope.files2[0];
 		}
+		if(!angular.isUndefined($scope.files3)){
+			$scope.image3=$scope.files3[0];
+		}
 			
 			
 			
@@ -240,6 +245,9 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 					}
 					if(!angular.isUndefined($scope.image2)){
 						formData.append("image2", $scope.image2);
+					}
+					if(!angular.isUndefined($scope.image3)){
+						formData.append("image3", $scope.image3);
 					}
 					
 					
@@ -294,6 +302,22 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		      $scope.image_source = event.target.result
 		      $scope.$apply(function($scope) {
 		        $scope.files2 = element.files;
+		      });
+		    }
+                    reader.readAsDataURL(element.files[0]);
+		  }
+		  $scope.uploadedFile3=function(element)
+			{
+				$scope.currentFile3 = element.files[0];
+		    var reader = new FileReader();
+
+		    reader.onload = function(event) {
+		    	//var output1 = document.getElementById('output1');
+    			//output1.src = URL.createObjectURL(element.files[0]);
+    			//output1.style.display = 'block';
+		      $scope.image_source = event.target.result
+		      $scope.$apply(function($scope) {
+		        $scope.files3 = element.files;
 		      });
 		    }
                     reader.readAsDataURL(element.files[0]);

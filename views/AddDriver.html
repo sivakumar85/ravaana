@@ -49,7 +49,7 @@
             <div class="col-md-4">
                  <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
-                <input class="form-control" maxlength="3" name="driver_age" id="driver_age" placeholder="Age" ng-model="driver.driver_age" style="width:100px" type="text">
+                <input class="form-control" maxlength="3" name="driver_age" id="driver_age" placeholder="Age" ng-model="driver.driver_age" style="width:100px" type="text" ng-required="true">
             </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="col-md-4">
                  <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
-                <input class="form-control" id="driver_license_number" placeholder="Enter License Number" maxlength="50" name="driver_license_number" ng-model="driver.driver_license_number" type="text" value="">
+                <input class="form-control" id="driver_license_number" placeholder="Enter License Number" maxlength="50" name="driver_license_number" ng-model="driver.driver_license_number" type="text" ng-required="true">
             </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
             <div class="col-md-4">
                  <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
-                <input class="form-control" id="driver_aadhar_number" placeholder="Enter License Number" maxlength="50" name="driver_aadhar_number" ng-model="driver.driver_aadhar_number" type="text" value="">
+                <input class="form-control" id="driver_aadhar_number" placeholder="Enter Aadhar Number" maxlength="50" name="driver_aadhar_number" ng-model="driver.driver_aadhar_number" type="text" ng-required="true">
             </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
             <div class="col-md-4">
                 <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-                <input class="form-control" id="driver_mobile" maxlength="50" name="driver_mobile" ng-model="driver.driver_mobile" type="text" placeholder="Enter Mobile Number">
+                <input class="form-control" id="driver_mobile" maxlength="50" name="driver_mobile" ng-model="driver.driver_mobile" type="text" placeholder="Enter Mobile Number" ng-required="true">
             </div>
         </div>
         </div>
@@ -105,14 +105,16 @@
             </div>
 
             </div>
-             <div class="form-group">
-            <label class="col-md-3 control-label" for="dphoto" style="color:black"><span class="required">*</span>&nbsp;Aadhar Copy</label>
+            <div class="form-group">
+            <label class="col-md-3 control-label" for="license" style="color:black"><span class="required">*</span>&nbsp;Aadhar Copy</label>
             <div class="col-md-4">
-                <div class="input-group">
-              <input type="file" class="form-control" accept="image/*" name="driver_aadhar_copy" id="driver_aadhar_copy" ng-model="driver.driver_aadhar_copy">
+                 <div class="input-group">
+              <input type="file" class="form-control" accept="image/*" name="aadhar_copy" id="aadhar_copy" ng-model="image3" onchange="angular.element(this).scope().uploadedFile3(this)" ng-show="!editAadhar"><a ng-click="editAadhar=true" ng-show="!editAadhar&&edit">Cancel</a>
+              <img id="output2" src="php/upload/{{driver.aadhar_copy}}" style="width:200px; height:150px;{{editAadhar?'display:block':'display:none'}}" class="img-responsive" /><a ng-click="editAadhar=false" ng-show="editAadhar">Change</a>
+              
             </div>
             </div>
-            </div>
+        </div>
         <div class="form-group">
             <label class="col-md-3 control-label" for="license" style="color:black"><span class="required">*</span>&nbsp;Driver License</label>
             <div class="col-md-4">
@@ -169,6 +171,13 @@
                         }
                     }
                 },
+                driver_aadhar_number: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Aadhar Number'
+                        }
+                    }
+                },
                 driver_mobile: {
                     validators: {
                         regexp: {
@@ -200,6 +209,18 @@
                             message: 'Enter Address'
                         },
 
+                    }
+                },
+                aadhar_copy : {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select an image'
+                        },
+                        file: {
+                            extension: 'jpeg,jpg,png',
+                            type: 'image/jpeg,image/png',
+                            message: 'The selected file is not valid'
+                        },
                     }
                 },
                   driver_license : {

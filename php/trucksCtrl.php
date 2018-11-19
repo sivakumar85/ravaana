@@ -28,7 +28,9 @@ error_reporting(E_ALL & ~E_NOTICE);
 	function getTrucksList($form_data){  
 	     include('database_connection.php'); 
 	     $output = array();  
-		$sql = "SELECT id, uid, vehicle_registration_no, vehicle_type, truck_capacity, 			truck_rc, truck_insurence, truck_pollution, truck_image, 						truck_fitness_certificate, active, created_by, created_date, modified_by, 		modified_date 
+		$sql = "SELECT id, uid, vehicle_registration_no, vehicle_type, truck_capacity, 			truck_rc, truck_insurence, truck_pollution, truck_image, 
+			driver_aadhar_number,aadhar_copy,truck_fitness_certificate, active, created_by, 
+			created_date, modified_by,modified_date 
 				FROM trucks_list
 				WHERE created_by='".$_SESSION['uid']."'";
 		
@@ -229,7 +231,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 			}
 			if(file_exists($_FILES['truck_fitness_certificate']['tmp_name']) || is_uploaded_file($_FILES['truck_fitness_certificate']['tmp_name'])) {
 		    	$ext5= pathinfo($_FILES['truck_fitness_certificate']['name'],PATHINFO_EXTENSION);			
-				$truck_image = time().date("dmY").'5'.'.'.$ext5;
+				$truck_fitness_certificate = time().date("dmY").'5'.'.'.$ext5;
 			}
 		    
 			
