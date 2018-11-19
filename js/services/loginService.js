@@ -109,13 +109,17 @@ app.factory('loginService', function($http, $q, $location, sessionService){
 
         },
 		logout: function(){
-			sessionService.destroy('user');
+			sessionService.destroy('uid');
+			var logout_request = $http({
+			    url: 'php/logout.php', 
+			    method: "post",
+			 });
+		    logout_request.then(function(response){
 			window.location.href = 'index.php';
+		});
+			
 		},
-		islogged: function(){
-			var checkSession = $http.post('php/session.php');
-			return checkSession;
-		},
+		
 		fetchuser: function(){
 			var user = $http.get('php/fetch.php');
 			return user;

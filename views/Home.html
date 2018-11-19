@@ -148,36 +148,25 @@ a.big-link-1 {
                     <form class=="form-control" role="form">
                       <div class="col-md-2">
                         <div class="form-group">
-                          <label class="sr-only" for="location">Location</label>
-                          <select id="guest" name="guest" class="form-control">
-                             <option value="Load">Load</option>
-							<option value="Vehicle">Truck</option>
+                          <select id="search_type" name="search_type" class="form-control" ng-model="load.search_type">
+                             <option selected="selected" value="load">Load</option>
+							<option value="truck">Truck</option>
                           </select>
                         </div>
                       </div>
-					  <div class="col-md-2">
+					  <div class="col-md-2" ng-if="load.search_type == 'load'">
                         <div class="form-group">
-                          <label class="sr-only" for="location">Location</label>
-                          <select id="guest" name="guest" class="form-control">
-                            <option value="">Any Load</option>
-								<option value="5">Coal</option>
-								<option value="3">Iron ore</option>
-								<option value="4">Fertilizer</option>
-								<option value="1">Cement</option>
-								<option value="6">Iron Steel Metal</option>
-								<option value="2">Rice</option>
-								<option value="7">Wood</option>
-								<option value="13">Steel</option>
-								<option value="12">Grass</option>
-								<option value="11">Electronics</option>
-								<option value="10">Bricks</option>
-								<option value="9">Sand</option>
-								<option value="8">Furniture</option>
-								<option value="14">Scrap Metal</option>
-								<option value="15">Vegetables</option>
-								<option value="16">Fruits</option>
-								<option value="17">Pulses &amp; Cereals</option>
-								<option value="18">Oil</option>
+                          <select id="load" name="load" class="form-control" ng-model="load.load_type">
+                            <option value="">Any Load</option>								
+							<option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>		
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-2" ng-if="load.search_type == 'truck'">
+                        <div class="form-group">
+                          <select id="load" name="load" class="form-control" ng-model="load.truck_type">
+                            <option value="">Any Truck</option>								
+							<option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>		
                           </select>
                         </div>
                       </div>
@@ -197,14 +186,14 @@ a.big-link-1 {
                         <div class="form-group">
                           <label class="sr-only" for="checkin">Check in</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="checkin" placeholder="Date">
+                            <input type="text" class="form-control" id="search_datePicker" placeholder="Date">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                           </div>
                         </div>
                       </div>
                      
                       <div class="col-md-2">
-                        <button type="button" ng-click="go('/Search')" class="btn btn-default btn-success"><i class="fa fa-search" style="font-size: 17px"></i>&nbsp;Search</button>
+                        <button type="button" ng-click="loadSearch();" class="btn btn-default btn-success"><i class="fa fa-search" style="font-size: 17px"></i>&nbsp;Search</button>
                       </div>
                     </form>
 					</div>
@@ -220,13 +209,17 @@ a.big-link-1 {
   				<div class="inner_latest_updates_block" style="background-image:url('images/banner-02.jpg');height: 35px">
 			<div class="container" style="padding-top: 6px">
 				<div class="row">
+					
 					<div class="col-lg-12 col-md-12">
 						<div class="row" style="color:white">
 						<div class="col-lg-2 col-md-2 latest-news pull">Latest Loads  <span>|</span> </div>
-						<div class="col-lg-6 col-md-6 scroll-news">
-						  <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+						<div class="col-lg-8 col-md-8 scroll-news">
+								<div class="example-left">
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Hi <strong>there</strong>. How are you? I hope you are doing <strong>fine!</strong></marquee>
+        </div>
+						  <!--<div class="carousel slide" data-ride="carousel" id="quote-carousel">
 							
-							<!-- Carousel Slides / Quotes -->
+							 Carousel Slides / Quotes 
 							<div class="carousel-inner">								
 							<div class="item">											
 							<div class="row">							
@@ -250,12 +243,9 @@ a.big-link-1 {
 							</div>											
 							</div>											
 														</div>
-						  </div>                          
+						  </div>-->                          
 						</div>
-						<div class="col-lg-4 text-center">
-						<i style="color:#F7F7F7;font-size:20px;border-radius:50%;border:2px solid #F7F7F7;height:25px;width:25px;padding-top:1px" class="fa fa-phone"></i>
-						<span class="header_digits1">+91 000000000</span>
-						</div>
+						
 						</div>  
 					</div>
 
@@ -537,3 +527,13 @@ a.big-link-1 {
   </div>
 </div>
 </div>
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+            	 $('#search_datePicker').datepicker({
+			            format: 'dd/mm/yyyy',
+						autoclose: true, 
+						startDate:new Date()
+			        })
+            });
+</script>
