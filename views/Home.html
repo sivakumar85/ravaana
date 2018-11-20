@@ -138,10 +138,26 @@ a.big-link-1 {
 }
 @media only screen and (max-width: 768px){
 .inner_latest_updates_block {
-    height:110px !important;
+    height:65px !important;
+    border:1px solid #64A737 !important;
 }
 }
 </style>
+<script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('location'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                /*var address = place.formatted_address;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                alert(mesg);*/
+            });
+        });
+    </script>
 	<div class="container-fulid"> 
 	<div class="container">
 			<div class="well imp col-lg-8 col-lg-offset-1">
@@ -206,11 +222,11 @@ a.big-link-1 {
   				</div><!-- End Carousel inner -->
 
   		</div>
-  				<div class="inner_latest_updates_block" style="border:3px solid #64A737;">
+  				<div class="inner_latest_updates_block" style="border:3px solid #64A737; background-color:#64A737">
 			<div class="container-fluid">					
 						<div class="col-lg-2 latest-news pull" style="background-color:#64A737;padding-top: 6px;height: 31px; color:white;font-size: 16px">Latest Loads  <span>|</span> 
 						</div>
-						<div class="col-lg-10 scroll-news" style="padding-top: 5px;">
+						<div class="col-lg-10 scroll-news" style="padding-top: 5px;background-color:white">
 								<div class="example-left">
             <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Hi <strong>there</strong>. How are you? I hope you are doing <strong>fine!</strong></marquee>
         </div>
