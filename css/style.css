@@ -625,12 +625,6 @@ page_title2 .title {
     padding: 1px 15px 3px 2px;
     border-radius:50px;
 }
-	@media only screen and (min-width: 2560px) {
-     .imp{
-            margin-left: -10.666667%;
-        }
-
-    }
 /************  Footer Section ENDS ************/
 
 .switch {

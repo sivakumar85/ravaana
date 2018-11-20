@@ -143,26 +143,27 @@ a.big-link-1 {
 }
 }
 </style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1abdbca2TvxtnmDbam16ynjcJZNJb0o&libraries=places"></script>
 <script type="text/javascript">
         google.maps.event.addDomListener(window, 'load', function () {
-            var places = new google.maps.places.Autocomplete(document.getElementById('location'));
+            var places = new google.maps.places.Autocomplete(document.getElementById('from_city'));
             google.maps.event.addListener(places, 'place_changed', function () {
                 var place = places.getPlace();
-                /*var address = place.formatted_address;
-                var latitude = place.geometry.location.lat();
-                var longitude = place.geometry.location.lng();
-                var mesg = "Address: " + address;
-                mesg += "\nLatitude: " + latitude;
-                mesg += "\nLongitude: " + longitude;
-                alert(mesg);*/
+               
+            });
+        });
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('to_city'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+               
             });
         });
     </script>
-	<div class="container-fulid"> 
-	<div class="container">
-			<div class="well imp col-lg-8 col-lg-offset-1">
+	<div class="container col-lg-10 col-lg-offset-1"> 
+			<div class="well imp">
                     <form class=="form-control" role="form">
-                      <div class="col-md-2">
+                      <div class="col-lg-2">
                         <div class="form-group">
                           <select id="search_type" name="search_type" class="form-control" style="color:black;background-color: white" ng-model="load.search_type">
                              <option selected="selected" value="load">Load</option>
@@ -170,7 +171,7 @@ a.big-link-1 {
                           </select>
                         </div>
                       </div>
-					  <div class="col-md-2" ng-if="load.search_type == 'load'">
+					  <div class="col-lg-2" ng-if="load.search_type == 'load'">
                         <div class="form-group">
                           <select id="load" name="load" class="form-control"  style="color:black;background-color: white" ng-model="load.load_type">
                             <option value="">Any Load</option>								
@@ -178,7 +179,7 @@ a.big-link-1 {
                           </select>
                         </div>
                       </div>
-                      <div class="col-md-2" ng-if="load.search_type == 'truck'">
+                      <div class="col-lg-2" ng-if="load.search_type == 'truck'">
                         <div class="form-group">
                           <select id="load" name="load" class="form-control"  style="color:black;background-color: white" ng-model="load.truck_type">
                             <option value="">Any Truck</option>								
@@ -186,33 +187,32 @@ a.big-link-1 {
                           </select>
                         </div>
                       </div>
-					   <div class="col-md-2">
+					   <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="location">Location</label>
-                         <input type="email" class="form-control" id="location"  style="color:black;background-color: white" placeholder="FROM CITY">
+                         <input type="text" class="form-control" id="from_city"  style="color:black;background-color: white" placeholder="FROM CITY">
                         </div>
                       </div>
-					   <div class="col-md-2">
+					   <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="location">Location</label>
-                         <input type="email" class="form-control"  style="color:black;background-color: white" id="location" placeholder="To CITY">
+                         <input type="text" class="form-control"  style="color:black;background-color: white" id="to_city" placeholder="To CITY">
                         </div>
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="checkin">Check in</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="search_datePicker"  style="color:black;background-color: white" placeholder="Date">
+                            <input type="text" class="form-control" id="search_datePicker" style="color:black;background-color: white" placeholder="Date">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                           </div>
                         </div>
                       </div>
                      
-                      <div class="col-md-2">
+                      <div class="col-lg-2">
                         <button type="button" ng-click="loadSearch();" class="btn btn-default btn-success"><i class="fa fa-search" style="font-size: 17px"></i>&nbsp;Search</button>
                       </div>
                     </form>
-					</div>
 					</div>
 		</div>
 				<div class="carousel slide">
