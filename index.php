@@ -31,6 +31,7 @@ session_start();
 		
 	</body>
 	<script src="js/jquery.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 	<script type="text/javascript" src="js/jquery.simplemarquee.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
