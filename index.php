@@ -31,7 +31,7 @@ session_start();
 		
 	</body>
 	<script src="js/jquery.js"></script>
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1abdbca2TvxtnmDbam16ynjcJZNJb0o&libraries=places"></script>
 	<script src="js/bootstrap.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
