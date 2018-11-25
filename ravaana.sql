@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2018 at 02:45 PM
+-- Generation Time: Nov 25, 2018 at 06:24 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -53,10 +53,12 @@ CREATE TABLE `drivers_list` (
   `driver_name` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `driver_age` int(10) DEFAULT NULL,
   `driver_license_number` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `aadhar_copy` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `driver_mobile` varchar(20) COLLATE utf8_bin DEFAULT NULL,
   `driver_address` varchar(200) COLLATE utf8_bin DEFAULT NULL,
   `driver_photo` varchar(100) COLLATE utf8_bin NOT NULL,
   `driver_license` varchar(100) COLLATE utf8_bin NOT NULL,
+  `driver_aadhar_number` varchar(20) COLLATE utf8_bin DEFAULT NULL,
   `active` int(1) DEFAULT '1',
   `created_by` int(4) DEFAULT NULL,
   `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -78,8 +80,8 @@ CREATE TABLE `load_postings` (
   `from_location` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `to_city` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `to_location` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-  `distance_km` int(11) DEFAULT NULL,
-  `load_cost` double DEFAULT NULL,
+  `distance_km` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `load_cost` varchar(10) COLLATE utf8_bin DEFAULT NULL,
   `load_cost_type` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `advance_percent` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `tonns_available` varchar(100) COLLATE utf8_bin DEFAULT NULL,
@@ -315,19 +317,19 @@ ALTER TABLE `vehicle_type`
 -- AUTO_INCREMENT for table `branches_list`
 --
 ALTER TABLE `branches_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `drivers_list`
 --
 ALTER TABLE `drivers_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `load_postings`
 --
 ALTER TABLE `load_postings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `load_type`
@@ -339,19 +341,19 @@ ALTER TABLE `load_type`
 -- AUTO_INCREMENT for table `trucks_list`
 --
 ALTER TABLE `trucks_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `vehicle_type`
