@@ -135,6 +135,8 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/EmailLogReport.html',
 	}).when('/ErrorLog', {
 		templateUrl: 'views/ErrorLog.html',
+	}).when('/TruckOwnerAuditReport', {
+		templateUrl: 'views/TruckOwnerAuditReport.html',
 	}).when('/LoginLog', {
 		templateUrl: 'views/LoginLog.html',
 	}).when('/SMSLog', {

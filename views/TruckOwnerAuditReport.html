@@ -1,42 +1,73 @@
+<style>
+   body{
+      background-color: white;
+   }
+   .well{
+      background-color: #F7F7F7;
+   }
+</style>
+<form class="form-horizontal" id="auditreport_form" method="post" role="form" novalidate="novalidate">
 <div class="container">
    <div class="row">
    <div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
-				<li class="active">AuditReport</li>
+            <li class="active">AuditReport</li>
               </ul>
             </div>
-			<div class="well col-lg-12">
+         
       <h2>Audit Report</h2>
-	   <hr style="border:1px solid #FF3300">
-	  <div class="well col-lg-10 col-lg-offset-1"style="background-color:#F5F5F5">
+      <hr style="border:1px solid #FF3300">
+      <div class="well col-lg-12">
+     <div class="well col-lg-10 col-lg-offset-1 well1"style="background-color:white">
       <form class="form-horizontal">
+         <div class="alert alert-danger text-center" ng-show="errorPost">
+                            <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div> 
          <div class="form-group">
             <label class="col-md-2 control-label" for="SearchParams" style="color:black">Category</label>
-            <div class="col-md-3">
-               <select class="form-control">
+            <div class="col-md-5">
+                <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-cube"></i></span>
+               <select class="form-control" name="select_category" id="select_category" model="auditreport.select_category">
                   <option value="">Select Category</option>
                   <option value="1">ActiveLoads</option>
                   <option value="2">ActiveVehiclesAvailability</option>
                </select>
             </div>
          </div>
-         <div class="form-group">
-            <label class="col-md-2 control-label" for="Dates" style="color:black">Between Dates</label>
-            <div class="col-md-2">
-               <input class="form-control" id="SearchParams_FromDate" maxlength="10" name="SearchParams.FromDate" placeholder="From date" style="display:inline;" type="text" value="" readonly="readonly">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <input class="form-control" id="SearchParams_ToDate" maxlength="10" name="SearchParams.ToDate" placeholder="To date" style="display:inline;" type="text" value="" readonly="readonly">
-            </div>
+      </div>
+         <div class="col-lg-12">
+            <label for="auditReport" class="col-lg-2">Between Dates
+         </label>
+            <div class="form-group col-lg-4">
+         <div class="input-group">
+          
+            <input type="text" class="form-control" placeholder="From Date" id="fromdate" ng-model="auditreport.fromdate"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+    </div>
+</div>
+<div class="col-lg-1"></div>
+    <div class="form-group col-lg-4">
+    <div class="input-group">
+            <input type="text" class="form-control" placeholder="To Date" id="todate" ng-model="auditreport.todate"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
          </div>
+     </div>
+            </div>
          <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-               <input type="submit" id="btnSearch" value="Search" class="btn btn-primary">&nbsp;&nbsp;&nbsp;
-               <a class="btn btn-danger cancel" href="/AuditLog?Reset=1">Reset</a>
+            
+               <button id="btnSearch"class="btn btn-success"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
+               <a class="btn btn-danger cancel" href="/AuditLog?Reset=1"><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
             </div>
          </div>
-      </form>
 </div>
+</div>
+</div>
+</form>
          <div class="col-lg-12">
             <div class="panel panel-default panel-table">
                <div class="panel-body table-responsive">
