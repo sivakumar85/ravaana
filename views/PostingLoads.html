@@ -15,6 +15,7 @@ background-color:#F7F7F7;
 .required{
 	color:red;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -67,6 +68,7 @@ background-color:#F7F7F7;
 		if (status == google.maps.DirectionsStatus.OK) {
 		//directionsDisplay.setDirections(response);
 		distanceInput.value = response.routes[0].legs[0].distance.value / 1000;
+		
 		}
 		});
 		}
@@ -201,9 +203,16 @@ background-color:#F7F7F7;
 				<input type="text" class="form-control" placeholder="Enter Available Tons" name="tonns_available" ng-model="load.tonns_available" ng-required="true">
 			</div>
 		</div>
-		<div class="col-lg-6 form-group has-feedback">
-			<label for="typeofload"><span class="required">*</span>&nbsp;Available Dates</label>
-			<div class="input-group" ng-show="!load.available_daily">
+		<div class="col-lg-12">
+			<br/>Daily Available?
+			<label class="switch">
+			 <input type="checkbox" id="available_daily" name="available_daily" ng-model="load.available_daily" ng-checked="load.available_daily" />
+			  <span class="slider round"></span>
+			</label>
+		</div>
+		<div class="col-lg-6 form-group has-feedback" ng-show="!load.available_daily">
+			<label for="typeofload" name="available_dates"><span class="required">*</span>&nbsp;Available Dates</label>
+			<div class="input-group">
 				
 				
 				<input type="text" class="form-control" placeholder="From Date" id="datePicker" name="available_date_from" ng-model="load.available_date_from" autocomplete="off" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -212,11 +221,6 @@ background-color:#F7F7F7;
 				<i class="fa fa-calendar"></i></span>
 
 			</div>
-			<br/>Daily Available?
-			<label class="switch">
-			 <input type="checkbox" id="available_daily" name="available_daily" ng-model="load.available_daily" ng-checked="load.available_daily" />
-			  <span class="slider round"></span>
-			</label>
 
 		</div>
 		
@@ -258,9 +262,11 @@ background-color:#F7F7F7;
 			      if($(this).is(":checked")) {
 			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_from', false);
 			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_to', false);
+			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_dates', false);
 			      } else {
 			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_from', true);
 			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_date_to', true);
+			        $('#load_form').bootstrapValidator('enableFieldValidators', 'available_dates', true);
 			      }
 			    });
                 $('#datePicker').datepicker({
