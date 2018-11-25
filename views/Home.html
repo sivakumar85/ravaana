@@ -143,66 +143,52 @@ a.big-link-1 {
 }
 }
 </style>
-<script type="text/javascript">
-        google.maps.event.addDomListener(window, 'load', function () {
-            var places = new google.maps.places.Autocomplete(document.getElementById('from_city'));
-            google.maps.event.addListener(places, 'place_changed', function () {
-                var place = places.getPlace();
-               
-            });
-        });
-        google.maps.event.addDomListener(window, 'load', function () {
-            var places = new google.maps.places.Autocomplete(document.getElementById('to_city'));
-            google.maps.event.addListener(places, 'place_changed', function () {
-                var place = places.getPlace();
-               
-            });
-        });
-    </script>
+
 	<div class="container col-lg-10 col-lg-offset-1"> 
-			<div class="well imp">
+      <div class="well imp">
                     <form class=="form-control" role="form">
                       <div class="col-lg-2">
                         <div class="form-group">
-                          <select id="search_type" name="search_type" class="form-control" style="color:black;background-color: white" ng-model="load.search_type">
+                          <select id="search_type" name="search_type" class="form-control" style="color:black;background-color: white" ng-model="searchParam.search_type">
                              <option selected="selected" value="load">Load</option>
-							<option value="truck">Truck</option>
+              <option value="truck">Truck</option>
                           </select>
                         </div>
                       </div>
-					  <div class="col-lg-2" ng-if="load.search_type == 'load'">
+            <div class="col-lg-2" ng-if="searchParam.search_type == 'load'">
                         <div class="form-group">
-                          <select id="load" name="load" class="form-control"  style="color:black;background-color: white" ng-model="load.load_type">
-                            <option value="">Any Load</option>								
-							<option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>		
+                          <select id="load" name="load" class="form-control"  style="color:black;background-color: white" ng-model="searchParam.load_type">
+                            <option value="">Any Load</option>                
+              <option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>    
                           </select>
                         </div>
                       </div>
-                      <div class="col-lg-2" ng-if="load.search_type == 'truck'">
+                      <div class="col-lg-2" ng-if="searchParam.search_type == 'truck'">
                         <div class="form-group">
-                          <select id="load" name="load" class="form-control"  style="color:black;background-color: white" ng-model="load.truck_type">
-                            <option value="">Any Truck</option>								
-							<option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>		
+                          <select id="load" name="load" class="form-control"  style="color:black;background-color: white" ng-model="searchParam.truck_type">
+                            <option value="">Any Truck</option>               
+              <option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>   
                           </select>
                         </div>
                       </div>
-					   <div class="col-lg-2">
+             <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="location">Location</label>
-                         <input type="text" class="form-control" id="from_city"  style="color:black;background-color: white" placeholder="FROM CITY">
+                         <input type="text" class="form-control" id="from_city"  style="color:black;background-color: white" placeholder="FROM CITY" ng-autocomplete ng-model="searchParam.from_city">
+
                         </div>
                       </div>
-					   <div class="col-lg-2">
+             <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="location">Location</label>
-                         <input type="text" class="form-control"  style="color:black;background-color: white" id="to_city" placeholder="To CITY">
+                         <input type="text" class="form-control"  style="color:black;background-color: white" id="to_city" placeholder="To CITY" ng-autocomplete ng-model="searchParam.to_city" >
                         </div>
                       </div>
                       <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="checkin">Check in</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="search_datePicker" style="color:black;background-color: white" placeholder="Date">
+                            <input type="text" class="form-control" id="search_datePicker" style="color:black;background-color: white" placeholder="Date" ng-model="searchParam.available_date">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                           </div>
                         </div>
@@ -212,8 +198,8 @@ a.big-link-1 {
                         <button type="button" ng-click="loadSearch();" class="btn btn-default btn-success"><i class="fa fa-search" style="font-size: 17px"></i>&nbsp;Search</button>
                       </div>
                     </form>
-					</div>
-		</div>
+          </div>
+    </div>
 				<div class="carousel slide">
   				<div class="carousel-inner">
   						<img style="margin: 0px; padding: 0px; border: none; width: 100%; height:500px; max-height: none; max-width:100%; z-index: -999999; left: 0px; top: -110.406px;" src="images/51_gp-logistics-banner.png">

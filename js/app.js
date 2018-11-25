@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute','ngAutocomplete']);
 app.controller('homectrl', ['$scope', '$location',function($scope, $location){ 
 $scope.go = function ( path ) {
   $location.path( path );
@@ -62,7 +62,7 @@ app.config(function($routeProvider) {
 	}).when('/SignUp', {
 		templateUrl: 'views/SignUp.html',
 		controller: 'loginCtrl'
-	}).when('/SignIn/:regMsg?', {
+	}).when('/SignIn/:msg?', {
 		templateUrl: 'views/SignIn.html',
 		controller: 'loginCtrl'
 	}).when('/ForgotPassword', {
@@ -97,6 +97,8 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/AuditReport.html',
 	}).when('/Search', {
 		templateUrl: 'views/Search.html',
+		controller: 'searchCtrl'
+
 	}).when('/userHome', {
 		templateUrl: 'views/Search.html',
 	}).when('/TruckRequests', {
