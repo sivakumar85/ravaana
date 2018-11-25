@@ -115,5 +115,6 @@ session_start();
 	<script type="text/javascript" src="js/controllers/searchCtrl.js"></script>
 	<script type="text/javascript" src="js/services/loginService.js"></script>
 	<script type="text/javascript" src="js/services/sessionService.js"></script>
+	<script type="text/javascript" src="js/ngAutocomplete.js"></script>
 	
 </html>

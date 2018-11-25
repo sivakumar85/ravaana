@@ -30,14 +30,24 @@ font-size:14px;
                         <div class="panel panel-default">
                             <div class="panel-heading">
                         <h5>Sign in using your registered account:</h5>  
-                         <div class="alert alert-danger text-center" ng-show="errorLogin">
+                        <!-- <div class="alert alert-danger text-center" ng-show="errorLogin">
                             <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
-                            {{ errorMsg }}
+                            
+                        </div>-->
+                        <div class="alert alert-danger"  ng-show="errorLogin">
+                           <span class="glyphicon glyphicon-warning-sign"></span>                          
+                            <span id="getCode" style="font-weight: bold">
+                               {{ errorMsg }}</span>
                         </div>
                         <div class="alert alert-success"  ng-show="regMsg">
                            <span class="glyphicon glyphicon-ok"></span>                          
                             <span id="getCode" style="font-weight: bold">
                                 Sucessfully registered Please Continue Login..</span>
+                        </div>
+                        <div class="alert alert-info"  ng-show="loginMsg">
+                           <span class="glyphicon glyphicon-exclamation-sign"></span>                          
+                            <span id="getCode" style="font-weight: bold">
+                                Please login to continue.</span>
                         </div>
                             </div>
                              <div class="panel-body" style="margin:10px">
