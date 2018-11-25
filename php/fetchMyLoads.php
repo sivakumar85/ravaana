@@ -16,7 +16,7 @@
 		$sql.= " AND load_postings.id='".$_GET['id']."'";
 	}
 	if(isset($_GET['type'])) {
-		$sql.= " AND (load_postings.is_deleted=1 OR  load_postings.available_date_to>=DATE(NOW())) ";
+		$sql.= " AND ((load_postings.is_deleted=1 OR  load_postings.available_date_to<=DATE(NOW())) OR (load_postings.is_deleted=1 AND  load_postings.available_daily=1) ";
 	} else {
 		$sql.= "  AND (load_postings.available_daily=1 OR load_postings.available_date_to>=DATE(NOW())) AND load_postings.is_deleted=0 ";
 	}
@@ -41,14 +41,14 @@
 			$date = DateTime::createFromFormat($format , $date);
 			$toDate = $date->format('Y-m-d');
 	 	}
-	 	/*if($from_date!='' && $toDate!=''){
-	 		$sql.= " AND load_postings.available_date BETWEEN '".$from_date."' and '".$toDate."'";
+	 	if($from_date!='' && $toDate!=''){
+	 		$sql.= " AND load_postings.available_date_to BETWEEN '".$from_date."' and '".$toDate."'";
 	 	} else if($from_date!='' && $toDate=='') {
-	 		$sql.= " AND load_postings.available_date BETWEEN '".$from_date."' and DATE(NOW())";
+	 		$sql.= " AND load_postings.available_date_to BETWEEN '".$from_date."' and DATE(NOW())";
 	 	}
 	 	else if($from_date=='' && $toDate!='') {
-	 		$sql.= " AND load_postings.available_date BETWEEN DATE(NOW()) and '".$toDate."'";
-	 	}*/
+	 		$sql.= " AND load_postings.available_date_to BETWEEN DATE(NOW()) and '".$toDate."'";
+	 	}
 	 	
 	}
 	//echo $sql;
