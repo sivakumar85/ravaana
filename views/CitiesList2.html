@@ -2,47 +2,54 @@
     .required {
         color: red;
     }
+    
+    hr {
+        border: 1px solid black;
+    }
+    body{
+        background-color: white;
+    }
+    .well{
+        background-color: #F7F7F7;
+    }
 </style>
 <div class="container">
-    <div class="row">
-	<div class="col-lg-12">
+<div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
-				<li class="active">CitiesList</li>
+                <li class="active">CitiesList</li>
               </ul>
             </div>
-        <h2>Cities</h2>
-		 <hr style="border:1px solid #FF3300">
-		<div class="well col-lg-10 col-lg-offset-1">
+    <h2>Cities</h2>
+    <hr style="border:1px solid #FF3300">
+    <div class="well col-lg-12">
+        <div class="form-group">
         <div class="col-lg-12">
-		<div class="col-lg-12">
-	  <div class="col-lg-2 col-lg-offset-10"><a href="#NewCity"><button class="btn"><i class="fa fa-plus" aria-hidden="true"></i>
-		    <span class="fs-it-btn-vertical-line"></span>New City</button></a></div>
-			<br>
-		</div>
-            <div class="collg-4">
-                <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;City</label>
-                <div class="col-lg-3">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="col-lg-2">
-            </div>
-			<br>
-            <div class="col-lg-4 col-md-offset-2">
-                <button class="btn btn-info">Submit</button>
-                <button class="btn btn-default">Clear</button>
-            </div>
-            <div class="col-lg-3">
-            </div>
-            <br>
-            <br>
-            <br>
+      <div class="col-lg-2 col-lg-offset-9">
+      <a class="btn icon-btn btn-success" href="#NewCity">
+        <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+        New City
+      </a>
+      <!--<a href="#PostingLoads"><button class="btn"><i class="fa fa-plus" aria-hidden="true"></i>
+            <span class="fs-it-btn-vertical-line"></span>Add New Post</button></a>--></div>
             <br>
         </div>
-		</div>
+        </div>
+        <div class="col-lg-6 form-group has-feedback">
+            <label class="col-lg-4" for="city">City</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                <input class="form-control" maxlength="50"name="searchparams_name" placeholder="Search city" type="text" autocomplete="off">
+            </div>
+        </div>
+       <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+            
+               <button id="btnSearch"class="btn btn-success" ng-click="searchDrivers();""><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
+               <a class="btn btn-danger" ng-click="resetSearch();"><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
+            </div>
+         </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
 
@@ -51,664 +58,48 @@
                         <table class="table table-striped table-bordered table-list">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Actions</th>
                                     <th><a>City</a></th>
                                     <th><a>State</a></th>
-                                    <th><a>Status</a></th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
 
                                 <tr>
                                     <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
+                                        <a href="" class="btn btn-success"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        
+                                         <label class="switch">
+                                         <input type="checkbox" id="cboxStatus">
+                                      </label>
                                     </td>
-                                    <td>Nellore</td>
-                                    <td>A.P</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
+                                    <td>Alathur (Pattukottai)</td>
+                                    <td>Maharashtra</td>
                                 </tr>
                                 <tr>
                                     <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
+                                        <a href="" class="btn btn-success"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        
+                                         <label class="switch">
+                                         <input type="checkbox" id="cboxStatus">
+                                      </label>
                                     </td>
                                     <td>Alathur(Kerala)</td>
                                     <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
                                 </tr>
                                 <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
+                                   <td align="center">
+                                        <a href="" class="btn btn-success"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        
+                                         <label class="switch">
+                                         <input type="checkbox" id="cboxStatus">
+                                      </label>
                                     </td>
                                     <td>Alathur (Kerala)</td>
                                     <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alavandi</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alawaye</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Albadi</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Albertinia</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alengar</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alengar Katte</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aleppey</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>aleppey byepass</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alibag</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aligarh</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alirajpur</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aliwal North</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aliyar</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Allagadda</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Allahabad</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Allam Puram</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>allampuram</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Allavaram</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alleppey</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>alleppey(alappuzha)</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alleppy</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Allepy</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alluru</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>ALMATTI</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Almel</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>almora</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>alsisar</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Althur</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alur</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aluva</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aluva Athani</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aluva By Pass</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Aluva Bypass</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alvas Vidyagir</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alvas Vidyagiri</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>alwae</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alwar</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alwar thirunagari</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>alwarkurichi</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alwarthirunagari</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alway</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Alwaye</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Amabalapuzha</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Amadalavalasa</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Amala Hospital Thrissur</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Amalapuram</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Amalner</td>
-                                    <td>Maharashtra</td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -725,3 +116,6 @@
 
             </div>
         </div>
+        </div>
+        </div>
+        

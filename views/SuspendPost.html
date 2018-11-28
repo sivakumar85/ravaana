@@ -2,6 +2,9 @@
     .required {
         color: red;
     }
+    body{
+        background-color: white;
+    }
 </style>
 <div class="container">
     <div class="row">
@@ -11,23 +14,31 @@
 				<li class="active">SuspendPost</li>
               </ul>
             </div>
-        <h2 style="text-align:center">Suspend Post</h2>
-		<div class="col-lg-4 col-lg-offset-4" style="height:2px; background:#FF3300;">
+        <h2>Suspend Post</h2>
+		<div class="col-lg-12" style="height:2px; background:#FF3300;">
 	  </div>
 	  <br>
+      <div class="well">
         <div class="panel panel-default">
-            <div class="panel panel-heading" style="font-size:14px">Load</div>
+            <div class="panel panel-heading" style="font-size:14px">
+                <i class="fa fa-cubes"></i>&nbsp;&nbsp;Load</div>
             <div class="panel-body">
                 <div class="form-group col-lg-12">
                     <div class="collg-4">
                         <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control hasDatePicker">
+                            <div class="input-group">
+                            <input type="text" class="form-control hasDatePicker"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+                        </div>
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
                         <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
                         <div class="col-lg-4">
+                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                             <select class="form-control">
                                 <option value="">Hrs</option>
                                 <option value="0">0</option>
@@ -56,7 +67,11 @@
                                 <option value="23">23</option>
                             </select>
                         </div>
+                    </div>
                         <div class="col-lg-4">
+                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                             <select class="form-control">
                                 <option value="">Mins</option>
                                 <option value="00">00</option>
@@ -64,6 +79,7 @@
                                 <option value="30">30</option>
                                 <option value="45">45</option>
                             </select>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -71,12 +87,19 @@
                     <div class="collg-4">
                         <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
                         <div class="col-lg-3">
+                            <div class="input-group">
                             <input type="text" class="form-control hasDatePicker">
+                            <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
                         <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
                         <div class="col-lg-4">
+                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                             <select class="form-control">
                                 <option value="">Hrs</option>
                                 <option value="0">0</option>
@@ -105,7 +128,11 @@
                                 <option value="23">23</option>
                             </select>
                         </div>
+                    </div>
                         <div class="col-lg-4">
+                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                             <select class="form-control">
                                 <option value="">Mins</option>
                                 <option value="00">00</option>
@@ -114,6 +141,7 @@
                                 <option value="45">45</option>
                             </select>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -123,8 +151,8 @@
                     <div class="col-lg-5">
                     </div>
                     <div class="col-lg-4">
-                        <button class="btn btn-default">Submit</button>
-                        <button class="btn btn-default">Clear</button>
+                        <button class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Submit</button>
+                        <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;&nbsp;Clear</button>
                     </div>
                     <div class="col-lg-3">
                     </div>
@@ -133,18 +161,25 @@
         </div>
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel panel-heading" style="font-size:14px">Vehical</div>
+                <div class="panel panel-heading" style="font-size:14px"><i class="fa fa-truck"></i>&nbsp;&nbsp;</i>Vehical</div>
                 <div class="panel-body">
                     <div class="form-group col-lg-12">
                         <div class="collg-4">
                             <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
                             <div class="col-lg-3">
+                            <div class="input-group">
                                 <input type="text" class="form-control hasDatePicker">
+                                <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                             </div>
                         </div>
                         <div class="form-group col-lg-6">
                             <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
                             <div class="col-lg-4">
+                                <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                 <select class="form-control">
                                     <option value="">Hrs</option>
                                     <option value="0">0</option>
@@ -173,7 +208,11 @@
                                     <option value="23">23</option>
                                 </select>
                             </div>
+                        </div>
                             <div class="col-lg-4">
+                                <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                 <select class="form-control">
                                     <option value="">Mins</option>
                                     <option value="00">00</option>
@@ -182,18 +221,26 @@
                                     <option value="45">45</option>
                                 </select>
                             </div>
+                        </div>
                         </div>
                     </div>
                     <div class="form-group col-lg-12">
                         <div class="collg-4">
                             <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
                             <div class="col-lg-3">
+                                <div class="input-group">
                                 <input type="text" class="form-control hasDatePicker">
+                                <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                             </div>
                         </div>
                         <div class="form-group col-lg-6">
                             <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
                             <div class="col-lg-4">
+                                <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                 <select class="form-control">
                                     <option value="">Hrs</option>
                                     <option value="0">0</option>
@@ -222,7 +269,11 @@
                                     <option value="23">23</option>
                                 </select>
                             </div>
+                        </div>
                             <div class="col-lg-4">
+                                <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                 <select class="form-control">
                                     <option value="">Mins</option>
                                     <option value="00">00</option>
@@ -231,6 +282,7 @@
                                     <option value="45">45</option>
                                 </select>
                             </div>
+                        </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -240,8 +292,8 @@
                         <div class="col-lg-5">
                         </div>
                         <div class="col-lg-4">
-                            <button class="btn btn-default">Submit</button>
-                            <button class="btn btn-default">Clear</button>
+                            <button class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Submit</button>
+                        <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;&nbsp;Clear</button>
                         </div>
                         <div class="col-lg-3">
                         </div>
@@ -250,18 +302,25 @@
             </div>
             <div class="row">
                 <div class="panel panel-default">
-                    <div class="panel panel-heading" style="font-size:14px">Bus</div>
+                    <div class="panel panel-heading" style="font-size:14px"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus</div>
                     <div class="panel-body">
                         <div class="form-group col-lg-12">
                             <div class="collg-4">
                                 <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
                                 <div class="col-lg-3">
+                                <div class="input-group">
                                     <input type="text" class="form-control hasDatePicker">
+                                    <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
                                 <div class="col-lg-4">
+                                    <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                     <select class="form-control">
                                         <option value="">Hrs</option>
                                         <option value="0">0</option>
@@ -290,7 +349,11 @@
                                         <option value="23">23</option>
                                     </select>
                                 </div>
+                            </div>
                                 <div class="col-lg-4">
+                                    <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                     <select class="form-control">
                                         <option value="">Mins</option>
                                         <option value="00">00</option>
@@ -299,18 +362,26 @@
                                         <option value="45">45</option>
                                     </select>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <div class="form-group col-lg-12">
                             <div class="collg-4">
                                 <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
                                 <div class="col-lg-3">
+                                <div class="input-group">
                                     <input type="text" class="form-control hasDatePicker">
+                                    <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
                                 <div class="col-lg-4">
+                                    <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                     <select class="form-control">
                                         <option value="">Hrs</option>
                                         <option value="0">0</option>
@@ -339,7 +410,11 @@
                                         <option value="23">23</option>
                                     </select>
                                 </div>
+                            </div>
                                 <div class="col-lg-4">
+                                    <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                     <select class="form-control">
                                         <option value="">Mins</option>
                                         <option value="00">00</option>
@@ -348,6 +423,7 @@
                                         <option value="45">45</option>
                                     </select>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -357,28 +433,36 @@
                             <div class="col-lg-5">
                             </div>
                             <div class="col-lg-4">
-                                <button class="btn btn-default">Submit</button>
-                                <button class="btn btn-default">Clear</button>
+                                <button class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Submit</button>
+                        <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;&nbsp;Clear</button>
                             </div>
                             <div class="col-lg-3">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel panel-heading" style="font-size:14px">Flight</div>
+                        <div class="panel panel-heading" style="font-size:14px"><i class="fa fa-plane"></i>&nbsp;&nbsp;Flight</div>
                         <div class="panel-body">
                             <div class="form-group col-lg-12">
                                 <div class="collg-4">
                                     <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
                                     <div class="col-lg-3">
+                                        <div class="input-group">
                                         <input type="text" class="form-control hasDatePicker">
+                                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
                                     <div class="col-lg-4">
+                                        <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                         <select class="form-control">
                                             <option value="">Hrs</option>
                                             <option value="0">0</option>
@@ -407,7 +491,11 @@
                                             <option value="23">23</option>
                                         </select>
                                     </div>
+                                </div>
                                     <div class="col-lg-4">
+                                        <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                         <select class="form-control">
                                             <option value="">Mins</option>
                                             <option value="00">00</option>
@@ -417,17 +505,25 @@
                                         </select>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                             <div class="form-group col-lg-12">
                                 <div class="collg-4">
                                     <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
                                     <div class="col-lg-3">
+                                        <div class="input-group">
                                         <input type="text" class="form-control hasDatePicker">
+                                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
                                     <div class="col-lg-4">
+                                        <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                         <select class="form-control">
                                             <option value="">Hrs</option>
                                             <option value="0">0</option>
@@ -456,7 +552,11 @@
                                             <option value="23">23</option>
                                         </select>
                                     </div>
+                                </div>
                                     <div class="col-lg-4">
+                                        <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                         <select class="form-control">
                                             <option value="">Mins</option>
                                             <option value="00">00</option>
@@ -474,28 +574,37 @@
                                 <div class="col-lg-5">
                                 </div>
                                 <div class="col-lg-4">
-                                    <button class="btn btn-default">Submit</button>
-                                    <button class="btn btn-default">Clear</button>
+                                    <button class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Submit</button>
+                        <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;&nbsp;Clear</button>
                                 </div>
                                 <div class="col-lg-3">
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
                     <div class="row">
                         <div class="panel panel-default">
-                            <div class="panel panel-heading" style="font-size:14px">Ship</div>
+                            <div class="panel panel-heading" style="font-size:14px"><i class="fa fa-ship"></i>&nbsp;&nbsp;Ship</div>
                             <div class="panel-body">
                                 <div class="form-group col-lg-12">
                                     <div class="collg-4">
                                         <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;From Date</label>
                                         <div class="col-lg-3">
+                                            <div class="input-group">
                                             <input type="text" class="form-control hasDatePicker">
+                                            <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label class="col-lg-3" for="fromTime"><span class="required">*</span>&nbsp;From Time</label>
                                         <div class="col-lg-4">
+                                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                             <select class="form-control">
                                                 <option value="">Hrs</option>
                                                 <option value="0">0</option>
@@ -524,7 +633,11 @@
                                                 <option value="23">23</option>
                                             </select>
                                         </div>
+                                    </div>
                                         <div class="col-lg-4">
+                                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                             <select class="form-control">
                                                 <option value="">Mins</option>
                                                 <option value="00">00</option>
@@ -534,17 +647,25 @@
                                             </select>
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-lg-12">
                                     <div class="collg-4">
                                         <label class="col-lg-2" for="fromdate"><span class="required">*</span>&nbsp;To Date</label>
                                         <div class="col-lg-3">
+                                            <div class="input-group">
                                             <input type="text" class="form-control hasDatePicker">
+                                            <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i></span>
+                        </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label class="col-lg-3" for="ToTime"><span class="required">*</span>&nbsp;To Time</label>
                                         <div class="col-lg-4">
+                                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-clock-o"></i></span>
                                             <select class="form-control">
                                                 <option value="">Hrs</option>
                                                 <option value="0">0</option>
@@ -573,7 +694,11 @@
                                                 <option value="23">23</option>
                                             </select>
                                         </div>
+                                    </div>
                                         <div class="col-lg-4">
+                                            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-check-circle-o"></i></span>
                                             <select class="form-control">
                                                 <option value="">Mins</option>
                                                 <option value="00">00</option>
@@ -591,8 +716,8 @@
                                     <div class="col-lg-5">
                                     </div>
                                     <div class="col-lg-4">
-                                        <button class="btn btn-default">Submit</button>
-                                        <button class="btn btn-default">Clear</button>
+                                        <button class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Submit</button>
+                        <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;&nbsp;Clear</button>
                                     </div>
                                     <div class="col-lg-3">
                                     </div>
@@ -600,3 +725,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
