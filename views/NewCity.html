@@ -2,6 +2,12 @@
     .required {
         color: red;
     }
+    body{
+        background-color: white;
+    }
+    .well{
+        background-color: #F7F7F7;
+    }
 </style>
 <div class="container" style="padding-left: 15px;">
 <div class="col-lg-12">
@@ -12,21 +18,21 @@
               </ul>
             </div>
     <h2>City Details</h2>
-	
-    <form action="/CityDetails" class="form-horizontal" id="form1" method="post" role="form" novalidate="novalidate">
-        <input name="__RequestVerificationToken" type="hidden" value="gDySNJYP50x4InLNBVlxQpq0_pWuY0nPKu9CiucEcl4gyfDXx0GBxXWlL7ItrxQ9wi4y7vl0QRZonyVN01sBrsYGF9oZF_zZK3-5fD50l45_UwPerU28y7SPOP0CQC-da_e0bHoWT0WAmUqQgW0JBw2">
-         <hr style="border:1px solid #FF3300">
-        <div id="error-note"></div>
-        <input data-val="true" data-val-number="The field CityID must be a number." data-val-required="The CityID field is required." id="City_CityID" name="City.CityID" type="hidden" value="0">
-        <div class="well col-md-10 col-lg-offset-1" style="background-color:white">
-		<div class="col-md-12">
-		<div class="col-lg-2 col-lg-offset-10"><a href="#CitiesList"><button class="btn"><i class="fa fa-plus" aria-hidden="true"></i>
-		    <span class="fs-it-btn-vertical-line"></span>View Cities</button></a></div>
-			<br>
-		</div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="City.State.StateID" style="color:black"><span class="required">*</span>&nbsp;State</label>
-            <div class="col-md-4">
+    <hr style="border:1px solid #FF3300">
+        <div class="well col-md-10 col-lg-offset-1">
+		   <div class="col-lg-12">
+                  <div class="col-lg-2 col-lg-offset-10">
+                    <a class="btn icon-btn btn-info" href="#CitiesList">
+                    <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-info"></span>
+                    View Cities
+                  </a>
+              </div>
+          </div>
+            <br>
+        <div class="col-lg-7 form-group has-feedback">
+            <label class="col-lg-4" for="state"><span class="required">*</span>&nbsp;State</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-globe"></i></span>
                 <select class="form-control" data-val="true" data-val-number="The field StateID must be a number." data-val-required="The StateID field is required." id="City_State_StateID" name="City.State.StateID">
                     <option value="">Select State</option>
                     <option value="1">Maharashtra</option>
@@ -66,26 +72,20 @@
                 </select>
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="City.CityName" style="color:black"><span class="required">*</span>&nbsp;City Name</label>
-            <div class="col-md-4">
+        <div class="col-lg-7 form-group has-feedback">
+            <label class="col-lg-4" for="name"><span class="required">*</span>&nbsp;City Name</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                 <input class="form-control" id="City_CityName" maxlength="50" name="City.CityName" type="text" value="">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label" for="Status" style="color:black">Status</label>
-            <div class="col-md-4">
-                <input checked="checked" data-val="true" data-val-required="The Status field is required." id="Status" name="Status" type="checkbox" value="true">
-                <input name="Status" type="hidden" value="false">
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" name="submitbutton" id="btnSubmit" value="Submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;
-                <a class="btn btn-default cancel" href="/CityDetails">Cancel</a>
+            
+               <button id="btnSearch"class="btn btn-success"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;&nbsp;Submit</button>
+               <a class="btn btn-danger" ng-click="resetSearch();"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Cancel</a>
             </div>
-        </div>
-		</form>
+         </div>
 		</div>
 		</div>
 		

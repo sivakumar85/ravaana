@@ -1,12 +1,15 @@
 <style>
 .well{
-background-color:white;
+background-color:#F7F7F7;
 }
 .fs-it-btn-vertical-line {
   text-align:center;
   padding: 4px 0 5px 10px;
   margin-left: 10px;
   border-left: 1px solid #FF3300;
+}
+body{
+   background-color: white;
 }
 </style>
 <div class="container">
@@ -24,18 +27,24 @@ background-color:white;
    <br>
    <br>
    <div class="well col-md-12">
-   <div class="col-md-12">
-     <div class="col-md-2 col-md-offset-10"><a href="#ViewRole"><button class="btn"><i class="fa fa-plus" aria-hidden="true"></i>
-		    <span class="fs-it-btn-vertical-line"></span>View Roles</button></a></div>
-	</div>
-   <div class="col-md-12">
-      <label for="role" class="col-md-1">Role
-      </label>
-      <div class="from-group col-md-4">
-         <input type="text" class="form-control">
-         <br>
-      </div>
-   </div>
+       <div class="form-group">
+        <div class="col-lg-12">
+      <div class="col-lg-2 col-lg-offset-9">
+        <a class="btn icon-btn btn-info" href="#ViewRole">
+        <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-info"></span>
+        View Role
+      </a>
+  </div>
+            <br>
+        </div>
+        </div>
+   <div class="col-lg-6 form-group has-feedback">
+            <label class="col-lg-4" for="driver">Role</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input class="form-control" placeholder="Search Role" type="text autocomplete="off">
+            </div>
+        </div>
    <div class="col-md-12">
       <br>
       <div class="col-md-4">
@@ -172,14 +181,13 @@ background-color:white;
          </div>
       </div>
    </div>
-   <div class="col-md-12">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-         <button class="btn btn-primary">Search</button>
-         <button class="btn btn-danger">Reset</button>
-      </div>
-      <div class="col-md-4"></div>
-   </div>
+   <div class="form-group">
+            <div class="col-md-offset-4 col-md-6">
+            
+               <button id="btnSearch"class="btn btn-success"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
+               <a class="btn btn-danger"><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
+            </div>
+         </div>
 </div>
 </div>
 </div>
