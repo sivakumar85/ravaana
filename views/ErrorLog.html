@@ -1,3 +1,11 @@
+<style>
+body{
+	background-color: white;
+}
+.well{
+	background-color: #F7F7F7;
+}
+</style>
 <div class="container">  
 <div class="col-md-12"> 
 <ul class="breadcrumb" >
@@ -9,25 +17,30 @@
 	<hr style="border:1px solid #FF3300">
 	<div class="well col-lg-10 col-lg-offset-1">
 	<div class="col-lg-12">
-		<label class="col-lg-2" for="date">Between Dates</label>
-		<div class="col-lg-2">
-		<input type="text" class="form-control" maxlength="10" placeholder="From Date..">
-		</div>
-		<div class="col-lg-2">
-		<input type="text" class="form-control" maxlength="10" placeholder="To Date..">
-		</div>
-	</div>
-	<br>
-	<br>
-	<br>
-	<div class="col-lg-12 input-group">
-		<div class="col-lg-3">
-		</div>
-		<div class="col-lg-4">
-			<button class="btn btn-primary">Search</button>
-			<button class="btn btn-default">Reset</button>
-		</div>
-	</div>
+            <label for="erlog" class="col-lg-2">Between Dates
+         </label>
+            <div class="form-group col-lg-4">
+         <div class="input-group">
+          
+            <input type="text" class="form-control" placeholder="From Date"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+    </div>
+</div>
+<div class="col-lg-1"></div>
+    <div class="form-group col-lg-4">
+    <div class="input-group">
+            <input type="text" class="form-control" placeholder="To Date"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i></span>
+         </div>
+     </div>
+            </div>
+         <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+            
+               <button id="btnSearch"class="btn btn-success"><i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;Search</button>
+               <a class="btn btn-danger cancel" href="/AuditLog?Reset=1"><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
+            </div>
+         </div>
 	</div>
     <br><br>
         <div class="col-md-12">
