@@ -44,17 +44,15 @@
 								  <i class="fa fa-hourglass-2"></i><span>Control Panel
 								  <b class="caret"></b>
 								 </a>
-								<ul class="dropdown-menu">
-										<li><a href="#UpdateLoginDetails">Update Login Details</a></li>                        
-										<li><a href="#ChangePassword">Change Password</a></li>                                                
-										<li><a href="#UsersList">Users List</a></li>                        
-										<li><a href="#RolesList">Roles List</a></li>                        
-										<li><a href="#PlanFeatures">Plan Features</a></li>                        
-										<li><a href="#PricePlans">Price Plans</a></li>                        
-										<li><a href="#AuditReport">Audit Report</a></li>                        
-										<li><a href="#TruckRequests">Truck Requests</a></li>                        
-										<li><a href="#TruckBooking">Truck Booking</a></li>                                               
-										<li><a href="#SuspendPost">Suspend Post</a></li>       
+								<ul class="dropdown-menu">                                                                       
+										<li><a href="#UsersList" class="dropdown-item"><i class="fa fa-users"></i>Users List</a></li>                        
+										<li><a href="#RolesList" class="dropdown-item"> <i class="fa fa-user"></i>Roles List</a></li>                        
+										<li><a href="#PlanFeatures" class="dropdown-item"><i class="fa fa-building-o"></i>Plan Features</a></li>                        
+										<li><a href="#PricePlans" class="dropdown-item"><i class="fa fa-inr"></i>Price Plans</a></li>                        
+										<li><a href="#AuditReport" class="dropdown-item"><i class="fa fa-bar-chart"></i>Audit Report</a></li>                        
+										<li><a href="#TruckRequests" class="dropdown-item"><i class="fa fa-truck"></i>Truck Requests</a></li>                        
+										<li><a href="#TruckBooking" class="dropdown-item"><i class="fa fa-bus"></i>Truck Booking</a></li>                                               
+										<li><a href="#SuspendPost" class="dropdown-item"><i class="fa fa-times"></i>Suspend Post</a></li>       
 								</ul>
 							</li>
 							<li class="dropdown nav-item">
@@ -63,11 +61,11 @@
 								  <b class="caret"></b>
 								 </a>
 								<ul class="dropdown-menu">
-										<li><a href="#MenuCategoriesList">Menu Categories List</a></li>                        
-										<li><a href="#CitiesList">Cities List</a></li>                        
-										<li><a href="#LoadTypeList">Load Type List</a></li>                        
-										<li><a href="#LocationsList">Locations List</a></li>                        
-										<li><a href="#TruckTypes">Truck Type List</a></li>           
+										<li><a href="#MenuCategoriesList" class="dropdown-item"><i class="fa fa-cc"></i>Menu Categories List</a></li>                        
+										<li><a href="#CitiesList" class="dropdown-item"><i class="fa fa-globe"></i>Cities List</a></li>                        
+										<li><a href="#LoadTypeList" class="dropdown-item"><i class="fa fa-cubes"></i>Load Type List</a></li>                        
+										<li><a href="#LocationsList" class="dropdown-item"><i class="fa fa-map-marker"></i>Locations List</a></li>                        
+										<li><a href="#TruckTypes" class="dropdown-item"><i class="fa fa-truck"></i>Truck Type List</a></li>           
 								</ul>
 							</li>
 							<li class="dropdown nav-item">
@@ -76,19 +74,24 @@
 								  <b class="caret"></b>
 								 </a>
 								<ul class="dropdown-menu">
-										<li><a href="#DataBaseErrorLog">DataBase Error Log</a></li>                        
-										<li><a href="#EmailLogReport">Email Log</a></li>                        
-										<li><a href="#ErrorLog">Error Log</a></li>                        
-										<li><a href="#LoginLog">Login Log</a></li>                        
-										<li><a href="#SMSLog">SMS Log</a></li>                        
-										<li><a href="#Payments">Payments</a></li>          
+										<li><a href="#DataBaseErrorLog" class="dropdown-item"><i class="fa fa-hourglass-2"></i>DataBase Error Log</a></li>                        
+										<li><a href="#EmailLogReport" class="dropdown-item"><i class="fa fa-envelope-open"></i>Email Log</a></li>                        
+										<li><a href="#ErrorLog" class="dropdown-item"><i class="fa fa-times"></i>Error Log</a></li>                        
+										<li><a href="#LoginLog" class="dropdown-item"><i class="fa fa-user"></i>Login Log</a></li>                        
+										<li><a href="#SMSLog" class="dropdown-item"><i class="fa fa-mobile"></i>SMS Log</a></li>                        
+										<li><a href="#Payments" class="dropdown-item"><i class="fa fa-money"></i>Payments</a></li>          
 								</ul>
 							</li>
 							<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item dropdown">
-								<a href="" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> {{login_username}} <b class="caret"></b></a>
+								<li class="dropdown nav-item">
+								<a href="" class="nav-link dropdown-toggle user-action" data-toggle="dropdown">
+								  <img src="{{profile_pic}}" width="35px" height="32px" class="avatar imgp" alt="Avatar" style="border-radius: 40px">
+								  <br>{{login_username}}
+								  <b class="caret"></b>
+								 </a>
 								<ul class="dropdown-menu">
-									<li><a href="#UserProfile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+									<li><a href="#UpdateLoginDetails" class="dropdown-item"><i class="fa fa-gears"></i>Update Login Details</a></li>
+									<li><a href="#ChangePassword" class="dropdown-item"><i class="fa fa-key"></i>Change Password</a></li> 
 									<li class="divider dropdown-divider"></li>
 									<li><a href="javascript:void(0);" ng-click="logout();" class="dropdown-item"><i class="fa fa-sign-out"></i> Logout</a></li>
 								</ul>
