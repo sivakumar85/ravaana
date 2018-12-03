@@ -13,15 +13,27 @@ app.controller('userCtrl', ['$scope','$rootScope','$http', 'loginService', funct
         $scope.userProfileMethod = function() {
             var userrequest = $http.get('php/profileCtrl.php?action=fetchProfile');
 			userrequest.then(function(response){
-			$scope.userProfile = response.data[0];
-			if(!angular.isUndefined($scope.userProfile.profile_pic)){
-				$scope.profile_pic = 'php/upload/'+$scope.userProfile.profile_pic;
-			} 
+				if(response.data.length>0) {
+					$scope.userProfile = response.data[0];
+					$scope.profile_name = $scope.userProfile.business_type;
+					if ($scope.profile_name == 'TransportCompany') {
+						$scope.login_username = $scope.userProfile.company_name
+					} else {
+						$scope.login_username = $scope.userProfile.name
+					}
+					
+					if(!angular.isUndefined($scope.userProfile.profile_pic)){
+						$scope.profile_pic = 'php/upload/'+$scope.userProfile.profile_pic;
+
+					} 
+				}
+				
 		});
         }
 	$scope.profile_pic = 'images/user.png';
 	//alert(login_username);
 	$scope.login_username =  login_username;
+	$scope.profile_name =  profile_name;
 	$scope.userProfileMethod();
 	
 	

@@ -96,7 +96,7 @@ session_start();
 	</body>
 	<script>
 		var login_username = '<?php echo  isset($_SESSION["username"]) ?   $_SESSION["username"] :   "User"?>';
-		//alert('login_username-->'+'<?php echo $_SESSION["username"]?>');
+		var profile_name = '<?php echo  isset($_SESSION["business_type"]) ?   $_SESSION["business_type"] :   "User"?>';
 	</script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1abdbca2TvxtnmDbam16ynjcJZNJb0o&libraries=places"></script>
 	<script src="js/jquery.js"></script>

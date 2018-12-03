@@ -24,6 +24,26 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location', 'loginS
 	    logIn_request.then(function(response){
 	    	$scope.islogged = response.data;
 	});
+
+	$scope.search = function(type) {
+	    //$http POST function
+	    var surl = 'php/searchCtrl.php?action=search';
+		/*if(!angular.isUndefined(type)){
+			surl += '?type=past'
+		}*/
+	    $http({
+	      method: 'POST',
+	      url: surl,
+	      data: $scope.searchParam
+	    }).then(function successCallback(response) {
+	      $scope.searchData = response.data;
+	      
+	    }, function errorCallback(response) {
+	    	$("#getCode").html("Error. while created Post Try Again!");
+			 	 	$("#getCodeModal").modal('show');
+	      //alert("Error. while created Post Try Again!");
+	    });
+	  };
 	
 	$scope.loadSearch = function() {
 		if($scope.islogged == '1'){
