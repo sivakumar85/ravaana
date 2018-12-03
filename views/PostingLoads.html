@@ -21,7 +21,7 @@ background-color:#F7F7F7;
 </style>
 
 <script type="text/javascript">
-        google.maps.event.addDomListener(window, 'load', function () {
+       /* google.maps.event.addDomListener(window, 'load', function () {
             var places = new google.maps.places.Autocomplete(document.getElementById('from_city'));
             google.maps.event.addListener(places, 'place_changed', function () {
                 var place = places.getPlace();
@@ -49,7 +49,7 @@ background-color:#F7F7F7;
                
             });
         });
-
+*/
 
         var directionDisplay;
 		var directionsService = new google.maps.DirectionsService();
@@ -86,6 +86,7 @@ background-color:#F7F7F7;
 				<li class="active">Post Loads</li>
               </ul>
             </div>
+            {{load_form.$valid}}
       <h1>Post Loads</h1>
 	  
       <hr style="border:1px solid #FF3300">
@@ -135,7 +136,7 @@ background-color:#F7F7F7;
 			<div class="input-group">
 				<span class="input-group-addon">
 				<i class="fa fa-map-marker"></i></span>
-				<input type="text" class="form-control" placeholder="Enter City" ng-model="load.from_city" ng-required="true" name="from_city" id="from_city">
+				<input type="text" class="form-control" placeholder="Enter City" ng-autocomplete ng-model="load.from_city" ng-required="true" name="from_city" id="from_city">
 			</div>
 		</div>
 		<div class="col-lg-6 form-group has-feedback">
@@ -143,7 +144,7 @@ background-color:#F7F7F7;
 			<div class="input-group">
 				<span class="input-group-addon">
 				<i class="fa fa-map-marker"></i></span>
-				<input type="text" class="form-control" placeholder="Select From Location" ng-model="load.from_location" name="from_location" ng-required="true" id="from_location">
+				<input type="text" class="form-control" placeholder="Select From Location" ng-autocomplete ng-model="load.from_location" name="from_location" ng-required="true" id="from_location">
 			</div>
 		</div>
 		<div class="col-lg-6 form-group has-feedback">
@@ -151,7 +152,7 @@ background-color:#F7F7F7;
 			<div class="input-group">
 				<span class="input-group-addon">
 				<i class="fa fa-map-marker"></i></span>
-				<input type="text" class="form-control" placeholder="Enter City" ng-model="load.to_city" id="to_city" name="to_city" ng-required="true">
+				<input type="text" class="form-control" placeholder="Enter City" ng-autocomplete ng-model="load.to_city" id="to_city" name="to_city" ng-required="true">
 			</div>
 		</div>
 		<div class="col-lg-6 form-group has-feedback">
@@ -159,7 +160,7 @@ background-color:#F7F7F7;
 			<div class="input-group">
 				<span class="input-group-addon">
 				<i class="fa fa-map-marker"></i></span>
-				 <input type="text" class="form-control" placeholder="Select To City" ng-model="load.to_location" id="to_location" name="to_location" ng-required="true">
+				 <input type="text" class="form-control" placeholder="Select To City" ng-autocomplete ng-model="load.to_location" id="to_location" name="to_location" ng-required="true">
 			</div>
 		</div>
 		<div class="col-lg-6 form-group has-feedback">

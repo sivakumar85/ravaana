@@ -691,4 +691,12 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.profileContent  {
+    color: #fff;
+    padding: 4px 6px;
+    display: inline-block;
+    background-color: #222!important;
+    border-bottom-left-radius: 6px!important;
+    border-bottom-right-radius: 6px!important;
+    }
 </style>
