@@ -53,6 +53,11 @@ error_reporting(E_ALL & ~E_NOTICE);
 			$row["modified_date"] =  $modified_datetime->format('d F Y, h:i A');
 			}
 			$row["active"] = ($row["active"] == 1) ? true: false;
+			$row["truck_rc"] = ($row["truck_rc"]!= '') ? $row["truck_rc"]: 'noimage.png';
+			$row["truck_insurence"] = ($row["truck_insurence"]!= '') ? $row["truck_insurence"]: 'noimage.png';
+			$row["truck_pollution"] = ($row["truck_pollution"]!= '') ? $row["truck_pollution"]: 'noimage.png';
+			$row["truck_image"] = ($row["truck_image"]!= '') ? $row["truck_image"]: 'noimage.png';
+			$row["truck_fitness_certificate"] = ($row["truck_fitness_certificate"]!= '') ? $row["truck_fitness_certificate"]: 'noimage.png';
 			$output[] = $row;
 		}
 
