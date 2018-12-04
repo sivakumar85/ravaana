@@ -57,7 +57,7 @@
          <hr style="border:1px solid #FF3300">
          <div class="container col-lg-10 col-lg-offset-1"> 
       <div class="well imp">
-                    <form class=="form-control" role="form">
+                    <form class=="form-control" role="form" ng-init="search();">
                       <div class="col-lg-2">
                         <div class="form-group">
                           <select id="search_type" name="search_type" class="form-control" style="color:black;background-color: white" ng-model="searchParam.search_type">
@@ -136,40 +136,26 @@
                             </thead>
                             <tbody id="myTable">
 
-                                <tr>
-                                    <td>Fertilizer</td>
-                                    <td>warangal (bapuji nagar)</td>
-                                    <td>Medak (gandhi nagar)</td>
-                                    <td>250</td>
-                                    <td>1100/- per ton</td>
-                                    <td>To pay</td>
-                                    <td>19</td>
-                                    <td>31-07-2018</td>
-                                    <td>12 Tyre Truck</td> 
-                                    <td>30 Jul 2018, 01:58 PM</td>
+                                <tr ng-repeat="data in searchData">
+                                    <td>{{data.typeOfLoad}}</td>
+                                    <td>{{data.from_city}}({{data.from_location}})</td>
+                                    <td>{{data.to_city}}({{data.to_location}})</td>
+                                    <td>{{data.distance_km}}</td>
+                                    <td>{{data.load_cost}}/- {{data.load_cost_type}}</td>
+                                    <td>{{data.advance_percent}}</td>
+                                    <td>{{data.tonns_available}}</td>
+                                    <td>{{data.available_daily=='1'?'Daily':data.available_date_from+' to '+data.available_date_to}}</td>
+                                    <td>{{data.vehicle_type}}</td> 
+                                    <td>{{data.created_date}}</td>
                                     <td><a href="#OwnerSelectTruck"class="btn btn-info">
                                     Pay&nbsp;<i class="fa fa-inr"></i>&nbsp;10
                                     </a>
                                     </td>
 
-                                </tr>
-                                 <tr>
-                                    <td>Fertilizer</td>
-                                    <td>warangal (bapuji nagar)</td>
-                                    <td>Medak (gandhi nagar)</td>
-                                    <td>250</td>
-                                    <td>1100/- per ton</td>
-                                    <td>To pay</td>
-                                    <td>19</td>
-                                    <td>31-07-2018</td>
-                                    <td>12 Tyre Truck</td> 
-                                    <td>30 Jul 2018, 01:58 PM</td>
-                                    <td><a href="#OwnerSelectTruck"class="btn btn-info">
-                                    Pay&nbsp;<i class="fa fa-inr"></i>&nbsp;10
-                                    </a>
-                                    </td>
+
 
                                 </tr>
+                                
                             </tbody>
                         </table>
 
