@@ -9,6 +9,7 @@
         background-color: #F7F7F7;
     }
 </style>
+<form class="form-horizontal" id="view_truck_form" name="view_truck_form" ng-submit="view_truck_form.$valid && updateDriver($event)" novalidate="novalidate" autocomplete="off">
 <div class="container" style="padding-left: 15px;">
 <div class="col-lg-12">
               <ul class="breadcrumb">
@@ -36,27 +37,22 @@
             <label class="col-lg-4" for="trucktype"><span class="required"> * </span>Truck Type</label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                <input class="form-control" maxlength="50"name="searchparams_name" placeholder="Search Truck Type" type="text" autocomplete="off">
+                <input class="form-control" maxlength="50" name="truck_type" id="truck_type" placeholder="Search Truck Type" type="text" autocomplete="off">
             </div>
         </div>
         <div class="col-lg-7 form-group has-feedback">
             <label class="col-lg-4" for="cpt"><span class="required"> * </span>Capacity(in tons)</label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
-                <input class="form-control" maxlength="50"name="searchparams_name" type="text" autocomplete="off">
+                <input class="form-control" maxlength="50"name="capacity" id="Capacity" type="text" autocomplete="off">
             </div>
         </div>
         <div class="col-lg-7 form-group has-feedback">
             <label class="col-lg-4" for="order"><span class="required"> * </span>Display In Orders</label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-reorder"></i></span>
-                <input class="form-control" maxlength="50"name="searchparams_name" type="text" autocomplete="off">
+                <input class="form-control" maxlength="50" name="display_orders" id="display_orders" type="text" autocomplete="off">
             </div>
-        </div>
-        <div class="col-lg-7 form-group has-feedback">
-            <label class="col-lg-4" for="order">Status</label>
-           
-                <input type="checkbox">
         </div>
        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -68,3 +64,46 @@
 	</div>
 
 </div>
+</form>
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () { 
+            $('#view_truck_form').bootstrapValidator({
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'view_truck_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                truck_type: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Load Type'
+                        },
+                    }
+                },
+                 capacity: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter capacity'
+                        },
+                    }
+                },
+                 display_orders: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter  orders'
+                        },
+                    }
+                },
+        }
+    });
+});
+        </script>

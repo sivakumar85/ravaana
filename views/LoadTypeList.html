@@ -60,75 +60,14 @@
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-success"><em class="fa fa-pencil"></em></a>
+                               <tr ng-repeat="loadorders in loadtype | filter:searchText" >
+                                        <td align="center">
+                                        <a href="" class="btn btn-success"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                                     </td>
-                                    <td>Coal</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-success"><em class="fa fa-pencil"></em></a>
-                                   
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Iron ore</td>
-                                    <td>2</td>
-                    
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-success"><em class="fa fa-pencil"></em></a>
-                                    
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Fertilizer</td>
-                                    <td>3</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-success"><em class="fa fa-pencil"></em></a>
-                                    
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Cement</td>
-                                    <td>4</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-success"><em class="fa fa-pencil"></em></a>
-                                    
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Iron Steel Metal</td>
-                                    <td>5</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-success"><em class="fa fa-pencil"></em></a>
-                                    
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>Rice</td>
-                                    <td>6</td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <a class="btn btn-success"><em class="fa fa-pencil"></em></a>
-                                   
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                    </td>
-                                    <td>wood</td>
-                                    <td>7</td>
-                                    
-                                </tr>
+                                    <td>{{loadorders.load = $index + 1}}</td>
+                                    <td>{{loadorders.orders}}</td>
+                                 </tr>
                             </tbody>
                         </table>
 
