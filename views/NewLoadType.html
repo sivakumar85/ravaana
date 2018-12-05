@@ -9,6 +9,7 @@
         background-color: #F7F7F7;
     }
 </style>
+<form class="form-horizontal" id="newload_form" name="newload_form" ng-submit="newload_form.$valid && updateDriver($event)" novalidate="novalidate" autocomplete="off">
 <div class="container" style="padding-left: 15px;">
 <div class="col-lg-12">
               <ul class="breadcrumb">
@@ -35,20 +36,17 @@
             <label class="col-lg-4" for="load">Load Type</label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-cube"></i></span>
-                <input class="form-control" maxlength="50"name="" placeholder="Load" type="text" autocomplete="off">
+                <input class="form-control" name="loadtype" id="loadtype" maxlength="50"name="" placeholder="Load" type="text" autocomplete="off">
             </div>
         </div>
         <div class="col-lg-7 form-group has-feedback">
             <label class="col-lg-4" for="order">Display Orders</label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-reorder"></i></span>
-                <input class="form-control"value="0" type="text">
+                <input class="form-control"value="0" type="text" name="orders" id="orders">
             </div>
         </div>
-        <div class="col-lg-7 form-group has-feedback">
-            <label class="col-lg-4" for="status">Status</label>
-                <input type="checkbox">
-        </div>
+        
        <div class="form-group">
             <div class="col-md-offset-3 col-md-9">
             
@@ -58,3 +56,33 @@
          </div>
 
 </div>
+</div>
+</form>
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () { 
+            $('#newload_form').bootstrapValidator({
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'newload_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                loadtype: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Load Type'
+                        },
+                    }
+                },
+        }
+    });
+});
+        </script>
