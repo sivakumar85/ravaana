@@ -57,12 +57,11 @@
 	border-radius:0px;
 
 }
-.fa {
+.carousel .fa {
 
     display: inline-block;
-        font-size: 14px;
     text-rendering: auto;
-    font-size: 40px;
+    font-size: 16px;
 
 }
 .service {
@@ -136,10 +135,29 @@ a.big-link-1 {
   text-align: center;
   vertical-align: middle;
 }
+.carousel {
+
+    margin-top: -94px;
+
+}
+.carousel-control.left{
+	background-image: none;
+	}
+.carousel-control.right{
+	background-image: none;
+	}
+.fcity{
+	color: white;
+}
 @media only screen and (max-width: 768px){
 .inner_latest_updates_block {
-    height:65px !important;
-    border:1px solid #64A737 !important;
+    height:168px !important;
+    border:5px solid #64A737 !important;
+}
+.carousel {
+
+    margin-top: -138px;
+
 }
 }
 </style>
@@ -166,7 +184,7 @@ a.big-link-1 {
                       <div class="col-lg-2" ng-if="searchParam.search_type == 'truck'">
                         <div class="form-group">
                           <select id="load" name="load" class="form-control"  style="color:black;background-color: white" ng-model="searchParam.truck_type">
-                            <option value="">Any Truck</option>               
+                            <option value="">Select Truck</option>               
               <option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>   
                           </select>
                         </div>
@@ -200,62 +218,93 @@ a.big-link-1 {
                     </form>
           </div>
     </div>
-				<div class="carousel slide">
-  				<div class="carousel-inner">
-  						<img style="margin: 0px; padding: 0px; border: none; width: 100%; height:500px; max-height: none; max-width:100%; z-index: -999999; left: 0px; top: -110.406px;" src="images/51_gp-logistics-banner.png">
-  			
-  				</div><!-- End Carousel inner -->
-
-  		</div>
-  				<div class="inner_latest_updates_block" style="border:3px solid #64A737; background-color:#64A737">
+  						<img class="imgclass" style="margin: 0px; padding: 0px; border: none; width: 100%; min-height: 560px; height:500px; max-height: none; max-width:100%; z-index: -999999; left: 0px; top: -110.406px;" src="images/51_gp-logistics-banner.png">
+  				<!--<div class=" col-lg-12 inner_latest_updates_block" style="border:3px solid #64A737; background-color:#64A737">
 			<div class="container-fluid">					
 						<div class="col-lg-2 latest-news pull" style="background-color:#64A737;padding-top: 6px;height: 31px; color:white;font-size: 16px">Loads available  <span>|</span> 
 						</div>
 						<div class="col-lg-10 scroll-news" style="padding-top: 5px;background-color:white">
-								<div class="example-left">
+								<!--<div class="example-left">
             <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-            	<div class="col-lg-10">
-					<h4 style="color:black;margin-top:5px">
-				        Dhone - Tumakuru    </h4>
+            	<div class="col-lg-4">
+					<h4>Dhone - Tumakuru<span><a style="margin-left:10px" class="btn btn-info btn-xs" href="#/Search" target="_blank"><i class="fa fa-paper-plane" style="color:#FCFCFC"></i> &nbsp;View Details</a></span></h4>
 					<div class="col-lg-12">
-				        <div style="padding:5px" class="col-lg-3"><i class="fa fa-calendar fa-2" style="color:#64AC34"></i> &nbsp;03/12/2018</div>
-						<div style="padding:5px" class="col-lg-4"><i class="fa fa-cubes fa-2" style="color:#A6855C"></i> &nbsp;Cement ( 25 ton ) </div>
-						<div style="padding:5px" class="col-lg-2"><a style="margin-left:10px" class="btn btn-info btn-xs" href="#/Search" target="_blank"><i class="fa fa-paper-plane" style="color:#FCFCFC"></i> &nbsp;View Detail</a></div>
+				        <div style="padding:5px" class="col-lg-5" ><i class="fa fa-calendar fa-2" style="color:#64AC34" ></i> &nbsp;03/12/2018</div>
+						<div style="padding:5px" class="col-lg-7"><i class="fa fa-cubes fa-2" style="color:#A6855C"></i> &nbsp;Cement ( 25 ton ) </div>
 					</div>
 
-		
+				</div>
+				<div class="col-lg-4">
+					<h4>Dhone - Tumakuru<span><a style="margin-left:10px" class="btn btn-info btn-xs" href="#/Search" target="_blank"><i class="fa fa-paper-plane" style="color:#FCFCFC"></i> &nbsp;View Details</a></span></h4>
+					<div class="col-lg-12">
+				        <div style="padding:5px" class="col-lg-5" ><i class="fa fa-calendar fa-2" style="color:#64AC34" ></i> &nbsp;03/12/2018</div>
+						<div style="padding:5px" class="col-lg-7"><i class="fa fa-cubes fa-2" style="color:#A6855C"></i> &nbsp;Cement ( 25 ton ) </div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+				        <h4>Dhone - Tumakuru<span><a style="margin-left:10px" class="btn btn-info btn-xs" href="#/Search" target="_blank"><i class="fa fa-paper-plane" style="color:#FCFCFC"></i> &nbsp;View Details</a></span></h4>
+					<div class="col-lg-12">
+				        <div style="padding:5px" class="col-lg-4" ><i class="fa fa-calendar fa-2" style="color:#64AC34" ></i> &nbsp;03/12/2018</div>
+						<div style="padding:5px" class="col-lg-8"><i class="fa fa-cubes fa-2" style="color:#A6855C"></i> &nbsp;Cement ( 25 ton ) </div>
+					</div>
 				</div>
 
-
             </marquee>
-        </div>
-						  <!--<div class="carousel slide" data-ride="carousel" id="quote-carousel">
-							
-							 Carousel Slides / Quotes 
+        </div>-->
+						  <div class="carousel slide" data-ride="carousel" id="quote-carousel">
 							<div class="carousel-inner">								
-							<div class="item">											
-							<div class="row">							
-							<div class="col-md-12">					
-							Load available from Tadipatri, Anantapuram to Delhi, N/A		
-							</div>												
-							</div>											
-							</div>											
-							<div class="item">											
-							<div class="row">							
-							<div class="col-md-12">					
-							Load available from Hindupur, Solapur to Delhi, Chennai		
-							</div>												
-							</div>											
-							</div>											
 							<div class="item active">											
 							<div class="row">							
-							<div class="col-md-12">					
-							Load available from Nagpur, Nagpur to Erode, Erode		
-							</div>												
+							<div class="col-md-6 col-md-offset-4">				
+							 <h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">Dhone - Tumakuru</span></h4>
+					<div class="col-lg-12" style="color:yellow">
+				        <div style="padding:5px" class="col-lg-4" ><span>Date :</span> &nbsp;03/12/2018</div>
+						<div style="padding:5px" class="col-lg-8"><span>Load :</span> &nbsp;Cement ( 25 ton ) </div>
+					</div>
+					<div class="col-lg-12" style="color:yellow">
+				       <span><a style="margin-left:88px; color:green; font-size: 20px;" href="#/Search" target="_blank">&nbsp;view details</a></span> 
+					</div>	
+							</div>													
 							</div>											
 							</div>											
-														</div>
-						  </div>-->                          
+							<div class="item">											
+							<div class="row">							
+							<div class="col-md-6 col-md-offset-4">				
+							 <h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">Dhone - Tumakuru</span></h4>
+					<div class="col-lg-12" style="color:yellow">
+				       <div style="padding:5px" class="col-lg-4" ><span>Date :</span> &nbsp;03/12/2018</div>
+						<div style="padding:5px" class="col-lg-8"><span>Load :</span> &nbsp;Cement ( 25 ton ) </div>
+					</div>
+					<div class="col-lg-12" style="color:yellow">
+				       <span><a style="margin-left:88px; color:green; font-size: 20px;" href="#/Search" target="_blank">&nbsp;view details</a></span> 
+					</div>	
+							</div>													
+							</div>											
+							</div>									
+							<div class="item">											
+							<div class="row">							
+							<div class="col-md-6 col-md-offset-4">				
+							 <h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">Dhone - Tumakuru</span></h4>
+					<div class="col-lg-12" style="color:yellow">
+				        <div style="padding:5px" class="col-lg-4" ><span>Date :</span> &nbsp;03/12/2018</div>
+						<div style="padding:5px" class="col-lg-8"><span>Load :</span> &nbsp;Cement ( 25 ton ) </div>
+					</div>
+					<div class="col-lg-12" style="color:yellow">
+				       <span><a style="margin-left:88px; color:green; font-size: 20px;" href="#/Search" target="_blank">&nbsp;view details</a></span> 
+					</div>	
+							</div>													
+							</div>											
+							</div>										
+							</div>
+							<a class="left carousel-control pull-left" href="#Home#quote-carousel" data-slide="prev">
+						      <span class="glyphicon glyphicon-chevron-left"></span>
+						      <span class="sr-only">Previous</span>
+						    </a>
+						    <a class="right carousel-control pull-right" href="#Home#quote-carousel" data-slide="next">
+						      <span class="glyphicon glyphicon-chevron-right"></span>
+						      <span class="sr-only">Next</span>
+						    </a>
+						  </div>                        
 						</div>
 						
 			</div>
@@ -369,7 +418,7 @@ a.big-link-1 {
 					</div>
 					<div class="col-sm-3">
 		                <div class="service wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
-						<h3 style="text-align:center">Bus Ravaana</h3>
+						<h3 style="text-align:center">Bus Tickets</h3>
 		                    <div class="service-icon"><i class="fa fa-bus"></i></div>
 		                    <ul style="list-style:none;padding-right:2px">
 												<li>
