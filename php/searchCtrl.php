@@ -17,6 +17,68 @@ if(isset($_GET['action'])) {
 			echo $response;
 		}
 	}  
+function getDriversList($form_data){  
+     include('database_connection.php'); 
+     $output = array();  
+	$sql = "SELECT id, uid, driver_name, driver_age, driver_license_number, driver_mobile, 		driver_address, driver_photo, driver_license,driver_aadhar_number,aadhar_copy, active, created_by, created_date 
+			FROM drivers_list
+			WHERE active=1 AND created_by='".$_SESSION['uid']."'";
+	
+	//echo $_GET['id'];
+	if(isset($_GET['id'])) {
+		$sql.= " AND id='".$_GET['id']."'";
+	}  
+	
+	$query=$conn->query($sql);
+	while($row=$query->fetch_array()){
+		/*$new_datetime = DateTime::createFromFormat ( "Y-m-d H:i:s", $row["created_date"] );
+		$row["created_date"] =  $new_datetime->format('d F Y, h:i:s A');
+		if(isset($row["modified_date"]) && $row["modified_date"]!=null){
+			$modified_datetime = DateTime::createFromFormat ( "Y-m-d H:i:s", $row["modified_date"] );
+		$row["modified_date"] =  $modified_datetime->format('d F Y, h:i A');
+		}
+		$row["active"] = ($row["active"] == 1) ? true: false;*/
+		$output[] = $row;
+	}
+
+	return json_encode($output);
+       
+}  
+function getTrucksList($form_data){  
+     include('database_connection.php'); 
+     $output = array();  
+	$sql = "SELECT id, uid, vehicle_registration_no, vehicle_type, truck_capacity, 			truck_rc, truck_insurence, truck_pollution, truck_image, 
+		driver_aadhar_number,aadhar_copy,truck_fitness_certificate, active, created_by, 
+		created_date, modified_by,modified_date 
+			FROM trucks_list
+			WHERE active=1 AND created_by='".$_SESSION['uid']."'";
+	
+	//echo $_GET['id'];
+	if(isset($_GET['id'])) {
+		$sql.= " AND id='".$_GET['id']."'";
+	}  
+	
+	//echo $sql;
+	$query=$conn->query($sql);
+	while($row=$query->fetch_array()){
+		/*$new_datetime = DateTime::createFromFormat ( "Y-m-d H:i:s", $row["created_date"] );
+		$row["created_date"] =  $new_datetime->format('d F Y, h:i:s A');
+		if(isset($row["modified_date"]) && $row["modified_date"]!=null){
+			$modified_datetime = DateTime::createFromFormat ( "Y-m-d H:i:s", $row["modified_date"] );
+		$row["modified_date"] =  $modified_datetime->format('d F Y, h:i A');
+		}
+		$row["active"] = ($row["active"] == 1) ? true: false;
+		$row["truck_rc"] = ($row["truck_rc"]!= '') ? $row["truck_rc"]: 'noimage.png';
+		$row["truck_insurence"] = ($row["truck_insurence"]!= '') ? $row["truck_insurence"]: 'noimage.png';
+		$row["truck_pollution"] = ($row["truck_pollution"]!= '') ? $row["truck_pollution"]: 'noimage.png';
+		$row["truck_image"] = ($row["truck_image"]!= '') ? $row["truck_image"]: 'noimage.png';
+		$row["truck_fitness_certificate"] = ($row["truck_fitness_certificate"]!= '') ? $row["truck_fitness_certificate"]: 'noimage.png';*/
+		$output[] = $row;
+	}
+
+	return json_encode($output);
+       
+} 
 function search($form_data) {
  	include('database_connection.php');
 
