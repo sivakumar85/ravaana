@@ -57,7 +57,7 @@ body{
                     </div>
                 </div>
                  <div class="col-lg-12 col-lg-offset-6">                           
-                            <button class="btn btn-success">Proceed to Pay&nbsp;<i class="fa fa-inr">&nbsp;10</i></button>
+                            <button class="btn btn-success" ng-disabled="selection.length == 0">Proceed to Pay&nbsp;<i class="fa fa-inr">&nbsp;{{selection.length*10 }}</i></button>
                         </div>
             </div>
         </div>

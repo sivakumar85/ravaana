@@ -5,6 +5,24 @@ app.service('searchService', function(){
 app.controller('searchCtrl', ['$scope','$rootScope','$http','$location', 'loginService','sessionService','searchService', function($scope,$rootScope,$http,$location, loginService,sessionService,searchService){
 	//logout
 	$scope.searchParam = {};
+
+	$scope.selection=[];
+	$scope.pay = 0;
+	// toggle selection for a given employee by name
+	$scope.toggleSelection = function toggleSelection(truckid) {
+    var idx = $scope.selection.indexOf(truckid);
+
+    // is currently selected
+    if (idx > -1) {
+      $scope.selection.splice(idx, 1);
+    }
+
+    // is newly selected
+    else {
+      $scope.selection.push(truckid);
+    }
+  };
+
 	var load_type_request = $http.get('php/loadTypes.php');;
 	load_type_request.then(function(response){
 		$scope.load_types = response.data;
