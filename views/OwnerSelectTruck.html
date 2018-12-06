@@ -9,7 +9,7 @@ body{
     vertical-align: text-bottom;
 }
 </style>
-<div class="container">
+<div class="container" ng-init="selectTruck()">
 <div class="row">
 <div class="col-lg-12">
               <ul class="breadcrumb">
@@ -36,17 +36,21 @@ body{
                   </tr>
                          </thead>
                             <tbody id="myTable">
+                              
 
-                                <tr>
-                                   <td><input type="checkbox"  id="cboxStatus" checked="">AP 26 TL 6655</td>
-                                    <td>12 TYRE TRUCK</td>
-                                    <td>21 TONS</td>              
-                                     <td><select class="form-control" >
-                                    <option value="All">Select Driver Name</option>
-                                    <option value="Coal">NARAYANA</option>
-                                    <option value="Ironvore">RAMESH NAIDU</option>
-                                    <option value="Wood">KONDALRAO</option>              
-                                     </select> </td>
+                                <tr ng-repeat="truck in trucksList">
+
+                                   <td>
+                                    <input id="{{truck.id}}" type="checkbox" value="{{truck.id}}" ng-checked="selection.indexOf(truck.id) > -1" ng-click="toggleSelection(truck.id)" />
+                                    {{truck.vehicle_registration_no}}</td>
+                                    <td>{{truck.vehicle_type}}</td>
+                                    <td>{{truck.truck_capacity}}</td>              
+                                     <td>
+                                      <select ng-model="load_booking.driver_id">
+                                        <option  value="">Select Driver Name</option>
+                                        <option ng-repeat="driver in driversList" value="{{driver.id}}">{{driver.driver_name}}</option>
+                                      </select>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

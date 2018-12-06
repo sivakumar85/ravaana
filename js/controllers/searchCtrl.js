@@ -44,13 +44,13 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location', 'loginS
 	
 	$scope.selectTruck = function(type) {
 	    //$http POST function
-	    var surl = 'php/searchCtrl.php?action=selectTruck';
+	    var surl = 'php/searchCtrl.php?action=getTrucksList';
 		$http({
 	      method: 'POST',
 	      url: surl,
 	      data: $scope.searchParam
 	    }).then(function successCallback(response) {
-	      	$scope.truckList = response.data;
+	      	$scope.trucksList = response.data;
 	      	var driversList_request = $http.get('php/driversCtrl.php?action=getDriversList');
 			driversList_request.then(function(response){
 				$scope.driversList = response.data;
