@@ -178,8 +178,9 @@ app.config(function($routeProvider) {
 		controller: 'trucksCtrl'
 	}).when('/UserTruckRequest', {
 		templateUrl: 'views/UserTruckRequest.html',
-	}).when('/OwnerSelectTruck', {
+	}).when('/SelectTruck/:loadId', {
 		templateUrl: 'views/OwnerSelectTruck.html',
+		controller: 'searchCtrl'
 	}).when('/AddBankAccount', {
 		templateUrl: 'views/AddBankAccount.html',
 	}).when('/RavaanaWallet', {

@@ -8,6 +8,14 @@ if(isset($_GET['action'])) {
 			$response = search($form_data);
 			echo $response;
 		}
+		else if($action == "getTrucksList"){
+			$response = getTrucksList($form_data);
+			echo $response;
+		}
+		else if($action == "getDriversList"){
+			$response = getDriversList($form_data);
+			echo $response;
+		}
 	}  
 function search($form_data) {
  	include('database_connection.php');
