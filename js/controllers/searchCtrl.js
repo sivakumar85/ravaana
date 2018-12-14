@@ -2,24 +2,25 @@
 app.service('searchService', function(){
   this.searchParam = {'search_type':'load'};
 });
-app.controller('searchCtrl', ['$scope','$rootScope','$http','$location', 'loginService','sessionService','searchService', function($scope,$rootScope,$http,$location, loginService,sessionService,searchService){
+app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeParams', 'loginService','sessionService','searchService', function($scope,$rootScope,$http,$location,$routeParams, loginService,sessionService,searchService){
 	//logout
 	$scope.searchParam = {};
 
-	$scope.selection=[];
+	$scope.truckIds=[];
+	$scope.driverIds =[] ;
 	$scope.pay = 0;
 	// toggle selection for a given employee by name
 	$scope.toggleSelection = function toggleSelection(truckid) {
-    var idx = $scope.selection.indexOf(truckid);
+    var idx = $scope.truckIds.indexOf(truckid);
 
     // is currently selected
     if (idx > -1) {
-      $scope.selection.splice(idx, 1);
+      $scope.truckIds.splice(idx, 1);
     }
 
     // is newly selected
     else {
-      $scope.selection.push(truckid);
+      $scope.truckIds.push(truckid);
     }
   };
 
@@ -39,7 +40,45 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location', 'loginS
 	    logIn_request.then(function(response){
 	    	$scope.islogged = response.data;
 	});
-
+	$scope.makePayment = function() {
+		//alert($scope.driverIds+'--'+$scope.truckIds);
+		var truckDriverArray = [];
+		var truckDriverObj = {};
+		var driversArray = [];
+		for(var j = 0; j < $scope.driverIds.length; j++) {
+			if($scope.driverIds[j]!='' && $scope.driverIds[j]!=null){
+				driversArray.push($scope.driverIds[j]);
+			}
+		}
+		if(!angular.isUndefined($routeParams.loadId)) {
+			$scope.loadId = $routeParams.loadId;
+		}
+		//alert(driversArray);
+		for(var i = 0; i < $scope.truckIds.length; i++)
+		{
+			truckDriverObj = {};
+			truckDriverObj.driverId = driversArray[i];
+			truckDriverObj.truckId = $scope.truckIds[i];
+			truckDriverObj.loadId = $scope.loadId;
+			truckDriverArray.push(truckDriverObj);
+		}
+		console.log(truckDriverArray);
+		//$http POST function
+	    $http({
+	      method: 'POST',
+	      url: 'php/searchCtrl.php?action=createLoadRequest',
+	      data: truckDriverArray
+	    }).then(function successCallback(response) {
+	      //alert(response);
+	      var payment_id = response.data.payment_id;
+	      Instamojo.open('https://test.instamojo.com/@sivakumar_sfdc'+'/'+payment_id);
+	    }, function errorCallback(response) {
+	      //alert("Error. while created Post Try Again!");
+	      $("#getCode").html("Error. while created Post Try Again!");
+		  $("#getCodeModal").modal('show');
+	    });
+		
+	}
 	$scope.search = function(type) {
 	    //$http POST function
 	    var surl = 'php/searchCtrl.php?action=search';

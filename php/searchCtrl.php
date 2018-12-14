@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(E_ERROR | E_PARSE);
 session_start();
 $form_data = json_decode(file_get_contents('php://input'));
 if(isset($_GET['action'])) {
@@ -7,13 +7,14 @@ if(isset($_GET['action'])) {
 		if($action == "search"){
 			$response = search($form_data);
 			echo $response;
-		}
-		else if($action == "getTrucksList"){
+		} else if($action == "getTrucksList"){
 			$response = getTrucksList($form_data);
 			echo $response;
-		}
-		else if($action == "getDriversList"){
+		} else if($action == "getDriversList"){
 			$response = getDriversList($form_data);
+			echo $response;
+		} else if($action == "createLoadRequest"){
+			$response = createLoadRequest($form_data);
 			echo $response;
 		}
 	}  
@@ -82,6 +83,7 @@ function getTrucksList($form_data){
 function search($form_data) {
  	include('database_connection.php');
 
+
 	$output = array();
 	//$sql = "SELECT * FROM members WHERE memid = '".$_SESSION['uid']."'";
 	$sql = "SELECT load_postings.id, load_postings.load_type, load_postings.truck_type, load_postings.from_city, load_postings.from_location, load_postings.to_city, 	load_postings.to_location, load_postings.distance_km, load_postings.load_cost, load_postings.load_cost_type, load_postings.advance_percent, load_postings.tonns_available,load_postings.available_date_from, load_postings.available_date_to, load_postings.available_daily, load_postings.uid, load_postings.tid,load_postings.active, load_postings.created_date,vehicle_type.vehicle_type,load_type.load_type as typeOfLoad, branches_list.address 
@@ -148,5 +150,120 @@ function search($form_data) {
 	}
 	return json_encode($output);
  }
+
+
+ function createLoadRequest($form_data){
+		include('database_connection.php');
+		include('Instamojo/config.php'); 
+		//$form_data = json_decode($_POST['model']);
+		//echo $form_data->driver_name;
+		//print_r($form_data);
+		$output = array();  
+		$message = '';
+		$error = '';
+		$payment_id = '' ;
+		$uid = $_SESSION['uid'];
+		$query = "INSERT INTO load_truck_requests  (request_type, request_load_id, request_truck_id, request_user_id, assigned_driver_id,created_by,request_status,booking_id) VALUES";
+		$booking_ids = '';
+		foreach ($form_data as $obj) {
+			$booking_id = 'RVNLB'.generateID();
+			$booking_ids.=$booking_id.",";
+			$query.= "('load','" .$obj->loadId."','" .$obj->truckId."','" .$uid."','" .$obj->driverId."','" .$uid."','payment pending','".$booking_id."'),";
+			//$obj = json_decode($obj);
+			
+		}
+		 $query = rtrim($query, ','); // omit the last comma
+		 $booking_ids = rtrim($booking_ids, ','); // omit the last comma
+		//echo $query;
+		 if ($conn->query($query) === TRUE) {
+		 	$amount = sizeof($form_data)*10;
+		 	$number = '8147595223';
+		 	$name = 'Siva';
+		 	$email = 'sivame85@gmail.com';
+		 	$ch = curl_init();
+
+			curl_setopt($ch, CURLOPT_URL, 'https://'.$mode.'.instamojo.com/api/1.1/payment-requests/');
+			curl_setopt($ch, CURLOPT_HEADER, FALSE);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+			curl_setopt($ch, CURLOPT_HTTPHEADER,
+			            array("X-Api-Key:$api_key",
+			                  "X-Auth-Token:$api_secret"));
+			$payload = Array(
+			    'purpose' => 'Load Booking',
+			    'amount' => $amount,
+			    'phone' => $number,
+			    'buyer_name' => $name,
+			    'redirect_url' => $redirect_url,
+			    'send_email' => true,
+			    'webhook' => $webhook_url,
+			    'send_sms' => true,
+			    'email' => $email,
+			    'allow_repeated_payments' => false
+			);
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+			$response = curl_exec($ch);
+			curl_close($ch); 
+
+
+			//print_r($response);
+
+
+			$data = json_decode($response, true);
+
+			if($data['success'] == 1) {
+				$payment_id = $data['payment_request']['id'];
+				$_SESSION["booking_ids"] = $booking_ids;
+				//header('Location:'.$data['payment_request']['longurl'].'');
+			}
+							
+		} else {
+		    $error.= "Error: " . $conn->error."<br>";
+		}
+		$output = array(
+		 'error'  => $error,
+		 'message' => $message,
+		 'payment_id' => $payment_id,
+		);
+
+		return json_encode($output);
+}
+
+function generateID()
+{
+    $capital_letters = range("A", "Z");
+    $lowcase_letters = range("a", "z");
+    $numbers         = range(0, 9);
+
+    $all = array_merge($numbers);
+    $count = count($all);    
+    $id    = "";
+
+    for($i = 0; $i < 10; $i++)
+    {
+        $key = rand(0, $count);
+        $id .= $all[$key];
+    }
+
+    if(!uniqueId($id))
+    {
+        return generateID();
+    }
+    return $id;
+}
+
+function uniqueId($id) 
+{
+	include('database_connection.php'); 
+	$sql = "SELECT booking_id FROM load_truck_requests  WHERE booking_id ='$id'";
+	$query = $conn->query($sql);
+
+	if($query->num_rows>0){
+		return false;
+	} else {
+		return true;
+	}
+}
 	 
 ?>
