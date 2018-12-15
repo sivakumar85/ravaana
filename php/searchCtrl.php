@@ -48,11 +48,16 @@ function getDriversList($form_data){
 function getTrucksList($form_data){  
      include('database_connection.php'); 
      $output = array();  
-	$sql = "SELECT id, uid, vehicle_registration_no, vehicle_type, truck_capacity, 			truck_rc, truck_insurence, truck_pollution, truck_image, 
-		driver_aadhar_number,aadhar_copy,truck_fitness_certificate, active, created_by, 
-		created_date, modified_by,modified_date 
-			FROM trucks_list
-			WHERE active=1 AND created_by='".$_SESSION['uid']."'";
+	$sql = "SELECT trucks_list.id, trucks_list.uid, trucks_list.vehicle_registration_no, 				   	   trucks_list.truck_capacity,trucks_list.truck_rc,
+				   trucks_list.truck_insurence, trucks_list.truck_pollution, 
+				   trucks_list.truck_image, trucks_list.driver_aadhar_number,
+				   trucks_list.aadhar_copy,trucks_list.truck_fitness_certificate, 
+				   trucks_list.active, trucks_list.created_by, 
+				   trucks_list.created_date, trucks_list.modified_by, 
+				   trucks_list.modified_date,vehicle_type.vehicle_type 
+				FROM trucks_list
+				INNER JOIN vehicle_type ON trucks_list.vehicle_type=vehicle_type.id
+				WHERE trucks_list.active=1 AND trucks_list.created_by='".$_SESSION['uid']."'";
 	
 	//echo $_GET['id'];
 	if(isset($_GET['id'])) {
