@@ -64,7 +64,7 @@
                                     <th style="width:15%">Actions</th>
                                     <th><a>Registration Number</a></th>
                                     <th>Truck Type</th>
-                                    <th>Truck bCapacity</th>
+                                    <th>Truck Capacity</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -83,7 +83,7 @@
                                     <td>{{truck.vehicle_type}}</td>
                                     <td>{{truck.truck_capacity}}</td>
                                 </tr>
-                                
+                                <tr ng-show="trucksList.length==0"><td colspan="12" align="center"> <span style="color:red">No records to display</span></td></tr>
                             </tbody>
                         </table>
 
