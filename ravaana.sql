@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2018 at 06:24 PM
+-- Generation Time: Dec 17, 2018 at 06:24 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -101,6 +101,30 @@ CREATE TABLE `load_postings` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `load_truck_requests`
+--
+
+CREATE TABLE `load_truck_requests` (
+  `id` int(11) NOT NULL,
+  `booking_id` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `request_type` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `request_load_id` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `request_truck_id` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `request_user_id` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `request_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `assigned_driver_id` int(11) DEFAULT NULL,
+  `payment_id` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `request_status` varchar(250) COLLATE utf8_bin DEFAULT NULL,
+  `active` int(11) DEFAULT '0',
+  `created_by` int(10) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `load_type`
 --
 
@@ -157,6 +181,8 @@ CREATE TABLE `trucks_list` (
   `truck_pollution` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `truck_image` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `truck_fitness_certificate` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `driver_aadhar_number` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `aadhar_copy` varchar(20) COLLATE utf8_bin DEFAULT NULL,
   `active` int(11) NOT NULL DEFAULT '1',
   `created_by` int(11) DEFAULT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -188,6 +214,37 @@ CREATE TABLE `user` (
   `created_by` int(11) DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_payments`
+--
+
+CREATE TABLE `user_payments` (
+  `id` int(11) NOT NULL,
+  `transaction_id` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `transaction_date` datetime DEFAULT NULL,
+  `transaction_amount` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `payment_id` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `transaction_status` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `transaction_purpose` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `buyer_name` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `buyer_email` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `payment_request` varchar(500) COLLATE utf8_bin DEFAULT NULL,
+  `instrument_type` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `billing_instrument` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `failure` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `payout` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `send_sms` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `send_email` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `sms_status` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `email_status` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -279,6 +336,12 @@ ALTER TABLE `load_postings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `load_truck_requests`
+--
+ALTER TABLE `load_truck_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `load_type`
 --
 ALTER TABLE `load_type`
@@ -295,6 +358,12 @@ ALTER TABLE `trucks_list`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`uid`);
+
+--
+-- Indexes for table `user_payments`
+--
+ALTER TABLE `user_payments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_profile`
@@ -317,19 +386,25 @@ ALTER TABLE `vehicle_type`
 -- AUTO_INCREMENT for table `branches_list`
 --
 ALTER TABLE `branches_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `drivers_list`
 --
 ALTER TABLE `drivers_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `load_postings`
 --
 ALTER TABLE `load_postings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `load_truck_requests`
+--
+ALTER TABLE `load_truck_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `load_type`
@@ -341,19 +416,25 @@ ALTER TABLE `load_type`
 -- AUTO_INCREMENT for table `trucks_list`
 --
 ALTER TABLE `trucks_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `user_payments`
+--
+ALTER TABLE `user_payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `vehicle_type`
