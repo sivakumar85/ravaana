@@ -87,6 +87,7 @@ background-color:#F7F7F7;
               </ul>
             </div>
             {{load_form.$valid}}
+            <span style="color:red" ng-show="load_form.available_date_to.$error.required"><i class="fa fa-exclamation-circle"></i>Please select To.</span>
       <h1>Post Loads</h1>
 	  
       <hr style="border:1px solid #FF3300">
