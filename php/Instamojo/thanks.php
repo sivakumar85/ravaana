@@ -23,8 +23,31 @@ session_start();
 .modal-content {
     height:inherit;
     margin: 0 auto;
-    background-color: #F6F6F6 !important;
+    background-color: white !important;
+    width: 409px;
 }
+.text-bold {
+    font-weight: 700;
+}
+.float--right {
+    float: right!important;
+}
+.right {
+    text-align: right;
+}
+.row.collapse>.columns {
+    padding-left: 0;
+    padding-right: 0;
+}
+@media only screen and (max-width: 700px) {
+    .modal-content {
+    height:inherit;
+    margin: 0 auto;
+    background-color: white !important;
+    width: 356px;
+}
+   }
+  }
 </style>
 <div class="container">
 
@@ -50,12 +73,12 @@ try {
     $response = $api->paymentRequestStatus($payid);
 
 
-    $res = "<table><tr><td>Payment ID:</td><td> " . $response['payments'][0]['payment_id'] . "</td></tr>" ;
-    $res.= "<tr><td>Payment Name:</td><td> " . $response['payments'][0]['buyer_name'] . "</td></tr>" ;
-     $res.="<tr><td>Payment Email: </td><td>" . $response['payments'][0]['buyer_email'] . "</td></tr>" ;
-     $res.= "<tr><td>Purpose: </td><td>" . $response['purpose'] . "</td></tr>" ;
-     $res.= "<tr><td>Payment Status:</td><td> " . $response['status'] . "</td></tr>" ;
-     $res.= "<tr><td>Payment Amount: </td><td>" . $response['amount'] . " ".$response['payments'][0]['currency']."</td></tr></table>" ;
+    $res = "<table class='table-compact table-vertical-center table-colorless text-medium'><tbody><tr><td width='125px' class='text-bold'>Payment ID:</td><td class='float--right'> " . $response['payments'][0]['payment_id'] . "</td></tr>" ;
+    $res.= "<tr><td class='text-bold'>Payment Name:</td><td class='float--right'> " . $response['payments'][0]['buyer_name'] . "</td></tr>" ;
+     $res.="<tr><td class='text-bold'>Payment Email: </td><td class='float--right'>" . $response['payments'][0]['buyer_email'] . "</td></tr>" ;
+     $res.= "<tr><td class='text-bold'>Purpose: </td><td class='float--right'>" . $response['purpose'] . "</td></tr>" ;
+     $res.= "<tr><td class='text-bold'>Payment Status:</td><td class='float--right'> " . $response['status'] . "</td></tr>" ;
+     $res.= "<tr><td class='text-bold'>Payment Amount: </td><td class='float--right'>" . $response['amount'] . " ".$response['payments'][0]['currency']."</td></tr></table>" ;
 //header("Location: ../../userHome.php");
     //echo  $_SESSION["booking_ids"];
     if(isset($_SESSION["booking_ids"])) {
