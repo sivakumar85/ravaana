@@ -27,7 +27,7 @@ session_start();
 		    width: 100%;
 		    height: 100%;
 		}
-		.modal-content {
+		#contentId{
 		    background-color: #ffe57e!important;
 		 }
 		 .alert-success{
@@ -60,7 +60,7 @@ session_start();
 		
 		<div id="getCodeModal" class="modal fade" role="dialog">
 	         <div class="modal-dialog">
-                <div class="modal-content">
+                <div id="contentId" class="modal-content">
                    <!--<div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button>
                          <h4 class="modal-title">Message</h4>
                    </div>-->

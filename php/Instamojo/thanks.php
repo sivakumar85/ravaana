@@ -81,44 +81,50 @@ try {
      $res.= "<tr><td class='text-bold'>Payment Amount: </td><td class='float--right'>" . $response['amount'] . " ".$response['payments'][0]['currency']."</td></tr></table>" ;
 //header("Location: ../../userHome.php");
     //echo  $_SESSION["booking_ids"];
-    if(isset($_SESSION["booking_ids"])) {
-      $booking_ids_arr = explode(",",$_SESSION["booking_ids"]); 
-      print_r($booking_ids_arr);    
-      $transaction_id = $response['id'];
-      $transaction_amount = $response['amount'];
-      $payment_id =  $response['payments'][0]['payment_id'];
-      $transaction_status = $response['status'];
-      $transaction_purpose = $response['purpose'];
-      $buyer_name = $response['payments'][0]['buyer_name'];
-      $buyer_email = $response['payments'][0]['buyer_email'];
-      $payment_request =  $response['payments'][0]['payment_request'];
-      $instrument_type =$response['payments'][0]['instrument_type'];
-      $billing_instrument = $response['payments'][0]['billing_instrument'];
-      $failure = $response['status'] != 'Completed'?implode($response['payments'][0]['failure']):'';
-      $payout = $response['payments'][0]['payout'];
-      $send_sms = $response['send_sms'];
-      $send_email = $response['send_email'];
-      $sms_status = $response['sms_status'];
-      $email_status = $response['email_status'];
-      $uid = $_SESSION['uid']; 
+    $transaction_id = $response['id'];
+    $transaction_amount = $response['amount'];
+    $payment_id =  $response['payments'][0]['payment_id'];
+    $transaction_status = $response['status'];
+    $transaction_purpose = $response['purpose'];
+    $buyer_name = $response['payments'][0]['buyer_name'];
+    $buyer_email = $response['payments'][0]['buyer_email'];
+    $payment_request =  $response['payments'][0]['payment_request'];
+    $instrument_type =$response['payments'][0]['instrument_type'];
+    $billing_instrument = $response['payments'][0]['billing_instrument'];
+    $failure = $response['status'] != 'Completed'?implode($response['payments'][0]['failure']):'';
+    $payout = $response['payments'][0]['payout'];
+    $send_sms = $response['send_sms'];
+    $send_email = $response['send_email'];
+    $sms_status = $response['sms_status'];
+    $email_status = $response['email_status'];
+    $uid = $_SESSION['uid']; 
+   if($response['status'] == 'Completed') {
+      if(isset($_SESSION["booking_ids"])) {
+       $request_status = "Pending from Transporter";
+       $button_url = '../../userHome.php#/MyLoadBooking';
+       $button_txt = 'Go to Booking';
+      } else if(isset($_SESSION["bookingId"])) {
+       $request_status = "Transporter Aprroved";
+       $button_url = '../../userHome.php#/UserLoadRequest';
+       $button_txt = 'Go to Requests';
+      }
+       $status_image = '../../images/payment_sucess.png';
+       $payment_header = 'Payment Complete';
+       $payment_msg = 'Thank you , your payment has been successful.';
+       
+
+    } else {
+      $request_status = "Payment Failed";
+      $status_image = '../../images/payment_error.png';
+       $payment_header = 'Your Payment Failed';
+       $payment_msg = 'Please try again.';
+       $button_url = '../../userHome.php#/Search';
+       $button_txt = 'Go Back';
+    }
+    
       $sel_query = "SELECT id,payment_id FROM user_payments WHERE payment_id='$payment_id'";
       $result = $conn->query($sel_query);
-      if($response['status'] == 'Completed') {
-         $request_status = "Pending from Transporter";
-         $status_image = '../../images/payment_sucess.png';
-         $payment_header = 'Payment Complete';
-         $payment_msg = 'Thank you , your payment has been successful.';
-         $button_url = '../../userHome.php#/MyLoadBooking';
-         $button_txt = 'Go to Booking';
-
-      } else {
-        $request_status = "Payment Failed";
-        $status_image = '../../images/payment_error.png';
-         $payment_header = 'Your Payment Failed';
-         $payment_msg = 'Please try again.';
-         $button_url = '../../userHome.php#/Search';
-         $button_txt = 'Go Back';
-      }
+     
      if($result->num_rows==0){
         $query = "INSERT INTO user_payments (transaction_id, transaction_amount, payment_id, transaction_status, transaction_purpose, buyer_name, buyer_email, payment_request, instrument_type, billing_instrument, failure, payout, send_sms, send_email, sms_status, email_status, created_by) VALUES ('$transaction_id', '$transaction_amount', '$payment_id', '$transaction_status', '$transaction_purpose', '$buyer_name', '$buyer_email', '$payment_request', '$instrument_type', '$billing_instrument', '$failure', '$payout', '$send_sms', '$send_email', '$sms_status', '$email_status', $uid)";
        // echo $query;
@@ -126,16 +132,31 @@ try {
         if ($conn->query($query) === TRUE) {
          // echo 'PaymentId-->'.$conn->insert_id;
           $payment_id = $conn->insert_id;
-         
-          for($i = 0; $i < sizeof($booking_ids_arr); $i++) { 
-           // echo 'bid-->'.$booking_ids_arr[$i];
-              $updateQuery = "UPDATE load_truck_requests set active='1',payment_id='$payment_id',request_status='$request_status', modified_date=CURRENT_TIMESTAMP,modified_by='".$_SESSION['uid']."' WHERE booking_id='$booking_ids_arr[$i]'"; 
-             // echo $updateQuery; 
-              if ($conn->query($updateQuery) === TRUE) {
-                  $message =  "load_truck_requests updated successfully..";
-              } else {
-                  $error.= "Error: " . $conn->error."<br>";
-              }
+         if(isset($_SESSION["booking_ids"])) {
+          $booking_ids_arr = explode(",",$_SESSION["booking_ids"]); 
+          //  print_r($booking_ids_arr);    
+      
+            for($i = 0; $i < sizeof($booking_ids_arr); $i++) { 
+             // echo 'bid-->'.$booking_ids_arr[$i];
+                $updateQuery = "UPDATE load_truck_requests set active='1',payment_id='$payment_id',request_status='$request_status', modified_date=CURRENT_TIMESTAMP,modified_by='".$_SESSION['uid']."' WHERE booking_id='$booking_ids_arr[$i]'"; 
+               // echo $updateQuery; 
+                if ($conn->query($updateQuery) === TRUE) {
+                    $message =  "load_truck_requests updated successfully..";
+                } else {
+                    $error.= "Error: " . $conn->error."<br>";
+                }
+            }
+          } else if(isset($_SESSION["bookingId"])){
+              $bookingId = $_SESSION["bookingId"]; 
+              $owner_updateQuery = "UPDATE load_truck_requests set active='1',owner_payment_id='$payment_id',request_status='$request_status', modified_date=CURRENT_TIMESTAMP,modified_by='".$_SESSION['uid']."' WHERE booking_id='$bookingId'"; 
+                 // echo $updateQuery; 
+                  if ($conn->query($owner_updateQuery) === TRUE) {
+                      $message =  "load_truck_requests updated successfully..";
+                  } else {
+                      $error.= "Error: " . $conn->error."<br>";
+                  }  
+      
+              
           }
 
         } else {
@@ -146,7 +167,7 @@ try {
         $message =  "refreshed again..";
       }
 
-    } 
+
       
       
 

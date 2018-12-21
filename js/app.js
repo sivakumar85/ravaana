@@ -187,6 +187,7 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/RavaanaWallet.html',
 	}).when('/UserLoadRequest', {
 		templateUrl: 'views/UserLoadRequest.html',
+		controller: 'bookingCtrl'
 	}).when('/Drivers', {
 		templateUrl: 'views/Drivers.html',
 		controller: 'driversCtrl'
