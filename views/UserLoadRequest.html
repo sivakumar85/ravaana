@@ -23,7 +23,7 @@ body{
 
     }
 </style>
-<div class="container">
+<div class="container" ng-init="myBookings('load_request');">
 <div class="row">
 <div class="col-lg-12">
               <ul class="breadcrumb">
@@ -61,24 +61,21 @@ body{
 
                             </thead>
                             <tbody id="myTable">
-
-                                <tr>
-                                    <td style="width:150px">AP 26 TL 6655</td>
-        <td style="width:150px">NARAYANA SWAMI</td>
-        <td>14 TYRE TRUCK</td>        
-        <td>24 TONS</td>
-        <td>COAL</td>
-        <td>K.P PORT</td>
-        <td>BALLERY</td>
-        <td>450 </td>
-        
-        <td>980</td>
-        <td>80% </td>       
-        <td style="width:150px">25/07/2018:07:30PM</th>
-        
-        <td style="width:170px"><button class="btn btn-info">YES</button>
-        <button class="btn btn-danger">NO</button></td>
-                                </tr>
+                               <tr ng-repeat="booking in myBookings">
+                                   <td>{{booking.vehicle_registration_no}}</td>
+                                    <td>{{booking.driver_name}}</td>
+                           <td>{{booking.vehicle_type}}</td>
+                           <td>{{booking.capacity}}</td>
+                           <td>{{booking.typeOfLoad}}</td>
+                           <td>{{booking.from_city}}({{booking.from_location}})</td>
+                           <td>{{booking.to_city}}({{booking.to_location}})</td>
+                           <td>{{booking.distance_km}}</td>
+                           <td>{{booking.load_cost}}/- {{booking.load_cost_type}}</td>
+                     <td>{{booking.advance_percent}} %</td>
+                     <td>{{booking.request_date}}</td>
+                     <td style="width:10%"><button class="btn btn-info" ng-click="assign_load(booking.booking_id,'1')">YES</button>
+        <button class="btn btn-danger" ng-click="assign_load(booking.booking_id,'0')">NO</button></td>
+                              
                             </tbody>
                         </table>
 
@@ -146,4 +143,20 @@ body{
 </div>
      </div>
 
-
+<div id="rejectModal" class="modal fade" role="dialog">
+           <div class="modal-dialog">
+                <div class="modal-content">
+                   <div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button>
+                         <h4 class="modal-title">Reject Reason</h4>
+                   </div>
+                   <div class="modal-body" >
+                         <textarea placeholder="Reject Reason">  </textarea>
+                   </div>
+                   <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                         <button type="button" class="btn btn-info">Update</button>
+                   </div>
+                </div>
+          </div>
+        </div>
+<script src="https://js.instamojo.com/v1/checkout.js"></script>

@@ -41,26 +41,35 @@ app.controller('bookingCtrl', ['$scope','$rootScope','$http','$location','$route
 	    });
 	};
 	
-	$scope.selectTruck = function(type) {
-	    //$http POST function
-	    var surl = 'php/bookingCtrl.php?action=getTrucksList';
-		$http({
+	$scope.assign_load = function(id,status) {
+		
+		//$http POST function
+		if(status=='0'){
+			if(confirm('Are you Sure?')) {
+				//alert('Reject'+id);
+				$("#rejectModal").modal('show');
+			}
+		} else {
+			alert('Accept');
+			$http({
 	      method: 'POST',
-	      url: surl,
-	      data: $scope.searchParam
+	      url: 'php/bookingCtrl.php?action=assign_load&bookingId='+id,	     
 	    }).then(function successCallback(response) {
-	      	$scope.trucksList = response.data;
-	      	var driversList_request = $http.get('php/driversCtrl.php?action=getDriversList');
-			driversList_request.then(function(response){
-				$scope.driversList = response.data;
-			});
+	      //alert(response);
+	      var payment_id = response.data.payment_id;
+	  	  if(payment_id !=''){
+	  	  	Instamojo.open('https://test.instamojo.com/@sivakumar_sfdc'+'/'+payment_id);
+	  	  } 
 	      
 	    }, function errorCallback(response) {
-	    	$("#getCode").html("Error. while created Post Try Again!");
-			 	 	$("#getCodeModal").modal('show');
 	      //alert("Error. while created Post Try Again!");
+	      $("#getCode").html("Error. while created Post Try Again!");
+		  $("#getCodeModal").modal('show');
 	    });
-	};
+		}
+	    
+		
+	}
 
 	$scope.loadSearch = function() {
 		if($scope.islogged == '1'){
