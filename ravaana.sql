@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2018 at 06:24 AM
+-- Generation Time: Dec 21, 2018 at 07:10 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -114,6 +114,7 @@ CREATE TABLE `load_truck_requests` (
   `request_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `assigned_driver_id` int(11) DEFAULT NULL,
   `payment_id` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `owner_payment_id` varchar(10) COLLATE utf8_bin DEFAULT NULL,
   `request_status` varchar(250) COLLATE utf8_bin DEFAULT NULL,
   `active` int(11) DEFAULT '0',
   `created_by` int(10) DEFAULT NULL,
@@ -398,13 +399,13 @@ ALTER TABLE `drivers_list`
 -- AUTO_INCREMENT for table `load_postings`
 --
 ALTER TABLE `load_postings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `load_truck_requests`
 --
 ALTER TABLE `load_truck_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `load_type`
@@ -428,7 +429,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_payments`
 --
 ALTER TABLE `user_payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
