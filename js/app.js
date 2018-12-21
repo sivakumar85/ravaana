@@ -201,6 +201,7 @@ app.config(function($routeProvider) {
 		controller: 'branchListCtrl'
 	}).when('/MyLoadBooking', {
 		templateUrl: 'views/MyLoadBooking.html',
+		controller: 'bookingCtrl'
 	}).when('/AddNewTruck/:id?', {
 		templateUrl: 'views/AddNewTruck.html',
 		controller: 'trucksCtrl'
