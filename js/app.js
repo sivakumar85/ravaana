@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngAutocomplete']);
+var app = angular.module('myApp', ['ngRoute','ngAutocomplete','angularUtils.directives.dirPagination']);
 app.controller('homectrl', ['$scope', '$location',function($scope, $location){ 
 $scope.go = function ( path ) {
   $location.path( path );

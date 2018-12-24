@@ -69,7 +69,10 @@ background-color:#F7F7F7;
 		directionsService.route(request, function(response, status) {
 		if (status == google.maps.DirectionsStatus.OK) {
 		//directionsDisplay.setDirections(response);
-		distanceInput.value = response.routes[0].legs[0].distance.value / 1000;
+		var distance_KM = response.routes[0].legs[0].distance.value / 1000;
+		var myInput = $("#distance_km");
+		myInput.val(distance_KM);
+		myInput.trigger('input');
 		
 		}
 		});
@@ -87,7 +90,21 @@ background-color:#F7F7F7;
               </ul>
             </div>
             {{load_form.$valid}}
-            <span style="color:red" ng-show="load_form.available_date_to.$error.required"><i class="fa fa-exclamation-circle"></i>Please select To.</span>
+            <!--<div style="color:red" ng-show="load_form.truck_type.$error.required"><i class="fa fa-exclamation-circle"></i>Please select truck_type.</div>
+             <div style="color:red" ng-show="load_form.load_type.$error.required"><i class="fa fa-exclamation-circle"></i>Please select load_type.</div>
+              <div style="color:red" ng-show="load_form.from_city.$error.required"><i class="fa fa-exclamation-circle"></i>Please select from_city.</div>
+              <div style="color:red" ng-show="load_form.from_location.$error.required"><i class="fa fa-exclamation-circle"></i>Please select from_location.</div>
+             <div style="color:red" ng-show="load_form.to_city.$error.required"><i class="fa fa-exclamation-circle"></i>Please select to_city.</div>
+              <div style="color:red" ng-show="load_form.to_location.$error.required"><i class="fa fa-exclamation-circle"></i>Please select to_location.</div>
+             <div style="color:red" ng-show="load_form.load_cost.$error.required"><i class="fa fa-exclamation-circle"></i>Please select load_cost.</div>
+              <div style="color:red" ng-show="load_form.load_cost_type.$error.required"><i class="fa fa-exclamation-circle"></i>Please select load_cost_type.</div>
+              <div style="color:red" ng-show="load_form.advance_percent.$error.required"><i class="fa fa-exclamation-circle"></i>Please select advance_percent.</div>
+             <div style="color:red" ng-show="load_form.tonns_available.$error.required"><i class="fa fa-exclamation-circle"></i>Please select tonns_available.</div>
+              <div style="color:red" ng-show="load_form.available_date_from.$error.required"><i class="fa fa-exclamation-circle"></i>Please select available_date_from.</div>
+               <div style="color:red" ng-show="load_form.available_date_to.$error.required"><i class="fa fa-exclamation-circle"></i>Please select available_date_to.</div>
+                             <div style="color:red" ng-show="load_form.distance_km.$error.required"><i class="fa fa-exclamation-circle"></i>Please select distance_km.</div>-->
+
+
       <h1>Post Loads</h1>
 	  
       <hr style="border:1px solid #FF3300">
