@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngAutocomplete']);
+var app = angular.module('myApp', ['ngRoute','ngAutocomplete','angularUtils.directives.dirPagination']);
 app.controller('homectrl', ['$scope', '$location',function($scope, $location){ 
 $scope.go = function ( path ) {
   $location.path( path );
@@ -187,6 +187,7 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/RavaanaWallet.html',
 	}).when('/UserLoadRequest', {
 		templateUrl: 'views/UserLoadRequest.html',
+		controller: 'bookingCtrl'
 	}).when('/Drivers', {
 		templateUrl: 'views/Drivers.html',
 		controller: 'driversCtrl'
@@ -201,6 +202,7 @@ app.config(function($routeProvider) {
 		controller: 'branchListCtrl'
 	}).when('/MyLoadBooking', {
 		templateUrl: 'views/MyLoadBooking.html',
+		controller: 'bookingCtrl'
 	}).when('/AddNewTruck/:id?', {
 		templateUrl: 'views/AddNewTruck.html',
 		controller: 'trucksCtrl'

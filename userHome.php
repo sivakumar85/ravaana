@@ -27,7 +27,7 @@ session_start();
 		    width: 100%;
 		    height: 100%;
 		}
-		.modal-content {
+		#contentId{
 		    background-color: #ffe57e!important;
 		 }
 		 .alert-success{
@@ -60,7 +60,7 @@ session_start();
 		
 		<div id="getCodeModal" class="modal fade" role="dialog">
 	         <div class="modal-dialog">
-                <div class="modal-content">
+                <div id="contentId" class="modal-content">
                    <!--<div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button>
                          <h4 class="modal-title">Message</h4>
                    </div>-->
@@ -98,7 +98,8 @@ session_start();
 		var login_username = '<?php echo  isset($_SESSION["username"]) ?   $_SESSION["username"] :   "User"?>';
 		var profile_name = '<?php echo  isset($_SESSION["business_type"]) ?   $_SESSION["business_type"] :   "User"?>';
 	</script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1abdbca2TvxtnmDbam16ynjcJZNJb0o&libraries=places"></script>
+	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1abdbca2TvxtnmDbam16ynjcJZNJb0o&libraries=places"></script>-->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtPa7TXA96OZGfbak7J5kyfcXnxT_jP-U&libraries=places"></script>
 	<script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
@@ -113,8 +114,10 @@ session_start();
 	<script type="text/javascript" src="js/controllers/trucksCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/profileCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/searchCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/bookingCtrl.js"></script>
 	<script type="text/javascript" src="js/services/loginService.js"></script>
 	<script type="text/javascript" src="js/services/sessionService.js"></script>
 	<script type="text/javascript" src="js/ngAutocomplete.js"></script>
+	<script type="text/javascript" src="js/dirPaginate.js"></script>
 	
 </html>

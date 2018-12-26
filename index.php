@@ -31,7 +31,8 @@ session_start();
 		
 	</body>
 	<script src="js/jquery.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1abdbca2TvxtnmDbam16ynjcJZNJb0o&libraries=places"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1abdbca2TvxtnmDbam16ynjcJZNJb0o&libraries=places"></script>-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtPa7TXA96OZGfbak7J5kyfcXnxT_jP-U&libraries=places"></script>
 	<script src="js/bootstrap.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
@@ -44,5 +45,6 @@ session_start();
 	<script type="text/javascript" src="js/services/loginService.js"></script>
 	<script type="text/javascript" src="js/services/sessionService.js"></script>
 	<script type="text/javascript" src="js/ngAutocomplete.js"></script>
+	<script type="text/javascript" src="js/dirPaginate.js"></script>
 	
 </html>
