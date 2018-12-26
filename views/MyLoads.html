@@ -137,21 +137,21 @@ background-color:#F7F7F7;
                             <thead>
                                 <tr>
                                   <th style="width:15%">Actions</th>
-                                  <th><a>Type Of Loading</a></th>
-                                  <th><a>From City</a></th>
-                                  <th><a>To City</a></th>
+                                  <th custom-sort order="'typeOfLoad'" sort="sort">Type Of Loading</th>
+                                  <th custom-sort order="'from_city'" sort="sort">From City</th>
+                                  <th custom-sort order="'to_city'" sort="sort">To City</th>
                                   <th>Kms</th>
                                   <th>Load Cost</th>
                                   <th>Advance</th>
                                   <th>Available Ton</th>
-                                  <th><a>Need Of Vehicle</a></th>
+                                  <th custom-sort order="'vehicle_type'" sort="sort">Need Of Vehicle</th>
                                   <th>Available Dates</th>
                                   <th>Transporter Address</th>
                                   <th>Posted On</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-<tr ng-repeat="myload in myloads">
+<tr ng-repeat="myload in myloads | orderBy:sort.sortingOrder:sort.reverse">
                             <td>
               <a class="btn btn-danger" ng-click="deletePost(myload.id)" data-toggle="tooltip"  title="Delete Post"><em class="fa fa-trash"></em></a>
               <a href="#PostingLoads/{{myload.id}}" class="btn btn-success" data-toggle="tooltip" title="Edit Post"><em class="fa fa-pencil"></em></a>

@@ -62,14 +62,14 @@
                             <thead>
                                 <tr>
                                     <th style="width:15%">Actions</th>
-                                    <th><a>Registration Number</a></th>
+                                    <th><a truck-sort order="'vehicle_registration_no'" sort="sort">Registration Number</a></th>
                                     <th>Truck Type</th>
                                     <th>Truck Capacity</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
 
-                                <tr ng-repeat="truck in trucksList">
+                                <tr ng-repeat="truck in trucksList | orderBy:sort.sortingOrder:sort.reverse">
                                     <td align="center">
                                         <a href="#AddNewTruck/{{truck.id}}" class="btn btn-success"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger" ng-click="deleteTruck(truck.id)"><em class="fa fa-trash"></em></a>
