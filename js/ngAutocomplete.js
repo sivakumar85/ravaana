@@ -78,6 +78,11 @@ angular.module( "ngAutocomplete", [])
               scope.gPlace.setComponentRestrictions(null)
             }
           }
+          //Only for India
+          opts.componentRestrictions = {
+              country: 'IN'
+              }
+          scope.gPlace.setComponentRestrictions(opts.componentRestrictions)
         }
 
         if (scope.gPlace == undefined) {

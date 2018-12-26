@@ -1,9 +1,10 @@
 'use strict';
 
-app.controller('loginCtrl', function($scope,$routeParams, loginService){
+app.controller('loginCtrl', function($scope,$routeParams, loginService, sessionService){
 	$scope.errorLogin = false;
 	$scope.regMsg = false;
 	$scope.loginMsg = false;
+	$scope.business_type = !angular.isUndefined(sessionService.get('business_type')) ? sessionService.get('business_type') : '';
 
 	if(!angular.isUndefined($routeParams.msg)){
 		if($routeParams.msg == 'regMsg'){

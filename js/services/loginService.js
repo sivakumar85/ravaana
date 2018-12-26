@@ -67,6 +67,8 @@ app.factory('loginService', function($http, $q, $location, sessionService){
                     //$scope.prograssing = false;
                     //console.log(respond);
                     if(message!==''){
+                    	//sessionService.set('uid',uid);
+                    	sessionService.set('business_type',respond.data.business_type);
 					    $location.path( '/VerifyCode' );
     				} else {
     					$scope.errorMsg = respond.data.error;

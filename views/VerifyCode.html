@@ -37,6 +37,7 @@ color:red;
 <div class="panel panel-default">
     <div class="panel-heading">
   <div class="panel-body" style="margin:10px">
+    
 <form role="form" name="verifyform" id="verifyform" ng-submit="verifyform.$valid && verifyUser($event)" novalidate="true" autocomplete="off">
 	<div class="form-group has-feedback">
          <div class="input-group">
@@ -45,15 +46,22 @@ color:red;
 		  <input class="form-control" id="VerificationCode" maxlength="6" name="verification_code" style="text-align:center" placeholder="Enter OTP"  type="text" ng-model="user.verification_code" ng-required="true">
 	   </div>
     </div>
-	<div class="form-group has-feedback">
+	<div class="form-group has-feedback" ng-show="business_type!=''&& business_type=='TransportCompany'">
         <div class="input-group">
             <span class="input-group-addon">
             <i class="fa fa-bank"></i></span>
 		<input class="form-control" name="company_name" style="text-align:center" placeholder="Company Name" type="text" ng-model="user.company_name" ng-required="true">
-	</div>
+	   </div>
+    </div>
+    <div class="form-group has-feedback" ng-show="business_type!=''&& business_type=='TruckOwner'">
+        <div class="input-group">
+            <span class="input-group-addon">
+            <i class="fa fa-map-marker"></i></span>
+        <input class="form-control" name="company_name" style="text-align:center" placeholder="Enter City" type="text" ng-autocomplete ng-model="user.company_name" ng-required="true">
+    </div>
 </div>
 	<div class="form-group has-feedback">
-			<textarea cols="10" rows="5" name="company_address" class="form-control" ng-model="user.company_address" ng-required="true" placeholder="Enter Company Address...">
+			<textarea cols="10" rows="5" name="company_address" class="form-control" ng-model="user.company_address" ng-required="true" placeholder="Enter Address...">
 			</textarea>
 	</div>
 	<div class="form-group has-feedback col-lg-12">
@@ -75,6 +83,7 @@ color:red;
    $(document).ready(function() {
     $('#verifyform').bootstrapValidator({
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+         excluded: [':disabled', ':hidden', ':not(:visible)'],
         live: 'enabled',
 			message: 'This value is not valid',
 			submitButton: 'verifyform button[type="submit"]',
