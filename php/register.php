@@ -5,6 +5,7 @@ session_start();
 include('database_connection.php');
 $message = '';
 $error = '';
+$business_type = '';
 try{
 	$form_data = json_decode(file_get_contents('php://input'));
 
@@ -94,7 +95,8 @@ try{
 
 $output = array(
  'error'  => $error,
- 'message' => $message
+ 'message' => $message,
+ 'business_type' => $business_type
 );
 
 echo json_encode($output);
