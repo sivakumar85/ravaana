@@ -19,7 +19,9 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
 			$scope.user = response.data[0];
 		});
 	}
-
+	$scope.editPostLoads = function(){
+		jq('#loadModal').modal({show:true});
+	}
 	$scope.fetchProfile = function(){
 		var userrequest = $http.get('php/fetchUserProfile.php');
 		userrequest.then(function(response){

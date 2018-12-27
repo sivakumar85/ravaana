@@ -80,7 +80,7 @@ app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $h
 		$scope.myloads = response.data;
 	});
 	}
-
+	
 	$scope.searchPosts = function(type) {
 	    //$http POST function
 	    var surl = 'php/fetchMyLoads.php';
