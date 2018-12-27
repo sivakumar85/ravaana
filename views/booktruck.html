@@ -1,0 +1,239 @@
+<style>
+.fs-it-btn-vertical-line {
+  text-align:center;
+  padding: 4px 0 5px 10px;
+  margin-left: 10px;
+  border-left: 1px solid #FF3300;
+}
+body{
+background-color:white;
+}
+.well{
+background-color:#F7F7F7;
+}
+.required{
+	color:red;
+}
+.form-group {
+    margin-bottom: 30px;
+}
+</style>
+<form name="book_truck_form" id="book_truck_form" ng-submit="book_truck_form.$valid && booktruck($event)" novalidate="true" autocomplete="off" >
+<div class="container" ng-init="editPost();">
+   <div class="row">
+		<div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a href="#Home" style="z-index:9;">Home</a></li>
+                <li class="active">Active Vehicles</li>
+              </ul>
+            </div>
+            <h1>Post Requirement</h1>
+            <hr style="border:1px solid #FF3300">
+            <div class="well col-lg-12">
+            <div class="col-lg-12">
+			<div class="alert alert-danger" ng-show="errorPost">
+				<span class="glyphicon glyphicon-warning-sign"></span>
+                            <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                            {{ errorMsg }}
+                        </div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;From City</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				<input type="text" class="form-control" placeholder="Enter City" ng-autocomplete ng-model="from_city" ng-required="true" name="from_city" id="from_city">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;To city</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				<input type="text" class="form-control" placeholder="Enter City" ng-autocomplete ng-model="to_city" id="to_city" name="to_city" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Kilometers</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-map-marker"></i></span>
+				<input type="text" class="form-control" placeholder="Enter distance in Kilometers" id="distance_km" name="distance_km" ng-model="load.distance_km" ng-required="true" onfocus="calcDistance();">
+			</div>
+		</div>
+			<div class="col-lg-6 form-group has-feedback">
+			<label for="expectrent"><span class="required">*</span>&nbsp;Expect Rent %</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-inr"></i></span>
+				<input type="text" class="form-control" placeholder="Enter Expect Rent" ng-model="expec_trent" name="expec_trent" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Advance %</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-inr"></i></span>
+				<input type="text" class="form-control" placeholder="Enter Payment %" ng-model="advance_percent" name="advance_percent" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp; No.Of Vechicles</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-truck"></i></span>
+				<input type="text" class="form-control" value="1" placeholder="Enter No.Of Vehicles" ng-model="no_of_vehicles" name="no_of_vehicles" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Need Of Truck</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-truck"></i></span>
+				 <select class="form-control" name="truck_type" ng-model="truck_type" ng-required="true" id="truck_type">
+            	<option value="">Select Truck Type</option>
+            	<option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>
+            </select>
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp; Truck Capacity</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-truck"></i></span>
+				<input type="text" class="form-control" placeholder="Truck Capacity" value="6 tons" ng-model="truck_capacity" name="truck_capacity" ng-required="true">
+			</div>
+		</div>
+		<div class="col-lg-6 form-group has-feedback" ng-show="!book_truck_form.available_daily">
+			<label for="date" name="needOfdate"><span class="required">*</span>&nbsp;Need Of Date</label>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="From Date" id="datePicker" name="available_date_from" ng-model="available_date_from" autocomplete="off" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+			</div>
+
+		</div>
+		<div class="col-lg-6 form-group has-feedback">
+			<label for="typeofload"><span class="required">*</span>&nbsp;Type Of Load</label>
+			<div class="input-group">
+				<span class="input-group-addon">
+				<i class="fa fa-cubes"></i></span>
+				<select class="form-control" ng-model="load_type" name="load_type" ng-required="true" id="load_type">
+					<option value="">Select Load Type</option>
+					<option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>				
+				</select>
+			</div>
+		</div>
+		
+			<div class="panel panel-default col-lg-8 col-lg-offset-2">
+				<p style="color:red">Note: Transport/Truck Owner Address will be sent to your mobile/email with in 5 hours of payment</p>
+				</div>
+				 
+			</div>
+			<div class="col-lg-2">
+			</div>
+            <div class="col-lg-12">
+			<div class="col-lg-4 col-lg-offset-5">
+            <button class="btn btn-info " type="submit"><i class="fa fa-inr"></i> &nbsp;Pay</button>
+			</div>
+			</div>
+         </div>
+     </div>
+    </div>
+</div>
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () { 
+            	 $('#datePicker').datepicker({
+			            format: 'dd/mm/yyyy',
+						autoclose: true, 
+						startDate:new Date()
+			        })
+            $('#book_truck_form').bootstrapValidator({
+            live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'book_truck_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
+
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            
+                from_city: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter  from city'
+                        },
+                    }
+                },
+                to_city: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter  to city'
+                        },
+                    }
+                },
+                distance_km: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Kilometers'
+                        },
+                    }
+                },
+                 expec_trent: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter expectrent'
+                        },
+                    }
+                },
+               advance_percent: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Advance'
+                        },
+                    }
+                },
+                no_of_vehicles: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter No.Of Vechicles'
+                        },
+                    }
+                },
+                truck_capacity: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Truck Capacity'
+                        },
+                    }
+                },
+                available_date_from: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter Date'
+                        },
+                    }
+                },
+                load_type: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter load type'
+                        },
+                    }
+                },
+                truck_type: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter truck type'
+                        },
+                    }
+                },
+
+        }
+    });
+});
+        </script>

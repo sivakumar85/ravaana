@@ -49,6 +49,10 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 		$scope.branchList = response.data;
 	});
 	}
+	$scope.sort = {       
+					sortingOrder : 'name',
+					reverse : true
+				};
 
 	$scope.searchBranch = function() {
 	    //$http POST function
@@ -155,7 +159,10 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		$scope.driversList = response.data;
 	});
 	}
-
+	$scope.sort = {       
+					sortingOrder : 'driver_name',
+					reverse : true
+				};
 	$scope.searchDrivers = function() {
 	    //$http POST function
 	    $http({
@@ -333,6 +340,42 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		    }
                     reader.readAsDataURL(element.files[0]);
 		  }
-	  
-
 }]);
+app.directive("driverSort", function() {
+		return {
+			restrict: 'A',
+			transclude: true,    
+			scope: {
+			  order: '=',
+			  sort: '='
+			},
+			template : 
+			  ' <a href="javascript:void(0);" ng-click="sort_by(order)" style="color: #555555;">'+
+			  '    <span ng-transclude></span>'+
+			  '    <i ng-class="selectedCls(order)"></i>'+
+			  '</a>',
+			link: function(scope) {
+						
+			// change sorting order
+			scope.sort_by = function(newSortingOrder) {       
+				var sort = scope.sort;
+				
+				if (sort.sortingOrder == newSortingOrder){
+					sort.reverse = !sort.reverse;
+				}                    
+
+				sort.sortingOrder = newSortingOrder;        
+			};
+			
+		   
+			scope.selectedCls = function(column) {
+				if(column == scope.sort.sortingOrder){
+					return ('fa fa-sort-' + ((scope.sort.reverse) ? 'desc' : 'asc'));
+				}
+				else{            
+					return'fa fa-sort' 
+				} 
+			};      
+		  }// end link
+		}
+	});

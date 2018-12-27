@@ -214,12 +214,11 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/TruckOwnerDocuments.html',
 		controller: 'profileCtrl'
 		
-	}).when('/ActiveVehiclesAvailabilityDetails',{
-		templateUrl:'views/ActiveVehiclesAvailabilityDetails.html',
+	}).when('/booktruck',{
+		templateUrl:'views/booktruck.html',
 		controller: 'PostingLoadsCtrl'
 	}).when('/paymentsuccess',{
 		templateUrl:'views/paymentsuccess.html',
-		
 	})
 	.otherwise({
         templateUrl: 'views/404.html',
