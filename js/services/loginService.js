@@ -12,6 +12,8 @@ app.factory('loginService', function($http, $q, $location, sessionService){
 				var profile_complete = response.data.profile_complete
 				if(uid){
 					sessionService.set('uid',uid);
+					sessionService.set('business_type',business_type);
+					//alert(sessionService.get('business_type'));
 					if(business_type == 'Admin') {
 						window.location.href = 'userHome.php#/UsersList';
 					} else if (business_type == 'TransportCompany') {
@@ -112,6 +114,7 @@ app.factory('loginService', function($http, $q, $location, sessionService){
         },
 		logout: function(){
 			sessionService.destroy('uid');
+			sessionService.destroy('business_type');
 			var logout_request = $http({
 			    url: 'php/logout.php', 
 			    method: "post",
