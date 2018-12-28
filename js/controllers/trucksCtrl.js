@@ -13,14 +13,19 @@ app.controller('trucksCtrl', ['$scope','$routeParams','$http','$location','login
 	if(!angular.isUndefined($routeParams.pSucess)){
 		$rootScope.$emit("CalluserCtrlMethod", {});
 	}
+	$scope.edittruck = function(id){
+        $location.path("/AddNewTruck/"+id);
+        $('#truckModal').modal('hide');
+    }
+	$scope.viewTruck = function(truck){
+			$scope.truck = truck;
+			$('#truckModal').modal('show');
+		};
 	$scope.fetch = function(){
 		var userrequest = $http.get('php/fetch.php');
 		userrequest.then(function(response){
 			$scope.user = response.data[0];
 		});
-	}
-	$scope.editPostLoads = function(){
-		jq('#loadModal').modal({show:true});
 	}
 	$scope.fetchProfile = function(){
 		var userrequest = $http.get('php/fetchUserProfile.php');

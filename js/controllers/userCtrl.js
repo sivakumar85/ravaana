@@ -53,6 +53,14 @@ app.controller('branchListCtrl', ['$scope','$routeParams','$http','$location','l
 					sortingOrder : 'name',
 					reverse : true
 				};
+	$scope.editbranch = function(id){
+        $location.path("/addBranch/"+id);
+        $('#branchModal').modal('hide');
+    }
+	$scope.viewbranch = function(branch){
+			$scope.branch = branch;
+			$('#branchModal').modal('show');
+		};
 
 	$scope.searchBranch = function() {
 	    //$http POST function
@@ -159,6 +167,14 @@ app.controller('driversCtrl', ['$scope','$routeParams','$http','$location','logi
 		$scope.driversList = response.data;
 	});
 	}
+	 $scope.editdriver = function(id){
+        $location.path("/AddDriver/"+id);
+        $('#driverModal').modal('hide');
+    }
+	$scope.viewdriver = function(driver){
+			$scope.driver = driver;
+			$('#driverModal').modal('show');
+		};
 	$scope.sort = {       
 					sortingOrder : 'driver_name',
 					reverse : true

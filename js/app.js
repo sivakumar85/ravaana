@@ -13,7 +13,6 @@ $scope.userLogout = function ( ) {
   window.location.href = 'index.html';
 };
 }]);
-
 app.directive('loading',   ['$http' ,function ($http)
  {
      return {
@@ -36,8 +35,6 @@ app.directive('loading',   ['$http' ,function ($http)
          }
      };
  }]);
-
-
 
 // This configures the routes here
 app.config(function($routeProvider) {
@@ -219,7 +216,13 @@ app.config(function($routeProvider) {
 		controller: 'PostingLoadsCtrl'
 	}).when('/paymentsuccess',{
 		templateUrl:'views/paymentsuccess.html',
+	}).when('/VerifyOtp',{
+		templateUrl:'views/VerifyOtp.html',
+	}).when('/setnewpassword',{
+		templateUrl:'views/setnewpassword.html',
 	})
+
+	
 	.otherwise({
         templateUrl: 'views/404.html',
     })

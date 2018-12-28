@@ -121,9 +121,7 @@ color:red;
                 </div></div>
     
         </div>
-               
-      <div class="form-group">
-                          
+          <div class="form-group">
                           <div class="col-lg-5">
                               <label for="aadhar"><h4>Company Name</h4></label><span class="required">&nbsp;*</span>
                                <div class="input-group">                       
@@ -232,6 +230,10 @@ color:red;
                 },
             panCard_number: {
                     validators: {
+                       regexp: {
+                        regexp: /^[a-zA-Z0-9]{10}$/,
+                        message: 'Please Enter valid pan number'
+                    },
                         notEmpty: {
                             message: 'Enter Pancard Number'
                         },
@@ -240,6 +242,13 @@ color:red;
                 },
                 aadhar_number: {
                     validators: {
+                        regexp: {
+            regexp: /^\d{12}$/,
+                        message: 'Please Enter 12 digits Aadhar Number'
+                    },
+                    digits: {
+                        message: 'aadhar Number can contain only digits'
+                    },
                         notEmpty: {
                             message: 'Enter Aadhar Number'
                         },

@@ -210,6 +210,10 @@ color:red;
                 },
             panCard_number: {
                     validators: {
+                       regexp: {
+                        regexp: /^[a-zA-Z0-9]{10}$/,
+                        message: 'Please Enter valid pan number'
+                    },
                         notEmpty: {
                             message: 'Enter Pancard Number'
                         },
@@ -218,6 +222,13 @@ color:red;
                 },
                 aadhar_number: {
                     validators: {
+                       regexp: {
+            regexp: /^\d{12}$/,
+                        message: 'Please Enter 12 digits Aadhar Number'
+                    },
+                    digits: {
+                        message: 'aadhar Number can contain only digits'
+                    },
                         notEmpty: {
                             message: 'Enter Aadhar Number'
                         },

@@ -130,7 +130,29 @@ color:red;
                <input type="file" name="driving_license_copy" id="driving_license_copy" class="form-control form-input" accept="image/*"  ng-model="driving_license_copy" onchange="angular.element(this).scope().upload_license_copy(this)">
             </div>
             </div>
+
         </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+                          
+                          <div class="col-lg-6">
+                              <label for="aadhar"><h4>Enter City</h4></label><span class="required">&nbsp;*</span>
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                              <input type="text" class="form-control" placeholder="Enter City" ng-required="true" ng-model="user.city" name="city" id="city">
+                          </div>
+                      </div>
+                    </div>
+                     <div class="form-group">
+                          
+                          <div class="col-lg-8">
+                              <label for="aadhar"><h4>Address</h4></label>
+                               
+                              <textarea class="form-control" placeholder="Enter Address...." ></textarea>
+                          
+                      </div>
+      </div>
+      </div>
         </div>
                       <div class="form-group">
                            <div class="col-lg-12 col-lg-offset-4">
@@ -171,6 +193,14 @@ color:red;
                         }
                     }
                 },
+                city: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter City'
+                        },
+                        
+                    }
+                },
                 profile_pic: {
                     validators: {
                        file: {
@@ -183,6 +213,10 @@ color:red;
                
             driving_license_number: {
                     validators: {
+                      regexp: {
+                        regexp: /^[A-Za-z]{2}[0-9]{14}$/,
+                        message: 'Please Enter valid License Number'
+                    },
                         notEmpty: {
                             message: 'Enter License Number'
                         },
@@ -191,12 +225,34 @@ color:red;
                 },
                 aadhar_number: {
                     validators: {
+                       regexp: {
+            regexp: /^\d{12}$/,
+                        message: 'Please Enter valid Aadhar Number'
+                    },
                         notEmpty: {
                             message: 'Enter Aadhar Number'
                         },
 
                     }
                 },
+                mobile: {
+                validators: {
+          regexp: {
+            regexp: /^[6-9]\d{9}$/,
+                        message: 'Please Enter valid Mobile Number'
+                    },
+          notEmpty: {
+                        message: 'Mobile Number is required and can\'t be empty'
+                    },
+                    digits: {
+                        message: 'Mobile Number can contain only digits'
+                    },
+          remote: {
+                        url: 'php/remote.php',
+                        message: 'Mobile Number already Exists!'
+                    },
+                }
+            },
                   /*aadhar_copy : {
                     validators: {
                         file: {

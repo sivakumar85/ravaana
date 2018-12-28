@@ -67,14 +67,14 @@
                             <thead>
                                 <tr>
                                     <th style="width:15%">Actions</th>
-                                    <th><a>Branch Name</a></th>
-                                    <th><a>Address</a></th>
+                                    <th><a driver-sort order="'name'" sort="sort">Branch Name</a></th>
+                                    <th><a driver-sort order="'address'" sort="sort">Address</a></th>
                                     <th>Created On</th>
                                     <th>Last Modified On</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                            <tr ng-repeat="branch in branchList">
+                            <tr ng-repeat="branch in branchList | orderBy:sort.sortingOrder:sort.reverse">
                                 <td align="center" data-name="BranchID">
                                         <a class="btn btn-success" href="#addBranch/{{branch.id}}"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger" ng-click="deleteBranch(branch.id)"><em class="fa fa-trash"></em></a>
@@ -84,7 +84,7 @@
                                       </label>
                                         <a>{{branch.active?'Active':'Inactive'}}</a>
                                     </td>
-                                    <td  data-name="BranchName">{{branch.name}}</td>
+                                    <td  data-name="BranchName"><a href="javascript:void(0);" ng-click="viewbranch(branch)">{{branch.name}}</a></td>
                                     <td  data-name="Address">{{branch.address}}</td>
                                     <td  data-name="CreatedDate">{{branch.created_date}}</td>
                                     <td  data-name="ModifiedDate">{{branch.modified_date}}</td> 
@@ -98,3 +98,55 @@
             </div>
         </div>
     </div>
+     <div class="row">
+    <div class="modal" id="branchModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Branch Details</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+              -->
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="background-color: #64A737;color:white">
+                            <h3 class="panel-title">Branch</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class=" col-md-12 col-lg-12 ">
+                                    <table class="table table-user-information">
+                                        <tbody>
+                                            <tr>
+                                                <td>Branch Name:</td>
+                                                <td>{{branch.name}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Address:</td>
+                                                <td>{{branch.address}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Created On:</td>
+                                                <td>{{branch.created_date}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Last Modified On:</td>
+                                                <td>{{branch.modified_date}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             <button type="button" ng-click="editbranch(branch.id)" class="btn btn-primary" data-dismiss="modal">Edit</button>
+             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -49,7 +49,7 @@
             <div class="col-md-4">
                  <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
-                <input class="form-control" maxlength="3" name="driver_age" id="driver_age" placeholder="Age" ng-model="driver.driver_age" style="width:100px" type="text" ng-required="true">
+                <input class="form-control" maxlength="2" name="driver_age" id="driver_age" placeholder="Age" ng-model="driver.driver_age" style="width:100px" type="text" ng-required="true">
             </div>
             </div>
         </div>
@@ -166,6 +166,10 @@
                 },
                 driver_license_number: {
                     validators: {
+                        regexp: {
+                        regexp: /^[A-Za-z]{2}[0-9]{14}$/,
+                        message: 'Please Enter valid License Number'
+                    },
                         notEmpty: {
                             message: 'Enter License Number'
                         }
@@ -173,6 +177,10 @@
                 },
                 driver_aadhar_number: {
                     validators: {
+                         regexp: {
+            regexp: /^\d{12}$/,
+                        message: 'Please Enter valid Aadhar Number'
+                    },
                         notEmpty: {
                             message: 'Enter Aadhar Number'
                         }
