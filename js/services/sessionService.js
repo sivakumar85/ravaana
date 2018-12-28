@@ -11,6 +11,14 @@ app.factory('sessionService', ['$http', function($http){
 		destroy: function(key){
 			//$http.post('php/logout.php');
 			return sessionStorage.removeItem(key);
+		},
+		getPages: function(){
+			var pages= {
+					MyLoads:{TruckOwner:'false',TransportCompany:'True',authenticate:'True'},
+					SignIn:{TruckOwner:'false',TransportCompany:'false',authenticate:'false'}
+				  };
+			return pages;
+
 		}
 	};
 }]);

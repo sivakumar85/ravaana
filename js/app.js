@@ -13,6 +13,48 @@ $scope.userLogout = function ( ) {
   window.location.href = 'index.html';
 };
 }]);
+
+//app.factory('loginService', function($http, $q, $location, sessionService){
+app.factory('accessFac',function($location,sessionService){
+	var page_permissions_obj = sessionService.getPages();
+	//alert(sessionService.get('business_type'));
+	var obj = {}
+	this.access = false;
+	
+	obj.checkPermission = function(){
+		alert($location.path()+' '+sessionService.get('business_type'));
+		var current_page = $location.path();
+		var business_type = sessionService.get('business_type')
+		for(page in page_permissions_obj) {
+			//alert(page);
+			if(current_page.indexOf(page) !== -1){
+				var page_obj = page_permissions_obj[page];
+				alert('authenticate'+page_permissions_obj[page].authenticate);
+				if(page_permissions_obj[page].authenticate === 'True' && business_type!=null) {
+					
+					alert(page_obj.hasOwnProperty(business_type)+'g'+page_obj[business_type]);
+					if(page_obj.hasOwnProperty(business_type) && page_obj[business_type] === 'True') {
+							this.access = true;						
+					}
+				} else if(page_permissions_obj[page].authenticate === 'false' && business_type!=null) {
+						alert('elseIf');
+						if(page_obj.hasOwnProperty(business_type) && page_obj[business_type] === 'True') {
+							
+							this.access = true;						
+					}
+				} else {
+					alert('else');
+					this.access = true;	
+				}
+			}
+		}
+		return this.access;				//returns the users permission level 
+	}
+	return obj;
+});
+
+
+
 app.directive('loading',   ['$http' ,function ($http)
  {
      return {
@@ -61,7 +103,15 @@ app.config(function($routeProvider) {
 		controller: 'loginCtrl'
 	}).when('/SignIn/:msg?', {
 		templateUrl: 'views/SignIn.html',
-		controller: 'loginCtrl'
+		controller: 'loginCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission()){  
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/ForgotPassword', {
 		templateUrl: 'views/ForgotPassword.html',
 	}).when('/ClickMore', {
@@ -160,7 +210,15 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/TransporterDocument.html',
 	}).when('/MyLoads', {
 		templateUrl: 'views/MyLoads.html',
-		controller: 'MyLoadsCtrl'
+		controller: 'MyLoadsCtrl' ,
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission()){  
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/PostingLoads/:id?', {
 		templateUrl: 'views/PostingLoads.html',
 		controller: 'PostingLoadsCtrl'
