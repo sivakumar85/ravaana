@@ -69,7 +69,7 @@ app.controller('PostingLoadsCtrl', ['$scope','$routeParams','$http','$location',
 }]);
 
 app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $http,$location){
-	
+	//var jq = $.noConflict();
 	$scope.displayPosts = function(type){
 		var url = 'php/fetchMyLoads.php';
 		if(!angular.isUndefined(type)){
@@ -80,7 +80,14 @@ app.controller('MyLoadsCtrl', ['$scope','$http','$location', function($scope, $h
 		$scope.myloads = response.data;
 	});
 	}
-	
+	 $scope.editLoad = function(id){
+        $location.path("/PostingLoads/"+id);
+        $('#loadModal').modal('hide');
+    }
+	$scope.viewLoad = function(load){
+			$scope.myload = load;
+			$('#loadModal').modal('show');
+		};
 	$scope.searchPosts = function(type) {
 	    //$http POST function
 	    var surl = 'php/fetchMyLoads.php';

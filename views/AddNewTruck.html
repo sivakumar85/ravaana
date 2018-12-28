@@ -8,7 +8,7 @@
 <div class="col-lg-12">
               <ul class="breadcrumb">
                 <li><a href="#Home" style="z-index:9;">Home</a></li>
-				 <li><a href="#TruckTypes" style="z-index:9;">Trucks</a></li>
+				 <li><a href="#Trucks" style="z-index:9;">Trucks</a></li>
 				<li class="active">AddTruck</li>
               </ul>
             </div>
@@ -50,7 +50,7 @@
             <div class="col-md-4">
                 <div class="input-group">                       
                                 <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
-                <input class="form-control" id="vehicle_registration_no" maxlength="50" name="vehicle_registration_no" ng-model="truck.vehicle_registration_no"  ng-required="true" placeholder="Enter Registration Number"  type="text" ></div>
+                <input class="form-control" id="vehicle_registration_no"style="text-transform:uppercase" maxlength="50" name="vehicle_registration_no" ng-model="truck.vehicle_registration_no"  ng-required="true" placeholder="Enter Registration Number"  type="text" ></div>
             </div>
         </div>
 		<div class="form-group">
@@ -162,6 +162,10 @@
             
                 vehicle_registration_no: {
                     validators: {
+                         regexp: {
+                        regexp: /^[a-zA-Z]{2}[0-9]{2}[a-zA-Z]{2}[0-9]{4}$/,
+                        message: 'Please Enter valid License Number'
+                    },
                         notEmpty: {
                             message: 'Registration number required'
                         }

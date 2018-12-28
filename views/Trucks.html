@@ -63,8 +63,8 @@
                                 <tr>
                                     <th style="width:15%">Actions</th>
                                     <th><a truck-sort order="'vehicle_registration_no'" sort="sort">Registration Number</a></th>
-                                    <th>Truck Type</th>
-                                    <th>Truck Capacity</th>
+                                    <th truck-sort order="'vtype'" sort="sort">Truck Type</th>
+                                    <th truck-sort order="'truck_capacity'" sort="sort">Truck Capacity</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -79,7 +79,7 @@
                                       </label>
                                         <a>{{truck.active?'Active':'Inactive'}}</a>
                                     </td>
-                                    <td>{{truck.vehicle_registration_no}}</td>
+                                    <td><a href="javascript:void(0);" ng-click="viewTruck(truck)">{{truck.vehicle_registration_no}}</a></td>
                                     <td>{{truck.vtype}}</td>
                                     <td>{{truck.truck_capacity}}</td>
                                 </tr>
@@ -88,9 +88,78 @@
                         </table>
 
                     </div>
+               </div>
+    </div>
+ 
+</form>
+         <div class="row">
+    <div class="modal" id="truckModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Truck Details</h4>
                 </div>
-
+                <div class="modal-body" style="padding-bottom: 45px;">
+                    <!--<div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+              -->
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="background-color: #64A737;color:white">
+                            <h3 class="panel-title">{{truck.vehicle_registration_no}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class=" col-md-12 col-lg-12 ">
+                                    <table class="table table-user-information">
+                                        <tbody>
+                                            <tr>
+                                                <td>Registration Number:</td>
+                                                <td>{{truck.vehicle_registration_no}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Type:</td>
+                                                <td>{{truck.vtype}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Capacity:</td>
+                                                <td>{{truck.truck_capacity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Rc:</td>
+                                                <td><img src="php/upload/{{truck.truck_rc}}" style="width:120px; height:100px;"></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>Truck Insurance:</td>
+                                                <td><img src="php/upload/{{truck.truck_insurence}}" style="width:120px; height:100px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Pollution Document:</td>
+                                                <td><img src="php/upload/{{truck.truck_pollution}}" style="width:120px; height:100px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Main Image:</td>
+                                                <td><img src="php/upload/{{truck.truck_image}}" style="width:120px; height:100px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Fittness Certificate:</td>
+                                                <td><img src="php/upload/{{truck.truck_fitness_certificate}}" style="width:120px; height:100px;"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                     <button type="button" ng-click="edittruck(truck.id)" class="btn btn-success" data-dismiss="modal">Edit</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
             </div>
         </div>
     </div>
-</form>
+</div>

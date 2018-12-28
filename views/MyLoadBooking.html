@@ -44,18 +44,18 @@ body{
                             <thead>
                                 <tr>
                                    <th>TXN ID</th>
-                           <th>BOOKING DATE&TIME</th>
-                           <th>TRUCK NUMBER</th>
-                           <th>DRIVER NAME</th>
-                           <th>TYPE OF LOAD</th>
-                           <th>FROM CITY</th>
-                           <th>TO CITY</th>
+                           <th>Booking Date&Time</th>
+                           <th>Truck Number</th>
+                           <th>Driver Name</th>
+                           <th>Type Of Load</th>
+                           <th>From City</th>
+                           <th>To City</th>
                            <th>KMS</th>
-                           <th>TON COST</th>
-                     <th>ADVANCE%</th>
-                     <th>TRANSPORTER ADDRESS</th>
-                     <th>PAYMENT STATUS</th>
-                     <th>BOOKING STATUS</th>
+                           <th>Ton Cost</th>
+                     <th>Advance%</th>
+                     <th>Transporter Address</th>
+                     <th>Payment Status</th>
+                     <th>Booking Status</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -76,7 +76,9 @@ body{
                      <br>
                      <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;Cancel</button>
                      </td>
-                     <td>{{booking.request_status}}</td>
+                     <td>{{booking.request_status}}
+                      <br>
+                     <button class="btn btn-primary">Invoice</button></td>
                                 </tr>
                     <tr ng-show="myBookings.length==0"><td colspan="12" align="center"> <span style="color:red">No records to display</span></td></tr>
                             </tbody>

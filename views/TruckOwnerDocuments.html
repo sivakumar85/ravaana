@@ -100,8 +100,7 @@ color:red;
                 </div></div>
     
         </div>
-               
-                     
+                       
     <div class="form-group">
     <div class="col-lg-5">
                               <label for="PAN"><h4>Driving License Number</h4></label><span class="required">&nbsp;*</span>
@@ -124,15 +123,36 @@ color:red;
                <input type="file" name="driving_license_copy" id="driving_license_copy" class="form-control form-input" accept="image/*"  ng-model="driving_license_copy" onchange="angular.element(this).scope().upload_license_copy(this)" ng-required="true">
             </div>
             </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+                          
+                          <div class="col-lg-6">
+                              <label for="aadhar"><h4>Enter City</h4></label><span class="required">&nbsp;*</span>
+                               <div class="input-group">                       
+                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                              <input type="text" class="form-control" placeholder="Enter City" ng-required="true" ng-model="user.city" name="city" id="city">
+                          </div>
+                      </div>
+                    </div>
+                     <div class="form-group">
+                          
+                          <div class="col-lg-8">
+                              <label for="aadhar"><h4>Address</h4></label>
+                               
+                              <textarea class="form-control" placeholder="Enter Address...." ></textarea>
+                          
+                      </div>
+      </div>
+      </div>
         </div>
-        </div>
+      </div>
                       <div class="form-group">
                            <div class="col-lg-12 col-lg-offset-4">
                                 
                                 <button class="btn  btn-info"><i class="fa fa-plus-square-o"></i>&nbsp;Update Email/Mobile</button>
                                 <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i>&nbsp;Submit</button>
                             </div>
-              </div>
       </div>
       </div>
 </form>                                                      
@@ -179,14 +199,33 @@ color:red;
                
             driving_license_number: {
                     validators: {
+                       regexp: {
+                        regexp: /^[A-Za-z]{2}[0-9]{14}$/,
+                        message: 'Please Enter valid License Number'
+                    },
                         notEmpty: {
                             message: 'Enter License Number'
                         },
                         
                     }
                 },
+                 city: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Enter City'
+                        },
+                        
+                    }
+                },
                 aadhar_number: {
                     validators: {
+                       regexp: {
+            regexp: /^\d{12}$/,
+                        message: 'Please Enter 12 digits Aadhar Number'
+                    },
+                    digits: {
+                        message: 'aadhar Number can contain only digits'
+                    },
                         notEmpty: {
                             message: 'Enter Aadhar Number'
                         },
