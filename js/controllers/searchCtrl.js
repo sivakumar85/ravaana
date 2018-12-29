@@ -5,7 +5,7 @@ app.service('searchService', function(){
 app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeParams', 'loginService','sessionService','searchService', function($scope,$rootScope,$http,$location,$routeParams, loginService,sessionService,searchService){
 	//logout
 	$scope.searchParam = {};
-
+	$scope.business_type = sessionService.get('business_type');
 	$scope.truckIds=[];
 	$scope.driverIds =[] ;
 	$scope.pay = 0;

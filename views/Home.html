@@ -174,7 +174,7 @@ a.big-link-1 {
                         <div class="form-group">
                           <select id="search_type" name="search_type" class="form-control" style="color:black;background-color: white" ng-model="searchParam.search_type">
                              <option selected="selected" value="load">Load</option>
-              <option value="truck">Truck</option>
+              <option value="truck" ng-if="business_type==null || business_type=='TransportCompany'">Truck</option>
                           </select>
                         </div>
                       </div>
@@ -197,14 +197,14 @@ a.big-link-1 {
              <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="location">Location</label>
-                         <input type="text" class="form-control" id="from_city"  style="color:black;background-color: white" placeholder="FROM CITY" ng-autocomplete ng-model="searchParam.from_city">
+                         <input type="text" class="form-control" id="from_city"  style="color:black;background-color: white" placeholder="From City" ng-autocomplete ng-model="searchParam.from_city">
 
                         </div>
                       </div>
              <div class="col-lg-2">
                         <div class="form-group">
                           <label class="sr-only" for="location">Location</label>
-                         <input type="text" class="form-control"  style="color:black;background-color: white" id="to_city" placeholder="To CITY" ng-autocomplete ng-model="searchParam.to_city" >
+                         <input type="text" class="form-control"  style="color:black;background-color: white" id="to_city" placeholder="To City" ng-autocomplete ng-model="searchParam.to_city" >
                         </div>
                       </div>
                       <div class="col-lg-2">
@@ -589,7 +589,9 @@ a.big-link-1 {
             	 $('#search_datePicker').datepicker({
 			            format: 'dd/mm/yyyy',
 						autoclose: true, 
-						startDate:new Date()
+						startDate:new Date(),
+						todayHighlight: true,
+                  		orientation: "bottom auto"
 			        })
             });
 </script>
