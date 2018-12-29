@@ -8,33 +8,62 @@
 .modal-content {
     height:inherit;
     margin: 0 auto;
-    background-color: #F6F6F6 !important;
+    background-color: white !important;
+    width: 320px;
+}
+.text-bold {
+    font-weight: 700;
+}
+.float--right {
+    float: right!important;
+}
+.right {
+    text-align: right;
+}
+.font-rc {
+    font-family: Roboto Condensed,sans-serif;
+}
+.payments-header {
+    border: solid #d1dbeb;
+    border-radius: 4px 4px 0 0;
+    border-width: 1px 1px 0;
+    display: block;
+    position: relative;
+}
+.soft, .yellow_note {
+    padding: 14px!important;
+}
+.row.collapse>.columns {
+    padding-left: 0;
+    padding-right: 0;
 }
 </style>
 <div class="container">
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Payment Done</button>
-<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade in"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-center">
         <div class="modal-dialog .modal-align-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
 
-                    </button>
-                     
+            <div class="modal-content">
+                <div class="payments-header"><div class="soft" style="background: rgb(243, 246, 250); border-radius: 4px 4px 0px 0px;"><div class="row collapse"><div class="columns small-2"><img class="payments-header--avatar" src="images/capture1.png" alt="sivakumar_sfdc" height="40" width="40" style="border-radius: 4px;"></div><div class="columns small-10"><p class="flush--bottom break-long-words soft-half--top">sivakumar_sfdc</p></div></div></div></div>
+                <div class="modal-header">
+                    
+        <div align="center">
+                    <img text-align="center" src="images/capture1.png">
+                    <h2 style="color:#17D475;">Payment Successful! </h2>
+                </div>                     
 
                 </div>
                 <div class="modal-body">
+                    <div class="font-rc">
                     <div align="center">
-                    <img text-align="center" src="images/capture.png">
-                    <h2>Payment Complete</h2>
-                    <p>Thank you , your payment has been successful.</p>
-                    <p>Transaction ID: 987654E3</p>
+                    <table class="table-compact table-vertical-center table-colorless text-medium"><tbody><tr><td width="90px" class="text-bold">Payment ID</td><td class="float--right">MOJO8c18K05N79026158</td></tr><tr><td class="text-bold">Amount</td><td class="float--right"><span><i class="icon icon-inr"></i>20</span></td></tr><tr><td class="text-bold">Paid to</td><td title="sivakumar_sfdc" width="210px" class="float--right right text-ellipsis">sivakumar_sfdc</td></tr><tr><td class="text-bold">Paid on</td><td class="float--right">Dec 18, 2018 at 9:17pm</td></tr></tbody></table>
                 </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#MyLoadBooking" class="btn btn-primary">Go</a>
                 </div>
+            </div>
             </div>
         </div>
     </div>
