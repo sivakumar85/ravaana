@@ -17,36 +17,45 @@ $scope.userLogout = function ( ) {
 //app.factory('loginService', function($http, $q, $location, sessionService){
 app.factory('accessFac',function($location,sessionService){
 	var page_permissions_obj = sessionService.getPages();
-	//alert(sessionService.get('business_type'));
+	
 	var obj = {}
 	this.access = false;
-	
-	obj.checkPermission = function(){
-		alert($location.path()+' '+sessionService.get('business_type'));
-		var current_page = $location.path();
-		var business_type = sessionService.get('business_type')
-		for(page in page_permissions_obj) {
+	var current_page = $location.path();
+
+	obj.checkPermission = function(page){
+		//alert($location.path()+' '+sessionService.get('business_type'));
+		//alert('page-->'+page);
+		var business_type = sessionService.get('business_type');
+		//alert('business_type'+business_type);
+		//for(page in page_permissions_obj) {
 			//alert(page);
-			if(current_page.indexOf(page) !== -1){
+			if(page_permissions_obj.hasOwnProperty(page)){
 				var page_obj = page_permissions_obj[page];
-				alert('authenticate'+page_permissions_obj[page].authenticate);
-				if(page_permissions_obj[page].authenticate === 'True' && business_type!=null) {
+				//alert('authenticate'+page_permissions_obj[page].authenticate);
+				if(page_permissions_obj[page].authenticate === 'true' && business_type!=null) {
 					
-					alert(page_obj.hasOwnProperty(business_type)+'g'+page_obj[business_type]);
-					if(page_obj.hasOwnProperty(business_type) && page_obj[business_type] === 'True') {
+					//alert(page_obj.hasOwnProperty(business_type)+'g'+page_obj[business_type]);
+					if(page_obj.hasOwnProperty(business_type) && page_obj[business_type] === 'true') {
+							//alert('if');
 							this.access = true;						
 					}
 				} else if(page_permissions_obj[page].authenticate === 'false' && business_type!=null) {
-						alert('elseIf');
-						if(page_obj.hasOwnProperty(business_type) && page_obj[business_type] === 'True') {
+						//alert('elseIf');
+						if(page_obj.hasOwnProperty(business_type) && page_obj[business_type] === 'true') {
 							
 							this.access = true;						
 					}
+				} else if(page_permissions_obj[page].authenticate === 'true' && business_type==null) {
+						//alert('elseIf1');
+						this.access = false;						
 				} else {
-					alert('else');
+					//alert('else');
 					this.access = true;	
 				}
 			}
+		//}
+		if(current_page=='/'){
+			this.access = true;
 		}
 		return this.access;				//returns the users permission level 
 	}
@@ -83,30 +92,95 @@ app.config(function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'views/Home.html',
 		controller: 'searchCtrl'
+		
 	}).when('/Home', {
 		templateUrl: 'views/Home.html',
-		controller: 'searchCtrl'
+		controller: 'searchCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('Home')){  
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/RoadRavaana', {
 		templateUrl: 'views/RoadRavaana.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('RoadRavaana')){ 
+					$location.path('/');				
+					//alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/TrainRavaana', {
 		templateUrl: 'views/TrainRavaana.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TrainRavaana')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/AirRavaana', {
 		templateUrl: 'views/AirRavaana.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('AirRavaana')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/SeaRavaana', {
 		templateUrl: 'views/SeaRavaana.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('SeaRavaana')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/ContactUs', {
 		templateUrl: 'views/ContactUs.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('ContactUs')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/AboutUs', {
 		templateUrl: 'views/AboutUs.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('AboutUs')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/SignUp', {
 		templateUrl: 'views/SignUp.html',
-		controller: 'loginCtrl'
+		controller: 'loginCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('SignUp')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/SignIn/:msg?', {
 		templateUrl: 'views/SignIn.html',
 		controller: 'loginCtrl',
 		resolve:{
 		"check":function(accessFac,$location){   
-				if(!accessFac.checkPermission()){  
+				if(!accessFac.checkPermission('SignIn')){ 
 					$location.path('/');				
 					alert("You don't have access here");	
 				}
@@ -114,17 +188,41 @@ app.config(function($routeProvider) {
 		}
 	}).when('/ForgotPassword', {
 		templateUrl: 'views/ForgotPassword.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('ForgotPassword')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/ClickMore', {
 		templateUrl: 'views/ClickMore.html',
 	}).when('/Transporters', {
 		templateUrl: 'views/Transporters.html',
 	}).when('/UpdateLoginDetails', {
 		templateUrl: 'views/UpdateLoginDetails.html',
-		controller: 'profileCtrl'
+		controller: 'profileCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('UpdateLoginDetails')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	})
 	.when('/ChangePassword', {
 		templateUrl: 'views/ChangePassword.html',
-		controller: 'profileCtrl'
+		controller: 'profileCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('ChangePassword')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 
 	}).when('/RolesList', {
 		templateUrl: 'views/RolesList.html',
@@ -144,18 +242,50 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/AuditReport.html',
 	}).when('/Search', {
 		templateUrl: 'views/Search.html',
-		controller: 'searchCtrl'
+		controller: 'searchCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('Search')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 
 	}).when('/userHome', {
 		templateUrl: 'views/Search.html',
 	}).when('/TruckRequests', {
 		templateUrl: 'views/TruckRequests.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TruckRequests')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/AssignTruck', {
 		templateUrl: 'views/AssignTruck.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('AssignTruck')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/UserProfile', {
 		templateUrl: 'views/UserProfile.html',
 	}).when('/TruckBooking', {
 		templateUrl: 'views/TruckBooking.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TruckBooking')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/SuspendPost', {
 		templateUrl: 'views/SuspendPost.html',
 	}).when('/MenuCategoriesList', {
@@ -205,15 +335,31 @@ app.config(function($routeProvider) {
 		controller: 'loginCtrl'
 	}).when('/TransportCompanyProfile/:pSucess?', {
 		templateUrl: 'views/TransportCompanyProfile.html',
-		controller: 'profileCtrl'
+		controller: 'profileCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TransportCompanyProfile')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/TransporterDocument', {
 		templateUrl: 'views/TransporterDocument.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TransporterDocument')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/MyLoads', {
 		templateUrl: 'views/MyLoads.html',
 		controller: 'MyLoadsCtrl' ,
 		resolve:{
 		"check":function(accessFac,$location){   
-				if(!accessFac.checkPermission()){  
+				if(!accessFac.checkPermission('MyLoads')){ 
 					$location.path('/');				
 					alert("You don't have access here");	
 				}
@@ -221,63 +367,231 @@ app.config(function($routeProvider) {
 		}
 	}).when('/PostingLoads/:id?', {
 		templateUrl: 'views/PostingLoads.html',
-		controller: 'PostingLoadsCtrl'
+		controller: 'PostingLoadsCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('PostingLoads')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/TruckOwnerProfile/:pSucess?', {
 		templateUrl: 'views/TruckOwnerProfile.html',
-		controller: 'profileCtrl'
+		controller: 'profileCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TruckOwnerProfile')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/PastLoads', {
 		templateUrl: 'views/PastLoads.html',
-		controller: 'MyLoadsCtrl'
+		controller: 'MyLoadsCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('PastLoads')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/Trucks', {
 		templateUrl: 'views/Trucks.html',
-		controller: 'trucksCtrl'
+		controller: 'trucksCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('Trucks')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/UserTruckRequest', {
 		templateUrl: 'views/UserTruckRequest.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('UserTruckRequest')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/SelectTruck/:loadId', {
 		templateUrl: 'views/OwnerSelectTruck.html',
-		controller: 'searchCtrl'
+		controller: 'searchCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('SelectTruck')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/AddBankAccount', {
 		templateUrl: 'views/AddBankAccount.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('AddBankAccount')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/RavaanaWallet', {
 		templateUrl: 'views/RavaanaWallet.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('RavaanaWallet')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/UserLoadRequest', {
 		templateUrl: 'views/UserLoadRequest.html',
-		controller: 'bookingCtrl'
+		controller: 'bookingCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('UserLoadRequest')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/Drivers', {
 		templateUrl: 'views/Drivers.html',
-		controller: 'driversCtrl'
+		controller: 'driversCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('Drivers')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/AddDriver/:id?', {
 		templateUrl: 'views/AddDriver.html',
-		controller: 'driversCtrl'
+		controller: 'driversCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('AddDriver')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/Branches', {
 		templateUrl: 'views/Branches.html',
-		controller: 'branchListCtrl'
+		controller: 'branchListCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('Branches')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/addBranch/:id?', {
 		templateUrl: 'views/NewBranches.html',
-		controller: 'branchListCtrl'
+		controller: 'branchListCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('addBranch')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/MyLoadBooking', {
 		templateUrl: 'views/MyLoadBooking.html',
-		controller: 'bookingCtrl'
+		controller: 'bookingCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('MyLoadBooking')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/AddNewTruck/:id?', {
 		templateUrl: 'views/AddNewTruck.html',
-		controller: 'trucksCtrl'
+		controller: 'trucksCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('AddNewTruck')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/TransporterDocuments', {
 		templateUrl: 'views/TransporterDocuments.html',
-		controller: 'profileCtrl'
+		controller: 'profileCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TransporterDocuments')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 		
 	}).when('/TruckOwnerDocuments', {
 		templateUrl: 'views/TruckOwnerDocuments.html',
-		controller: 'profileCtrl'
+		controller: 'profileCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('TruckOwnerDocuments')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 		
 	}).when('/booktruck',{
 		templateUrl:'views/booktruck.html',
-		controller: 'PostingLoadsCtrl'
+		controller: 'PostingLoadsCtrl',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('booktruck')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/paymentsuccess',{
 		templateUrl:'views/paymentsuccess.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('paymentsuccess')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/VerifyOtp',{
 		templateUrl:'views/VerifyOtp.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('VerifyOtp')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	}).when('/setnewpassword',{
 		templateUrl:'views/setnewpassword.html',
+		resolve:{
+		"check":function(accessFac,$location){   
+				if(!accessFac.checkPermission('setnewpassword')){ 
+					$location.path('/');				
+					alert("You don't have access here");	
+				}
+			}
+		}
 	})
 
 	
