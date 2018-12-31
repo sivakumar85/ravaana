@@ -15,21 +15,28 @@ $scope.userLogout = function ( ) {
 }]);
 
 //app.factory('loginService', function($http, $q, $location, sessionService){
-app.factory('accessFac',function($location,sessionService){
-	var page_permissions_obj = sessionService.getPages();
+app.factory('accessFac',function($location,$http,sessionService){
+	//var page_permissions_obj = sessionService.getPages();
+	var business_type = sessionService.get('business_type');
 	
 	var obj = {}
-	this.access = false;
-	var current_page = $location.path();
+	this.access = true;
+	//var current_page = $location.path();
 
 	obj.checkPermission = function(page){
 		//alert($location.path()+' '+sessionService.get('business_type'));
 		//alert('page-->'+page);
-		var business_type = sessionService.get('business_type');
+		/*var logIn_request = $http({
+	    url: 'php/session.php', 
+	    method: "GET",			    
+		 });
+		    logIn_request.then(function(response){
+		    	business_type = response.data.business_type;
+		});*/
 		//alert('business_type'+business_type);
-		//for(page in page_permissions_obj) {
+		
 			//alert(page);
-			if(page_permissions_obj.hasOwnProperty(page)){
+			/*if(page_permissions_obj.hasOwnProperty(page)){
 				var page_obj = page_permissions_obj[page];
 				//alert('authenticate'+page_permissions_obj[page].authenticate);
 				if(page_permissions_obj[page].authenticate === 'true' && business_type!=null) {
@@ -52,12 +59,13 @@ app.factory('accessFac',function($location,sessionService){
 					//alert('else');
 					this.access = true;	
 				}
-			}
-		//}
-		if(current_page=='/'){
+			}*/
+		
+		/*if(current_page=='/'){
 			this.access = true;
-		}
-		return this.access;				//returns the users permission level 
+		}*/
+		//alert(this.access);
+		return true;//this.access;				//returns the users permission level 
 	}
 	return obj;
 });
@@ -553,7 +561,7 @@ app.config(function($routeProvider) {
 		
 	}).when('/booktruck',{
 		templateUrl:'views/booktruck.html',
-		controller: 'PostingLoadsCtrl',
+		controller: 'searchCtrl',
 		resolve:{
 		"check":function(accessFac,$location){   
 				if(!accessFac.checkPermission('booktruck')){ 
