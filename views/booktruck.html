@@ -36,6 +36,45 @@ background-color:#F7F7F7;
                             <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
                             {{ errorMsg }}
                         </div>
+        <div class="col-lg-6 form-group has-feedback">
+            <label for="typeofload"><span class="required">*</span>&nbsp;Type Of Load</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-cubes"></i></span>
+                <select class="form-control" ng-model="load_type" name="load_type" ng-required="true" id="load_type">
+                    <option value="">Select Load Type</option>
+                    <option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>              
+                </select>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 form-group has-feedback" ng-show="!book_truck_form.available_daily">
+            <label for="date" name="needOfdate"><span class="required">*</span>&nbsp;Need Of Date</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="From Date" id="datePicker" name="available_date_from" ng-model="available_date_from" autocomplete="off" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+            </div>
+
+        </div>
+        <div class="col-lg-6 form-group has-feedback">
+            <label for="typeofload"><span class="required">*</span>&nbsp;Need Of Truck</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-truck"></i></span>
+                 <select class="form-control" name="truck_type" ng-model="truck_type" ng-required="true" id="truck_type">
+                <option value="">Select Truck Type</option>
+                <option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-lg-6 form-group has-feedback">
+            <label for="typeofload"><span class="required">*</span>&nbsp; Truck Capacity</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                <i class="fa fa-truck"></i></span>
+                <input type="text" class="form-control" placeholder="Truck Capacity" value="6 tons" ng-model="truck_capacity" name="truck_capacity" ng-required="true">
+            </div>
+        </div>
 		<div class="col-lg-6 form-group has-feedback">
 			<label for="typeofload"><span class="required">*</span>&nbsp;From City</label>
 			<div class="input-group">
@@ -84,44 +123,8 @@ background-color:#F7F7F7;
 				<input type="text" class="form-control" value="1" placeholder="Enter No.Of Vehicles" ng-model="no_of_vehicles" name="no_of_vehicles" ng-required="true">
 			</div>
 		</div>
-		<div class="col-lg-6 form-group has-feedback">
-			<label for="typeofload"><span class="required">*</span>&nbsp;Need Of Truck</label>
-			<div class="input-group">
-				<span class="input-group-addon">
-				<i class="fa fa-truck"></i></span>
-				 <select class="form-control" name="truck_type" ng-model="truck_type" ng-required="true" id="truck_type">
-            	<option value="">Select Truck Type</option>
-            	<option ng-repeat="vehicleType in vehicle_types" value="{{vehicleType.id}}">{{vehicleType.vehicle_type}}</option>
-            </select>
-			</div>
-		</div>
-		<div class="col-lg-6 form-group has-feedback">
-			<label for="typeofload"><span class="required">*</span>&nbsp; Truck Capacity</label>
-			<div class="input-group">
-				<span class="input-group-addon">
-				<i class="fa fa-truck"></i></span>
-				<input type="text" class="form-control" placeholder="Truck Capacity" value="6 tons" ng-model="truck_capacity" name="truck_capacity" ng-required="true">
-			</div>
-		</div>
-		<div class="col-lg-6 form-group has-feedback" ng-show="!book_truck_form.available_daily">
-			<label for="date" name="needOfdate"><span class="required">*</span>&nbsp;Need Of Date</label>
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="From Date" id="datePicker" name="available_date_from" ng-model="available_date_from" autocomplete="off" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-
-			</div>
-
-		</div>
-		<div class="col-lg-6 form-group has-feedback">
-			<label for="typeofload"><span class="required">*</span>&nbsp;Type Of Load</label>
-			<div class="input-group">
-				<span class="input-group-addon">
-				<i class="fa fa-cubes"></i></span>
-				<select class="form-control" ng-model="load_type" name="load_type" ng-required="true" id="load_type">
-					<option value="">Select Load Type</option>
-					<option ng-repeat="loadType in load_types" value="{{loadType.id}}">{{loadType.load_type}}</option>				
-				</select>
-			</div>
-		</div>
+		
+		
 		
 			<div class="panel panel-default col-lg-8 col-lg-offset-2">
 				<p style="color:red">Note: Transport/Truck Owner Address will be sent to your mobile/email with in 5 hours of payment</p>
@@ -145,7 +148,9 @@ background-color:#F7F7F7;
             	 $('#datePicker').datepicker({
 			            format: 'dd/mm/yyyy',
 						autoclose: true, 
-						startDate:new Date()
+						startDate:new Date(),
+                        todayHighlight: true,
+                        orientation: "bottom auto" 
 			        })
             $('#book_truck_form').bootstrapValidator({
             live: 'enabled',
