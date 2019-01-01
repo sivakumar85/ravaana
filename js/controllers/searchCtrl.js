@@ -5,7 +5,7 @@ app.service('searchService', function(){
 app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeParams', 'loginService','sessionService','searchService', function($scope,$rootScope,$http,$location,$routeParams, loginService,sessionService,searchService){
 	//logout
 	$scope.searchParam = {};
-
+	$scope.business_type = sessionService.get('business_type');
 	$scope.truckIds=[];
 	$scope.driverIds =[] ;
 	$scope.pay = 0;
@@ -33,13 +33,17 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 		$scope.vehicle_types = response.data;
 	});
 	$scope.searchParam = searchService.searchParam;
-	var logIn_request = $http({
+	/*var logIn_request = $http({
 	    url: 'php/session.php', 
 	    method: "GET",			    
 	 });
 	    logIn_request.then(function(response){
 	    	$scope.islogged = response.data;
-	});
+	});*/
+	$scope.islogged = 0;
+	if($scope.business_type!=null) {
+		$scope.islogged = 1;
+	} 
 	$scope.makePayment = function() {
 		//alert($scope.driverIds+'--'+$scope.truckIds);
 		var truckDriverArray = [];
@@ -123,7 +127,12 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	$scope.loadSearch = function() {
 		if($scope.islogged == '1'){
 				//alert('login');
-				 $location.path('/Search');
+				//alert( $scope.searchParam.search_type);
+				if($scope.searchParam.search_type == 'load') {
+					$location.path('/Search');
+				} else if($scope.searchParam.search_type == 'truck') {
+					$location.path('/booktruck');
+				} 
 		}
 		else{
 				 searchService.searchParam = $scope.searchParam;

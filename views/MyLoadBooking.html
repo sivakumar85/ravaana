@@ -70,15 +70,14 @@ body{
                            <td>{{booking.to_city}}({{booking.to_location}})</td>
                            <td>{{booking.distance_km}}</td>
                            <td>{{booking.load_cost}}/- {{booking.load_cost_type}}</td>
-                     <td>{{booking.advance_percent}} %</td>
+                     <td>{{booking.advance_percent}}%</td>
                      <td>{{booking.address}}</td>
                      <td>100rs Success
                      <br>
                      <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;Cancel</button>
                      </td>
                      <td>{{booking.request_status}}
-                      <br>
-                     <button class="btn btn-primary">Invoice</button></td>
+                    </td>
                                 </tr>
                     <tr ng-show="myBookings.length==0"><td colspan="12" align="center"> <span style="color:red">No records to display</span></td></tr>
                             </tbody>

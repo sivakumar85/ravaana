@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	if(isset($_SESSION['uid'])){
-		echo 1;
+	if(isset($_SESSION['business_type'])){
+		echo $_SESSION['business_type'];
 	} else{
-		echo 0;
+		echo null;
 	}
 ?>
