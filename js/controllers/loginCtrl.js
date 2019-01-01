@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('loginCtrl', function($scope,$routeParams, loginService, sessionService){
+app.controller('loginCtrl', function($scope,$routeParams,$location, loginService, sessionService){
 	$scope.errorLogin = false;
 	$scope.regMsg = false;
 	$scope.loginMsg = false;
@@ -35,4 +35,14 @@ app.controller('loginCtrl', function($scope,$routeParams, loginService, sessionS
 	$scope.clearMsg = function(){
 		$scope.errorLogin = false;
 	}
+	$scope.forgotpassword = function(){
+		$location.path("/VerifyOtp");
+	}
+	$scope.verifyotpform = function(){
+		$location.path("/setnewpassword");
+	}
+	$scope.setnewpassword = function(){
+		$location.path("/SignIn");
+	}
+
 });

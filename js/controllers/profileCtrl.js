@@ -28,6 +28,7 @@ app.controller('profileCtrl', ['$scope','$rootScope','$routeParams','$http','$lo
 			$scope.branches = response.data;
 		});
 	}
+	
 	$scope.changePassword = function($event) {
 	  	$event.preventDefault();
 	  	console.log($scope.user);
