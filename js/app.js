@@ -188,6 +188,7 @@ app.config(function($routeProvider) {
 		}
 	}).when('/ForgotPassword', {
 		templateUrl: 'views/ForgotPassword.html',
+		controller:'loginCtrl',
 		resolve:{
 		"check":function(accessFac,$location){   
 				if(!accessFac.checkPermission('ForgotPassword')){ 
@@ -574,6 +575,7 @@ app.config(function($routeProvider) {
 		}
 	}).when('/VerifyOtp',{
 		templateUrl:'views/VerifyOtp.html',
+		controller:'loginCtrl',
 		resolve:{
 		"check":function(accessFac,$location){   
 				if(!accessFac.checkPermission('VerifyOtp')){ 
@@ -584,6 +586,7 @@ app.config(function($routeProvider) {
 		}
 	}).when('/setnewpassword',{
 		templateUrl:'views/setnewpassword.html',
+		controller:'loginCtrl',
 		resolve:{
 		"check":function(accessFac,$location){   
 				if(!accessFac.checkPermission('setnewpassword')){ 

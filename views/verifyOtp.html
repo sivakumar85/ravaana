@@ -15,6 +15,7 @@ font-size:14px;
     border-color: #FF3300;;
 }
 </style>
+<form name="verifyotp_form" id="verifyotp_form"  ng-submit="verifyotp_form.$valid && verifyotpform()" novalidate="true" autocomplete="off">
 <div class="container">
     <div class="row">
     <div class="col-lg-12">
@@ -37,18 +38,18 @@ font-size:14px;
                         </div>-->
                             </div>
                              <div class="panel-body" style="margin:10px">
-                              <form role="form" name="logform" id="logform" ng-submit="logform.$valid && login($event)" novalidate="true" autocomplete="off">
+                             
                                         <div class="form-group has-feedback">
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                             <i class="fa fa-mobile"></i></span>
-                                            <input type="text" class="form-control" name="otp" placeholder="Enter OTP" ng-model="user.username" ng-required="true">
+                                            <input type="text" class="form-control" name="verifyotp" placeholder="Enter OTP" ng-model="verifyotp" id="verifyotp" ng-required="true">
                                         </div>
                                        </div>     
-                            </form>
+                           
                             <div class="form-group input-group col-lg-12">
                     
-                     <a href="#setnewpassword" type="submit" class="btn btn-sm col-lg-12" style="background-color: #64A737; color: white;  border: 1px solid white;"> &nbsp;Continue</a>
+                     <button type="submit" ng-click="submitted=true"  class="btn btn-sm col-lg-12" style="background-color: #64A737; color: white;  border: 1px solid white;"> &nbsp;Continue</button>
                     
             </div>
                         </div>
@@ -57,45 +58,38 @@ font-size:14px;
         </div>
     </div>
 </div>
+</form>
 <script type="text/javascript">
-
-$(document).ready(function() {
-    $('#logform').bootstrapValidator({
-      live: 'enabled',
-      message: 'This value is not valid',
-      submitButton: 'logform button[type="submit"]',
-      submitHandler: function(validator, form, submitButton) {
-          return false;
-      },
+ 
+   $(document).ready(function() {
+    $('#verifyotp_form').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+         excluded: [':disabled', ':hidden', ':not(:visible)'],
+        live: 'enabled',
+            message: 'This value is not valid',
+            submitButton: 'verifyotp_form button[type="submit"]',
+            submitHandler: function(validator, form, submitButton) {
+              return false;
+            },
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-
-            
-            usr: {
-                message: 'The contact person name is not valid',
+            verifyotp: {
                 validators: {
                     notEmpty: {
-                        message: 'Email/Mobile  is required and can\'t be empty'
+                        message: 'Verification Code is required and can\'t be empty'
                     }
                 }
             },
             
-            pswd: {
-                message: 'The company name is not valid',
-                validators: {
-                    notEmpty: {
-                        message: 'password is required and can\'t be empty'
-                    }
-                }
+            
             }
-            
-
-            
-        }
-    });
+        })
+        
+    
+        
 });
 </script>
