@@ -53,6 +53,12 @@ ul.nav.navbar-nav {
     -webkit-border-radius: 4px;
     border-radius: 10px;
 }
+.mainlogo{
+		height: 50px;
+		width:220px;  
+		margin-top: 0px;
+	}
+
  @media only screen and (max-width: 780px) {
  		ul .navbar-right{
  			margin-left: 0px !important;
@@ -63,18 +69,22 @@ ul.nav.navbar-nav {
 li .nav-items{
 	text-align:center;
  	}
+ 	.mainlogo{
+	height: 47px !important;
+    width: 180px !important;
+    margin-top: -14px !important;
+	}
  	.dropdown-submenu .dropdown-menu{
 	position: static;
 	margin-left: 3px;
 }
-font-weight: normal;
 }
 
 </style>
 <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-xl navbar-dark">
 <div class="navbar-header d-flex col" ng-init="getProfile();">
 						<a class="navbar-brand" href="#Home"><!--<i class="fa fa-truck"></i><b>Ravaana.in</b>-->
-						<img src="images/logo.png" style="height: 50px;width:220px;  margin-top: 0px;" class="">
+						<img src="images/logo.png"  class="mainlogo">
 						</a>
 						<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
 							<span class="navbar-toggler-icon"></span>
