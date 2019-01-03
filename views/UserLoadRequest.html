@@ -18,7 +18,8 @@ body{
       display: none;
    }
 .w3-table-all  td{
-   padding-left: 50px;
+  padding-left: 7px;
+   padding-bottom: 7px;
    text-align: left;
 }
 .row1{
@@ -91,57 +92,57 @@ body{
         </div>
 </div>
      <div class="container  search2">
-            <div class="row1">
-         <table class="w3-table-all notranslate" style="border: 1px solid black">
+            <div class="row1" ng-repeat="booking in myBookings">
+         <table class="w3-table-all notranslate" style="border: 1px solid black" >
 <tbody>
 <tr>
 <td>Truck Number :</td>
-<td>AP 26 TL 6655</td>
+<td>{{booking.vehicle_registration_no}}</td>
 </tr>
 <tr>
 <td>Driver Name :</td>
-<td>NARAYANA SWAMI</td>
+<td>{{booking.driver_name}}</td>
 </tr>
 <tr>
 <td>Type Of Truck :</td>
-<td>14 TYRE TRUCK</td>
+<td>{{booking.vehicle_type}}</td>
 </tr>
 <tr>
 <td>Truck Capacity  :</td>
-<td>24 Tons</td>
+<td>{{booking.capacity}}</td>
 </tr>
 <tr>
 <td>Your Load Type : </td>
-<td>Coal</td>
+<td>{{booking.typeOfLoad}}</td>
 </tr>
 <tr>
 <td>From City : </td>
-<td>K.P PORT</td>
+<td>{{booking.from_city}}({{booking.from_location}})</td>
 </tr>
 <tr>
 <td>To City : </td>
-<td>Ballery</td>
+<td>{{booking.to_city}}({{booking.to_location}})</td>
 </tr>
 <tr>
 <td>KMS : </td>
-<td>450</td>
+<td>{{booking.distance_km}}</td>
 </tr>
 <tr>
 <td>Ton Cost : </td>
-<td>980</td>
+<td>{{booking.load_cost}}/- {{booking.load_cost_type}}</td>
 </tr>
 <tr>
 <td>Advance% : </td>
-<td>80%</td>
+<td>{{booking.advance_percent}} %</td>
 </tr>
 <tr>
 <td>Need Of Date&Time : </td>
-<td>25/07/2018:07:30PM</td>
+<td>{{booking.request_date}}</td>
 </tr>
 <tr>
   <td>Assign Load </td>
-<td><a href="" class="btn btn-info">YES</a>
-<a href="" class="btn btn-danger">NO</a>
+<td><button class="btn btn-info" ng-click="assign_load(booking.booking_id,'1')">YES</button>
+<button class="btn btn-danger" ng-click="assign_load(booking.booking_id,'0')">NO</button>
 </td>
 </tr>
 </tbody></table>

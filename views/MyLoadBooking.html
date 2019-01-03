@@ -13,7 +13,8 @@ body{
       display: none;
    }
 .w3-table-all  td{
-   padding-left: 50px;
+   padding-left: 7px;
+    padding-bottom: 7px;
    text-align: left;
 }
 .row1{
@@ -90,6 +91,70 @@ body{
 
             </div>
         </div>
+     </div>
+     <div class="container  search2">
+            <div class="row1"  ng-repeat="booking in myBookings">
+         <table class="w3-table-all notranslate" style="border: 1px solid black" >
+<tbody>
+<tr>
+<td>TXN ID :</td>
+<td>{{booking.booking_id}}</td>
+</tr>
+<tr>
+<td>Booking Date&Time :</td>
+<td>{{booking.request_date}}</td>
+</tr>
+<tr>
+<td>Truck Number :</td>
+<td>{{booking.vehicle_registration_no}}</td>
+</tr>
+<tr>
+<td>Driver Name  :</td>
+<td>{{booking.driver_name}}</td>
+</tr>
+<tr>
+
+<td>Type Of Load : </td>
+<td>{{booking.typeOfLoad}}</td>
+</tr>
+<tr>
+<td>From City : </td>
+<td>{{booking.from_city}}({{booking.from_location}})</td>
+</tr>
+<tr>
+<td>To City : </td>
+<td>{{booking.to_city}}({{booking.to_location}})</td>
+</tr>
+<tr>
+<td>KMS : </td>
+ <td>{{booking.distance_km}}</td>
+</tr>
+<tr>
+<td>Ton Cost : </td>
+<td>{{booking.load_cost}}/- {{booking.load_cost_type}}</td> 
+</tr>
+<tr>
+<td> Advance : </td>
+ <td>{{booking.advance_percent}}%</td>
+</tr>
+<tr>
+  <td>Transporter Address : </td>
+  <td>{{booking.address}}</td>
+</tr>
+<tr>
+  <td>Payment Status : </td>
+  <td>100rs Success
+                     <br>
+                     <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                     </td>
+</tr>
+<tr>
+  <td>Booking Status : </td>
+  <td>{{booking.request_status}}
+                    </td>
+</tr>
+</tbody></table>
+</div>
      </div>
 
 
