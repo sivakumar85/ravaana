@@ -25,7 +25,8 @@
       display: none;
    }
 .w3-table-all  td{
-   padding-left: 50px;
+   padding-left: 7px;
+   padding-bottom: 7px;
    text-align: left;
 }
 .row1{
@@ -123,15 +124,15 @@
                         <table class="table table-striped table-bordered table-list">
                             <thead>
                                 <tr>
-                     <th>Type of Load</th>
-                     <th>From City</th>
-                     <th>To City</th>
+                     <th  userload-sort order="'typeOfLoad'" sort="sort">Type of Load</th>
+                     <th  userload-sort order="'from_city'" sort="sort">From City</th>
+                     <th  userload-sort order="'to_city'" sort="sort">To City</th>
                      <th>Kms</th>
                      <th>Load Cost</th>
                      <th>Advance</th>
-                     <th>Available Tons</th>
+                     <th  userloads-sort order="'tonns_available'" sort="sort">Available Tons</th>
                      <th>Available Dates</th>
-                     <th>Need of Vehicle</th>
+                     <th  userload-sort order="'vehicle_type'" sort="sort">Need of Vehicle</th>
                      <th>Posted On</th>
                      <th>Booking </th>
                   </tr>
@@ -139,7 +140,7 @@
                             </thead>
                             <tbody id="myTable">
 
-                                <tr ng-repeat="data in searchData">
+                                <tr ng-repeat="data in searchData | orderBy:sort.sortingOrder:sort.reverse">
                                     <td>{{data.typeOfLoad}}</td>
                                     <td>{{data.from_city}}({{data.from_location}})</td>
                                     <td>{{data.to_city}}({{data.to_location}})</td>
@@ -170,6 +171,61 @@
             </div>
           </div>
         </div>
+         <div class="container  search2">
+            <div class="row1"  ng-repeat="data in searchData">
+         <table class="w3-table-all notranslate" style="border: 1px solid black" >
+<tbody>
+<tr>
+<td>Type of Load :</td>
+<td>{{data.typeOfLoad}}</td>
+</tr>
+<tr>
+<td>From City :</td>
+<td>{{data.from_city}}({{data.from_location}})</td>
+</tr>
+<tr>
+<td>To City :</td>
+<td>{{data.to_city}}({{data.to_location}})</td>
+</tr>
+<tr>
+<td>KMS  :</td>
+<td>{{data.distance_km}}</td>
+</tr>
+<tr>
+<td>Load Cost : </td>
+<td>{{data.load_cost}}/- {{data.load_cost_type}}</td>
+</tr>
+<tr>
+<td>Advance : </td>
+<td>{{data.advance_percent}}</td>
+</tr>
+<tr>
+<td>Available Tons : </td>
+<td>{{data.tonns_available}}</td>
+</tr>
+<tr>
+<td>Available Dates : </td>
+ <td>{{data.available_daily=='1'?'Daily':data.available_date_from+' to '+data.available_date_to}}</td>
+</tr>
+<tr>
+<td>Need of Vehicle : </td>
+<td>{{data.vehicle_type}}</td> 
+</tr>
+<tr>
+<td>Posted On : </td>
+ <td>{{data.created_date}}</td>
+</tr>
+<tr>
+  <td>Booking </td>
+<td><a href="#SelectTruck/{{data.id}}"class="btn btn-info">
+                                    Book Now
+
+                                    </a>
+</td>
+</tr>
+</tbody></table>
+</div>
+     </div>
          
 
     <script type="text/javascript">
