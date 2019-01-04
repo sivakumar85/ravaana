@@ -21,7 +21,18 @@ app.controller('profileCtrl', ['$scope','$rootScope','$routeParams','$http','$lo
 	$scope.fetchProfile = function(){
 		var userrequest = $http.get('php/profileCtrl.php?action=fetchProfile');
 		userrequest.then(function(response){
-			$scope.user = response.data[0];
+			if (!angular.isUndefined( response.data[0])) {
+				$scope.user = response.data[0];
+			} else {
+				if (profile_name == 'TransportCompany') {
+					 $location.path('/TransporterDocuments');
+				} else if (profile_name == 'TruckOwner') {
+					 $location.path('/TruckOwnerDocuments');
+				}
+			}
+			
+
+			//alert(profile_name+' '+$scope.user);
 		});
 		var branch_request = $http.get('php/branchList.php');;
 		branch_request.then(function(response){
