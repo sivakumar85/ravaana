@@ -88,7 +88,12 @@ function getTrucksList($form_data){
 function search($form_data) {
  	include('database_connection.php');
 
-
+ 	//print_r($form_data);
+ 	/*[search_type] => load
+    [load_type] => 3
+    [from_city] => Tirupati
+    [to_city] => Bangalore
+    [available_date] => 05/01/2019*/
 	$output = array();
 	//$sql = "SELECT * FROM members WHERE memid = '".$_SESSION['uid']."'";
 	$sql = "SELECT load_postings.id, load_postings.load_type, load_postings.truck_type, load_postings.from_city, load_postings.from_location, load_postings.to_city, 	load_postings.to_location, load_postings.distance_km, load_postings.load_cost, load_postings.load_cost_type, load_postings.advance_percent, load_postings.tonns_available,load_postings.available_date_from, load_postings.available_date_to, load_postings.available_daily, load_postings.uid, load_postings.tid,load_postings.active, load_postings.created_date,vehicle_type.vehicle_type,load_type.load_type as typeOfLoad, branches_list.address 
@@ -96,7 +101,7 @@ function search($form_data) {
 			INNER JOIN vehicle_type ON load_postings.truck_type=vehicle_type.id
 			INNER JOIN load_type ON load_postings.load_type=load_type.id
 			INNER JOIN branches_list ON load_postings.tid=branches_list.id
-			WHERE load_postings.is_deleted = 0 ";
+			WHERE load_postings.is_deleted = 0 AND load_postings.uid !='".$_SESSION['uid']."'";
 	
 	//echo $_GET['id'];
 	if(isset($_GET['id'])) {
@@ -110,30 +115,21 @@ function search($form_data) {
 	{
 	 	$sql.= " AND load_postings.load_type='".$form_data->load_type."'"; 
 	}
-	if(!empty($form_data->fromDate) || !empty($form_data->toDate))
+	if(!empty($form_data->from_city))
 	{
-	 	$from_date = '';
-	 	$toDate = '';
-	 	if(!empty($form_data->fromDate)){
-	 		$date = $form_data->fromDate; 
-			$date = DateTime::createFromFormat($format , $date);
-			$from_date = $date->format('Y-m-d');
-	 	}
-	 	if(!empty($form_data->toDate)){
-	 		$date = $form_data->toDate; 
-			$date = DateTime::createFromFormat($format , $date);
-			$toDate = $date->format('Y-m-d');
-	 	}
-	 	if($from_date!='' && $toDate!=''){
-	 		$sql.= " AND load_postings.available_date_to BETWEEN '".$from_date."' and '".$toDate."'";
-	 	} else if($from_date!='' && $toDate=='') {
-	 		$sql.= " AND load_postings.available_date_to BETWEEN '".$from_date."' and DATE(NOW())";
-	 	}
-	 	else if($from_date=='' && $toDate!='') {
-	 		$sql.= " AND load_postings.available_date_to BETWEEN DATE(NOW()) and '".$toDate."'";
-	 	}
-	 	
+	 	$sql.= " AND load_postings.from_city='".$form_data->from_city."'"; 
 	}
+	if(!empty($form_data->to_city))
+	{
+	 	$sql.= " AND load_postings.to_city='".$form_data->to_city."'"; 
+	}
+	if(!empty($form_data->available_date))
+	{
+	 	$available_date =convertDate($form_data->available_date);
+	 	//echo $available_date;
+	 	$sql.= " AND ((load_postings.available_date_from <='".$available_date."' AND load_postings.available_date_to >='".$available_date."') OR load_postings.available_daily='1') "; 
+	}
+	
 	//echo $sql;
 	$query=$conn->query($sql);
 	while($row=$query->fetch_array()){
@@ -269,6 +265,22 @@ function uniqueId($id)
 	} else {
 		return true;
 	}
+}
+
+function convertDate($date) {
+       // EN-Date to GE-Date
+       if (strstr($date, "-") || strstr($date, "/"))   {
+               $date = preg_split("/[\/]|[-]+/", $date);
+               $date = $date[2]."-".$date[1]."-".$date[0];
+               return $date;
+       }
+       // GE-Date to EN-Date
+       else if (strstr($date, ".")) {
+               $date = preg_split("[.]", $date);
+               $date = $date[2]."-".$date[1]."-".$date[0];
+               return $date;
+       }
+       return false;
 }
 	 
 ?>

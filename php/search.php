@@ -19,7 +19,7 @@ function search($form_data) {
 			INNER JOIN vehicle_type ON load_postings.truck_type=vehicle_type.id
 			INNER JOIN load_type ON load_postings.load_type=load_type.id
 			INNER JOIN branches_list ON load_postings.tid=branches_list.id
-			WHERE load_postings.is_deleted = 0 ";
+			WHERE load_postings.is_deleted = 0 AND load_postings.uid !='".$_SESSION['uid']."'";
 	
 	//echo $_GET['id'];
 	if(isset($_GET['id'])) {
@@ -57,7 +57,7 @@ function search($form_data) {
 	 	}
 	 	
 	}
-	//echo $sql;
+	echo $sql;
 	$query=$conn->query($sql);
 	while($row=$query->fetch_array()){
 		if(($row['available_date_to'])!='0000-00-00'){
