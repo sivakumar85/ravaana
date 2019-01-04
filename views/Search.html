@@ -107,7 +107,7 @@
                       </div>
                      
                       <div class="col-lg-2">
-                        <button type="button" ng-click="loadSearch();" class="btn btn-default btn-success"><i class="fa fa-search" style="font-size: 17px"></i>&nbsp;Search</button>
+                        <button type="button" ng-click="search();" class="btn btn-default btn-success"><i class="fa fa-search" style="font-size: 17px"></i>&nbsp;Search</button><a class="btn btn-danger" ng-click="resetSearch();"><i class="fa fa-rotate-left"></i>&nbsp;&nbsp;&nbsp;Reset</a>
                       </div>
                     </form>
           </div>
@@ -161,7 +161,7 @@
 
 
                                 </tr>
-                                
+                                 <tr ng-show="searchData.length==0"><td colspan="12" align="center"> <span style="color:red">No records to display</span></td></tr>
                             </tbody>
                         </table>
 

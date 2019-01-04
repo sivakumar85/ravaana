@@ -83,12 +83,18 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	    });
 		
 	}
+	$scope.resetSearch = function() {
+		//$location.path( '/MyLoads' );
+		$scope.searchParam = {'search_type':'load'};
+		$scope.search();
+	};
 	$scope.search = function(type) {
 	    //$http POST function
 	    var surl = 'php/searchCtrl.php?action=search';
 		/*if(!angular.isUndefined(type)){
 			surl += '?type=past'
 		}*/
+		//alert($scope.searchParam);
 	    $http({
 	      method: 'POST',
 	      url: surl,
