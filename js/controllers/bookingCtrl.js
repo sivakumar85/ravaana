@@ -21,7 +21,7 @@ app.controller('bookingCtrl', ['$scope','$rootScope','$http','$location','$route
 	    logIn_request.then(function(response){
 	    	$scope.islogged = response.data;
 	});
-	
+
 	$scope.myBookings = function(type) {
 	    //$http POST function
 	    var surl = 'php/bookingCtrl.php?action=myBookings';
@@ -85,6 +85,12 @@ app.controller('bookingCtrl', ['$scope','$rootScope','$http','$location','$route
 					sortingOrder : 'driver_name',
 					reverse : false
 				};
+	$scope.viewid = function(){
+		$('#viewbookingid').modal('show');
+	}
+	$scope.track = function(){
+		$('#track').modal('show');
+	}
 
 }]);
 app.directive("bookingSort", function() {
