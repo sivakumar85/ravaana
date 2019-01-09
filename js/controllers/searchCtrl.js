@@ -33,17 +33,19 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 		$scope.vehicle_types = response.data;
 	});
 	$scope.searchParam = searchService.searchParam;
-	/*var logIn_request = $http({
+	$scope.islogged = 0;
+	var logIn_request = $http({
 	    url: 'php/session.php', 
 	    method: "GET",			    
 	 });
 	    logIn_request.then(function(response){
-	    	$scope.islogged = response.data;
-	});*/
-	$scope.islogged = 0;
-	if($scope.business_type!=null) {
+	    	$scope.islogged = response.data!=''?1:0;
+	});
+	//$scope.search('home');
+	
+	/*if($scope.business_type!=null) {
 		$scope.islogged = 1;
-	} 
+	} */
 	$scope.makePayment = function() {
 		//alert($scope.driverIds+'--'+$scope.truckIds);
 		var truckDriverArray = [];
@@ -90,7 +92,7 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	};
 	$scope.search = function(type) {
 	    //$http POST function
-	    var surl = 'php/searchCtrl.php?action=search';
+	    var surl = 'php/searchCtrl.php?action=search&type='+type;
 		/*if(!angular.isUndefined(type)){
 			surl += '?type=past'
 		}*/
@@ -110,8 +112,16 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	};
 	
 	$scope.selectTruck = function(type) {
+	    if(!angular.isUndefined($routeParams.loadId)) {
+			$scope.loadId = $routeParams.loadId;
+			 var surl = 'php/searchCtrl.php?action=search&id='+$scope.loadId;
+			var load_request = $http.get(surl);
+			load_request.then(function(response){
+				$scope.load = response.data[0];
+			});
+		}
 	    //$http POST function
-	    var surl = 'php/searchCtrl.php?action=getTrucksList';
+	    var surl = 'php/searchCtrl.php?action=getTrucksList&loadId='+$scope.loadId;
 		$http({
 	      method: 'POST',
 	      url: surl,

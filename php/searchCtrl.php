@@ -47,8 +47,8 @@ function getDriversList($form_data){
 }  
 function getTrucksList($form_data){  
      include('database_connection.php'); 
-     $output = array();  
-	$sql = "SELECT trucks_list.id, trucks_list.uid, trucks_list.vehicle_registration_no, 				   	   trucks_list.truck_capacity,trucks_list.truck_rc,
+     $output = array();
+	$sql = "SELECT trucks_list.id, trucks_list.uid, trucks_list.vehicle_registration_no, trucks_list.truck_capacity,trucks_list.truck_rc,
 				   trucks_list.truck_insurence, trucks_list.truck_pollution, 
 				   trucks_list.truck_image, trucks_list.driver_aadhar_number,
 				   trucks_list.aadhar_copy,trucks_list.truck_fitness_certificate, 
@@ -60,8 +60,8 @@ function getTrucksList($form_data){
 				WHERE trucks_list.active=1 AND trucks_list.created_by='".$_SESSION['uid']."'";
 	
 	//echo $_GET['id'];
-	if(isset($_GET['id'])) {
-		$sql.= " AND id='".$_GET['id']."'";
+	if(isset($_GET['loadId'])) {
+		$sql.= " AND trucks_list.vehicle_type = (SELECT truck_type FROM load_postings where id='".$_GET['loadId']."')";
 	}  
 	
 	//echo $sql;
@@ -101,7 +101,9 @@ function search($form_data) {
 			INNER JOIN vehicle_type ON load_postings.truck_type=vehicle_type.id
 			INNER JOIN load_type ON load_postings.load_type=load_type.id
 			INNER JOIN branches_list ON load_postings.tid=branches_list.id
-			WHERE load_postings.is_deleted = 0 AND load_postings.uid !='".$_SESSION['uid']."'";
+			WHERE load_postings.is_deleted = 0 
+			AND (load_postings.available_daily=1 OR load_postings.available_date_to>=DATE(NOW())) AND load_postings.is_deleted=0 
+			AND load_postings.uid !='".$_SESSION['uid']."'";
 	
 	//echo $_GET['id'];
 	if(isset($_GET['id'])) {
