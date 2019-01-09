@@ -129,7 +129,13 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	      //alert("Error. while created Post Try Again!");
 	    });
 	};
-
+	$scope.viewLoads = function(){
+		$('#viewloads').modal({show:true});
+	}
+	$scope.viewdetails = function(){
+		$('#viewdetails').modal({show:true});
+	}
+	
 	$scope.loadSearch = function() {
 		if($scope.islogged == '1'){
 				//alert('login');

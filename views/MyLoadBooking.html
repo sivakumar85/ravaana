@@ -20,7 +20,13 @@ body{
 .row1{
    padding-bottom: 10px;
 }
-
+}
+@media (min-width: 768px){
+.modal-dialog {
+    width: 660px;
+    margin: 30px auto;
+}
+}
 </style>
 <div class="container" ng-init="myBookings('load');">
 <div class="col-lg-12">
@@ -44,16 +50,14 @@ body{
                         <table class="table table-striped table-bordered table-list">
                             <thead>
                                 <tr>
-                                   <th>TXN ID</th>
+                                   <th>Booking Id</th>
                            <th>Booking Date&Time</th>
                            <th>Truck Number</th>
                            <th>Driver Name</th>
                            <th>Type Of Load</th>
                            <th>From City</th>
                            <th>To City</th>
-                           <th>KMS</th>
-                           <th>Ton Cost</th>
-                     <th>Advance%</th>
+                           
                      <th>Transporter Address</th>
                      <th>Payment Status</th>
                      <th>Booking Status</th>
@@ -62,22 +66,22 @@ body{
                             <tbody id="myTable">
                             
                                <tr dir-paginate="booking in myBookings|itemsPerPage:5">
-                                   <td>{{booking.booking_id}}</td>
+                                   <td><a ng-click="viewid()">{{booking.booking_id}}</a></td>
                            <td>{{booking.request_date}}</td>
                            <td>{{booking.vehicle_registration_no}}</td>
                            <td>{{booking.driver_name}}</td>
                            <td>{{booking.typeOfLoad}}</td>
                            <td>{{booking.from_city}}({{booking.from_location}})</td>
                            <td>{{booking.to_city}}({{booking.to_location}})</td>
-                           <td>{{booking.distance_km}}</td>
-                           <td>{{booking.load_cost}}/- {{booking.load_cost_type}}</td>
-                     <td>{{booking.advance_percent}}%</td>
+                          
                      <td>{{booking.address}}</td>
                      <td>100rs Success
                      <br>
                      <button class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;Cancel</button>
                      </td>
                      <td>{{booking.request_status}}
+                      <br>
+                      <button  class="btn btn-success"ng-click="track()" ng-show="booking.request_status == 'Transporter Aprroved' ">Track</button>
                     </td>
                                 </tr>
                     <tr ng-show="myBookings.length==0"><td colspan="12" align="center"> <span style="color:red">No records to display</span></td></tr>
@@ -97,8 +101,8 @@ body{
          <table class="w3-table-all notranslate" style="border: 1px solid black" >
 <tbody>
 <tr>
-<td>TXN ID :</td>
-<td>{{booking.booking_id}}</td>
+<td>Booking Id :</td>
+<td><a ng-click="viewid()">{{booking.booking_id}}</a></td>
 </tr>
 <tr>
 <td>Booking Date&Time :</td>
@@ -125,18 +129,7 @@ body{
 <td>To City : </td>
 <td>{{booking.to_city}}({{booking.to_location}})</td>
 </tr>
-<tr>
-<td>KMS : </td>
- <td>{{booking.distance_km}}</td>
-</tr>
-<tr>
-<td>Ton Cost : </td>
-<td>{{booking.load_cost}}/- {{booking.load_cost_type}}</td> 
-</tr>
-<tr>
-<td> Advance : </td>
- <td>{{booking.advance_percent}}%</td>
-</tr>
+
 <tr>
   <td>Transporter Address : </td>
   <td>{{booking.address}}</td>
@@ -151,11 +144,167 @@ body{
 <tr>
   <td>Booking Status : </td>
   <td>{{booking.request_status}}
+    <br>
+                      <button  class="btn btn-success"ng-click="track()" ng-show="booking.request_status == 'Transporter Aprroved' ">Track</button>
                     </td>
 </tr>
 </tbody></table>
 </div>
      </div>
+<!---Start View Booking Id Modal--->
+<div class="row">
+    <div class="modal fade"  data-keyboard="false" data-backdrop="static" id="viewbookingid">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Booking Id</h4>
+                </div>
+                <div class="modal-body"  style="padding-bottom: 45px;">
+                    <!--<div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+              -->
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="background-color: #64A737;color:white">
+                            <h3 class="panel-title">Booking Details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class=" col-md-12 col-lg-12 ">
+                                    <table class="table table-user-information">
+                                        <tbody>
+                                            <tr>
+                                                <td>Booking Date&Time:</td>
+                                                <td>27 December 2018, 06:14:46 PM</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Number:</td>
+                                                <td>AP26 TS 2345</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Driver Name:</td>
+                                                <td>abc</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Type Of Load:</td>
+                                                <td>Oil</td>
+                                            </tr>
+                                            <tr>
+                                                <td>From City:</td>
+                                                <td>Nellore</td>
+                                            </tr>
+                                            <tr>
+                                                <td>To City:</td>
+                                                <td>Kavali</td>
+                                            </tr>
+                                            <tr>
+                                                <td>KMS:</td>
+                                                <td>55</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tonn Cost:</td>
+                                                <td>1000 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Advance:</td>
+                                                <td>300</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transporter Address:</td>
+                                                <td>kavali</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---end View Booking Id Modal--->
+<!---Start track Modal--->
+<div class="row">
+    <div class="modal fade"  data-keyboard="false" data-backdrop="static" id="track">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Booking Id</h4>
+                </div>
+                <div class="modal-body"  style="padding-bottom: 45px;">
+                    <!--<div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+              -->
+                 <div class="panel panel-default panel-table col-lg-8 col-lg-offset-2">
+                    <div class="panel-body table-responsive">
+                        <table class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                  <th>Driver</th>
+                     <th>Truck</th>
+                     <th>Load</th>
+                    
+                  </tr>
 
+                            </thead>
+                            <tbody id="myTable">
 
+                                <!--<tr ng-repeat="data in searchData | orderBy:sort.sortingOrder:sort.reverse">-->
+                                  <tr>
+                                    <td><a>Abc</a></td>
+                                    <td><a>12 Tyre</a></td>
+                                    <td><a>Oil</a></td>
+                                  </tr>
+                            </tbody>
+                        </table>
 
+                    </div>
+                </div>
+  
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <table class="table">
+                                        <tbody>
+                                          <tr>
+                                                <td>Current Status:</td>
+                                                <td>Complete</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transporter Owner Approoved:</td>
+                                                <td>21-08-2018</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Truck Owner Requested Date:</td>
+                                                <td>20-08-2018</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Load Posted Date:</td>
+                                                <td>19-08-2018</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                       
+                    </div>
+
+                    <div class="pull-right">
+             <button class="btn btn-info"><i class="fa fa-phone">&nbsp;Contact</i></button>
+             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---end track Modal--->

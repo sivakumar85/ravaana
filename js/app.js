@@ -603,12 +603,17 @@ app.config(function($routeProvider) {
 				}
 			}
 		}
-	})
-
-	
-	.otherwise({
+	}).when('/VehicleBooking',{
+		templateUrl:'views/VehicleBooking.html',
+		controller: 'searchCtrl'
+	}).when('/viewloads',{
+		templateUrl:'views/viewloads.html',
+		
+	}).otherwise({
         templateUrl: 'views/404.html',
-    })
+    }).when('/UpdateLoginDetails',{
+		templateUrl:'views/UpdateLoginDetails.html',
+	})
 
 	
 });
