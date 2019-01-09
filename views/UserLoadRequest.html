@@ -90,6 +90,8 @@ body{
                      <td style="width:10%"><button class="btn btn-info" ng-click="assign_load(booking.booking_id,'1')">YES</button>
         <button class="btn btn-danger" ng-click="assign_load(booking.booking_id,'0')">NO</button>
       </td>
+    </tr>
+    <tr ng-show="myBookings.length==0"><td colspan="13" align="center"> <span style="color:red">No records to display</span></td></tr>
                        
                             </tbody>
                         </table>
@@ -101,6 +103,7 @@ body{
         </div>
 </div>
      <div class="container  search2">
+       <div ng-show="myBookings.length==0"><span style="color:red">No records to display</span></div>
             <div class="row1" ng-repeat="booking in myBookings">
          <table class="w3-table-all notranslate" style="border: 1px solid black" >
 <tbody>
