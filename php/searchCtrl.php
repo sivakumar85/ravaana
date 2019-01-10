@@ -109,6 +109,9 @@ function search($form_data) {
 	if(isset($_GET['id'])) {
 		$sql.= " AND load_postings.id='".$_GET['id']."'";
 	}
+
+
+	
 	
 	//$form_data = json_decode(file_get_contents('php://input'));
 	$format = 'd/m/Y';
@@ -130,6 +133,10 @@ function search($form_data) {
 	 	$available_date =convertDate($form_data->available_date);
 	 	//echo $available_date;
 	 	$sql.= " AND ((load_postings.available_date_from <='".$available_date."' AND load_postings.available_date_to >='".$available_date."') OR load_postings.available_daily='1') "; 
+	}
+
+	if(isset($_GET['type'])) {
+		$sql.= " ORDER BY load_postings.created_date DESC LIMIT 20";
 	}
 	
 	//echo $sql;

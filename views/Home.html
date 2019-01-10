@@ -263,7 +263,7 @@ a.big-link-1 {
 									<div class="row">							
 
 										<div class="col-md-10 col-md-offset-2">				
-											<h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">{{data.from_city}} - {{data.to_city}}</span><span><button class="btn btn-success" style="margin-left:88px" ng-click="viewdetails(data.id)" ><i class="fa fa-paper-plane"></i>&nbsp;view details</button></span> </h4>
+											<h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">{{data.from_city}} - {{data.to_city}}</span><span><button class="btn btn-success" style="margin-left:88px" ng-click="viewdetails(data)" ><i class="fa fa-paper-plane"></i>&nbsp;view details</button></span> </h4>
 
 											<div class="col-lg-12" style="color:yellow">
 												<div style="padding:5px" class="col-lg-5" ><span style="color:red"><i class="fa fa-calendar" style="color:cyan"></i>&nbsp;Availability :</span> &nbsp;{{data.available_daily=='1'?'Daily':data.available_date_from+' to '+data.available_date_to}}</div>
@@ -299,14 +299,14 @@ a.big-link-1 {
 							</div>											
 							</div>	-->										
 							</div>
-							<a class="left carousel-control pull-left" href="#Home#quote-carousel" data-slide="prev">
+							<span class="left carousel-control pull-left" href="#quote-carousel" data-slide="prev">
 						      <span class="glyphicon glyphicon-chevron-left"></span>
 						      <span class="sr-only">Previous</span>
-						    </a>
-						    <a class="right carousel-control pull-right" href="#Home#quote-carousel" data-slide="next">
+						    </span>
+						    <span class="right carousel-control pull-right" href="#quote-carousel" data-slide="next">
 						      <span class="glyphicon glyphicon-chevron-right"></span>
 						      <span class="sr-only">Next</span>
-						    </a>
+						    </span>
 						  </div>                        
 					
 						
@@ -601,56 +601,56 @@ a.big-link-1 {
                     <div class="panel-body table-responsive">
                         <table class="table table-striped table-bordered table-list">
                           
-<tbody>
-<tr>
-<td>Type of Load :</td>
-<td>{{loadData.typeOfLoad}}</td>
-</tr>
-<tr>
-<td>From City :</td>
-<td>{{loadData.from_city}}({{loadData.from_location}})</td>
-</tr>
-<tr>
-<td>To City :</td>
-<td>{{loadData.to_city}}({{loadData.to_location}})</td>
-</tr>
-<tr>
-<td>KMS  :</td>
-<td>{{loadData.distance_km}}</td>
-</tr>
-<tr>
-<td>Load Cost : </td>
-<td>{{loadData.load_cost}}/- {{loadData.load_cost_type}}</td>
-</tr>
-<tr>
-<td>Advance : </td>
-<td>{{loadData.advance_percent}}%</td>
-</tr>
-<tr>
-<td>Available Tons : </td>
-<td>{{loadData.tonns_available}}</td>
-</tr>
-<tr>
-<td>Available Dates : </td>
- <td>{{loadData.available_daily=='1'?'Daily':loadData.available_date_from+' to '+loadData.available_date_to}}</td>
-</tr>
-<tr>
-<td>Need of Vehicle : </td>
-<td>{{loadData.vehicle_type}}</td> 
-</tr>
-<tr>
-<td>Posted On : </td>
- <td>{{loadData.created_date}}</td>
-</tr>
-<tr>
-  <td>Booking </td>
-<td><a href="javascript:void(0);"class="btn btn-info" ng-click="bookLoad(loadData.id)">
-                                    Book Now
+							<tbody>
+							<tr>
+							<td>Type of Load :</td>
+							<td>{{loadData.typeOfLoad}}</td>
+							</tr>
+							<tr>
+							<td>From City :</td>
+							<td>{{loadData.from_city}}({{loadData.from_location}})</td>
+							</tr>
+							<tr>
+							<td>To City :</td>
+							<td>{{loadData.to_city}}({{loadData.to_location}})</td>
+							</tr>
+							<tr>
+							<td>KMS  :</td>
+							<td>{{loadData.distance_km}}</td>
+							</tr>
+							<tr>
+							<td>Load Cost : </td>
+							<td>{{loadData.load_cost}}/- {{loadData.load_cost_type}}</td>
+							</tr>
+							<tr>
+							<td>Advance : </td>
+							<td>{{loadData.advance_percent}}%</td>
+							</tr>
+							<tr>
+							<td>Available Tons : </td>
+							<td>{{loadData.tonns_available}}</td>
+							</tr>
+							<tr>
+							<td>Available Dates : </td>
+							 <td>{{loadData.available_daily=='1'?'Daily':loadData.available_date_from+' to '+loadData.available_date_to}}</td>
+							</tr>
+							<tr>
+							<td>Need of Vehicle : </td>
+							<td>{{loadData.vehicle_type}}</td> 
+							</tr>
+							<tr>
+							<td>Posted On : </td>
+							 <td>{{loadData.created_date}}</td>
+							</tr>
+							<tr>
+							  <td>Booking </td>
+							<td><a href="javascript:void(0);"class="btn btn-info" ng-click="bookLoad(loadData.id)" data-dismiss="modal">
+							                                    Book Now
 
-                                    </a>
-</td>
-</tr>
-</tbody></table>
+							                                    </a>
+							</td>
+							</tr>
+							</tbody></table>
 </div>
      </div>
  </div>
