@@ -144,16 +144,16 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 		$('#viewloads').modal({show:true});
 	}
 	$scope.viewdetails = function(loadId){
-		//$scope.loadData = data;
-		//$('#viewdetails').modal({show:true});
-		var url = '/Search/'+loadId;
-			$location.path(url);	
+		$scope.loadData = loadId;
+		$('#viewdetails').modal({show:true});
+		//var url = '/Search/'+loadId;
+			//$location.path(url);	
 	}
 	
 	$scope.bookLoad = function(loadId){
 		//$('#viewdetails').modal({show:false});
-		$('#viewdetails').hide();
-		$(".modal-backdrop").remove();
+		//$('#viewdetails').hide();
+		//$(".modal-backdrop").remove();
 		//$('#viewdetails').modal({backdrop: false});
 		if ($scope.islogged == '1') {
 			var url = '/SelectTruck/'+loadId;

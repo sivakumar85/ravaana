@@ -28,7 +28,9 @@ session_start();
 		    height: 100%;
 		}
 		#contentId{
-		    background-color: #ffe57e!important;
+		    background-color: #ebf8a4!important;
+		    color: #000;
+		    border-color: #a2d246;
 		 }
 		 .alert-success{
 		 	/*color: #000;*/
@@ -57,27 +59,20 @@ session_start();
 		<div ng-view></div>
 		
 		<div ng-include="'views/Footer.html'"></div>
+
+		<div id="getCodeModal" class="modal">
+		  <div class="modal-dialog">
+		    <div id="contentId" class="modal-content">
+		      <div class="modal-body">
+		         <span class="glyphicon glyphicon-ok"></span><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button> 
+		         <span id="getCode">Operation completed successfully..</span>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 		
-		<div id="getCodeModal" class="modal fade" role="dialog">
-	         <div class="modal-dialog">
-                <div id="contentId" class="modal-content">
-                   <!--<div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button>
-                         <h4 class="modal-title">Message</h4>
-                   </div>-->
-                   <div class="modal-body" >
-                         <div class="alert alert-success">
-			               <span class="glyphicon glyphicon-ok"></span>
-			               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button> 
-			                <span id="getCode">
-			                    You successfully read this important alert message.</span>
-			            </div>
-                   </div>
-                   <!--<div class="modal-footer">
-                         <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-                   </div>-->
-                </div>
-	        </div>
-        </div>
+		
         <!-- Modal -->
 <!--<div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-lg">
