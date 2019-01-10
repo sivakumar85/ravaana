@@ -262,7 +262,7 @@ a.big-link-1 {
 																			
 									<div class="row">							
 										<div class="col-md-8 col-md-offset-3">				
-											<h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">{{data.from_city}} - {{data.to_city}}</span><span><button class="btn btn-success" style="margin-left:88px" ng-click="viewdetails(data)" ><i class="fa fa-paper-plane"></i>&nbsp;view details</button></span> </h4>
+											<h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">{{data.from_city}} - {{data.to_city}}</span><span><button class="btn btn-success" style="margin-left:88px" ng-click="viewdetails(data.id)" ><i class="fa fa-paper-plane"></i>&nbsp;view details</button></span> </h4>
 											<div class="col-lg-12" style="color:yellow">
 												<div style="padding:5px" class="col-lg-4" ><span style="color:red"><i class="fa fa-calendar" style="color:cyan"></i>&nbsp;Availability :</span> &nbsp;{{data.available_daily=='1'?'Daily':data.available_date_from+' to '+data.available_date_to}}</div>
 												<div style="padding:5px" class="col-lg-8"><span style="color:red"><i class="fa fa-cube"  style="color:cyan"></i>&nbsp;Load :</span> &nbsp;{{data.typeOfLoad}} ( {{data.tonns_available}} Tons ) </div>
