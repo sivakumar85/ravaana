@@ -249,7 +249,7 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/MapFeatures.html',
 	}).when('/AuditReport', {
 		templateUrl: 'views/AuditReport.html',
-	}).when('/Search', {
+	}).when('/Search/:loadId?', {
 		templateUrl: 'views/Search.html',
 		controller: 'searchCtrl',
 		resolve:{

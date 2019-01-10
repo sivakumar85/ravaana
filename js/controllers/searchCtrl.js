@@ -93,9 +93,10 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	$scope.search = function(type) {
 	    //$http POST function
 	    var surl = 'php/searchCtrl.php?action=search&type='+type;
-		/*if(!angular.isUndefined(type)){
-			surl += '?type=past'
-		}*/
+		if(!angular.isUndefined($routeParams.loadId)) {
+			$scope.loadId = $routeParams.loadId;
+			surl += '&id='+$scope.loadId;
+		}
 		//alert($scope.searchParam);
 	    $http({
 	      method: 'POST',
@@ -142,14 +143,18 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	$scope.viewLoads = function(){
 		$('#viewloads').modal({show:true});
 	}
-	$scope.viewdetails = function(data){
-		$scope.loadData = data;
-		$('#viewdetails').modal({show:true});
+	$scope.viewdetails = function(loadId){
+		//$scope.loadData = data;
+		//$('#viewdetails').modal({show:true});
+		var url = '/Search/'+loadId;
+			$location.path(url);	
 	}
 	
 	$scope.bookLoad = function(loadId){
-		$('#viewdetails').modal({show:false});
-		 $(".modal-backdrop").remove();
+		//$('#viewdetails').modal({show:false});
+		$('#viewdetails').hide();
+		$(".modal-backdrop").remove();
+		//$('#viewdetails').modal({backdrop: false});
 		if ($scope.islogged == '1') {
 			var url = '/SelectTruck/'+loadId;
 			$location.path(url);				
