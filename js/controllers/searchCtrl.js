@@ -142,10 +142,22 @@ app.controller('searchCtrl', ['$scope','$rootScope','$http','$location','$routeP
 	$scope.viewLoads = function(){
 		$('#viewloads').modal({show:true});
 	}
-	$scope.viewdetails = function(){
+	$scope.viewdetails = function(data){
+		$scope.loadData = data;
 		$('#viewdetails').modal({show:true});
 	}
 	
+	$scope.bookLoad = function(loadId){
+		$('#viewdetails').modal({show:false});
+		 $(".modal-backdrop").remove();
+		if ($scope.islogged == '1') {
+			var url = '/SelectTruck/'+loadId;
+			$location.path(url);				
+		} else{
+				 $location.path('/SignIn/loginMsg');
+		}
+		
+	}
 	$scope.loadSearch = function() {
 		if($scope.islogged == '1'){
 				//alert('login');

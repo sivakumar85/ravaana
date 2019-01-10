@@ -262,7 +262,7 @@ a.big-link-1 {
 																			
 									<div class="row">							
 										<div class="col-md-8 col-md-offset-3">				
-											<h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">{{data.from_city}} - {{data.to_city}}</span><span><button class="btn btn-success" style="margin-left:88px" ng-click="viewdetails(data.id)" ><i class="fa fa-paper-plane"></i>&nbsp;view details</button></span> </h4>
+											<h4 class="fcity"> Latest Loads : <span style="color:#F7F7F7">{{data.from_city}} - {{data.to_city}}</span><span><button class="btn btn-success" style="margin-left:88px" ng-click="viewdetails(data)" ><i class="fa fa-paper-plane"></i>&nbsp;view details</button></span> </h4>
 											<div class="col-lg-12" style="color:yellow">
 												<div style="padding:5px" class="col-lg-4" ><span style="color:red"><i class="fa fa-calendar" style="color:cyan"></i>&nbsp;Availability :</span> &nbsp;{{data.available_daily=='1'?'Daily':data.available_date_from+' to '+data.available_date_to}}</div>
 												<div style="padding:5px" class="col-lg-8"><span style="color:red"><i class="fa fa-cube"  style="color:cyan"></i>&nbsp;Load :</span> &nbsp;{{data.typeOfLoad}} ( {{data.tonns_available}} Tons ) </div>
@@ -585,7 +585,7 @@ a.big-link-1 {
 </div>
 </div>
 <div class="row">
-    <div class="modal"  data-keyboard="false" data-backdrop="static" id="viewdetails">
+    <div class="modal" id="viewdetails">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -602,47 +602,47 @@ a.big-link-1 {
 <tbody>
 <tr>
 <td>Type of Load :</td>
-<td>Oil</td>
+<td>{{loadData.typeOfLoad}}</td>
 </tr>
 <tr>
 <td>From City :</td>
-<td>kavali</td>
+<td>{{loadData.from_city}}({{loadData.from_location}})</td>
 </tr>
 <tr>
 <td>To City :</td>
-<td>nellore</td>
+<td>{{loadData.to_city}}({{loadData.to_location}})</td>
 </tr>
 <tr>
 <td>KMS  :</td>
-<td>55</td>
+<td>{{loadData.distance_km}}</td>
 </tr>
 <tr>
 <td>Load Cost : </td>
-<td>1500</td>
+<td>{{loadData.load_cost}}/- {{loadData.load_cost_type}}</td>
 </tr>
 <tr>
 <td>Advance : </td>
-<td>1000</td>
+<td>{{loadData.advance_percent}}%</td>
 </tr>
 <tr>
 <td>Available Tons : </td>
-<td>2</td>
+<td>{{loadData.tonns_available}}</td>
 </tr>
 <tr>
 <td>Available Dates : </td>
- <td>Daily</td>
+ <td>{{loadData.available_daily=='1'?'Daily':loadData.available_date_from+' to '+loadData.available_date_to}}</td>
 </tr>
 <tr>
 <td>Need of Vehicle : </td>
-<td>6 Tyre</td> 
+<td>{{loadData.vehicle_type}}</td> 
 </tr>
 <tr>
 <td>Posted On : </td>
- <td>20-12-2018</td>
+ <td>{{loadData.created_date}}</td>
 </tr>
 <tr>
   <td>Booking </td>
-<td><a href="#SelectTruck/{{data.id}}"class="btn btn-info">
+<td><a href="javascript:void(0);"class="btn btn-info" ng-click="bookLoad(loadData.id)">
                                     Book Now
 
                                     </a>
